@@ -7,6 +7,7 @@ class Sprite {
     scale = 1,
     framesMax = 1,
     offset = { x: 0, y: 0 },
+    soundSrc,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
@@ -22,6 +23,8 @@ class Sprite {
     // then faster will be chaning frames of animation
     this.framesHold = 10;
     this.offset = offset;
+    this.sound = new Audio();
+    this.sound.src = soundSrc;
   }
   // We are creating draw method
   draw() {
@@ -80,6 +83,7 @@ class Fighter extends Sprite {
       width: undefined,
       height: undefined,
     },
+    soundSrc,
   }) {
     super({
       position,
@@ -87,6 +91,7 @@ class Fighter extends Sprite {
       scale,
       framesMax,
       offset,
+      soundSrc,
     });
 
     // Assosiation with this position and pass argr as individual sprite we are creating
@@ -114,11 +119,14 @@ class Fighter extends Sprite {
     this.framesHold = 10;
     this.sprites = sprites;
     this.dead = false;
+    this.soundStart = true;
     // we looping through object sprites to switching between two images
     for (const sprite in this.sprites) {
       // this is objects that we currenlty looping over
       sprites[sprite].image = new Image();
       sprites[sprite].image.src = sprites[sprite].imageSrc;
+      sprites[sprite].sound = new Audio();
+      sprites[sprite].sound.src = sprites[sprite].soundSrc;
     }
     // console.log(this.sprites)
   }
@@ -155,6 +163,8 @@ class Fighter extends Sprite {
   // updating method instantly
   update() {
     this.draw();
+    // if player is not dead so animate their frames
+    // if dead do not animate
     if (!this.dead) this.animateFrames();
 
     // attack boxes with offsets to make it more flexible by x and y axis
@@ -188,6 +198,21 @@ class Fighter extends Sprite {
     }
     // console.log(this.position.y);
   }
+  // running to the left method with activating animation and sound
+  runLeft() {
+    this.soundStart = true;
+    this.sound.play();
+    this.velocity.x = -6;
+    this.switchSprite('run');
+  }
+  // running to the right method with activating animation and sound
+  runRight() {
+    this.sound.pause();
+    this.soundStart = true;
+    this.sound.play();
+    this.velocity.x = 6;
+    this.switchSprite('run');
+  }
   // attack method
   attack() {
     this.switchSprite('attack1');
@@ -209,7 +234,14 @@ class Fighter extends Sprite {
     this.health -= 20;
     if (this.health <= 0) {
       this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      // }, 3000);
     } else {
+      // in this case we auto play damaged sound
+      this.sound.currentTime = 0;
+      this.sound.play();
+      // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
   }
@@ -217,6 +249,10 @@ class Fighter extends Sprite {
     this.health -= 35;
     if (this.health <= 0) {
       this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
     } else {
       this.switchSprite('damaged');
     }
@@ -241,8 +277,16 @@ class Fighter extends Sprite {
       this.framesCurrent < this.sprites.damaged.framesMax - 1
     )
       return;
+
     if (this.image === this.sprites.death.image) {
       if (this.framesCurrent === this.sprites.death.framesMax - 1) {
+        this.dead = true;
+      }
+      return;
+    }
+    // second animation of death overlooping
+    if (this.image === this.sprites.deathTwo.image) {
+      if (this.framesCurrent === this.sprites.deathTwo.framesMax) {
         this.dead = true;
       }
       return;
@@ -259,6 +303,9 @@ class Fighter extends Sprite {
         break;
       case 'run':
         if (this.image !== this.sprites.run.image) {
+          if (this.sound !== this.sprites.run.sound) {
+            this.sound = this.sprites.run.sound;
+          }
           this.image = this.sprites.run.image;
           this.framesMax = this.sprites.run.framesMax;
           this.framesCurrent = 0;
@@ -294,6 +341,11 @@ class Fighter extends Sprite {
         break;
       case 'damaged':
         if (this.image !== this.sprites.damaged.image) {
+          if (this.sound !== this.sprites.damaged.sound) {
+            this.sound = this.sprites.damaged.sound;
+            this.sound.currentTime = 0;
+            this.sound.play();
+          }
           this.image = this.sprites.damaged.image;
           this.framesMax = this.sprites.damaged.framesMax;
           this.framesCurrent = 0;
@@ -303,6 +355,13 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.death.image) {
           this.image = this.sprites.death.image;
           this.framesMax = this.sprites.death.framesMax;
+          this.framesCurrent = 0;
+        }
+        break;
+      case 'deathTwo':
+        if (this.image !== this.sprites.deathTwo.image) {
+          this.image = this.sprites.deathTwo.image;
+          this.framesMax = this.sprites.deathTwo.framesMax;
           this.framesCurrent = 0;
         }
         break;

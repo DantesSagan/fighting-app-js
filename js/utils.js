@@ -1,5 +1,5 @@
 
-// new function which listen collision between two boxes (rectangular)
+// new function which listen collision between two boxes (rectangular) or sprites
 function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
     rectangle1.attackBox.position.x + rectangle1.attackBox.width >=

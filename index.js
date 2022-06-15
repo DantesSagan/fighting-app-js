@@ -16,16 +16,15 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 // This is means whitch velocity to falling down to bottom of the canvas
 // And how faster this rich bottom by this
 const gravity = 0.7;
-
 // background image
 const backgorund = new Sprite({
   position: {
     x: 0,
     y: 0,
   },
-  imageSrc: './assets/background.png',
+  imageSrc: './assets/background - rain - lightning.png',
+  framesMax: 6,
 });
-
 // shop layout
 
 const shop = new Sprite({
@@ -64,6 +63,7 @@ const player = new Fighter({
     },
     run: {
       imageSrc: './assets/samuraiMack/Run.png',
+      soundSrc: './audio/walking.wav',
       framesMax: 8,
     },
     jump: {
@@ -76,6 +76,7 @@ const player = new Fighter({
     },
     attack1: {
       imageSrc: './assets/samuraiMack/Attack1.png',
+
       framesMax: 6,
     },
     attack2: {
@@ -83,12 +84,18 @@ const player = new Fighter({
       framesMax: 6,
     },
     damaged: {
-      imageSrc: './assets/samuraiMack/Take Hit - white silhouette.png',
+      imageSrc:
+        './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
+      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
       framesMax: 4,
     },
     death: {
-      imageSrc: './assets/samuraiMack/Death.png',
+      imageSrc: './assets/samuraiMack/blood/Death - blood.png',
       framesMax: 6,
+    },
+    deathTwo: {
+      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+      framesMax: 3,
     },
   },
   attackBox: {
@@ -125,6 +132,7 @@ const enemy = new Fighter({
     },
     run: {
       imageSrc: './assets/kenji/Run.png',
+      soundSrc: './audio/walking.wav',
       framesMax: 8,
     },
     jump: {
@@ -137,6 +145,7 @@ const enemy = new Fighter({
     },
     attack1: {
       imageSrc: './assets/kenji/Attack1.png',
+
       framesMax: 4,
     },
     attack2: {
@@ -144,12 +153,17 @@ const enemy = new Fighter({
       framesMax: 4,
     },
     damaged: {
-      imageSrc: './assets/kenji/Take Hit - white silhouette 3.png',
+      imageSrc: './assets/kenji/blood//Take Hit - white silhouette - blood.png',
+      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
       framesMax: 4,
     },
     death: {
-      imageSrc: './assets/kenji/Death.png',
+      imageSrc: './assets/kenji/blood/Death - blood.png',
       framesMax: 7,
+    },
+    deathTwo: {
+      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+      framesMax: 3,
     },
   },
   attackBox: {
@@ -162,6 +176,17 @@ const enemy = new Fighter({
   },
 });
 
+function menu() {
+  setInterval(() => {
+    backgorund.sound.play();
+  }, 1000);
+  if (player.health < 100 || enemy.health < 100) {
+    backgorund.sound.src = './audio/Hard void (Finish - Rock 5).wav';
+  } else {
+    backgorund.sound.src = './audio/ambient_menu.wav';
+  }
+}
+menu();
 // console.log(player);
 
 const keys = {
@@ -211,13 +236,14 @@ function animate(event) {
   player.velocity.x = 0;
   // this is default idle staying position without running animation
   if (keys.a.pressed && player.lastKey === 'a') {
-    player.velocity.x = -10;
+    player.soundStart = false;
+    player.runLeft();
+
     // this is running animation of player 1 whe you press "a" key
-    player.switchSprite('run');
   } else if (keys.d.pressed && player.lastKey === 'd') {
-    player.velocity.x = 10;
+    player.soundStart = false;
+    player.runRight();
     // this is running animation of player 1 whe you press "d" key
-    player.switchSprite('run');
   } else {
     player.switchSprite('idle');
   }
@@ -230,11 +256,11 @@ function animate(event) {
   // enemy movements
   enemy.velocity.x = 0;
   if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-    enemy.velocity.x = -10;
-    enemy.switchSprite('run');
+    enemy.soundStart = false;
+    enemy.runLeft();
   } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-    enemy.velocity.x = 10;
-    enemy.switchSprite('run');
+    enemy.soundStart = false;
+    enemy.runRight();
   } else {
     enemy.switchSprite('idle');
   }
@@ -303,9 +329,9 @@ function animate(event) {
     player.damaged();
     enemy.isAttacking = false;
     // document.querySelector('#playerHealth').style.width = player.health + '%';
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
+    gsap.to('#playerHealth', {
+      width: player.health + '%',
+    });
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
@@ -325,9 +351,9 @@ function animate(event) {
     player.damagedTwo();
     enemy.isAttackingTwo = false;
     // document.querySelector('#playerHealth').style.width = player.health + '%';
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
+    gsap.to('#playerHealth', {
+      width: player.health + '%',
+    });
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
@@ -458,9 +484,13 @@ window.addEventListener('keyup', (event) => {
   switch (event.key) {
     case 'd':
       keys.d.pressed = false;
+      player.soundStart = false;
+      player.sound.pause();
       break;
     case 'a':
       keys.a.pressed = false;
+      player.soundStart = false;
+      player.sound.pause();
       break;
     case 'w':
       if ((keys.w.pressed = false && player.lastKey === 'w')) {
@@ -482,9 +512,13 @@ window.addEventListener('keyup', (event) => {
   switch (event.key) {
     case 'ArrowRight':
       keys.ArrowRight.pressed = false;
+      enemy.soundStart = false;
+      enemy.sound.pause();
       break;
     case 'ArrowLeft':
       keys.ArrowLeft.pressed = false;
+      enemy.soundStart = false;
+      enemy.sound.pause();
       break;
     case 'ArrowUp':
       if ((keys.ArrowUp.pressed = false && enemy.lastKey === 'ArrowUp')) {
