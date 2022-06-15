@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fighting-game-app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Press Start 2P', cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- red container div?? -->
+    <div style="position:relative; display:inline-block;">
+        <!-- smaller red contaiver div -->
+        <div
+            style="position:absolute; display: flex; flex-direction:row; width:100%; align-items:center; padding:50px;">
+
+            <!-- player health -->
+            <div style="position: relative; height:30px; width:100%;display:flex;">
+                <div style="position: absolute; color: white; height: 50px; bottom:40; left: 0; ">
+                    <h1>
+
+                        Игрок 1
+                    </h1>
+                </div>
+                <div style="position: relative; height:30px; width:100%;display:flex; justify-content:flex-end;">
+                    <div
+                        style="background-color:red; text-align:center;height:30px; width: 100%; border: 2px solid white; border-radius: 15px;">
+                        Игрок 1
+                    </div>
+                    <div id="playerHealth"
+                        style="position: absolute; background-color:blue; top:0; right: 0; bottom: 0; width: 100%; border: 2px solid white; border-radius: 15px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- timer -->
+            <div
+                style="background-color:white; text-align:center; width:100px; flex-shrink: 0;text-align:center; display: flex; align-items:center; justify-content: center; border: 2px solid white; border-radius: 15px; ">
+                <!-- <h3>
+                    Timer:
+                </h3> -->
+                <br />
+                <h3 id="timer">
+                </h3>
+            </div>
+
+            <!-- enemy health -->
+            <div style="position: relative; height:30px; width:100%;display:flex; ">
+                <div style="position: absolute; color: white; height: 50px; bottom:40; right: 0; ">
+                    <h1>
+                        Игрок 2
+                    </h1>
+                </div>
+                <div style="position: relative; height:30px; width:100%;">
+                    <div
+                        style="background-color:red; text-align:center;height:30px; border: 2px solid white; border-radius: 15px;">
+                        Игрок 2
+                    </div>
+                    <div id="enemyHealth"
+                        style=" position: absolute; background-color:blue; top:0; right: 0; bottom: 0; left: 0; border: 2px solid white; border-radius: 15px;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Win label or lose label -->
+        <h1 id="displayText"
+            style="position:absolute; color: white; width:100%; align-items:center; align-items:center;justify-content: center; top: 0; left:0; right:0;bottom: 100; display:none; ">
+        </h1>
+        <canvas></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+        integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/utils.js"> </script>
+    <script src="/js/classes.js"> </script>
+    <script src="/index.js"> </script>
+</body>
+
+</html>
