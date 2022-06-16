@@ -200,7 +200,7 @@ function menu() {
 menu();
 
 function TrueStart() {
-  home();
+  // home();
   player.start = true;
   enemy.start = true;
   menuMain.start = false;
