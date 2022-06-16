@@ -17,11 +17,13 @@
 </head>
 
 <body>
+
+
     <!-- red container div?? -->
-    <div style="position:relative; display:inline-block;">
+    <div style="position:relative; display:inline-block;" id="app">
         <!-- smaller red contaiver div -->
-        <div
-            style="position:absolute; display: flex; flex-direction:row; width:100%; align-items:center; padding:50px;">
+        <div id="infoPlayers"
+            style="position:absolute; display:none; flex-direction:row; width:100%; align-items:center; padding:50px;">
 
             <!-- player health -->
             <div style="position: relative; height:30px; width:100%;display:flex;">
@@ -72,15 +74,158 @@
             </div>
 
         </div>
+
         <!-- Win label or lose label -->
         <h1 id="displayText"
-            style="position:absolute; color: white; width:100%; align-items:center; align-items:center;justify-content: center; top: 0; left:0; right:0;bottom: 100; display:none; ">
+            style="position:absolute; color: white; width:100%; align-items:center; justify-content: center; top: 0; left:0; right:0;bottom: 100; display:none; ">
         </h1>
+
+
         <canvas></canvas>
+    </div>
+
+    <!-- restart button -->
+    <div
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width:100%; height:300px; top: 250; left:-120; right:0;bottom: 0; ">
+        <button id="restart"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; display:none;"
+            onclick="TrueRestart();">
+            Restart
+        </button>
+    </div>
+    <!-- Main menu -->
+    <div id="mainMenu"
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width:100%; height:300px; top: 100; left:-120; right:0;bottom: 0; ">
+        <div style="display:flex; flex-direction:column; padding:15px;">
+            <h1 style="color: white; align-items:center; justify-content: center;">
+                Fighting-game-app
+            </h1>
+            <h2 style=" color: white; height: 50px; text-align:center;">
+                Menu
+            </h2>
+            <button
+                style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                onclick="TrueStart();">
+                Start game
+            </button>
+            <button
+                style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;">
+                Settings
+            </button>
+            <button
+                style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                onclick="TrueAbout();">
+                How to play
+            </button>
+            <button
+                style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                onclick="TrueExit();">
+                Exit
+            </button>
+        </div>
+
+    </div>
+    <div id="howToPlay"
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width:50%; height:500px; top: 0; left:200; right:0;bottom: 0; grid-template-rows: repeat(2, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr));">
+        <h2
+            style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;">
+            How to play
+        </h2>
+        <div
+            style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black; margin-right:5px;">
+            <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
+                <h3
+                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
+                    Player 1
+                </h3>
+                <div
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
+                    <div>
+                        A button
+                    </div>
+                    <div>
+                        W button
+                    </div>
+                    <div>
+                        D button
+                    </div>
+                    <div>
+                        C button
+                    </div>
+                    <div>
+                        Space button
+                    </div>
+                </div>
+                <div
+                    style="display:grid; grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
+                    <div>
+                        Move to the left
+                    </div>
+                    <div>
+                        Jump
+                    </div>
+                    <div>
+                        Move to the left
+                    </div>
+                    <div>
+                        Hard attack (-35)
+                    </div>
+                    <div>
+                        Light attack (-20)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black;  margin-left:5px;">
+            <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
+                <h3
+                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
+                    Player 2
+                </h3>
+                <div
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
+                    <div>
+                        Arrow left
+                    </div>
+                    <div>
+                        Arrow up
+                    </div>
+                    <div>
+                        Arrow right
+                    </div>
+                    <div>
+                        L button
+                    </div>
+                    <div>
+                        Arrow down
+                    </div>
+                </div>
+                <div
+                    style="display:grid; grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
+                    <div>
+                        Move to the left
+                    </div>
+                    <div>
+                        Jump
+                    </div>
+                    <div>
+                        Move to the left
+                    </div>
+                    <div>
+                        Hard attack (-35)
+                    </div>
+                    <div>
+                        Light attack (-20)
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
         integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/router.js"></script>
     <script src="/js/utils.js"> </script>
     <script src="/js/classes.js"> </script>
     <script src="/index.js"> </script>

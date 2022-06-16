@@ -1,4 +1,3 @@
-
 // new function which listen collision between two boxes (rectangular) or sprites
 function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
@@ -17,12 +16,14 @@ function determineWinner({ player, enemy, timerId }) {
   document.querySelector('#displayText').style.display = 'flex';
   if (player.health === enemy.health) {
     document.querySelector('#displayText').innerHTML = 'Ничья';
-    
+    document.querySelector('#restart').style.display = 'flex';
     // console.log('Tie');
   } else if (player.health > enemy.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
+    document.querySelector('#restart').style.display = 'flex';
     // console.log('Player 1 Win!!!');
   } else if (player.health < enemy.health) {
+    document.querySelector('#restart').style.display = 'flex';
     document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
     // console.log('Player 2 Win!!!');
   }

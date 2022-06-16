@@ -16,14 +16,22 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 // This is means whitch velocity to falling down to bottom of the canvas
 // And how faster this rich bottom by this
 const gravity = 0.7;
+const menuMain = new Sprite({
+  position: {
+    x: 0,
+    y: 0,
+  },
+  imageSrc: './assets/background.png',
+  start: true,
+});
 // background image
 const backgorund = new Sprite({
   position: {
     x: 0,
     y: 0,
   },
-  imageSrc: './assets/background - rain - lightning.png',
-  framesMax: 6,
+  imageSrc: './assets/background.png',
+  start: false,
 });
 // shop layout
 
@@ -32,9 +40,10 @@ const shop = new Sprite({
     x: 615,
     y: 115,
   },
-  imageSrc: './assets/shop.png',
+  imageSrc: './assets/shop - eye - animation.png',
   scale: 2.85,
   framesMax: 6,
+  start: false,
 });
 
 // We are creating a new object called player
@@ -106,6 +115,7 @@ const player = new Fighter({
     width: 150,
     height: 50,
   },
+  start: false,
 });
 
 const enemy = new Fighter({
@@ -174,19 +184,60 @@ const enemy = new Fighter({
     width: 150,
     height: 50,
   },
+  start: false,
 });
 
 function menu() {
   setInterval(() => {
-    backgorund.sound.play();
+    menuMain.sound.play();
   }, 1000);
-  if (player.health < 100 || enemy.health < 100) {
-    backgorund.sound.src = './audio/Hard void (Finish - Rock 5).wav';
-  } else {
-    backgorund.sound.src = './audio/ambient_menu.wav';
+  if (menuMain.start === true) {
+    menuMain.sound.src = './audio/ambient_menu.wav';
+  } else if (menuMain.start === false) {
+    menuMain.sound.src = './audio/Hard void (Finish - Rock 5).wav';
   }
 }
 menu();
+
+function TrueStart() {
+  home();
+  player.start = true;
+  enemy.start = true;
+  menuMain.start = false;
+  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#infoPlayers').style.display = 'flex';
+  decreaseTimer();
+  console.log('Click start', player.start, enemy.start);
+}
+
+function TrueRestart() {
+  window.location.reload();
+  setTimeout(() => {
+    TrueStart();
+  }, 500);
+  decreaseTimer();
+}
+
+function TrueExit() {
+  let open = window.open('', '_self', '').close();
+}
+function TrueAbout() {
+  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#howToPlay').style.display = 'grid';
+  // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
+}
+
+// function Start() {
+//   const p = document.getElementById('start');
+//   p.onclick = TrueStart();
+// }
+
+// window.onclick = () => {
+//   // rewrite your code here
+//   TrueStart();
+// };
+
+// menu();
 // console.log(player);
 
 const keys = {
@@ -213,23 +264,38 @@ const keys = {
 // Declaration variable let with last used key
 let lastKey;
 
-decreaseTimer();
-
 function animate(event) {
   window.requestAnimationFrame(animate);
+
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
+
   // insert background image
   backgorund.update();
-  // insert shop
-  shop.update();
+
+  if (
+    player.start === false &&
+    enemy.start === false &&
+    menuMain.start === true
+  ) {
+    menuMain.update();
+    // insert shop
+    shop.update();
+  } else if (
+    player.start === true &&
+    enemy.start === true &&
+    menuMain.start === false
+  ) {
+    // insert shop
+    shop.update();
+    // insert player
+    player.update();
+    // insert enemy or second player
+    enemy.update();
+  }
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
   c.fillRect(0, 0, canvas.width, canvas.height);
-  // insert player
-  player.update();
-  // insert enemy or second player
-  enemy.update();
   //   console.log('go')
 
   // player movements

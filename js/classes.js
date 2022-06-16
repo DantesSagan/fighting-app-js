@@ -8,6 +8,7 @@ class Sprite {
     framesMax = 1,
     offset = { x: 0, y: 0 },
     soundSrc,
+    start = false,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
@@ -25,6 +26,7 @@ class Sprite {
     this.offset = offset;
     this.sound = new Audio();
     this.sound.src = soundSrc;
+    this.start = start;
   }
   // We are creating draw method
   draw() {
@@ -84,6 +86,7 @@ class Fighter extends Sprite {
       height: undefined,
     },
     soundSrc,
+    start,
   }) {
     super({
       position,
@@ -92,6 +95,7 @@ class Fighter extends Sprite {
       framesMax,
       offset,
       soundSrc,
+      start,
     });
 
     // Assosiation with this position and pass argr as individual sprite we are creating
@@ -185,17 +189,20 @@ class Fighter extends Sprite {
     // In this case we are summarize position + height + velocity
     // which is greater or equal to height of canvas (bg of black canvas)
     // and then falling down to bottom of canvas height
-    if (
-      this.position.y + this.height + this.velocity.y >=
-      canvas.height - 115
-    ) {
-      this.velocity.y = 0;
-      this.position.y = 331;
-    } else {
-      // in this case 1st of all object will falling down by this expression
-      // and then how it rich bottom of the canvas it's stops
-      this.velocity.y += gravity;
+    if (this.start === true) {
+      if (
+        this.position.y + this.height + this.velocity.y >=
+        canvas.height - 115
+      ) {
+        this.velocity.y = 0;
+        this.position.y = 331;
+      } else {
+        // in this case 1st of all object will falling down by this expression
+        // and then how it rich bottom of the canvas it's stops
+        this.velocity.y += gravity;
+      }
     }
+
     // console.log(this.position.y);
   }
   // running to the left method with activating animation and sound
