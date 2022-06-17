@@ -26,6 +26,7 @@ class Sprite {
     this.offset = offset;
     this.sound = new Audio();
     this.sound.src = soundSrc;
+    this.sound.volume = volume;
     this.start = start;
   }
   // We are creating draw method
@@ -371,6 +372,12 @@ class Fighter extends Sprite {
         break;
       case 'death':
         if (this.image !== this.sprites.death.image) {
+          if (this.sound !== this.sprites.death.sound) {
+            this.sound = this.sprites.death.sound;
+            this.sound.currentTime = 0;
+            this.sound.volume = 0.9;
+            this.sound.play();
+          }
           this.image = this.sprites.death.image;
           this.framesMax = this.sprites.death.framesMax;
           this.framesCurrent = 0;

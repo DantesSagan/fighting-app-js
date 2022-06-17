@@ -87,3 +87,47 @@ function TrueAbout() {
   document.querySelector('#howToPlay').style.display = 'grid';
   // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
 }
+
+// settings function
+function Settings() {
+  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#settings').style.display = 'flex';
+}
+
+// const volume = document.getElementById('volume').value;
+let vol = document.querySelector('input[id="volume"]');
+let volume = vol.value;
+const rangeValue = () => {
+  // const result = document.getElementById('volume').value;
+  const inputHandler = (e) => {
+    vol.innerHTML = e.target.value;
+  };
+  console.log(volume)
+  // const source = document.getElementById('volume');
+  // console.log(volume, 'changed');
+  vol.addEventListener('input', inputHandler);
+  vol.addEventListener('propertychange', inputHandler); // for IE8
+};
+// document.getElementById('volume').addEventListener('input', rangeValue);
+
+// function updateVolume() {
+//   const newVolume = document.getElementById('volume').value;
+//   document.querySelectorAll('audio').forEach(element => element.volume = newVolume)
+//   document.getElementById('result').innerText = newVolume
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+/* I'll Suggest to use $(document).ready(function(){ }); If Using JQuery */
+// document.getElementById('range').addEventListener('input', updateVolume)
+// });
+// function AudioSettings() {
+//   const inputHandler = (e) => {
+//     volume = e.target.value;
+//   };
+//   // const source = document.getElementById('volume');
+//   const result = document.getElementById('result');
+//   // console.log(volume, 'changed');
+//   volume.addEventListener('input', inputHandler);
+//   volume.addEventListener('propertychange', inputHandler); // for IE8
+//   //
+// }

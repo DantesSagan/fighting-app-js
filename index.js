@@ -100,6 +100,7 @@ const player = new Fighter({
     },
     death: {
       imageSrc: './assets/samuraiMack/blood/Death - blood.png',
+      soundSrc: './audio/death 2.wav',
       framesMax: 6,
     },
     deathTwo: {
@@ -169,6 +170,7 @@ const enemy = new Fighter({
     },
     death: {
       imageSrc: './assets/kenji/blood/Death - blood.png',
+      soundSrc: './audio/death.wav',
       framesMax: 7,
     },
     deathTwo: {
