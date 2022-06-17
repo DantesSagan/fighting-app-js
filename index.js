@@ -85,7 +85,7 @@ const player = new Fighter({
     },
     attack1: {
       imageSrc: './assets/samuraiMack/Attack1.png',
-
+      soundSrc: './audio/swing.wav',
       framesMax: 6,
     },
     attack2: {
@@ -187,45 +187,7 @@ const enemy = new Fighter({
   start: false,
 });
 
-function menu() {
-  setInterval(() => {
-    menuMain.sound.play();
-  }, 1000);
-  if (menuMain.start === true) {
-    menuMain.sound.src = './audio/ambient_menu.wav';
-  } else if (menuMain.start === false) {
-    menuMain.sound.src = './audio/Hard void (Finish - Rock 5).wav';
-  }
-}
 menu();
-
-function TrueStart() {
-  // home();
-  player.start = true;
-  enemy.start = true;
-  menuMain.start = false;
-  document.querySelector('#mainMenu').style.display = 'none';
-  document.querySelector('#infoPlayers').style.display = 'flex';
-  decreaseTimer();
-  console.log('Click start', player.start, enemy.start);
-}
-
-function TrueRestart() {
-  window.location.reload();
-  setTimeout(() => {
-    TrueStart();
-  }, 500);
-  decreaseTimer();
-}
-
-function TrueExit() {
-  let open = window.open('', '_self', '').close();
-}
-function TrueAbout() {
-  document.querySelector('#mainMenu').style.display = 'none';
-  document.querySelector('#howToPlay').style.display = 'grid';
-  // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
-}
 
 // function Start() {
 //   const p = document.getElementById('start');
@@ -438,107 +400,119 @@ animate();
 window.addEventListener('keydown', (event) => {
   // console.log(event.key);
   // player switch statement
-  if (!player.dead) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = true;
-        player.lastKey = 'd';
-        break;
-      case 'a':
-        keys.a.pressed = true;
-        player.lastKey = 'a';
-        break;
-      case 'w':
-        if (keys.w.pressed && player.lastKey === 'w') {
-          if (
-            player.position.y + player.height + player.velocity.y >=
-            canvas.height - 115
-          ) {
-            // event.stopPropagation();
-            player.velocity.y = 0;
+  if (
+    player.start === false &&
+    enemy.start === false &&
+    menuMain.start === true
+  ) {
+    return null;
+  } else if (
+    player.start === true &&
+    enemy.start === true &&
+    menuMain.start === false
+  ) {
+    if (!player.dead) {
+      switch (event.key) {
+        case 'd':
+          keys.d.pressed = true;
+          player.lastKey = 'd';
+          break;
+        case 'a':
+          keys.a.pressed = true;
+          player.lastKey = 'a';
+          break;
+        case 'w':
+          if (keys.w.pressed && player.lastKey === 'w') {
+            if (
+              player.position.y + player.height + player.velocity.y >=
+              canvas.height - 115
+            ) {
+              // event.stopPropagation();
+              player.velocity.y = 0;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player.velocity.y += gravity;
+            }
           } else {
-            // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
-            player.velocity.y += gravity;
+            if (
+              player.position.y + player.height + player.velocity.y >=
+              canvas.height - 115
+            ) {
+              // if you want to holding "w" and jump infinite so use
+              // keys.w.pressed = true;
+              // if you want to jump once per pressing "w" so don't this line use
+              // keys.w.pressed = true;
+              // keys.w.pressed = true;
+              player.lastKey = 'w';
+              player.velocity.y = -15;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player.velocity.y += gravity;
+            }
           }
-        } else {
-          if (
-            player.position.y + player.height + player.velocity.y >=
-            canvas.height - 115
-          ) {
-            // if you want to holding "w" and jump infinite so use
-            // keys.w.pressed = true;
-            // if you want to jump once per pressing "w" so don't this line use
-            // keys.w.pressed = true;
-            // keys.w.pressed = true;
-            player.lastKey = 'w';
-            player.velocity.y = -15;
-          } else {
-            // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
-            player.velocity.y += gravity;
-          }
-        }
-        break;
-      case ' ':
-        player.attack();
-        break;
-      case 'c':
-        player.attackTwo();
-        break;
+          break;
+        case ' ':
+          player.attack();
+          break;
+        case 'c':
+          player.attackTwo();
+          break;
+      }
     }
-  }
-  if (!enemy.dead) {
-    switch (event.key) {
-      // enemy switch statement
-      case 'ArrowRight':
-        keys.ArrowRight.pressed = true;
-        enemy.lastKey = 'ArrowRight';
-        break;
-      case 'ArrowLeft':
-        keys.ArrowLeft.pressed = true;
-        enemy.lastKey = 'ArrowLeft';
-        break;
-      case 'ArrowUp':
-        if (keys.ArrowUp.pressed && enemy.lastKey === 'ArrowUp') {
-          if (
-            enemy.position.y + enemy.height + enemy.velocity.y >=
-            canvas.height - 115
-          ) {
-            // event.stopPropagation();
-            enemy.velocity.y = 0;
+    if (!enemy.dead) {
+      switch (event.key) {
+        // enemy switch statement
+        case 'ArrowRight':
+          keys.ArrowRight.pressed = true;
+          enemy.lastKey = 'ArrowRight';
+          break;
+        case 'ArrowLeft':
+          keys.ArrowLeft.pressed = true;
+          enemy.lastKey = 'ArrowLeft';
+          break;
+        case 'ArrowUp':
+          if (keys.ArrowUp.pressed && enemy.lastKey === 'ArrowUp') {
+            if (
+              enemy.position.y + enemy.height + enemy.velocity.y >=
+              canvas.height - 115
+            ) {
+              // event.stopPropagation();
+              enemy.velocity.y = 0;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              enemy.velocity.y += gravity;
+            }
           } else {
-            // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
-            enemy.velocity.y += gravity;
+            if (
+              enemy.position.y + enemy.height + enemy.velocity.y >=
+              canvas.height - 115
+            ) {
+              // if you want to holding ArrowUp and jump infinite so use
+              // keys.ArrowUp.pressed = true;
+              // if you want to jump once per pressing Arrow up so don't this line use
+              // keys.ArrowUp.pressed = true;
+              // keys.ArrowUp.pressed = true;
+              enemy.lastKey = 'ArrowUp';
+              enemy.velocity.y = -15;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              enemy.velocity.y += gravity;
+            }
           }
-        } else {
-          if (
-            enemy.position.y + enemy.height + enemy.velocity.y >=
-            canvas.height - 115
-          ) {
-            // if you want to holding ArrowUp and jump infinite so use
-            // keys.ArrowUp.pressed = true;
-            // if you want to jump once per pressing Arrow up so don't this line use
-            // keys.ArrowUp.pressed = true;
-            // keys.ArrowUp.pressed = true;
-            enemy.lastKey = 'ArrowUp';
-            enemy.velocity.y = -15;
-          } else {
-            // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
-            enemy.velocity.y += gravity;
-          }
-        }
-        break;
-      case 'ArrowDown':
-        enemy.attack();
-        // enemy.isAttacking = true;
-        break;
-      case 'l':
-        enemy.attackTwo();
-        // enemy.isAttacking = true;
-        break;
+          break;
+        case 'ArrowDown':
+          enemy.attack();
+          // enemy.isAttacking = true;
+          break;
+        case 'l':
+          enemy.attackTwo();
+          // enemy.isAttacking = true;
+          break;
+      }
     }
   }
 
@@ -552,11 +526,13 @@ window.addEventListener('keyup', (event) => {
       keys.d.pressed = false;
       player.soundStart = false;
       player.sound.pause();
+      player.sound.currentTime = 0;
       break;
     case 'a':
       keys.a.pressed = false;
       player.soundStart = false;
       player.sound.pause();
+      player.sound.currentTime = 0;
       break;
     case 'w':
       if ((keys.w.pressed = false && player.lastKey === 'w')) {
@@ -580,11 +556,13 @@ window.addEventListener('keyup', (event) => {
       keys.ArrowRight.pressed = false;
       enemy.soundStart = false;
       enemy.sound.pause();
+      enemy.sound.currentTime = 0;
       break;
     case 'ArrowLeft':
       keys.ArrowLeft.pressed = false;
       enemy.soundStart = false;
       enemy.sound.pause();
+      enemy.sound.currentTime = 0;
       break;
     case 'ArrowUp':
       if ((keys.ArrowUp.pressed = false && enemy.lastKey === 'ArrowUp')) {

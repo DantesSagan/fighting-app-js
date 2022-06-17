@@ -126,9 +126,9 @@
 
     </div>
     <div id="howToPlay"
-        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width:612px; height:500px; top: 0; left:200; right:0;bottom: 0; grid-template-rows: repeat(2, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr));">
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width:612px; height:500px; top: 0; left:200; right:0;bottom: 0; grid-template-rows: repeat(3, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top:60px;">
         <h2
-            style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;">
+            style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;  margin-bottom:60px;">
             How to play
         </h2>
         <div
@@ -165,7 +165,7 @@
                         Jump
                     </div>
                     <div>
-                        Move to the left
+                        Move to the right
                     </div>
                     <div>
                         Hard attack (-35)
@@ -210,7 +210,7 @@
                         Jump
                     </div>
                     <div>
-                        Move to the left
+                        Move to the right
                     </div>
                     <div>
                         Hard attack (-35)
@@ -221,6 +221,12 @@
                 </div>
             </div>
         </div>
+
+        <button id="restart"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
+            onclick="TrueRestart();">
+            Back
+        </button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
         integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="

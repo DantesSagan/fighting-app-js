@@ -214,7 +214,6 @@ class Fighter extends Sprite {
   }
   // running to the right method with activating animation and sound
   runRight() {
-    this.sound.pause();
     this.soundStart = true;
     this.sound.play();
     this.velocity.x = 6;
@@ -228,6 +227,12 @@ class Fighter extends Sprite {
     //   this.isAttacking = false;
     // }, 1000);
   }
+
+  // // attack method missing
+  // attackMissing() {
+  //   this.isAttacking = false;
+  //   this.switchSprite('attack1');
+  // }
 
   attackTwo() {
     this.switchSprite('attack2');
@@ -270,7 +275,8 @@ class Fighter extends Sprite {
     // overriding all other animations with the attack && damaged && death animations
     if (
       this.image === this.sprites.attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.attack1.framesMax - 1
+      this.framesCurrent < this.sprites.attack1.framesMax - 1 &&
+      this.sound === this.sprites.attack1.sound
     )
       return;
     if (
@@ -281,7 +287,8 @@ class Fighter extends Sprite {
     if (
       this.image === this.sprites.damaged.image &&
       // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.damaged.framesMax - 1
+      this.framesCurrent < this.sprites.damaged.framesMax - 1 &&
+      this.sound === this.sprites.damaged.sound
     )
       return;
 
@@ -334,6 +341,10 @@ class Fighter extends Sprite {
         break;
       case 'attack1':
         if (this.image !== this.sprites.attack1.image) {
+          if (this.sound !== this.sprites.attack1.sound) {
+            this.sound = this.sprites.attack1.sound;
+            this.sound.play();
+          }
           this.image = this.sprites.attack1.image;
           this.framesMax = this.sprites.attack1.framesMax;
           this.framesCurrent = 0;
