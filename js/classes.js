@@ -209,21 +209,19 @@ class Fighter extends Sprite {
   // running to the left method with activating animation and sound
   runLeft() {
     this.soundStart = true;
-    this.sound.play();
     this.velocity.x = -6;
     this.switchSprite('run');
   }
   // running to the right method with activating animation and sound
   runRight() {
     this.soundStart = true;
-    this.sound.play();
     this.velocity.x = 6;
     this.switchSprite('run');
   }
   // attack method
   attack() {
-    this.switchSprite('attack1');
     this.isAttacking = true;
+    this.switchSprite('attack1');
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -252,6 +250,7 @@ class Fighter extends Sprite {
       // }, 3000);
     } else {
       // in this case we auto play damaged sound
+      this.sound.volume = volumeFight;
       this.sound.currentTime = 0;
       this.sound.play();
       // and also change sprite to damaged sprite
@@ -276,8 +275,7 @@ class Fighter extends Sprite {
     // overriding all other animations with the attack && damaged && death animations
     if (
       this.image === this.sprites.attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.attack1.framesMax - 1 &&
-      this.sound === this.sprites.attack1.sound
+      this.framesCurrent < this.sprites.attack1.framesMax - 1 
     )
       return;
     if (
@@ -288,8 +286,7 @@ class Fighter extends Sprite {
     if (
       this.image === this.sprites.damaged.image &&
       // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.damaged.framesMax - 1 &&
-      this.sound === this.sprites.damaged.sound
+      this.framesCurrent < this.sprites.damaged.framesMax - 1 
     )
       return;
 
@@ -320,6 +317,8 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.run.image) {
           if (this.sound !== this.sprites.run.sound) {
             this.sound = this.sprites.run.sound;
+            this.sound.volume = volumeMove;
+            this.sound.play();
           }
           this.image = this.sprites.run.image;
           this.framesMax = this.sprites.run.framesMax;
@@ -328,6 +327,11 @@ class Fighter extends Sprite {
         break;
       case 'jump':
         if (this.image !== this.sprites.jump.image) {
+          if (this.sound !== this.sprites.jump.sound) {
+            this.sound = this.sprites.jump.sound;
+            this.sound.volume = volumeMove;
+            this.sound.play();
+          }
           this.image = this.sprites.jump.image;
           this.framesMax = this.sprites.jump.framesMax;
           this.framesCurrent = 0;
@@ -344,7 +348,7 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.attack1.image) {
           if (this.sound !== this.sprites.attack1.sound) {
             this.sound = this.sprites.attack1.sound;
-            this.sound.play();
+            this.sound.volume = volumeFight;
           }
           this.image = this.sprites.attack1.image;
           this.framesMax = this.sprites.attack1.framesMax;
@@ -362,6 +366,7 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites.damaged.image) {
           if (this.sound !== this.sprites.damaged.sound) {
             this.sound = this.sprites.damaged.sound;
+            this.sound.volume = volumeFight;
             this.sound.currentTime = 0;
             this.sound.play();
           }
@@ -375,7 +380,7 @@ class Fighter extends Sprite {
           if (this.sound !== this.sprites.death.sound) {
             this.sound = this.sprites.death.sound;
             this.sound.currentTime = 0;
-            this.sound.volume = 0.9;
+            this.sound.volume = volumeDeath;
             this.sound.play();
           }
           this.image = this.sprites.death.image;

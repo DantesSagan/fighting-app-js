@@ -77,6 +77,7 @@ const player = new Fighter({
     },
     jump: {
       imageSrc: './assets/samuraiMack/Jump.png',
+      soundSrc: './audio/jump.mp3',
       framesMax: 2,
     },
     fall: {
@@ -148,6 +149,7 @@ const enemy = new Fighter({
     },
     jump: {
       imageSrc: './assets/kenji/Jump.png',
+      soundSrc: './audio/jump.mp3',
       framesMax: 2,
     },
     fall: {
@@ -214,6 +216,12 @@ const keys = {
   w: {
     pressed: false,
   },
+  space: {
+    pressed: false,
+  },
+  space: {
+    pressed: false,
+  },
   ArrowLeft: {
     pressed: false,
   },
@@ -266,12 +274,12 @@ function animate(event) {
   player.velocity.x = 0;
   // this is default idle staying position without running animation
   if (keys.a.pressed && player.lastKey === 'a') {
-    player.soundStart = false;
+    // player.soundStart = false;
     player.runLeft();
 
     // this is running animation of player 1 whe you press "a" key
   } else if (keys.d.pressed && player.lastKey === 'd') {
-    player.soundStart = false;
+    // player.soundStart = false;
     player.runRight();
     // this is running animation of player 1 whe you press "d" key
   } else {
@@ -286,10 +294,8 @@ function animate(event) {
   // enemy movements
   enemy.velocity.x = 0;
   if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-    enemy.soundStart = false;
     enemy.runLeft();
   } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-    enemy.soundStart = false;
     enemy.runRight();
   } else {
     enemy.switchSprite('idle');
@@ -418,10 +424,12 @@ window.addEventListener('keydown', (event) => {
         case 'd':
           keys.d.pressed = true;
           player.lastKey = 'd';
+          player.sound.play();
           break;
         case 'a':
           keys.a.pressed = true;
           player.lastKey = 'a';
+          player.sound.play();
           break;
         case 'w':
           if (keys.w.pressed && player.lastKey === 'w') {
@@ -447,6 +455,7 @@ window.addEventListener('keydown', (event) => {
               // keys.w.pressed = true;
               // keys.w.pressed = true;
               player.lastKey = 'w';
+              player.sound.play();
               player.velocity.y = -15;
             } else {
               // in this case 1st of all object will falling down by this expression
@@ -457,9 +466,13 @@ window.addEventListener('keydown', (event) => {
           break;
         case ' ':
           player.attack();
+          player.sound.play();
           break;
         case 'c':
           player.attackTwo();
+          break;
+        default:
+          console.log('Something goes wrong');
           break;
       }
     }
@@ -469,10 +482,12 @@ window.addEventListener('keydown', (event) => {
         case 'ArrowRight':
           keys.ArrowRight.pressed = true;
           enemy.lastKey = 'ArrowRight';
+          enemy.sound.play();
           break;
         case 'ArrowLeft':
           keys.ArrowLeft.pressed = true;
           enemy.lastKey = 'ArrowLeft';
+          enemy.sound.play();
           break;
         case 'ArrowUp':
           if (keys.ArrowUp.pressed && enemy.lastKey === 'ArrowUp') {
@@ -498,6 +513,7 @@ window.addEventListener('keydown', (event) => {
               // keys.ArrowUp.pressed = true;
               // keys.ArrowUp.pressed = true;
               enemy.lastKey = 'ArrowUp';
+              enemy.sound.play();
               enemy.velocity.y = -15;
             } else {
               // in this case 1st of all object will falling down by this expression
@@ -514,11 +530,14 @@ window.addEventListener('keydown', (event) => {
           enemy.attackTwo();
           // enemy.isAttacking = true;
           break;
+        default:
+          console.log('Something goes wrong');
+          break;
       }
     }
   }
 
-  // console.log(event.key);
+  console.log(event.key);
 });
 
 window.addEventListener('keyup', (event) => {
@@ -526,15 +545,15 @@ window.addEventListener('keyup', (event) => {
   switch (event.key) {
     case 'd':
       keys.d.pressed = false;
-      player.soundStart = false;
+      // player.soundStart = false;
       player.sound.pause();
-      player.sound.currentTime = 0;
+      // player.sound.currentTime = 0;
       break;
     case 'a':
       keys.a.pressed = false;
-      player.soundStart = false;
+      // player.soundStart = false;
       player.sound.pause();
-      player.sound.currentTime = 0;
+      // player.sound.currentTime = 0;
       break;
     case 'w':
       if ((keys.w.pressed = false && player.lastKey === 'w')) {
@@ -543,6 +562,7 @@ window.addEventListener('keyup', (event) => {
           canvas.height - 115
         ) {
           // event.stopPropagation();
+          player.sound.pause();
           player.velocity.y = 0;
         } else {
           // in this case 1st of all object will falling down by this expression
@@ -550,6 +570,12 @@ window.addEventListener('keyup', (event) => {
           player.velocity.y += gravity;
         }
       }
+      break;
+    case ' ':
+      player.sound.volume = 0;
+      break;
+    default:
+      console.log('Something goes wrong');
       break;
   }
   // enemy
@@ -573,6 +599,7 @@ window.addEventListener('keyup', (event) => {
           canvas.height - 115
         ) {
           // event.stopPropagation();
+          enemy.sound.pause();
           enemy.velocity.y = 0;
         } else {
           // in this case 1st of all object will falling down by this expression
@@ -580,6 +607,9 @@ window.addEventListener('keyup', (event) => {
           enemy.velocity.y += gravity;
         }
       }
+      break;
+    default:
+      console.log('Something goes wrong');
       break;
   }
   // console.log(event.key);

@@ -92,6 +92,11 @@
             onclick="TrueRestart();">
             Restart
         </button>
+        <button id="menuRestart"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:none; padding: 5px;"
+            onclick="MenuRestart();">
+            Menu
+        </button>
     </div>
     <!-- Main menu -->
     <div id="mainMenu"
@@ -128,25 +133,54 @@
     <!-- Settings page -->
 
     <div id="settings"
-        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column; width: 612px; height:300px; top: 100; left:200; right:0;bottom: 0; ">
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column; width: 612px; height:400px; top: 100; left:200; right:0;bottom: 0; ">
         <h1 style="color: white; align-items:center; justify-content: center;">
             Settings
         </h1>
         <p>Audio settings:</p>
         <div style="display:flex; flex-direction:column;">
+            <label for="volume">Menu music</label>
             <input type="range" id="volume" value="volume" step="0.01" name="audio" min="0" max="1"
                 onchange="rangeValue();"">
-            <label for=" volume">Volume</label>
             <div id='result'
-                style="padding:15px; border: 1px solid black; border-radius: 15px; margin: 5px;max-height:40px; text-align:center;" >
-                0.5
-            </div>
+            aria-valuenow=" volume" style=" padding:8px; border: 1px solid black; border-radius: 15px; margin: 2px;max-height:30px;
+                text-align:center;">
+            0.5
         </div>
-        <button id="restart"
-            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
-            onclick="TrueRestart();">
-            Back
-        </button>
+        <hr />
+        <label for=" volumeFight">Attack sound and damaged sound</label>
+        <input type="range" id="volumeFight" value="volumeFight" step="0.01" name="audio" min="0" max="1"
+            onchange="rangeValueFight();"">
+        <div id='resultFight'
+            style=" padding:8px; border: 1px solid black; border-radius: 15px; margin: 2px;max-height:30px;
+            text-align:center;">
+        0.5
+    </div>
+    <hr />
+    <label for=" volumeDeath">Death sound</label>
+    <input type="range" id="volumeDeath" value="volumeDeath" step="0.01" name="audio" min="0" max="1"
+        onchange="rangeValueDeath();"">
+    <div id='resultDeath'
+        style=" padding:8px; border: 1px solid black; border-radius: 15px; margin: 2px;max-height:30px;
+        text-align:center;">
+    0.5
+    </div>
+    <hr />
+    <label for="volumeMove">Move sound</label>
+    <input type="range" id="volumeMove" value="volumeMove" step="0.01" name="audio" min="0" max="1"
+        onchange="rangeValueMove();"">
+        <div id='resultMove'
+            style=" padding:8px; border: 1px solid black; border-radius: 15px; margin: 2px;max-height:30px;
+        text-align:center;">
+    0.5
+    </div>
+    <hr />
+    </div>
+    <button id="back"
+        style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
+        onclick="TrueBack();">
+        Back
+    </button>
     </div>
 
 
@@ -248,9 +282,9 @@
             </div>
         </div>
 
-        <button id="restart"
+        <button id="back"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
-            onclick="TrueRestart();">
+            onclick="TrueBack();">
             Back
         </button>
     </div>
