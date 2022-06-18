@@ -49,6 +49,7 @@ function decreaseTimer() {
 function menu() {
   setInterval(() => {
     menuMain.sound.play();
+    menuMain.sound.volume = volume;
   }, 1000);
   if (menuMain.start === true) {
     menuMain.sound.src = './audio/ambient_menu.wav';
@@ -71,10 +72,10 @@ function TrueStart() {
 // restart when round ends
 function TrueRestart() {
   window.location.reload();
-  setTimeout(() => {
-    TrueStart();
-  }, 500);
-  decreaseTimer();
+  // setTimeout(() => {
+  //   TrueStart();
+  // }, 500);
+  // decreaseTimer();
 }
 
 // exist
@@ -95,18 +96,18 @@ function Settings() {
 }
 
 // const volume = document.getElementById('volume').value;
-let vol = document.querySelector('input[id="volume"]');
-let volume = vol.value;
+let vol = document.querySelector('input[value="volume"]');
+let volume = Number(vol.value);
 const rangeValue = () => {
-  // const result = document.getElementById('volume').value;
+  const result = document.getElementById('result');
   const inputHandler = (e) => {
-    vol.innerHTML = e.target.value;
+    volume = e.target.value;
+    result.innerHTML = e.target.value;
   };
-  console.log(volume)
+  console.log(volume);
   // const source = document.getElementById('volume');
   // console.log(volume, 'changed');
-  vol.addEventListener('input', inputHandler);
-  vol.addEventListener('propertychange', inputHandler); // for IE8
+  vol.addEventListener('change', inputHandler); // for IE8
 };
 // document.getElementById('volume').addEventListener('input', rangeValue);
 
