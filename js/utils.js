@@ -34,6 +34,7 @@ function determineWinner({ player, enemy, timerId }) {
 
 // timer for round
 let timer = 30;
+// let currTime = timer > 0 ? timer-- : 0;
 let timerId;
 function decreaseTimer() {
   // console.log(timer);
@@ -67,8 +68,8 @@ function TrueStart() {
   player.start = true;
   enemy.start = true;
   menuMain.start = false;
-  document.querySelector('#mainMenu').style.display = 'none';
   document.querySelector('#infoPlayers').style.display = 'flex';
+  document.querySelector('#mainMenu').style.display = 'none';
   decreaseTimer();
   console.log('Click start', player.start, enemy.start);
 }
@@ -78,7 +79,7 @@ function MenuRestart() {
   enemy.start = false;
   menuMain.start = false;
   document.querySelector('#mainMenu').style.display = 'flex';
-  document.querySelector('#displayText').style.display = 'none';
+  document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#infoPlayers').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
   document.querySelector('#menuRestart').style.display = 'none';
@@ -138,12 +139,15 @@ function TrueRestart() {
 
     console.log(enemy.dead);
     document.querySelector('#infoPlayers').style.display = 'flex';
+    document.querySelector('#displayText').innerHTML = '';
     document.querySelector('#mainMenu').style.display = 'none';
     document.querySelector('#restart').style.display = 'none';
     document.querySelector('#menuRestart').style.display = 'none';
-    setTimeout(() => {
-      decreaseTimer();
-    }, 800);
+    let diff = 30 - timer;
+    console.log(diff);
+    document.querySelector('#timer').innerHTML =
+      timer < 30 ? (timer += diff) : null;
+    decreaseTimer();
     console.log('Click restart', player.start, enemy.start);
   }
 }
