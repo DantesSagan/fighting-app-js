@@ -118,6 +118,7 @@ const player = new Fighter({
     height: 50,
   },
   start: false,
+  restart: false,
 });
 
 const enemy = new Fighter({
@@ -189,6 +190,7 @@ const enemy = new Fighter({
     height: 50,
   },
   start: false,
+  restart: false,
 });
 
 menu();
@@ -270,41 +272,50 @@ function animate(event) {
   c.fillRect(0, 0, canvas.width, canvas.height);
   //   console.log('go')
 
-  // player movements
-  player.velocity.x = 0;
-  // this is default idle staying position without running animation
-  if (keys.a.pressed && player.lastKey === 'a') {
-    // player.soundStart = false;
-    player.runLeft();
-
+  if (!player.dead) {
+    // player movements
+    player.velocity.x = 0;
+    // this is default idle staying position without running animation
     // this is running animation of player 1 whe you press "a" key
-  } else if (keys.d.pressed && player.lastKey === 'd') {
-    // player.soundStart = false;
-    player.runRight();
-    // this is running animation of player 1 whe you press "d" key
-  } else {
-    player.switchSprite('idle');
-  }
-  if (player.velocity.y < 0) {
-    player.switchSprite('jump');
-  } else if (player.velocity.y > 0) {
-    player.switchSprite('fall');
+    if (keys.a.pressed && player.lastKey === 'a') {
+      // player.soundStart = false;
+      player.runLeft();
+
+      // this is running animation of player 1 whe you press "d" key
+    } else if (keys.d.pressed && player.lastKey === 'd') {
+      // player.soundStart = false;
+      player.runRight();
+    } else {
+      player.switchSprite('idle');
+    }
+    if (player.velocity.y < 0) {
+      player.switchSprite('jump');
+    } else if (player.velocity.y > 0) {
+      player.switchSprite('fall');
+    }
   }
 
-  // enemy movements
-  enemy.velocity.x = 0;
-  if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-    enemy.runLeft();
-  } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-    enemy.runRight();
-  } else {
-    enemy.switchSprite('idle');
+  if (!enemy.dead) {
+    // enemy movements
+    enemy.velocity.x = 0;
+    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
+      enemy.runLeft();
+    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
+      enemy.runRight();
+    } else {
+      enemy.switchSprite('idle');
+    }
+    if (enemy.restart === true) {
+      enemy.switchSprite('idle');
+    }
+
+    if (enemy.velocity.y < 0) {
+      enemy.switchSprite('jump');
+    } else if (enemy.velocity.y > 0) {
+      enemy.switchSprite('fall');
+    }
   }
-  if (enemy.velocity.y < 0) {
-    enemy.switchSprite('jump');
-  } else if (enemy.velocity.y > 0) {
-    enemy.switchSprite('fall');
-  }
+  // console.log(enemy.restart);
   // detect collision
   // Player 1 is attacking 1st animation
   if (

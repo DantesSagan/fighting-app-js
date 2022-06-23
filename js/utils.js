@@ -103,7 +103,10 @@ function MenuRestart() {
   }
   player.dead = false;
   enemy.dead = false;
-  decreaseTimer();
+  let diff = 30 - timer;
+  // console.log(diff);
+  document.querySelector('#timer').innerHTML =
+    timer < 30 ? (timer += diff) : null;
 }
 // function restart when round ends
 function TrueRestart() {
@@ -125,18 +128,19 @@ function TrueRestart() {
       gsap.to('#enemyHealth', {
         width: enemy.health + '%',
       });
-      if (
-        player.dead === true ||
-        player.dead === true ||
-        (player.dead === true && player.dead === true)
-      ) {
-        player.dead = false;
-        enemy.dead = false;
-        player.switchSprite('idle');
-        enemy.switchSprite('idle');
-      }
+    }
+    if (player.restart === false || enemy.restart === false) {
+      player.restart = true;
+      enemy.restart = true;
     }
 
+    if (player.dead === true || enemy.dead === true) {
+      player.dead = false;
+      enemy.dead = false;
+    }
+
+    player.switchSprite('idle');
+    enemy.switchSprite('idle');
     console.log(enemy.dead);
     document.querySelector('#infoPlayers').style.display = 'flex';
     document.querySelector('#displayText').innerHTML = '';
@@ -144,7 +148,7 @@ function TrueRestart() {
     document.querySelector('#restart').style.display = 'none';
     document.querySelector('#menuRestart').style.display = 'none';
     let diff = 30 - timer;
-    console.log(diff);
+    // console.log(diff);
     document.querySelector('#timer').innerHTML =
       timer < 30 ? (timer += diff) : null;
     decreaseTimer();

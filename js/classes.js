@@ -9,6 +9,7 @@ class Sprite {
     offset = { x: 0, y: 0 },
     soundSrc,
     start = false,
+    restart = false,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
@@ -28,6 +29,7 @@ class Sprite {
     this.sound.src = soundSrc;
     this.sound.volume = volume;
     this.start = start;
+    this.restart = restart;
   }
   // We are creating draw method
   draw() {
@@ -88,6 +90,7 @@ class Fighter extends Sprite {
     },
     soundSrc,
     start,
+    restart,
   }) {
     super({
       position,
@@ -97,6 +100,7 @@ class Fighter extends Sprite {
       offset,
       soundSrc,
       start,
+      restart,
     });
 
     // Assosiation with this position and pass argr as individual sprite we are creating
@@ -244,6 +248,8 @@ class Fighter extends Sprite {
   damaged() {
     this.health -= 20;
     if (this.health <= 0) {
+      player.restart = false;
+      enemy.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
@@ -275,7 +281,7 @@ class Fighter extends Sprite {
     // overriding all other animations with the attack && damaged && death animations
     if (
       this.image === this.sprites.attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.attack1.framesMax - 1 
+      this.framesCurrent < this.sprites.attack1.framesMax - 1
     )
       return;
     if (
@@ -286,12 +292,26 @@ class Fighter extends Sprite {
     if (
       this.image === this.sprites.damaged.image &&
       // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.damaged.framesMax - 1 
+      this.framesCurrent < this.sprites.damaged.framesMax - 1
     )
       return;
-
-    if (this.image === this.sprites.death.image) {
-      if (this.framesCurrent === this.sprites.death.framesMax - 1) {
+    // dead animation
+    if (this.dead === false) {
+      if (this.image === this.sprites.death.image) {
+        if (this.framesCurrent === this.sprites.death.framesMax - 1) {
+          if (this.restart === true) {
+            this.dead = false;
+          }
+           else {
+            this.dead = true;
+          }
+        }
+        return;
+      }
+    } else {
+      if (this.restart === true) {
+        this.dead = false;
+      } else {
         this.dead = true;
       }
       return;
@@ -303,7 +323,11 @@ class Fighter extends Sprite {
       }
       return;
     }
-
+    // // if restart and restart animation to idle
+    // if (this.restart === true) {
+    //   this.dead = false;
+    //   return;
+    // }
     switch (sprite) {
       case 'idle':
         if (this.image !== this.sprites.idle.image) {
