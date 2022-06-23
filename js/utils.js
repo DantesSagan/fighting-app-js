@@ -73,6 +73,7 @@ function TrueStart() {
   decreaseTimer();
   console.log('Click start', player.start, enemy.start);
 }
+
 // menu restart
 function MenuRestart() {
   player.start = false;
@@ -96,13 +97,15 @@ function MenuRestart() {
     gsap.to('#enemyHealth', {
       width: enemy.health + '%',
     });
-    player.dead = false;
-    enemy.dead = false;
-    player.switchSprite('idle');
-    enemy.switchSprite('idle');
   }
-  player.dead = false;
-  enemy.dead = false;
+  if (player.restart === false || enemy.restart === false) {
+    player.restart = true;
+    enemy.restart = true;
+    setTimeout(() => {
+      player.restart = false;
+      enemy.restart = false;
+    }, 1000);
+  }
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
@@ -132,15 +135,12 @@ function TrueRestart() {
     if (player.restart === false || enemy.restart === false) {
       player.restart = true;
       enemy.restart = true;
+      setTimeout(() => {
+        player.restart = false;
+        enemy.restart = false;
+      }, 1000);
     }
 
-    if (player.dead === true || enemy.dead === true) {
-      player.dead = false;
-      enemy.dead = false;
-    }
-
-    player.switchSprite('idle');
-    enemy.switchSprite('idle');
     console.log(enemy.dead);
     document.querySelector('#infoPlayers').style.display = 'flex';
     document.querySelector('#displayText').innerHTML = '';

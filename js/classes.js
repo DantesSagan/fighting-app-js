@@ -276,6 +276,10 @@ class Fighter extends Sprite {
     }
   }
 
+  restartRound() {
+    this.switchSprite('idle');
+  }
+
   // switch sprites for better logic statements
   switchSprite(sprite) {
     // overriding all other animations with the attack && damaged && death animations
@@ -299,22 +303,10 @@ class Fighter extends Sprite {
     if (this.dead === false) {
       if (this.image === this.sprites.death.image) {
         if (this.framesCurrent === this.sprites.death.framesMax - 1) {
-          if (this.restart === true) {
-            this.dead = false;
-          }
-           else {
-            this.dead = true;
-          }
+          this.dead = true;
         }
         return;
       }
-    } else {
-      if (this.restart === true) {
-        this.dead = false;
-      } else {
-        this.dead = true;
-      }
-      return;
     }
     // second animation of death overlooping
     if (this.image === this.sprites.deathTwo.image) {
@@ -322,6 +314,9 @@ class Fighter extends Sprite {
         this.dead = true;
       }
       return;
+    }
+    if (this.restart === true) {
+      this.dead = false;
     }
     // // if restart and restart animation to idle
     // if (this.restart === true) {

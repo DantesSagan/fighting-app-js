@@ -295,6 +295,10 @@ function animate(event) {
     }
   }
 
+  if (player.restart === true) {
+    player.restartRound();
+  }
+
   if (!enemy.dead) {
     // enemy movements
     enemy.velocity.x = 0;
@@ -305,15 +309,15 @@ function animate(event) {
     } else {
       enemy.switchSprite('idle');
     }
-    if (enemy.restart === true) {
-      enemy.switchSprite('idle');
-    }
 
     if (enemy.velocity.y < 0) {
       enemy.switchSprite('jump');
     } else if (enemy.velocity.y > 0) {
       enemy.switchSprite('fall');
     }
+  }
+  if (enemy.restart === true) {
+    enemy.restartRound();
   }
   // console.log(enemy.restart);
   // detect collision
