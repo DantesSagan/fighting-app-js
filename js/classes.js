@@ -82,7 +82,7 @@ class Fighter extends Sprite {
     scale = 1,
     framesMax = 1,
     offset = { x: 0, y: 0 },
-    sprites,
+    sprites = [],
     attackBox = {
       offset: {},
       width: undefined,
@@ -130,19 +130,21 @@ class Fighter extends Sprite {
     this.dead = false;
     this.soundStart = true;
     // we looping through object sprites to switching between two images
-    for (const sprite in this.sprites) {
+    for (const sprite in this.sprites[0]) {
       // this is objects that we currenlty looping over
-      sprites[sprite].image = new Image();
-      sprites[sprite].image.src = sprites[sprite].imageSrc;
-      sprites[sprite].sound = new Audio();
-      sprites[sprite].sound.src = sprites[sprite].soundSrc;
+      let varSprites = sprites[0];
+      // console.log(sprite);
+      varSprites[sprite].image = new Image();
+      varSprites[sprite].image.src = varSprites[sprite].imageSrc;
+      varSprites[sprite].sound = new Audio();
+      varSprites[sprite].sound.src = varSprites[sprite].soundSrc;
     }
-    // console.log(this.sprites)
+    // console.log(sprites[0].attack1);
   }
 
   // We are creating draw method
   // draw() {
-  //   // player and enemy
+  //   // player and player2
   //   c.fillStyle = this.color;
   //   c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
@@ -249,7 +251,7 @@ class Fighter extends Sprite {
     this.health -= 20;
     if (this.health <= 0) {
       player.restart = false;
-      enemy.restart = false;
+      player2.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
@@ -284,133 +286,130 @@ class Fighter extends Sprite {
   switchSprite(sprite) {
     // overriding all other animations with the attack && damaged && death animations
     if (
-      this.image === this.sprites.attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.attack1.framesMax - 1
+      this.image === this.sprites[0].attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
+      this.framesCurrent < this.sprites[0].attack1.framesMax - 1
     )
       return;
     if (
-      this.image === this.sprites.attack2.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.attack2.framesMax - 1
+      this.image === this.sprites[0].attack2.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
+      this.framesCurrent < this.sprites[0].attack2.framesMax - 1
     )
       return;
     if (
-      this.image === this.sprites.damaged.image &&
+      this.image === this.sprites[0].damaged.image &&
       // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites.damaged.framesMax - 1
+      this.framesCurrent < this.sprites[0].damaged.framesMax - 1
     )
       return;
     // dead animation
     if (this.dead === false) {
-      if (this.image === this.sprites.death.image) {
-        if (this.framesCurrent === this.sprites.death.framesMax - 1) {
+      if (this.image === this.sprites[0].death.image) {
+        if (this.framesCurrent === this.sprites[0].death.framesMax - 1) {
           this.dead = true;
         }
         return;
       }
     }
     // second animation of death overlooping
-    if (this.image === this.sprites.deathTwo.image) {
-      if (this.framesCurrent === this.sprites.deathTwo.framesMax) {
+    if (this.image === this.sprites[0].deathTwo.image) {
+      if (this.framesCurrent === this.sprites[0].deathTwo.framesMax) {
         this.dead = true;
       }
       return;
     }
+    // if restart and restart animation to idle
     if (this.restart === true) {
       this.dead = false;
     }
-    // // if restart and restart animation to idle
-    // if (this.restart === true) {
-    //   this.dead = false;
-    //   return;
-    // }
+
     switch (sprite) {
       case 'idle':
-        if (this.image !== this.sprites.idle.image) {
-          this.image = this.sprites.idle.image;
-          this.framesMax = this.sprites.idle.framesMax;
+        if (this.image !== this.sprites[0].idle.image) {
+          this.image = this.sprites[0].idle.image;
+          this.framesMax = this.sprites[0].idle.framesMax;
           // to solve problems with flashing frames need to set current frames to 0 and animation starts in the beginning
           this.framesCurrent = 0;
         }
         break;
       case 'run':
-        if (this.image !== this.sprites.run.image) {
-          if (this.sound !== this.sprites.run.sound) {
-            this.sound = this.sprites.run.sound;
+        if (this.image !== this.sprites[0].run.image) {
+          if (this.sound !== this.sprites[0].run.sound) {
+            this.sound = this.sprites[0].run.sound;
             this.sound.volume = volumeMove;
             this.sound.play();
           }
-          this.image = this.sprites.run.image;
-          this.framesMax = this.sprites.run.framesMax;
+          this.image = this.sprites[0].run.image;
+          this.framesMax = this.sprites[0].run.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'jump':
-        if (this.image !== this.sprites.jump.image) {
-          if (this.sound !== this.sprites.jump.sound) {
-            this.sound = this.sprites.jump.sound;
+        if (this.image !== this.sprites[0].jump.image) {
+          if (this.sound !== this.sprites[0].jump.sound) {
+            this.sound = this.sprites[0].jump.sound;
             this.sound.volume = volumeMove;
             this.sound.play();
           }
-          this.image = this.sprites.jump.image;
-          this.framesMax = this.sprites.jump.framesMax;
+          this.image = this.sprites[0].jump.image;
+          this.framesMax = this.sprites[0].jump.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'fall':
-        if (this.image !== this.sprites.fall.image) {
-          this.image = this.sprites.fall.image;
-          this.framesMax = this.sprites.fall.framesMax;
+        if (this.image !== this.sprites[0].fall.image) {
+          this.image = this.sprites[0].fall.image;
+          this.framesMax = this.sprites[0].fall.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'attack1':
-        if (this.image !== this.sprites.attack1.image) {
-          if (this.sound !== this.sprites.attack1.sound) {
-            this.sound = this.sprites.attack1.sound;
+        if (this.image !== this.sprites[0].attack1.image) {
+          if (this.sound !== this.sprites[0].attack1.sound) {
+            this.sound = this.sprites[0].attack1.sound;
             this.sound.volume = volumeFight;
           }
-          this.image = this.sprites.attack1.image;
-          this.framesMax = this.sprites.attack1.framesMax;
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'attack2':
-        if (this.image !== this.sprites.attack2.image) {
-          this.image = this.sprites.attack2.image;
-          this.framesMax = this.sprites.attack2.framesMax;
+        if (this.image !== this.sprites[0].attack2.image) {
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'damaged':
-        if (this.image !== this.sprites.damaged.image) {
-          if (this.sound !== this.sprites.damaged.sound) {
-            this.sound = this.sprites.damaged.sound;
+        if (this.image !== this.sprites[0].damaged.image) {
+          if (this.sound !== this.sprites[0].damaged.sound) {
+            this.sound = this.sprites[0].damaged.sound;
             this.sound.volume = volumeFight;
             this.sound.currentTime = 0;
             this.sound.play();
           }
-          this.image = this.sprites.damaged.image;
-          this.framesMax = this.sprites.damaged.framesMax;
+          this.image = this.sprites[0].damaged.image;
+          this.framesMax = this.sprites[0].damaged.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'death':
-        if (this.image !== this.sprites.death.image) {
-          if (this.sound !== this.sprites.death.sound) {
-            this.sound = this.sprites.death.sound;
+        if (this.image !== this.sprites[0].death.image) {
+          if (this.sound !== this.sprites[0].death.sound) {
+            this.sound = this.sprites[0].death.sound;
             this.sound.currentTime = 0;
             this.sound.volume = volumeDeath;
             this.sound.play();
           }
-          this.image = this.sprites.death.image;
-          this.framesMax = this.sprites.death.framesMax;
+          this.image = this.sprites[0].death.image;
+          this.framesMax = this.sprites[0].death.framesMax;
           this.framesCurrent = 0;
         }
         break;
       case 'deathTwo':
-        if (this.image !== this.sprites.deathTwo.image) {
-          this.image = this.sprites.deathTwo.image;
-          this.framesMax = this.sprites.deathTwo.framesMax;
+        if (this.image !== this.sprites[0].deathTwo.image) {
+          this.image = this.sprites[0].deathTwo.image;
+          this.framesMax = this.sprites[0].deathTwo.framesMax;
           this.framesCurrent = 0;
         }
         break;

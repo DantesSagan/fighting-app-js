@@ -19,7 +19,7 @@
 <body>
 
 
-    <!-- red container div?? -->
+    <!-- interface of healthbar both players -->
     <div style="position:relative; display:inline-block;" id="app">
         <!-- smaller red contaiver div -->
         <div id="infoPlayers"
@@ -55,7 +55,7 @@
                 </h3>
             </div>
 
-            <!-- enemy health -->
+            <!-- player2 health -->
             <div style="position: relative; height:30px; width:100%;display:flex; ">
                 <div style="position: absolute; color: white; height: 50px; bottom:40; right: 0; ">
                     <h1>
@@ -67,7 +67,7 @@
                         style="background-color:red; text-align:center;height:30px; border: 2px solid white; border-radius: 15px;">
                         Игрок 2
                     </div>
-                    <div id="enemyHealth"
+                    <div id="player2Health"
                         style=" position: absolute; background-color:blue; top:0; right: 0; bottom: 0; left: 0; border: 2px solid white; border-radius: 15px;">
                     </div>
                 </div>
@@ -84,6 +84,84 @@
         <canvas></canvas>
     </div>
 
+    <!-- menu with pucking heroes -->
+    <div id="pickMenu"
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:450px; top: 0; left:100; right:0;bottom: 0; margin-top:80px;">
+        <div
+            style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black; margin-right:5px;">
+            <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
+                <h3
+                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
+                    Picking for Players
+                </h3>
+                <div id="parentColumnOne"
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
+                    Player 1
+                    <!-- Hero list -->
+                    <div id="hero1Player1" onclick="PickMackPlayer1();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p>Hero 1</p>
+                        <img src="" alt="hero1" />
+                    </div>
+                    <div>
+                        <p>Hero 2</p>
+                        <img src="" alt="hero3" />
+                    </div>
+                    <div>
+                        <p>Hero 3</p>
+                        <img src="" alt="hero3" />
+                    </div>
+                    <div>
+                        <p>Hero 4</p>
+                        <img src="" alt="hero4" />
+                    </div>
+                    <div>
+                        <p>Hero 5</p>
+                        <img src="" alt="hero5" />
+                    </div>
+                </div>
+                <div
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
+                    Player 2
+                    <!-- Hero list -->
+                    <div id="hero1Player2" onclick="PickMackPlayer2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p>Hero 1</p>
+                        <img src="" alt="hero1" />
+                    </div>
+                    <div>
+                        <p>Hero 2</p>
+                        <img src="" alt="hero3" />
+                    </div>
+                    <div>
+                        <p>Hero 3</p>
+                        <img src="" alt="hero3" />
+                    </div>
+                    <div>
+                        <p>Hero 4</p>
+                        <img src="" alt="hero4" />
+                    </div>
+                    <div>
+                        <p>Hero 5</p>
+                        <img src="" alt="hero5" />
+                    </div>
+                </div>
+                <button
+                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;  "
+                    onclick="TrueStart();">
+                    Play
+                </button>
+                <button
+                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
+                    onclick="TrueBack();">
+                    Back
+                </button>
+            </div>
+
+        </div>
+
+
+
+    </div>
     <!-- restart button -->
     <div
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
@@ -110,7 +188,7 @@
             </h2>
             <button
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
-                onclick="TrueStart();">
+                onclick="HeroList();">
                 Start game
             </button>
             <button onclick="Settings();"

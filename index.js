@@ -1,6 +1,6 @@
 // Basic fighting game mechanics
 // Project setup (done)
-// Create Player and Enemy (done)
+// Create Player and player2 (done)
 //  Move characters with Event listeners (done)
 // Health Bar interface
 // Game timers and Game Over
@@ -65,50 +65,52 @@ const player = new Fighter({
   color: 'blue',
   imageSrc: './assets/samuraiMack/Idle.png',
   framesMax: 8,
-  sprites: {
-    idle: {
-      imageSrc: './assets/samuraiMack/Idle.png',
-      framesMax: 8,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/samuraiMack/Idle.png',
+        framesMax: 8,
+      },
+      run: {
+        imageSrc: './assets/samuraiMack/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/samuraiMack/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/samuraiMack/Fall.png',
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: './assets/samuraiMack/Attack1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      attack2: {
+        imageSrc: './assets/samuraiMack/Attack2.png',
+        framesMax: 6,
+      },
+      damaged: {
+        imageSrc:
+          './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 4,
+      },
+      death: {
+        imageSrc: './assets/samuraiMack/blood/Death - blood.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 6,
+      },
+      deathTwo: {
+        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
     },
-    run: {
-      imageSrc: './assets/samuraiMack/Run.png',
-      soundSrc: './audio/walking.wav',
-      framesMax: 8,
-    },
-    jump: {
-      imageSrc: './assets/samuraiMack/Jump.png',
-      soundSrc: './audio/jump.mp3',
-      framesMax: 2,
-    },
-    fall: {
-      imageSrc: './assets/samuraiMack/Fall.png',
-      framesMax: 2,
-    },
-    attack1: {
-      imageSrc: './assets/samuraiMack/Attack1.png',
-      soundSrc: './audio/swing.wav',
-      framesMax: 6,
-    },
-    attack2: {
-      imageSrc: './assets/samuraiMack/Attack2.png',
-      framesMax: 6,
-    },
-    damaged: {
-      imageSrc:
-        './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
-      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
-      framesMax: 4,
-    },
-    death: {
-      imageSrc: './assets/samuraiMack/blood/Death - blood.png',
-      soundSrc: './audio/death 2.wav',
-      framesMax: 6,
-    },
-    deathTwo: {
-      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
-      framesMax: 3,
-    },
-  },
+  ],
   attackBox: {
     offset: {
       x: 100,
@@ -121,7 +123,7 @@ const player = new Fighter({
   restart: false,
 });
 
-const enemy = new Fighter({
+const player2 = new Fighter({
   position: {
     x: 768,
     y: 0,
@@ -138,49 +140,52 @@ const enemy = new Fighter({
   color: 'red',
   imageSrc: './assets/kenji/Idle.png',
   framesMax: 4,
-  sprites: {
-    idle: {
-      imageSrc: './assets/kenji/Idle.png',
-      framesMax: 4,
-    },
-    run: {
-      imageSrc: './assets/kenji/Run.png',
-      soundSrc: './audio/walking.wav',
-      framesMax: 8,
-    },
-    jump: {
-      imageSrc: './assets/kenji/Jump.png',
-      soundSrc: './audio/jump.mp3',
-      framesMax: 2,
-    },
-    fall: {
-      imageSrc: './assets/kenji/Fall.png',
-      framesMax: 2,
-    },
-    attack1: {
-      imageSrc: './assets/kenji/Attack1.png',
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/kenji/Idle.png',
+        framesMax: 4,
+      },
+      run: {
+        imageSrc: './assets/kenji/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/kenji/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/kenji/Fall.png',
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: './assets/kenji/Attack1.png',
 
-      framesMax: 4,
+        framesMax: 4,
+      },
+      attack2: {
+        imageSrc: './assets/kenji/Attack2.png',
+        framesMax: 4,
+      },
+      damaged: {
+        imageSrc:
+          './assets/kenji/blood//Take Hit - white silhouette - blood.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 4,
+      },
+      death: {
+        imageSrc: './assets/kenji/blood/Death - blood.png',
+        soundSrc: './audio/death.wav',
+        framesMax: 7,
+      },
+      deathTwo: {
+        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
     },
-    attack2: {
-      imageSrc: './assets/kenji/Attack2.png',
-      framesMax: 4,
-    },
-    damaged: {
-      imageSrc: './assets/kenji/blood//Take Hit - white silhouette - blood.png',
-      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
-      framesMax: 4,
-    },
-    death: {
-      imageSrc: './assets/kenji/blood/Death - blood.png',
-      soundSrc: './audio/death.wav',
-      framesMax: 7,
-    },
-    deathTwo: {
-      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
-      framesMax: 3,
-    },
-  },
+  ],
   attackBox: {
     offset: {
       x: -150,
@@ -249,7 +254,7 @@ function animate(event) {
 
   if (
     player.start === false &&
-    enemy.start === false &&
+    player2.start === false &&
     menuMain.start === true
   ) {
     menuMain.update();
@@ -257,21 +262,21 @@ function animate(event) {
     shop.update();
   } else if (
     player.start === true &&
-    enemy.start === true &&
+    player2.start === true &&
     menuMain.start === false
   ) {
     // insert shop
     shop.update();
     // insert player
     player.update();
-    // insert enemy or second player
-    enemy.update();
+    // insert player2 or second player
+    player2.update();
   }
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
   c.fillRect(0, 0, canvas.width, canvas.height);
   //   console.log('go')
-
+  // console.log(player.sprites)
   if (!player.dead) {
     // player movements
     player.velocity.x = 0;
@@ -299,44 +304,44 @@ function animate(event) {
     player.restartRound();
   }
 
-  if (!enemy.dead) {
-    // enemy movements
-    enemy.velocity.x = 0;
-    if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-      enemy.runLeft();
-    } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-      enemy.runRight();
+  if (!player2.dead) {
+    // player2 movements
+    player2.velocity.x = 0;
+    if (keys.ArrowLeft.pressed && player2.lastKey === 'ArrowLeft') {
+      player2.runLeft();
+    } else if (keys.ArrowRight.pressed && player2.lastKey === 'ArrowRight') {
+      player2.runRight();
     } else {
-      enemy.switchSprite('idle');
+      player2.switchSprite('idle');
     }
 
-    if (enemy.velocity.y < 0) {
-      enemy.switchSprite('jump');
-    } else if (enemy.velocity.y > 0) {
-      enemy.switchSprite('fall');
+    if (player2.velocity.y < 0) {
+      player2.switchSprite('jump');
+    } else if (player2.velocity.y > 0) {
+      player2.switchSprite('fall');
     }
   }
-  if (enemy.restart === true) {
-    enemy.restartRound();
+  if (player2.restart === true) {
+    player2.restartRound();
   }
-  // console.log(enemy.restart);
+  // console.log(player2.restart);
   // detect collision
   // Player 1 is attacking 1st animation
   if (
     rectangularCollision({
       rectangle1: player,
-      rectangle2: enemy,
+      rectangle2: player2,
     }) &&
     player.isAttacking &&
     player.framesCurrent === 4
   ) {
-    enemy.damaged();
+    player2.damaged();
     player.isAttacking = false;
-    // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
     // if we are using gsap we get to say of id and property with what need to do
     // and also give a smooth animation of decreasing healthbar
-    gsap.to('#enemyHealth', {
-      width: enemy.health + '%',
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
     });
     // console.log('you attack player2');
   }
@@ -349,16 +354,16 @@ function animate(event) {
   if (
     rectangularCollision({
       rectangle1: player,
-      rectangle2: enemy,
+      rectangle2: player2,
     }) &&
     player.isAttackingTwo &&
     player.framesCurrent === 4
   ) {
-    enemy.damagedTwo();
+    player2.damagedTwo();
     player.isAttackingTwo = false;
-    // document.querySelector('#enemyHealth').style.width = enemy.health + '%';
-    gsap.to('#enemyHealth', {
-      width: enemy.health + '%',
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
     });
     // console.log('you attack player2');
   }
@@ -368,17 +373,17 @@ function animate(event) {
     player.isAttackingTwo = false;
   }
 
-  // Player 2 && Enemy is attacking animation
+  // Player 2 && player2 is attacking animation
   if (
     rectangularCollision({
-      rectangle1: enemy,
+      rectangle1: player2,
       rectangle2: player,
     }) &&
-    enemy.isAttacking &&
-    enemy.framesCurrent === 1
+    player2.isAttacking &&
+    player2.framesCurrent === 1
   ) {
     player.damaged();
-    enemy.isAttacking = false;
+    player2.isAttacking = false;
     // document.querySelector('#playerHealth').style.width = player.health + '%';
     gsap.to('#playerHealth', {
       width: player.health + '%',
@@ -386,21 +391,21 @@ function animate(event) {
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
-  if (enemy.isAttacking && enemy.framesCurrent === 1) {
-    enemy.isAttacking = false;
+  if (player2.isAttacking && player2.framesCurrent === 1) {
+    player2.isAttacking = false;
   }
 
-  // Player 2 && Enemy is attackingTwo animation
+  // Player 2 && player2 is attackingTwo animation
   if (
     rectangularCollision({
-      rectangle1: enemy,
+      rectangle1: player2,
       rectangle2: player,
     }) &&
-    enemy.isAttackingTwo &&
-    enemy.framesCurrent === 1
+    player2.isAttackingTwo &&
+    player2.framesCurrent === 1
   ) {
     player.damagedTwo();
-    enemy.isAttackingTwo = false;
+    player2.isAttackingTwo = false;
     // document.querySelector('#playerHealth').style.width = player.health + '%';
     gsap.to('#playerHealth', {
       width: player.health + '%',
@@ -408,13 +413,13 @@ function animate(event) {
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
-  if (enemy.isAttackingTwo && enemy.framesCurrent === 1) {
-    enemy.isAttackingTwo = false;
+  if (player2.isAttackingTwo && player2.framesCurrent === 1) {
+    player2.isAttackingTwo = false;
   }
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
-  if (player.health <= 0 || enemy.health <= 0) {
-    determineWinner({ player, enemy, timerId });
+  if (player.health <= 0 || player2.health <= 0) {
+    determineWinner({ player, player2, timerId });
   }
 }
 
@@ -425,13 +430,13 @@ window.addEventListener('keydown', (event) => {
   // player switch statement
   if (
     player.start === false &&
-    enemy.start === false &&
+    player2.start === false &&
     menuMain.start === true
   ) {
     return null;
   } else if (
     player.start === true &&
-    enemy.start === true &&
+    player2.start === true &&
     menuMain.start === false
   ) {
     if (!player.dead) {
@@ -491,35 +496,35 @@ window.addEventListener('keydown', (event) => {
           break;
       }
     }
-    if (!enemy.dead) {
+    if (!player2.dead) {
       switch (event.key) {
-        // enemy switch statement
+        // player2 switch statement
         case 'ArrowRight':
           keys.ArrowRight.pressed = true;
-          enemy.lastKey = 'ArrowRight';
-          enemy.sound.play();
+          player2.lastKey = 'ArrowRight';
+          player2.sound.play();
           break;
         case 'ArrowLeft':
           keys.ArrowLeft.pressed = true;
-          enemy.lastKey = 'ArrowLeft';
-          enemy.sound.play();
+          player2.lastKey = 'ArrowLeft';
+          player2.sound.play();
           break;
         case 'ArrowUp':
-          if (keys.ArrowUp.pressed && enemy.lastKey === 'ArrowUp') {
+          if (keys.ArrowUp.pressed && player2.lastKey === 'ArrowUp') {
             if (
-              enemy.position.y + enemy.height + enemy.velocity.y >=
+              player2.position.y + player2.height + player2.velocity.y >=
               canvas.height - 115
             ) {
               // event.stopPropagation();
-              enemy.velocity.y = 0;
+              player2.velocity.y = 0;
             } else {
               // in this case 1st of all object will falling down by this expression
               // and then how it rich bottom of the canvas it's stops
-              enemy.velocity.y += gravity;
+              player2.velocity.y += gravity;
             }
           } else {
             if (
-              enemy.position.y + enemy.height + enemy.velocity.y >=
+              player2.position.y + player2.height + player2.velocity.y >=
               canvas.height - 115
             ) {
               // if you want to holding ArrowUp and jump infinite so use
@@ -527,23 +532,23 @@ window.addEventListener('keydown', (event) => {
               // if you want to jump once per pressing Arrow up so don't this line use
               // keys.ArrowUp.pressed = true;
               // keys.ArrowUp.pressed = true;
-              enemy.lastKey = 'ArrowUp';
-              enemy.sound.play();
-              enemy.velocity.y = -15;
+              player2.lastKey = 'ArrowUp';
+              player2.sound.play();
+              player2.velocity.y = -15;
             } else {
               // in this case 1st of all object will falling down by this expression
               // and then how it rich bottom of the canvas it's stops
-              enemy.velocity.y += gravity;
+              player2.velocity.y += gravity;
             }
           }
           break;
         case 'ArrowDown':
-          enemy.attack();
-          // enemy.isAttacking = true;
+          player2.attack();
+          // player2.isAttacking = true;
           break;
         case 'l':
-          enemy.attackTwo();
-          // enemy.isAttacking = true;
+          player2.attackTwo();
+          // player2.isAttacking = true;
           break;
         default:
           console.log('Something goes wrong');
@@ -593,33 +598,33 @@ window.addEventListener('keyup', (event) => {
       console.log('Something goes wrong');
       break;
   }
-  // enemy
+  // player2
   switch (event.key) {
     case 'ArrowRight':
       keys.ArrowRight.pressed = false;
-      enemy.soundStart = false;
-      enemy.sound.pause();
-      enemy.sound.currentTime = 0;
+      player2.soundStart = false;
+      player2.sound.pause();
+      player2.sound.currentTime = 0;
       break;
     case 'ArrowLeft':
       keys.ArrowLeft.pressed = false;
-      enemy.soundStart = false;
-      enemy.sound.pause();
-      enemy.sound.currentTime = 0;
+      player2.soundStart = false;
+      player2.sound.pause();
+      player2.sound.currentTime = 0;
       break;
     case 'ArrowUp':
-      if ((keys.ArrowUp.pressed = false && enemy.lastKey === 'ArrowUp')) {
+      if ((keys.ArrowUp.pressed = false && player2.lastKey === 'ArrowUp')) {
         if (
-          enemy.position.y + enemy.height + enemy.velocity.y >=
+          player2.position.y + player2.height + player2.velocity.y >=
           canvas.height - 115
         ) {
           // event.stopPropagation();
-          enemy.sound.pause();
-          enemy.velocity.y = 0;
+          player2.sound.pause();
+          player2.velocity.y = 0;
         } else {
           // in this case 1st of all object will falling down by this expression
           // and then how it rich bottom of the canvas it's stops
-          enemy.velocity.y += gravity;
+          player2.velocity.y += gravity;
         }
       }
       break;

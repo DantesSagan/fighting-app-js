@@ -11,20 +11,20 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
   );
 }
 
-function determineWinner({ player, enemy, timerId }) {
+function determineWinner({ player, player2, timerId }) {
   clearTimeout(timerId);
   document.querySelector('#displayText').style.display = 'flex';
-  if (player.health === enemy.health) {
+  if (player.health === player2.health) {
     document.querySelector('#displayText').innerHTML = 'Ничья';
     document.querySelector('#restart').style.display = 'flex';
     document.querySelector('#menuRestart').style.display = 'flex';
     // console.log('Tie');
-  } else if (player.health > enemy.health) {
+  } else if (player.health > player2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
     document.querySelector('#menuRestart').style.display = 'flex';
     // console.log('Player 1 Win!!!');
-  } else if (player.health < enemy.health) {
+  } else if (player.health < player2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
     document.querySelector('#menuRestart').style.display = 'flex';
@@ -46,9 +46,10 @@ function decreaseTimer() {
   if (timer === 0) {
     // when where is if's statements equals to true so
     // apply this querySelector with style flex
-    determineWinner({ player, enemy, timerId });
+    determineWinner({ player, player2, timerId });
   }
 }
+
 // menu function
 function menu() {
   setInterval(() => {
@@ -56,28 +57,113 @@ function menu() {
     menuMain.sound.volume = volume;
   }, 1000);
   if (menuMain.start === true) {
-    menuMain.sound.src = './audio/ambient_menu.wav';
+    menuMain.sound.src = '../audio/ambient_menu.wav';
   } else if (menuMain.start === false) {
-    menuMain.sound.src = './audio/Hard void (Finish - Rock 5).wav';
+    menuMain.sound.src = '../audio/Hard void (Finish - Rock 5).wav';
   }
 }
 
+const array = [
+  {
+    idle: {
+      imageSrc: './assets/samuraiMack/Idle.png',
+      framesMax: 8,
+    },
+    run: {
+      imageSrc: './assets/samuraiMack/Run.png',
+      soundSrc: './audio/walking.wav',
+      framesMax: 8,
+    },
+    jump: {
+      imageSrc: './assets/samuraiMack/Jump.png',
+      soundSrc: './audio/jump.mp3',
+      framesMax: 2,
+    },
+    fall: {
+      imageSrc: './assets/samuraiMack/Fall.png',
+      framesMax: 2,
+    },
+    attack1: {
+      imageSrc: './assets/samuraiMack/Attack1.png',
+      soundSrc: './audio/swing.wav',
+      framesMax: 6,
+    },
+    attack2: {
+      imageSrc: './assets/samuraiMack/Attack2.png',
+      framesMax: 6,
+    },
+    damaged: {
+      imageSrc:
+        './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
+      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+      framesMax: 4,
+    },
+    death: {
+      imageSrc: './assets/samuraiMack/blood/Death - blood.png',
+      soundSrc: './audio/death 2.wav',
+      framesMax: 6,
+    },
+    deathTwo: {
+      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+      framesMax: 3,
+    },
+  },
+];
+// picking hero from hero list
+function HeroList() {
+  // const div = document.createElement('div');
+  // const mapArray = array.map((arrItem) => arrItem);
+  // div.innerHTML = JSON.stringify(mapArray);
+  // player.sprites.push(mapArray);
+  // var parent = document.getElementById('parentColumnOne');
+  // parent.append(div); // or: parent.appendChild(h1)
+  document.querySelector('#pickMenu').style.display = 'flex';
+  document.querySelector('#mainMenu').style.display = 'none';
+}
+
+function PickMackPlayer1() {
+  // const hero1 = document.getElementById('hero1Player1');
+  player.sprites.shift();
+  array.map((arrItem) => {
+    const hero1 = arrItem;
+    console.log(hero1);
+    return player.sprites.push(hero1);
+  });
+  console.log(player.sprites);
+}
+
+function PickMackPlayer2() {
+  // const hero1 = document.getElementById('hero1Player2');
+  player2.sprites.shift();
+  array.map((arrItem) => {
+    console.log(arrItem);
+    const hero1 = arrItem;
+    return player2.sprites.push(hero1);
+  });
+  console.log(player2.sprites);
+}
+// console.log(
+//   array.map((arrItem) => {
+//     return arrItem.samuraiMack;
+//   })
+// );
+// console.log(player.sprites);
 // starting game without a choice hero
 function TrueStart() {
   // home();
   player.start = true;
-  enemy.start = true;
+  player2.start = true;
   menuMain.start = false;
   document.querySelector('#infoPlayers').style.display = 'flex';
-  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#pickMenu').style.display = 'none';
   decreaseTimer();
-  console.log('Click start', player.start, enemy.start);
+  console.log('Click start', player.start, player2.start);
 }
 
 // menu restart
 function MenuRestart() {
   player.start = false;
-  enemy.start = false;
+  player2.start = false;
   menuMain.start = false;
   document.querySelector('#mainMenu').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
@@ -86,24 +172,24 @@ function MenuRestart() {
   document.querySelector('#menuRestart').style.display = 'none';
   if (
     player.health < 100 ||
-    enemy.health < 100 ||
-    (player.health < 100 && enemy.health < 100)
+    player2.health < 100 ||
+    (player.health < 100 && player2.health < 100)
   ) {
     player.health = 100;
     gsap.to('#playerHealth', {
       width: player.health + '%',
     });
-    enemy.health = 100;
-    gsap.to('#enemyHealth', {
-      width: enemy.health + '%',
+    player2.health = 100;
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
     });
   }
-  if (player.restart === false || enemy.restart === false) {
+  if (player.restart === false || player2.restart === false) {
     player.restart = true;
-    enemy.restart = true;
+    player2.restart = true;
     setTimeout(() => {
       player.restart = false;
-      enemy.restart = false;
+      player2.restart = false;
     }, 1000);
   }
   let diff = 30 - timer;
@@ -115,33 +201,33 @@ function MenuRestart() {
 function TrueRestart() {
   if (
     player.start === true &&
-    enemy.start === true &&
+    player2.start === true &&
     menuMain.start === false
   ) {
     if (
       player.health < 100 ||
-      enemy.health < 100 ||
-      (player.health < 100 && enemy.health < 100)
+      player2.health < 100 ||
+      (player.health < 100 && player2.health < 100)
     ) {
       player.health = 100;
       gsap.to('#playerHealth', {
         width: player.health + '%',
       });
-      enemy.health = 100;
-      gsap.to('#enemyHealth', {
-        width: enemy.health + '%',
+      player2.health = 100;
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
       });
     }
-    if (player.restart === false || enemy.restart === false) {
+    if (player.restart === false || player2.restart === false) {
       player.restart = true;
-      enemy.restart = true;
+      player2.restart = true;
       setTimeout(() => {
         player.restart = false;
-        enemy.restart = false;
+        player2.restart = false;
       }, 1000);
     }
 
-    console.log(enemy.dead);
+    console.log(player2.dead);
     document.querySelector('#infoPlayers').style.display = 'flex';
     document.querySelector('#displayText').innerHTML = '';
     document.querySelector('#mainMenu').style.display = 'none';
@@ -152,12 +238,13 @@ function TrueRestart() {
     document.querySelector('#timer').innerHTML =
       timer < 30 ? (timer += diff) : null;
     decreaseTimer();
-    console.log('Click restart', player.start, enemy.start);
+    console.log('Click restart', player.start, player2.start);
   }
 }
 // function back which just hides some menu features
 function TrueBack() {
   document.querySelector('#mainMenu').style.display = 'flex';
+  document.querySelector('#pickMenu').style.display = 'none';
   document.querySelector('#settings').style.display = 'none';
   document.querySelector('#howToPlay').style.display = 'none';
 }
