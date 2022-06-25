@@ -17,17 +17,14 @@ function determineWinner({ player, player2, timerId }) {
   if (player.health === player2.health) {
     document.querySelector('#displayText').innerHTML = 'Ничья';
     document.querySelector('#restart').style.display = 'flex';
-    document.querySelector('#menuRestart').style.display = 'flex';
     // console.log('Tie');
   } else if (player.health > player2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
-    document.querySelector('#menuRestart').style.display = 'flex';
     // console.log('Player 1 Win!!!');
   } else if (player.health < player2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
-    document.querySelector('#menuRestart').style.display = 'flex';
     // console.log('Player 2 Win!!!');
   }
 }
@@ -46,7 +43,19 @@ function decreaseTimer() {
   if (timer === 0) {
     // when where is if's statements equals to true so
     // apply this querySelector with style flex
-    determineWinner({ player, player2, timerId });
+    if (
+      player.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      determineWinner({ player, player2, timerId });
+    } else if (
+      player3.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      determineWinner({ player3, player2, timerId });
+    }
   }
 }
 
@@ -63,7 +72,11 @@ function menu() {
   }
 }
 
-const array = [
+// concept 1 changing sprites with shifting past sprite and pushing new with the same players 1 and player 2 !== work
+// concept 2 create additional players and sets them individual characteristics but idk how to determine winner with multiple sets  and settings
+// concept 3
+
+const sprites = [
   {
     idle: {
       imageSrc: './assets/samuraiMack/Idle.png',
@@ -123,24 +136,39 @@ function HeroList() {
 
 function PickMackPlayer1() {
   // const hero1 = document.getElementById('hero1Player1');
-  player.sprites.shift();
-  array.map((arrItem) => {
-    const hero1 = arrItem;
-    console.log(hero1);
-    return player.sprites.push(hero1);
-  });
-  console.log(player.sprites);
+  // player.sprites.shift();
+  // // sprites.map((arrItem) => {
+  // //   let hero1 = arrItem;
+  // //   // console.log(hero1);
+  // // });
+  // player.sprites.push(sprites[0]);
+  // console.log(player.sprites);
+  player.start = true;
 }
-
-function PickMackPlayer2() {
+function PickKingPlayer1() {
+  // const hero1 = document.getElementById('hero1Player1');
+  // player.sprites.shift();
+  // // sprites.map((arrItem) => {
+  // //   let hero1 = arrItem;
+  // //   // console.log(hero1);
+  // // });
+  // player.sprites.push(sprites[0]);
+  // console.log(player.sprites);
+  player3.start = true;
+}
+// console.log(sprites[0]);
+function PickKenjiPlayer2() {
   // const hero1 = document.getElementById('hero1Player2');
-  player2.sprites.shift();
-  array.map((arrItem) => {
-    console.log(arrItem);
-    const hero1 = arrItem;
-    return player2.sprites.push(hero1);
-  });
-  console.log(player2.sprites);
+  // console.log(player2.sprites);
+  // player2.sprites.shift();
+  // console.log(player2.sprites);
+  // // sprites.map((arrItem) => {
+  // //   // console.log(arrItem);
+  // //   let hero1 = arrItem;
+  // // });
+  // player2.sprites.push(sprites[0]);
+  // console.log(player2.sprites);
+  player2.start = true;
 }
 // console.log(
 //   array.map((arrItem) => {
@@ -151,31 +179,35 @@ function PickMackPlayer2() {
 // starting game without a choice hero
 function TrueStart() {
   // home();
-  player.start = true;
-  player2.start = true;
+  // player.start = true;
+  // player2.start = true;
   menuMain.start = false;
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
   decreaseTimer();
-  console.log('Click start', player.start, player2.start);
+  // console.log('Click start', player3.start, player2.start);
+  // console.log(player.sprites, player2.sprites);
 }
 
 // menu restart
 function MenuRestart() {
   player.start = false;
   player2.start = false;
+  player3.start = false;
   menuMain.start = false;
   document.querySelector('#mainMenu').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#infoPlayers').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
-  document.querySelector('#menuRestart').style.display = 'none';
   if (
     player.health < 100 ||
     player2.health < 100 ||
-    (player.health < 100 && player2.health < 100)
+    (player.health < 100 && player2.health < 100) ||
+    player3.health < 100 ||
+    (player3.health < 100 && player2.health < 100)
   ) {
     player.health = 100;
+    player3.health = 100;
     gsap.to('#playerHealth', {
       width: player.health + '%',
     });
@@ -184,12 +216,18 @@ function MenuRestart() {
       width: player2.health + '%',
     });
   }
-  if (player.restart === false || player2.restart === false) {
+  if (
+    player.restart === false ||
+    player2.restart === false ||
+    player3.restart === false
+  ) {
     player.restart = true;
     player2.restart = true;
+    player3.restart = true;
     setTimeout(() => {
       player.restart = false;
       player2.restart = false;
+      player3.restart = false;
     }, 1000);
   }
   let diff = 30 - timer;
@@ -200,46 +238,48 @@ function MenuRestart() {
 // function restart when round ends
 function TrueRestart() {
   if (
-    player.start === true &&
-    player2.start === true &&
-    menuMain.start === false
+    player.health < 100 ||
+    player2.health < 100 ||
+    (player.health < 100 && player2.health < 100) ||
+    player3.health < 100 ||
+    (player3.health < 100 && player2.health < 100)
   ) {
-    if (
-      player.health < 100 ||
-      player2.health < 100 ||
-      (player.health < 100 && player2.health < 100)
-    ) {
-      player.health = 100;
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-      player2.health = 100;
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player.restart === false || player2.restart === false) {
-      player.restart = true;
-      player2.restart = true;
-      setTimeout(() => {
-        player.restart = false;
-        player2.restart = false;
-      }, 1000);
-    }
-
-    console.log(player2.dead);
-    document.querySelector('#infoPlayers').style.display = 'flex';
-    document.querySelector('#displayText').innerHTML = '';
-    document.querySelector('#mainMenu').style.display = 'none';
-    document.querySelector('#restart').style.display = 'none';
-    document.querySelector('#menuRestart').style.display = 'none';
-    let diff = 30 - timer;
-    // console.log(diff);
-    document.querySelector('#timer').innerHTML =
-      timer < 30 ? (timer += diff) : null;
-    decreaseTimer();
-    console.log('Click restart', player.start, player2.start);
+    player.health = 100;
+    player3.health = 100;
+    gsap.to('#playerHealth', {
+      width: player.health + '%',
+    });
+    player2.health = 100;
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
+    });
   }
+  if (
+    player.restart === false ||
+    player2.restart === false ||
+    player3.restart === false
+  ) {
+    player.restart = true;
+    player2.restart = true;
+    player3.restart = true;
+    setTimeout(() => {
+      player.restart = false;
+      player2.restart = false;
+      player3.restart = false;
+    }, 1000);
+  }
+
+  console.log(player2.dead);
+  document.querySelector('#infoPlayers').style.display = 'flex';
+  document.querySelector('#displayText').innerHTML = '';
+  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#restart').style.display = 'none';
+  let diff = 30 - timer;
+  // console.log(diff);
+  document.querySelector('#timer').innerHTML =
+    timer < 30 ? (timer += diff) : null;
+  decreaseTimer();
+  console.log('Click restart', player.start, player2.start);
 }
 // function back which just hides some menu features
 function TrueBack() {
@@ -247,6 +287,7 @@ function TrueBack() {
   document.querySelector('#pickMenu').style.display = 'none';
   document.querySelector('#settings').style.display = 'none';
   document.querySelector('#howToPlay').style.display = 'none';
+  document.querySelector('#restart').style.display = 'none';
 }
 
 // exist

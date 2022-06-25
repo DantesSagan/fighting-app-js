@@ -86,72 +86,68 @@
 
     <!-- menu with pucking heroes -->
     <div id="pickMenu"
-        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:450px; top: 0; left:100; right:0;bottom: 0; margin-top:80px;">
+        style=" position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:125; right:0;bottom: 0; margin-top:0px;">
         <div
-            style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black; margin-right:5px;">
+            style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:5px; color:black; ">
             <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
-                <h3
-                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
-                    Picking for Players
-                </h3>
                 <div id="parentColumnOne"
                     style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
-                    Player 1
+                    <p style="font-size:small;">
+
+                        Player 1
+                    </p>
                     <!-- Hero list -->
                     <div id="hero1Player1" onclick="PickMackPlayer1();"
                         style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                        <p>Hero 1</p>
-                        <img src="" alt="hero1" />
+                        <p style="font-size:small;">Hero 1 - Mack</p>
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero1" style="width: 48px; height:48px;" />
                     </div>
-                    <div>
-                        <p>Hero 2</p>
-                        <img src="" alt="hero3" />
+                    <div onclick="PickKingPlayer1();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p style="font-size:small;">Hero 2 - King</p>
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero2" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 3</p>
-                        <img src="" alt="hero3" />
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero3" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 4</p>
-                        <img src="" alt="hero4" />
-                    </div>
-                    <div>
-                        <p>Hero 5</p>
-                        <img src="" alt="hero5" />
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero4" style="width: 48px; height:48px;" />
                     </div>
                 </div>
                 <div
                     style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
-                    Player 2
+                    <p style="font-size:small;">
+
+                        Player 2
+                    </p>
                     <!-- Hero list -->
-                    <div id="hero1Player2" onclick="PickMackPlayer2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                        <p>Hero 1</p>
-                        <img src="" alt="hero1" />
+                    <div id="hero1Player2" onclick="PickKenjiPlayer2();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p style="font-size:small;">Hero 1 - Kenji</p>
+                        <img src=" /assets/samuraiMack/singleMack.png" alt="hero1" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 2</p>
-                        <img src="" alt="hero3" />
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero2" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 3</p>
-                        <img src="" alt="hero3" />
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero3" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 4</p>
-                        <img src="" alt="hero4" />
-                    </div>
-                    <div>
-                        <p>Hero 5</p>
-                        <img src="" alt="hero5" />
+                        <img src="/assets/samuraiMack/singleMack.png" alt="hero4" style="width: 48px; height:48px;" />
                     </div>
                 </div>
                 <button
-                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;  "
+                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
                     onclick="TrueStart();">
                     Play
                 </button>
                 <button
-                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
+                    style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; "
                     onclick="TrueBack();">
                     Back
                 </button>
@@ -163,19 +159,20 @@
 
     </div>
     <!-- restart button -->
-    <div
-        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
-        <button id="restart"
-            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:none; padding: 5px;"
+    <div id="restart"
+        style="position:absolute; color: white;  align-items:center; justify-content: center; display:none; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
+        <button
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
             onclick="TrueRestart();">
             Restart
         </button>
-        <button id="menuRestart"
-            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:none; padding: 5px;"
+        <button
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
             onclick="MenuRestart();">
             Menu
         </button>
     </div>
+
     <!-- Main menu -->
     <div id="mainMenu"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width: 612px; height:300px; top: 100; left:200; right:0;bottom: 0; ">

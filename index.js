@@ -162,7 +162,6 @@ const player2 = new Fighter({
       },
       attack1: {
         imageSrc: './assets/kenji/Attack1.png',
-
         framesMax: 4,
       },
       attack2: {
@@ -171,7 +170,7 @@ const player2 = new Fighter({
       },
       damaged: {
         imageSrc:
-          './assets/kenji/blood//Take Hit - white silhouette - blood.png',
+          './assets/kenji/blood/Take Hit - white silhouette - blood.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
@@ -189,6 +188,80 @@ const player2 = new Fighter({
   attackBox: {
     offset: {
       x: -150,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
+
+const player3 = new Fighter({
+  position: {
+    x: 256,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 115,
+    y: 110,
+  },
+  scale: 2.25,
+  color: 'blue',
+  imageSrc: './assets/Medieval King Pack/Idle.png',
+  framesMax: 6,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/Medieval King Pack/Idle.png',
+        framesMax: 6,
+      },
+      run: {
+        imageSrc: './assets/Medieval King Pack/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/Medieval King Pack/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/Medieval King Pack/Fall.png',
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: './assets/Medieval King Pack/Attack_1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      attack2: {
+        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        framesMax: 6,
+      },
+      damaged: {
+        imageSrc: './assets/Medieval King Pack/Hit.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 4,
+      },
+      death: {
+        imageSrc: './assets/Medieval King Pack/Death.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 11,
+      },
+      deathTwo: {
+        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: 100,
       y: 30,
     },
     width: 150,
@@ -272,11 +345,26 @@ function animate(event) {
     // insert player2 or second player
     player2.update();
   }
+
+   if (
+    player3.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    // insert shop
+    shop.update();
+    // insert player
+    // insert player2 or second player
+    player2.update();
+    // insert player3 or second player
+    player3.update();
+  }
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
   c.fillRect(0, 0, canvas.width, canvas.height);
   //   console.log('go')
   // console.log(player.sprites)
+  // Player 1
   if (!player.dead) {
     // player movements
     player.velocity.x = 0;
@@ -303,6 +391,7 @@ function animate(event) {
   if (player.restart === true) {
     player.restartRound();
   }
+  // Player 2
 
   if (!player2.dead) {
     // player2 movements
@@ -324,6 +413,35 @@ function animate(event) {
   if (player2.restart === true) {
     player2.restartRound();
   }
+  // Player 3
+
+  if (!player3.dead) {
+    // player movements
+    player3.velocity.x = 0;
+    // this is default idle staying position without running animation
+    // this is running animation of player 1 whe you press "a" key
+    if (keys.a.pressed && player3.lastKey === 'a') {
+      // player.soundStart = false;
+      player3.runLeft();
+
+      // this is running animation of player 1 whe you press "d" key
+    } else if (keys.d.pressed && player3.lastKey === 'd') {
+      // player.soundStart = false;
+      player3.runRight();
+    } else {
+      player3.switchSprite('idle');
+    }
+    if (player3.velocity.y < 0) {
+      player3.switchSprite('jump');
+    } else if (player3.velocity.y > 0) {
+      player3.switchSprite('fall');
+    }
+  }
+
+  if (player3.restart === true) {
+    player3.restartRound();
+  }
+
   // console.log(player2.restart);
   // detect collision
   // Player 1 is attacking 1st animation
@@ -377,7 +495,12 @@ function animate(event) {
   if (
     rectangularCollision({
       rectangle1: player2,
-      rectangle2: player,
+      rectangle2:
+        player.start === true
+          ? player
+          : player3.start === true
+          ? player3
+          : player,
     }) &&
     player2.isAttacking &&
     player2.framesCurrent === 1
@@ -399,7 +522,12 @@ function animate(event) {
   if (
     rectangularCollision({
       rectangle1: player2,
-      rectangle2: player,
+      rectangle2:
+        player.start === true
+          ? player
+          : player3.start === true
+          ? player3
+          : player,
     }) &&
     player2.isAttackingTwo &&
     player2.framesCurrent === 1
@@ -416,10 +544,70 @@ function animate(event) {
   if (player2.isAttackingTwo && player2.framesCurrent === 1) {
     player2.isAttackingTwo = false;
   }
+
+  // Player 3 is attacking 1st animation
+  if (
+    rectangularCollision({
+      rectangle1: player3,
+      rectangle2:
+        player.start === true
+          ? player
+          : player2.start === true
+          ? player2
+          : player,
+    }) &&
+    player3.isAttacking &&
+    player3.framesCurrent === 4
+  ) {
+    player2.damaged();
+    player3.isAttacking = false;
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    // if we are using gsap we get to say of id and property with what need to do
+    // and also give a smooth animation of decreasing healthbar
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
+    });
+    // console.log('you attack player2');
+  }
+
+  // if player1 is missing by attacking box
+  if (player3.isAttacking && player3.framesCurrent === 4) {
+    player3.isAttacking = false;
+  }
+  // Player 3 is attacking Two animation
+  if (
+    rectangularCollision({
+      rectangle1: player3,
+      rectangle2:
+        player.start === true
+          ? player
+          : player2.start === true
+          ? player2
+          : player,
+    }) &&
+    player3.isAttackingTwo &&
+    player3.framesCurrent === 4
+  ) {
+    player2.damagedTwo();
+    player3.isAttackingTwo = false;
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    gsap.to('#player2Health', {
+      width: player2.health + '%',
+    });
+    // console.log('you attack player2');
+  }
+
+  // if player3 is missing by attacking box
+  if (player3.isAttackingTwo && player3.framesCurrent === 4) {
+    player3.isAttackingTwo = false;
+  }
+
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
   if (player.health <= 0 || player2.health <= 0) {
     determineWinner({ player, player2, timerId });
+  } else if (player3.health <= 0 || player2.health <= 0) {
+    determineWinner({ player3, player2, timerId });
   }
 }
 
@@ -429,15 +617,21 @@ window.addEventListener('keydown', (event) => {
   // console.log(event.key);
   // player switch statement
   if (
-    player.start === false &&
-    player2.start === false &&
-    menuMain.start === true
+    (player.start === false &&
+      player2.start === false &&
+      menuMain.start === true) ||
+    (player2.start === false &&
+      player3.start === false &&
+      menuMain.start === true)
   ) {
     return null;
   } else if (
-    player.start === true &&
-    player2.start === true &&
-    menuMain.start === false
+    (player.start === true &&
+      player2.start === true &&
+      menuMain.start === false) ||
+    (player3.start === true &&
+      player2.start === true &&
+      menuMain.start === false)
   ) {
     if (!player.dead) {
       switch (event.key) {
@@ -555,6 +749,63 @@ window.addEventListener('keydown', (event) => {
           break;
       }
     }
+    if (!player3.dead) {
+      switch (event.key) {
+        case 'd':
+          keys.d.pressed = true;
+          player3.lastKey = 'd';
+          player3.sound.play();
+          break;
+        case 'a':
+          keys.a.pressed = true;
+          player3.lastKey = 'a';
+          player3.sound.play();
+          break;
+        case 'w':
+          if (keys.w.pressed && player3.lastKey === 'w') {
+            if (
+              player3.position.y + player3.height + player3.velocity.y >=
+              canvas.height - 115
+            ) {
+              // event.stopPropagation();
+              player3.velocity.y = 0;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player3.velocity.y += gravity;
+            }
+          } else {
+            if (
+              player3.position.y + player3.height + player3.velocity.y >=
+              canvas.height - 115
+            ) {
+              // if you want to holding "w" and jump infinite so use
+              // keys.w.pressed = true;
+              // if you want to jump once per pressing "w" so don't this line use
+              // keys.w.pressed = true;
+              // keys.w.pressed = true;
+              player3.lastKey = 'w';
+              player3.sound.play();
+              player3.velocity.y = -15;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player3.velocity.y += gravity;
+            }
+          }
+          break;
+        case ' ':
+          player3.attack();
+          player3.sound.play();
+          break;
+        case 'c':
+          player3.attackTwo();
+          break;
+        default:
+          console.log('Something goes wrong');
+          break;
+      }
+    }
   }
 
   console.log(event.key);
@@ -627,6 +878,43 @@ window.addEventListener('keyup', (event) => {
           player2.velocity.y += gravity;
         }
       }
+      break;
+    default:
+      console.log('Something goes wrong');
+      break;
+  }
+  // player3
+  switch (event.key) {
+    case 'd':
+      keys.d.pressed = false;
+      // player.soundStart = false;
+      player3.sound.pause();
+      // player.sound.currentTime = 0;
+      break;
+    case 'a':
+      keys.a.pressed = false;
+      // player.soundStart = false;
+      player3.sound.pause();
+      // player.sound.currentTime = 0;
+      break;
+    case 'w':
+      if ((keys.w.pressed = false && player3.lastKey === 'w')) {
+        if (
+          player3.position.y + player3.height + player3.velocity.y >=
+          canvas.height - 115
+        ) {
+          // event.stopPropagation();
+          player3.sound.pause();
+          player3.velocity.y = 0;
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it rich bottom of the canvas it's stops
+          player3.velocity.y += gravity;
+        }
+      }
+      break;
+    case ' ':
+      player3.sound.volume = 0;
       break;
     default:
       console.log('Something goes wrong');

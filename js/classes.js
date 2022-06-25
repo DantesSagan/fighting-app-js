@@ -63,6 +63,7 @@ class Sprite {
       }
     }
   }
+
   // updating method instantly
   update() {
     this.draw();
@@ -202,7 +203,6 @@ class Fighter extends Sprite {
         canvas.height - 115
       ) {
         this.velocity.y = 0;
-        this.position.y = 331;
       } else {
         // in this case 1st of all object will falling down by this expression
         // and then how it rich bottom of the canvas it's stops
@@ -252,6 +252,7 @@ class Fighter extends Sprite {
     if (this.health <= 0) {
       player.restart = false;
       player2.restart = false;
+      player3.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
