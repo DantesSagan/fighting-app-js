@@ -13,6 +13,14 @@
             box-sizing: border-box;
             font-family: 'Press Start 2P', cursive;
         }
+
+        .flip {
+            -moz-transform: scale(-1, 1);
+            -webkit-transform: scale(-1, 1);
+            -o-transform: scale(-1, 1);
+            transform: scale(-1, 1);
+            filter: FlipH;
+        }
     </style>
 </head>
 
@@ -20,8 +28,8 @@
 
 
     <!-- interface of healthbar both players -->
-    <div style="position:relative; display:inline-block;" id="app">
-        <!-- smaller red contaiver div -->
+    <div style="position:relative; display:inline-block;" id="app" class="">
+        <!-- info about players healthbar and timer-->
         <div id="infoPlayers"
             style="position:absolute; display:none; flex-direction:row; width:100%; align-items:center; padding:50px;">
 
@@ -81,7 +89,7 @@
         </h1>
 
 
-        <canvas></canvas>
+        <canvas class=""></canvas>
     </div>
 
     <!-- menu with pucking heroes -->
@@ -105,11 +113,12 @@
                     <div onclick="PickKingPlayer1();"
                         style="cursor: pointer; border:1px solid black; border-radius:15px;">
                         <p style="font-size:small;">Hero 2 - King</p>
-                        <img src="/assets/samuraiMack/singleMack.png" alt="hero2" style="width: 48px; height:48px;" />
+                        <img src="/assets/Medieval King Pack/singleKing.png" alt="hero2"
+                            style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 3</p>
-                        <img src="/assets/samuraiMack/singleMack.png" alt="hero3" style="width: 48px; height:48px;" />
+                        <img src="/assets/kenji/singleKenjiReverse.png" alt="hero3" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 4</p>
@@ -123,18 +132,20 @@
                         Player 2
                     </p>
                     <!-- Hero list -->
-                    <div id="hero1Player2" onclick="PickKenjiPlayer2();"
-                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                        <p style="font-size:small;">Hero 1 - Kenji</p>
-                        <img src=" /assets/samuraiMack/singleMack.png" alt="hero1" style="width: 48px; height:48px;" />
+                    <div id="hero1Player2" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p style="font-size:small;">Hero 1 - Mack</p>
+                        <img src="/assets/samuraiMack/reverseMack/singleMackReverse.png" alt="hero1"
+                            style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 2</p>
-                        <img src="/assets/samuraiMack/singleMack.png" alt="hero2" style="width: 48px; height:48px;" />
+                        <img src="/assets/Medieval King Pack/singleKingReverse.png" alt="hero2"
+                            style="width: 48px; height:48px;" />
                     </div>
-                    <div>
-                        <p>Hero 3</p>
-                        <img src="/assets/samuraiMack/singleMack.png" alt="hero3" style="width: 48px; height:48px;" />
+                    <div id="hero1Player2" onclick="PickKenjiPlayer2();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p style="font-size:small;">Hero 3 - Kenji</p>
+                        <img src="/assets/kenji/singleKenji.png" alt="hero1" style="width: 48px; height:48px;" />
                     </div>
                     <div>
                         <p>Hero 4</p>
@@ -250,6 +261,9 @@
     0.5
     </div>
     <hr />
+    <button onclick="WithoutBlood();" style="cursor: pointer;">
+        WithoutBlood
+    </button>
     </div>
     <button id="back"
         style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
@@ -257,7 +271,6 @@
         Back
     </button>
     </div>
-
 
     <!-- How to play page -->
     <div id="howToPlay"

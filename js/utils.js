@@ -11,18 +11,19 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
   );
 }
 
-function determineWinner({ player, player2, timerId }) {
+function determineWinner({ pl1, pl2, timerId }) {
   clearTimeout(timerId);
   document.querySelector('#displayText').style.display = 'flex';
-  if (player.health === player2.health) {
+  console.log(pl1.health);
+  if (pl1.health === pl2.health) {
     document.querySelector('#displayText').innerHTML = 'Ничья';
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Tie');
-  } else if (player.health > player2.health) {
+  } else if (pl1.health > pl2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Player 1 Win!!!');
-  } else if (player.health < player2.health) {
+  } else if (pl1.health < pl2.health) {
     document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Player 2 Win!!!');
@@ -48,13 +49,17 @@ function decreaseTimer() {
       player2.start === true &&
       menuMain.start === false
     ) {
-      determineWinner({ player, player2, timerId });
+      let pl1 = player;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
     } else if (
       player3.start === true &&
       player2.start === true &&
       menuMain.start === false
     ) {
-      determineWinner({ player3, player2, timerId });
+      let pl1 = player3;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
     }
   }
 }
@@ -106,13 +111,12 @@ const sprites = [
       framesMax: 6,
     },
     damaged: {
-      imageSrc:
-        './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
+      imageSrc: './assets/samuraiMack/Take Hit - white silhouette.png',
       soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
       framesMax: 4,
     },
     death: {
-      imageSrc: './assets/samuraiMack/blood/Death - blood.png',
+      imageSrc: './assets/samuraiMack/Death.png',
       soundSrc: './audio/death 2.wav',
       framesMax: 6,
     },
@@ -122,6 +126,10 @@ const sprites = [
     },
   },
 ];
+function WithoutBlood() {
+  player.sprites.shift();
+  player.sprites.push(sprites[0]);
+}
 // picking hero from hero list
 function HeroList() {
   // const div = document.createElement('div');

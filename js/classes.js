@@ -10,12 +10,15 @@ class Sprite {
     soundSrc,
     start = false,
     restart = false,
+    imageStyle,
+    angle = 0,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
     this.width = 50;
     this.height = 150;
     this.image = new Image();
+    this.image.style = imageStyle;
     this.image.src = imageSrc;
     this.scale = scale;
     this.framesMax = framesMax;
@@ -30,9 +33,11 @@ class Sprite {
     this.sound.volume = volume;
     this.start = start;
     this.restart = restart;
+    this.angle = angle;
   }
   // We are creating draw method
   draw() {
+    c.save();
     c.drawImage(
       this.image,
       this.framesCurrent * (this.image.width / this.framesMax),
@@ -44,6 +49,13 @@ class Sprite {
       (this.image.width / this.framesMax) * this.scale,
       this.image.height * this.scale
     );
+    // need to create transform scale for skin to flip it horizontally
+    // c.rotate(this.angle);
+    // c.translate(
+    //   -this.position.x - (this.img.width * this.scale) / 2,
+    //   -this.position.y - (this.img.height * this.scale) / 2
+    // );
+    c.restore();
   }
 
   // animate frame of boxes
@@ -80,6 +92,7 @@ class Fighter extends Sprite {
     color = 'red',
     // offset,
     imageSrc,
+    imageStyle,
     scale = 1,
     framesMax = 1,
     offset = { x: 0, y: 0 },
@@ -96,6 +109,7 @@ class Fighter extends Sprite {
     super({
       position,
       imageSrc,
+      imageStyle,
       scale,
       framesMax,
       offset,
@@ -137,6 +151,7 @@ class Fighter extends Sprite {
       // console.log(sprite);
       varSprites[sprite].image = new Image();
       varSprites[sprite].image.src = varSprites[sprite].imageSrc;
+      varSprites[sprite].image.style = varSprites[sprite].imageStyle;
       varSprites[sprite].sound = new Audio();
       varSprites[sprite].sound.src = varSprites[sprite].soundSrc;
     }
@@ -144,36 +159,37 @@ class Fighter extends Sprite {
   }
 
   // We are creating draw method
-  // draw() {
-  //   // player and player2
-  //   c.fillStyle = this.color;
-  //   c.fillRect(this.position.x, this.position.y, this.width, this.height);
+  drawSecond() {
+    // player and player2
+    c.fillStyle = this.color;
+    c.fillRect(this.position.x, this.position.y, this.width, this.height);
+    c.rotate((-360 * Math.PI) / 180);
+    // attack box for both
 
-  //   // attack box for both
+    // default position of attacking box
+    // c.fillStyle = 'green';
+    // c.fillRect(
+    //   this.attackBox.position.x,
+    //   this.attackBox.position.y,
+    //   this.attackBox.width - 50,
+    //   this.attackBox.height - 25
+    // );
 
-  //   // default position of attacking box
-  //   // c.fillStyle = 'green';
-  //   // c.fillRect(
-  //   //   this.attackBox.position.x,
-  //   //   this.attackBox.position.y,
-  //   //   this.attackBox.width - 50,
-  //   //   this.attackBox.height - 25
-  //   // );
-
-  //   // state when someone is attacking and changing state's of attacking box
-  //   // by pressing key of attack
-  //   if (this.isAttacking) {
-  //     c.fillStyle = 'green';
-  //     c.fillRect(
-  //       this.attackBox.position.x,
-  //       this.attackBox.position.y,
-  //       this.attackBox.width,
-  //       this.attackBox.height
-  //     );
-  //   }
-  // }
+    // state when someone is attacking and changing state's of attacking box
+    // by pressing key of attack
+    if (this.isAttacking) {
+      c.fillStyle = 'green';
+      c.fillRect(
+        this.attackBox.position.x,
+        this.attackBox.position.y,
+        this.attackBox.width,
+        this.attackBox.height
+      );
+    }
+  }
   // updating method instantly
   update() {
+    // this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate

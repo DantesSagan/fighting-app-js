@@ -208,9 +208,9 @@ const player3 = new Fighter({
   },
   offset: {
     x: 115,
-    y: 110,
+    y: 90,
   },
-  scale: 2.25,
+  scale: 2.05,
   color: 'blue',
   imageSrc: './assets/Medieval King Pack/Idle.png',
   framesMax: 6,
@@ -218,6 +218,7 @@ const player3 = new Fighter({
     {
       idle: {
         imageSrc: './assets/Medieval King Pack/Idle.png',
+        imageStyle: 'transform: scale(-1, 1)',
         framesMax: 6,
       },
       run: {
@@ -325,6 +326,7 @@ function animate(event) {
   // insert background image
   backgorund.update();
 
+  // canvas.style.transform = 'scale(-1, 1)';
   if (
     player.start === false &&
     player2.start === false &&
@@ -345,8 +347,7 @@ function animate(event) {
     // insert player2 or second player
     player2.update();
   }
-
-   if (
+  if (
     player3.start === true &&
     player2.start === true &&
     menuMain.start === false
@@ -505,12 +506,24 @@ function animate(event) {
     player2.isAttacking &&
     player2.framesCurrent === 1
   ) {
-    player.damaged();
-    player2.isAttacking = false;
+    if (player.start === true) {
+      player.damaged();
+      player2.isAttacking = false;
+    } else if (player3.start === true) {
+      player3.damaged();
+      player2.isAttacking = false;
+    }
     // document.querySelector('#playerHealth').style.width = player.health + '%';
-    gsap.to('#playerHealth', {
-      width: player.health + '%',
-    });
+    if (player.start === true) {
+      gsap.to('#playerHealth', {
+        width: player.health + '%',
+      });
+    }
+    if (player3.start === true) {
+      gsap.to('#playerHealth', {
+        width: player3.health + '%',
+      });
+    }
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
@@ -532,19 +545,31 @@ function animate(event) {
     player2.isAttackingTwo &&
     player2.framesCurrent === 1
   ) {
-    player.damagedTwo();
-    player2.isAttackingTwo = false;
+    if (player.start === true) {
+      player.damagedTwo();
+      player2.isAttacking = false;
+    } else if (player3.start === true) {
+      player3.damagedTwo();
+      player2.isAttacking = false;
+    }
     // document.querySelector('#playerHealth').style.width = player.health + '%';
-    gsap.to('#playerHealth', {
-      width: player.health + '%',
-    });
+    if (player.start === true) {
+      gsap.to('#playerHealth', {
+        width: player.health + '%',
+      });
+    }
+    if (player3.start === true) {
+      gsap.to('#playerHealth', {
+        width: player3.health + '%',
+      });
+    }
     console.log('you attack player1');
   }
   // if player2 is missing by attacking box
   if (player2.isAttackingTwo && player2.framesCurrent === 1) {
     player2.isAttackingTwo = false;
   }
-
+  // here
   // Player 3 is attacking 1st animation
   if (
     rectangularCollision({
@@ -559,14 +584,24 @@ function animate(event) {
     player3.isAttacking &&
     player3.framesCurrent === 4
   ) {
-    player2.damaged();
-    player3.isAttacking = false;
+    if (player.start === true) {
+      player2.damaged();
+      player3.isAttacking = false;
+    } else if (player2.start === true) {
+      player2.damaged();
+      player3.isAttacking = false;
+    } else {
+      player2.damaged();
+      player3.isAttacking = false;
+    }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
     // if we are using gsap we get to say of id and property with what need to do
     // and also give a smooth animation of decreasing healthbar
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
+    if (player2.start === true) {
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
+      });
+    }
     // console.log('you attack player2');
   }
 
@@ -588,12 +623,22 @@ function animate(event) {
     player3.isAttackingTwo &&
     player3.framesCurrent === 4
   ) {
-    player2.damagedTwo();
-    player3.isAttackingTwo = false;
+    if (player.start === true) {
+      player2.damagedTwo();
+      player3.isAttacking = false;
+    } else if (player2.start === true) {
+      player2.damagedTwo();
+      player3.isAttacking = false;
+    } else {
+      player2.damagedTwo();
+      player3.isAttacking = false;
+    }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
+    if (player2.start === true) {
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
+      });
+    }
     // console.log('you attack player2');
   }
 
@@ -604,10 +649,26 @@ function animate(event) {
 
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
-  if (player.health <= 0 || player2.health <= 0) {
-    determineWinner({ player, player2, timerId });
-  } else if (player3.health <= 0 || player2.health <= 0) {
-    determineWinner({ player3, player2, timerId });
+  if (
+    player.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player2;
+    if (player.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player2;
+    if (player3.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
 }
 
