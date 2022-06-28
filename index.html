@@ -21,6 +21,11 @@
             transform: scale(-1, 1);
             filter: FlipH;
         }
+
+        #img-scale {
+            background-color: blue;
+            transform: scale(-1, 1);
+        }
     </style>
 </head>
 
@@ -89,7 +94,7 @@
         </h1>
 
 
-        <canvas class=""></canvas>
+        <canvas class="" id=""></canvas>
     </div>
 
     <!-- menu with pucking heroes -->
@@ -137,7 +142,8 @@
                         <img src="/assets/samuraiMack/reverseMack/singleMackReverse.png" alt="hero1"
                             style="width: 48px; height:48px;" />
                     </div>
-                    <div>
+                    <div onclick="PickKingPlayer2();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
                         <p>Hero 2</p>
                         <img src="/assets/Medieval King Pack/singleKingReverse.png" alt="hero2"
                             style="width: 48px; height:48px;" />

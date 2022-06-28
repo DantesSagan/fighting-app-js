@@ -14,7 +14,7 @@ function rectangularCollision({ rectangle1, rectangle2 }) {
 function determineWinner({ pl1, pl2, timerId }) {
   clearTimeout(timerId);
   document.querySelector('#displayText').style.display = 'flex';
-  console.log(pl1.health);
+  // console.log(pl1.health);
   if (pl1.health === pl2.health) {
     document.querySelector('#displayText').innerHTML = 'Ничья';
     document.querySelector('#restart').style.display = 'flex';
@@ -59,6 +59,14 @@ function decreaseTimer() {
     ) {
       let pl1 = player3;
       let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player3Reverse;
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -164,6 +172,17 @@ function PickKingPlayer1() {
   // console.log(player.sprites);
   player3.start = true;
 }
+function PickKingPlayer2() {
+  // const hero1 = document.getElementById('hero1Player1');
+  // player.sprites.shift();
+  // // sprites.map((arrItem) => {
+  // //   let hero1 = arrItem;
+  // //   // console.log(hero1);
+  // // });
+  // player.sprites.push(sprites[0]);
+  // console.log(player.sprites);
+  player3Reverse.start = true;
+}
 // console.log(sprites[0]);
 function PickKenjiPlayer2() {
   // const hero1 = document.getElementById('hero1Player2');
@@ -202,17 +221,18 @@ function MenuRestart() {
   player.start = false;
   player2.start = false;
   player3.start = false;
+  player3Reverse.start = false;
   menuMain.start = false;
-  document.querySelector('#mainMenu').style.display = 'flex';
-  document.querySelector('#displayText').innerHTML = '';
-  document.querySelector('#infoPlayers').style.display = 'none';
-  document.querySelector('#restart').style.display = 'none';
+
   if (
     player.health < 100 ||
     player2.health < 100 ||
     (player.health < 100 && player2.health < 100) ||
     player3.health < 100 ||
-    (player3.health < 100 && player2.health < 100)
+    (player3.health < 100 && player2.health < 100) ||
+    player3Reverse.health < 100 ||
+    (player3Reverse.health < 100 && player.health < 100) ||
+    (player3Reverse.health < 100 && player3.health < 100)
   ) {
     player.health = 100;
     player3.health = 100;
@@ -220,24 +240,35 @@ function MenuRestart() {
       width: player.health + '%',
     });
     player2.health = 100;
+    player3Reverse.health = 100;
     gsap.to('#player2Health', {
       width: player2.health + '%',
+    });
+    gsap.to('#player2Health', {
+      width: player3Reverse.health + '%',
     });
   }
   if (
     player.restart === false ||
     player2.restart === false ||
-    player3.restart === false
+    player3.restart === false ||
+    player3Reverse.restart === false
   ) {
     player.restart = true;
     player2.restart = true;
     player3.restart = true;
+    player3Reverse.restart = true;
     setTimeout(() => {
       player.restart = false;
       player2.restart = false;
       player3.restart = false;
+      player3Reverse.restart = false;
     }, 1000);
   }
+  document.querySelector('#mainMenu').style.display = 'flex';
+  document.querySelector('#displayText').innerHTML = '';
+  document.querySelector('#infoPlayers').style.display = 'none';
+  document.querySelector('#restart').style.display = 'none';
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
@@ -250,7 +281,10 @@ function TrueRestart() {
     player2.health < 100 ||
     (player.health < 100 && player2.health < 100) ||
     player3.health < 100 ||
-    (player3.health < 100 && player2.health < 100)
+    (player3.health < 100 && player2.health < 100) ||
+    player3Reverse.health < 100 ||
+    (player3Reverse.health < 100 && player.health < 100) ||
+    (player3Reverse.health < 100 && player3.health < 100)
   ) {
     player.health = 100;
     player3.health = 100;
@@ -258,22 +292,29 @@ function TrueRestart() {
       width: player.health + '%',
     });
     player2.health = 100;
+    player3Reverse.health = 100;
     gsap.to('#player2Health', {
       width: player2.health + '%',
+    });
+    gsap.to('#player2Health', {
+      width: player3Reverse.health + '%',
     });
   }
   if (
     player.restart === false ||
     player2.restart === false ||
-    player3.restart === false
+    player3.restart === false ||
+    player3Reverse === false
   ) {
     player.restart = true;
     player2.restart = true;
     player3.restart = true;
+    player3Reverse.restart = true;
     setTimeout(() => {
       player.restart = false;
       player2.restart = false;
       player3.restart = false;
+      player3Reverse.restart = false;
     }, 1000);
   }
 

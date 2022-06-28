@@ -213,12 +213,15 @@ const player3 = new Fighter({
   scale: 2.05,
   color: 'blue',
   imageSrc: './assets/Medieval King Pack/Idle.png',
-  framesMax: 6,
+  imageStyle: 'scale(-1, 1)',
+  imageID: 'img-scale',
+  framesMax: 1,
   sprites: [
     {
       idle: {
         imageSrc: './assets/Medieval King Pack/Idle.png',
-        imageStyle: 'transform: scale(-1, 1)',
+        imageStyle: 'scale(-1, 1)',
+        imageID: 'img-scale',
         framesMax: 6,
       },
       run: {
@@ -262,7 +265,84 @@ const player3 = new Fighter({
   ],
   attackBox: {
     offset: {
-      x: 100,
+      x: 50,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
+
+const player3Reverse = new FighterReverse({
+  position: {
+    x: 768,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 115,
+    y: 90,
+  },
+  scale: 2.05,
+  color: 'black',
+  imageSrc: './assets/Medieval King Pack/Idle.png',
+  // imageStyle: 'scale(-1, 1)',
+  imageID: 'img-scale',
+  framesMax: 6,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/Medieval King Pack/Idle.png',
+        imageID: 'img-scale',
+        framesMax: 6,
+      },
+      run: {
+        imageSrc: './assets/Medieval King Pack/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/Medieval King Pack/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/Medieval King Pack/Fall.png',
+        framesMax: 2,
+      },
+      attack1: {
+        imageSrc: './assets/Medieval King Pack/Attack_1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      attack2: {
+        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        framesMax: 6,
+      },
+      damaged: {
+        imageSrc: './assets/Medieval King Pack/Hit.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 4,
+      },
+      death: {
+        imageSrc: './assets/Medieval King Pack/Death.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 11,
+      },
+      deathTwo: {
+        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: -150,
       y: 30,
     },
     width: 150,
@@ -325,7 +405,6 @@ function animate(event) {
 
   // insert background image
   backgorund.update();
-
   // canvas.style.transform = 'scale(-1, 1)';
   if (
     player.start === false &&
@@ -359,6 +438,32 @@ function animate(event) {
     player2.update();
     // insert player3 or second player
     player3.update();
+  }
+  if (
+    player.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    // insert shop
+    shop.update();
+    // insert player
+    // insert player2 or second player
+    player.update();
+    // insert player3 or second player
+    player3Reverse.update();
+  }
+  if (
+    player3.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    // insert shop
+    shop.update();
+    // insert player
+    // insert player2 or second player
+    player3.update();
+    // insert player3 or second player
+    player3Reverse.update();
   }
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
@@ -443,25 +548,78 @@ function animate(event) {
     player3.restartRound();
   }
 
+  // Player 3 Reverse
+
+  if (!player3Reverse.dead) {
+    // player movements
+    player3Reverse.velocity.x = 0;
+    // this is default idle staying position without running animation
+    // this is running animation of player 1 whe you press "a" key
+    if (keys.ArrowLeft.pressed && player3Reverse.lastKey === 'ArrowLeft') {
+      // player.soundStart = false;
+      player3Reverse.runLeft();
+
+      // this is running animation of player 1 whe you press "d" key
+    } else if (
+      keys.ArrowRight.pressed &&
+      player3Reverse.lastKey === 'ArrowRight'
+    ) {
+      // player.soundStart = false;
+      player3Reverse.runRight();
+    } else {
+      player3Reverse.switchSprite('idle');
+    }
+    if (player3Reverse.velocity.y < 0) {
+      player3Reverse.switchSprite('jump');
+    } else if (player3Reverse.velocity.y > 0) {
+      player3Reverse.switchSprite('fall');
+    }
+  }
+
+  if (player3Reverse.restart === true) {
+    player3Reverse.restartRound();
+  }
+
   // console.log(player2.restart);
   // detect collision
   // Player 1 is attacking 1st animation
   if (
     rectangularCollision({
       rectangle1: player,
-      rectangle2: player2,
+      rectangle2:
+        player2.start === true
+          ? player2
+          : player3Reverse.start === true
+          ? player3Reverse
+          : player2,
     }) &&
     player.isAttacking &&
     player.framesCurrent === 4
   ) {
-    player2.damaged();
-    player.isAttacking = false;
+    if (player2.start === true) {
+      player2.damaged();
+      player.isAttacking = false;
+    } else if (player3Reverse.start === true) {
+      player3Reverse.damaged();
+      player.isAttacking = false;
+    } else {
+      player2.damaged();
+      player.isAttacking = false;
+    }
+
     // document.querySelector('#player2Health').style.width = player2.health + '%';
     // if we are using gsap we get to say of id and property with what need to do
     // and also give a smooth animation of decreasing healthbar
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
+    if (player2.start === true) {
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
+      });
+    }
+    if (player3Reverse.start === true) {
+      gsap.to('#player2Health', {
+        width: player3Reverse.health + '%',
+      });
+    }
     // console.log('you attack player2');
   }
 
@@ -473,17 +631,40 @@ function animate(event) {
   if (
     rectangularCollision({
       rectangle1: player,
-      rectangle2: player2,
+      rectangle2:
+        player2.start === true
+          ? player2
+          : player3Reverse.start === true
+          ? player3Reverse
+          : player2,
     }) &&
     player.isAttackingTwo &&
     player.framesCurrent === 4
   ) {
-    player2.damagedTwo();
-    player.isAttackingTwo = false;
+    if (player2.start === true) {
+      player2.damagedTwo();
+      player.isAttacking = false;
+    } else if (player3Reverse.start === true) {
+      player3Reverse.damagedTwo();
+      player.isAttacking = false;
+    } else {
+      player2.damagedTwo();
+      player.isAttacking = false;
+    }
+
     // document.querySelector('#player2Health').style.width = player2.health + '%';
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
+    // if we are using gsap we get to say of id and property with what need to do
+    // and also give a smooth animation of decreasing healthbar
+    if (player2.start === true) {
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
+      });
+    }
+    if (player3Reverse.start === true) {
+      gsap.to('#player2Health', {
+        width: player3Reverse.health + '%',
+      });
+    }
     // console.log('you attack player2');
   }
 
@@ -575,23 +756,23 @@ function animate(event) {
     rectangularCollision({
       rectangle1: player3,
       rectangle2:
-        player.start === true
-          ? player
+        player3Reverse.start === true
+          ? player3Reverse
           : player2.start === true
           ? player2
-          : player,
+          : player3Reverse,
     }) &&
     player3.isAttacking &&
     player3.framesCurrent === 4
   ) {
-    if (player.start === true) {
-      player2.damaged();
+    if (player3Reverse.start === true) {
+      player3Reverse.damaged();
       player3.isAttacking = false;
     } else if (player2.start === true) {
       player2.damaged();
       player3.isAttacking = false;
     } else {
-      player2.damaged();
+      player3Reverse.damaged();
       player3.isAttacking = false;
     }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -600,6 +781,11 @@ function animate(event) {
     if (player2.start === true) {
       gsap.to('#player2Health', {
         width: player2.health + '%',
+      });
+    }
+    if (player3Reverse.start === true) {
+      gsap.to('#player2Health', {
+        width: player3Reverse.health + '%',
       });
     }
     // console.log('you attack player2');
@@ -614,29 +800,34 @@ function animate(event) {
     rectangularCollision({
       rectangle1: player3,
       rectangle2:
-        player.start === true
-          ? player
+        player3Reverse.start === true
+          ? player3Reverse
           : player2.start === true
           ? player2
-          : player,
+          : player3Reverse,
     }) &&
     player3.isAttackingTwo &&
     player3.framesCurrent === 4
   ) {
-    if (player.start === true) {
-      player2.damagedTwo();
+    if (player3Reverse.start === true) {
+      player3Reverse.damagedTwo();
       player3.isAttacking = false;
     } else if (player2.start === true) {
       player2.damagedTwo();
       player3.isAttacking = false;
     } else {
-      player2.damagedTwo();
-      player3.isAttacking = false;
+      player3Reverse.damagedTwo();
+      player3Reverse.isAttacking = false;
     }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
     if (player2.start === true) {
       gsap.to('#player2Health', {
         width: player2.health + '%',
+      });
+    }
+    if (player3Reverse.start === true) {
+      gsap.to('#player2Health', {
+        width: player3Reverse.health + '%',
       });
     }
     // console.log('you attack player2');
@@ -645,6 +836,93 @@ function animate(event) {
   // if player3 is missing by attacking box
   if (player3.isAttackingTwo && player3.framesCurrent === 4) {
     player3.isAttackingTwo = false;
+  }
+
+  // Player 3Reverse is attacking 1st animation
+  if (
+    rectangularCollision({
+      rectangle1:
+        player.start === true
+          ? player
+          : player3.start === true
+          ? player3
+          : player,
+      rectangle2: player3Reverse,
+    }) &&
+    player3Reverse.isAttacking &&
+    player3Reverse.framesCurrent === 4
+  ) {
+    if (player.start === true) {
+      player.damaged();
+      player3Reverse.isAttacking = false;
+    } else if (player3.start === true) {
+      player3.damaged();
+      player3Reverse.isAttacking = false;
+    } else {
+      player.damaged();
+      player3Reverse.isAttacking = false;
+    }
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    // if we are using gsap we get to say of id and property with what need to do
+    // and also give a smooth animation of decreasing healthbar
+    if (player.start === true) {
+      gsap.to('#playerHealth', {
+        width: player.health + '%',
+      });
+    }
+    if (player3.start === true) {
+      gsap.to('#playerHealth', {
+        width: player3.health + '%',
+      });
+    }
+    // console.log('you attack player2');
+  }
+
+  // if player1 is missing by attacking box
+  if (player3Reverse.isAttacking && player3Reverse.framesCurrent === 4) {
+    player3Reverse.isAttacking = false;
+  }
+  // Player 3 is attacking Two animation
+  if (
+    rectangularCollision({
+      rectangle1:
+        player.start === true
+          ? player
+          : player3.start === true
+          ? player3
+          : player,
+      rectangle2: player3Reverse,
+    }) &&
+    player3Reverse.isAttacking &&
+    player3Reverse.framesCurrent === 4
+  ) {
+    if (player.start === true) {
+      player.damagedTwo();
+      player3Reverse.isAttacking = false;
+    } else if (player3.start === true) {
+      player3.damagedTwo();
+      player3Reverse.isAttacking = false;
+    } else {
+      player.damagedTwo();
+      player3Reverse.isAttacking = false;
+    }
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    if (player.start === true) {
+      gsap.to('#playerHealth', {
+        width: player.health + '%',
+      });
+    }
+    if (player3.start === true) {
+      gsap.to('#playerHealth', {
+        width: player3.health + '%',
+      });
+    }
+    // console.log('you attack player2');
+  }
+
+  // if player3 is missing by attacking box
+  if (player3Reverse.isAttackingTwo && player3Reverse.framesCurrent === 4) {
+    player3Reverse.isAttackingTwo = false;
   }
 
   // end game based on healthbar of players
@@ -669,6 +947,26 @@ function animate(event) {
     if (player3.health <= 0 || player2.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
+  } else if (
+    player.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player3Reverse;
+    if (player.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player3Reverse;
+    if (player3.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
 }
 
@@ -683,6 +981,12 @@ window.addEventListener('keydown', (event) => {
       menuMain.start === true) ||
     (player2.start === false &&
       player3.start === false &&
+      menuMain.start === true) ||
+    (player.start === false &&
+      player3Reverse.start === false &&
+      menuMain.start === true) ||
+    (player3.start === false &&
+      player3Reverse.start === false &&
       menuMain.start === true)
   ) {
     return null;
@@ -692,6 +996,12 @@ window.addEventListener('keydown', (event) => {
       menuMain.start === false) ||
     (player3.start === true &&
       player2.start === true &&
+      menuMain.start === false) ||
+    (player.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false) ||
+    (player3.start === true &&
+      player3Reverse.start === true &&
       menuMain.start === false)
   ) {
     if (!player.dead) {
@@ -867,6 +1177,69 @@ window.addEventListener('keydown', (event) => {
           break;
       }
     }
+    if (!player3Reverse.dead) {
+      switch (event.key) {
+        // player2 switch statement
+        case 'ArrowRight':
+          keys.ArrowRight.pressed = true;
+          player3Reverse.lastKey = 'ArrowRight';
+          player3Reverse.sound.play();
+          break;
+        case 'ArrowLeft':
+          keys.ArrowLeft.pressed = true;
+          player3Reverse.lastKey = 'ArrowLeft';
+          player3Reverse.sound.play();
+          break;
+        case 'ArrowUp':
+          if (keys.ArrowUp.pressed && player3Reverse.lastKey === 'ArrowUp') {
+            if (
+              player3Reverse.position.y +
+                player3Reverse.height +
+                player3Reverse.velocity.y >=
+              canvas.height - 115
+            ) {
+              // event.stopPropagation();
+              player3Reverse.velocity.y = 0;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player3Reverse.velocity.y += gravity;
+            }
+          } else {
+            if (
+              player3Reverse.position.y +
+                player3Reverse.height +
+                player3Reverse.velocity.y >=
+              canvas.height - 115
+            ) {
+              // if you want to holding ArrowUp and jump infinite so use
+              // keys.ArrowUp.pressed = true;
+              // if you want to jump once per pressing Arrow up so don't this line use
+              // keys.ArrowUp.pressed = true;
+              // keys.ArrowUp.pressed = true;
+              player3Reverse.lastKey = 'ArrowUp';
+              player3Reverse.sound.play();
+              player3Reverse.velocity.y = -15;
+            } else {
+              // in this case 1st of all object will falling down by this expression
+              // and then how it rich bottom of the canvas it's stops
+              player3Reverse.velocity.y += gravity;
+            }
+          }
+          break;
+        case 'ArrowDown':
+          player3Reverse.attack();
+          // player2.isAttacking = true;
+          break;
+        case 'l':
+          player3Reverse.attackTwo();
+          // player2.isAttacking = true;
+          break;
+        default:
+          console.log('Something goes wrong');
+          break;
+      }
+    }
   }
 
   console.log(event.key);
@@ -976,6 +1349,44 @@ window.addEventListener('keyup', (event) => {
       break;
     case ' ':
       player3.sound.volume = 0;
+      break;
+    default:
+      console.log('Something goes wrong');
+      break;
+  }
+  // player3Reverse
+  switch (event.key) {
+    case 'ArrowRight':
+      keys.ArrowRight.pressed = false;
+      player3Reverse.soundStart = false;
+      player3Reverse.sound.pause();
+      player3Reverse.sound.currentTime = 0;
+      break;
+    case 'ArrowLeft':
+      keys.ArrowLeft.pressed = false;
+      player3Reverse.soundStart = false;
+      player3Reverse.sound.pause();
+      player3Reverse.sound.currentTime = 0;
+      break;
+    case 'ArrowUp':
+      if (
+        (keys.ArrowUp.pressed = false && player3Reverse.lastKey === 'ArrowUp')
+      ) {
+        if (
+          player3Reverse.position.y +
+            player3Reverse.height +
+            player3Reverse.velocity.y >=
+          canvas.height - 115
+        ) {
+          // event.stopPropagation();
+          player3Reverse.sound.pause();
+          player3Reverse.velocity.y = 0;
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it rich bottom of the canvas it's stops
+          player3Reverse.velocity.y += gravity;
+        }
+      }
       break;
     default:
       console.log('Something goes wrong');
