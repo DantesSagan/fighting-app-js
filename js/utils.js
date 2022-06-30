@@ -68,6 +68,30 @@ function decreaseTimer() {
       let pl1 = player3;
       let pl2 = player3Reverse;
       determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
     }
   }
 }
@@ -161,6 +185,17 @@ function PickMackPlayer1() {
   // console.log(player.sprites);
   player.start = true;
 }
+function PickMackPlayer2() {
+  // const hero1 = document.getElementById('hero1Player1');
+  // player.sprites.shift();
+  // // sprites.map((arrItem) => {
+  // //   let hero1 = arrItem;
+  // //   // console.log(hero1);
+  // // });
+  // player.sprites.push(sprites[0]);
+  // console.log(player.sprites);
+  playerReverse.start = true;
+}
 function PickKingPlayer1() {
   // const hero1 = document.getElementById('hero1Player1');
   // player.sprites.shift();
@@ -232,7 +267,9 @@ function MenuRestart() {
     (player3.health < 100 && player2.health < 100) ||
     player3Reverse.health < 100 ||
     (player3Reverse.health < 100 && player.health < 100) ||
-    (player3Reverse.health < 100 && player3.health < 100)
+    (player3Reverse.health < 100 && player3.health < 100) ||
+    (playerReverse.health < 100 && player.health < 100) ||
+    (playerReverse.health < 100 && player3.health < 100)
   ) {
     player.health = 100;
     player3.health = 100;
@@ -252,17 +289,20 @@ function MenuRestart() {
     player.restart === false ||
     player2.restart === false ||
     player3.restart === false ||
-    player3Reverse.restart === false
+    player3Reverse.restart === false ||
+    playerReverse.restart === false
   ) {
     player.restart = true;
     player2.restart = true;
     player3.restart = true;
     player3Reverse.restart = true;
+    playerReverse.restart = true;
     setTimeout(() => {
       player.restart = false;
       player2.restart = false;
       player3.restart = false;
       player3Reverse.restart = false;
+      playerReverse.restart = true;
     }, 1000);
   }
   document.querySelector('#mainMenu').style.display = 'flex';
@@ -284,7 +324,9 @@ function TrueRestart() {
     (player3.health < 100 && player2.health < 100) ||
     player3Reverse.health < 100 ||
     (player3Reverse.health < 100 && player.health < 100) ||
-    (player3Reverse.health < 100 && player3.health < 100)
+    (player3Reverse.health < 100 && player3.health < 100) ||
+    (playerReverse.health < 100 && player.health < 100) ||
+    (playerReverse.health < 100 && player3.health < 100)
   ) {
     player.health = 100;
     player3.health = 100;
@@ -293,28 +335,35 @@ function TrueRestart() {
     });
     player2.health = 100;
     player3Reverse.health = 100;
+    playerReverse.health = 100;
     gsap.to('#player2Health', {
       width: player2.health + '%',
     });
     gsap.to('#player2Health', {
       width: player3Reverse.health + '%',
     });
+    gsap.to('#player2Health', {
+      width: playerReverse.health + '%',
+    });
   }
   if (
     player.restart === false ||
     player2.restart === false ||
     player3.restart === false ||
-    player3Reverse === false
+    player3Reverse === false ||
+    playerReverse === false
   ) {
     player.restart = true;
     player2.restart = true;
     player3.restart = true;
     player3Reverse.restart = true;
+    playerReverse.restart = true;
     setTimeout(() => {
       player.restart = false;
       player2.restart = false;
       player3.restart = false;
       player3Reverse.restart = false;
+      playerReverse.restart = false;
     }, 1000);
   }
 
