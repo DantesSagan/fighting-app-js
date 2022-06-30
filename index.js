@@ -32,7 +32,6 @@ const backgorund = new Sprite({
   },
   imageSrc: './assets/background.png',
   start: false,
-
 });
 // shop layout
 
@@ -297,7 +296,6 @@ const player3Reverse = new FighterReverse({
     {
       idle: {
         imageSrc: './assets/Medieval King Pack/kingReverse/Idle - Reverse.png',
-        imageStyle: 'scale(-1, 1)',
         framesMax: 6,
       },
       run: {
@@ -306,30 +304,32 @@ const player3Reverse = new FighterReverse({
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Medieval King Pack/Jump.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Medieval King Pack/Fall.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Attack_1 - Reverse.png',
+        imageSrc:
+          './assets/Medieval King Pack/kingReverse/Attack_1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
+        imageSrc:
+          './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
         framesMax: 6,
       },
       damaged: {
-        imageSrc: './assets/Medieval King Pack/Hit.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Medieval King Pack/Death.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 11,
       },
@@ -341,7 +341,7 @@ const player3Reverse = new FighterReverse({
   ],
   attackBox: {
     offset: {
-      x: -100,
+      x: -150,
       y: 30,
     },
     width: 150,
@@ -1025,240 +1025,16 @@ window.addEventListener('keydown', (event) => {
       menuMain.start === false)
   ) {
     if (!player.dead) {
-      switch (event.key) {
-        case 'd':
-          keys.d.pressed = true;
-          player.lastKey = 'd';
-          player.sound.play();
-          break;
-        case 'a':
-          keys.a.pressed = true;
-          player.lastKey = 'a';
-          player.sound.play();
-          break;
-        case 'w':
-          if (keys.w.pressed && player.lastKey === 'w') {
-            if (
-              player.position.y + player.height + player.velocity.y >=
-              canvas.height - 115
-            ) {
-              // event.stopPropagation();
-              player.velocity.y = 0;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player.velocity.y += gravity;
-            }
-          } else {
-            if (
-              player.position.y + player.height + player.velocity.y >=
-              canvas.height - 115
-            ) {
-              // if you want to holding "w" and jump infinite so use
-              // keys.w.pressed = true;
-              // if you want to jump once per pressing "w" so don't this line use
-              // keys.w.pressed = true;
-              // keys.w.pressed = true;
-              player.lastKey = 'w';
-              player.sound.play();
-              player.velocity.y = -15;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player.velocity.y += gravity;
-            }
-          }
-          break;
-        case ' ':
-          player.attack();
-          player.sound.play();
-          break;
-        case 'c':
-          player.attackTwo();
-          break;
-        default:
-          console.log('Something goes wrong');
-          break;
-      }
+      player.switchButtons(event);
     }
     if (!player2.dead) {
-      switch (event.key) {
-        // player2 switch statement
-        case 'ArrowRight':
-          keys.ArrowRight.pressed = true;
-          player2.lastKey = 'ArrowRight';
-          player2.sound.play();
-          break;
-        case 'ArrowLeft':
-          keys.ArrowLeft.pressed = true;
-          player2.lastKey = 'ArrowLeft';
-          player2.sound.play();
-          break;
-        case 'ArrowUp':
-          if (keys.ArrowUp.pressed && player2.lastKey === 'ArrowUp') {
-            if (
-              player2.position.y + player2.height + player2.velocity.y >=
-              canvas.height - 115
-            ) {
-              // event.stopPropagation();
-              player2.velocity.y = 0;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player2.velocity.y += gravity;
-            }
-          } else {
-            if (
-              player2.position.y + player2.height + player2.velocity.y >=
-              canvas.height - 115
-            ) {
-              // if you want to holding ArrowUp and jump infinite so use
-              // keys.ArrowUp.pressed = true;
-              // if you want to jump once per pressing Arrow up so don't this line use
-              // keys.ArrowUp.pressed = true;
-              // keys.ArrowUp.pressed = true;
-              player2.lastKey = 'ArrowUp';
-              player2.sound.play();
-              player2.velocity.y = -15;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player2.velocity.y += gravity;
-            }
-          }
-          break;
-        case 'ArrowDown':
-          player2.attack();
-          // player2.isAttacking = true;
-          break;
-        case 'l':
-          player2.attackTwo();
-          // player2.isAttacking = true;
-          break;
-        default:
-          console.log('Something goes wrong');
-          break;
-      }
+      player2.switchButtonsKenji(event);
     }
     if (!player3.dead) {
-      switch (event.key) {
-        case 'd':
-          keys.d.pressed = true;
-          player3.lastKey = 'd';
-          player3.sound.play();
-          break;
-        case 'a':
-          keys.a.pressed = true;
-          player3.lastKey = 'a';
-          player3.sound.play();
-          break;
-        case 'w':
-          if (keys.w.pressed && player3.lastKey === 'w') {
-            if (
-              player3.position.y + player3.height + player3.velocity.y >=
-              canvas.height - 115
-            ) {
-              // event.stopPropagation();
-              player3.velocity.y = 0;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player3.velocity.y += gravity;
-            }
-          } else {
-            if (
-              player3.position.y + player3.height + player3.velocity.y >=
-              canvas.height - 115
-            ) {
-              // if you want to holding "w" and jump infinite so use
-              // keys.w.pressed = true;
-              // if you want to jump once per pressing "w" so don't this line use
-              // keys.w.pressed = true;
-              // keys.w.pressed = true;
-              player3.lastKey = 'w';
-              player3.sound.play();
-              player3.velocity.y = -15;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player3.velocity.y += gravity;
-            }
-          }
-          break;
-        case ' ':
-          player3.attack();
-          player3.sound.play();
-          break;
-        case 'c':
-          player3.attackTwo();
-          break;
-        default:
-          console.log('Something goes wrong');
-          break;
-      }
+      player3.switchButtons(event);
     }
     if (!player3Reverse.dead) {
-      switch (event.key) {
-        // player2 switch statement
-        case 'ArrowRight':
-          keys.ArrowRight.pressed = true;
-          player3Reverse.lastKey = 'ArrowRight';
-          player3Reverse.sound.play();
-          break;
-        case 'ArrowLeft':
-          keys.ArrowLeft.pressed = true;
-          player3Reverse.lastKey = 'ArrowLeft';
-          player3Reverse.sound.play();
-          break;
-        case 'ArrowUp':
-          if (keys.ArrowUp.pressed && player3Reverse.lastKey === 'ArrowUp') {
-            if (
-              player3Reverse.position.y +
-                player3Reverse.height +
-                player3Reverse.velocity.y >=
-              canvas.height - 115
-            ) {
-              // event.stopPropagation();
-              player3Reverse.velocity.y = 0;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player3Reverse.velocity.y += gravity;
-            }
-          } else {
-            if (
-              player3Reverse.position.y +
-                player3Reverse.height +
-                player3Reverse.velocity.y >=
-              canvas.height - 115
-            ) {
-              // if you want to holding ArrowUp and jump infinite so use
-              // keys.ArrowUp.pressed = true;
-              // if you want to jump once per pressing Arrow up so don't this line use
-              // keys.ArrowUp.pressed = true;
-              // keys.ArrowUp.pressed = true;
-              player3Reverse.lastKey = 'ArrowUp';
-              player3Reverse.sound.play();
-              player3Reverse.velocity.y = -15;
-            } else {
-              // in this case 1st of all object will falling down by this expression
-              // and then how it rich bottom of the canvas it's stops
-              player3Reverse.velocity.y += gravity;
-            }
-          }
-          break;
-        case 'ArrowDown':
-          player3Reverse.attack();
-          // player2.isAttacking = true;
-          break;
-        case 'l':
-          player3Reverse.attackTwo();
-          // player2.isAttacking = true;
-          break;
-        default:
-          console.log('Something goes wrong');
-          break;
-      }
+      player3Reverse.switchButtonsRight(event);
     }
   }
 
@@ -1267,150 +1043,13 @@ window.addEventListener('keydown', (event) => {
 
 window.addEventListener('keyup', (event) => {
   // player
-  switch (event.key) {
-    case 'd':
-      keys.d.pressed = false;
-      // player.soundStart = false;
-      player.sound.pause();
-      // player.sound.currentTime = 0;
-      break;
-    case 'a':
-      keys.a.pressed = false;
-      // player.soundStart = false;
-      player.sound.pause();
-      // player.sound.currentTime = 0;
-      break;
-    case 'w':
-      if ((keys.w.pressed = false && player.lastKey === 'w')) {
-        if (
-          player.position.y + player.height + player.velocity.y >=
-          canvas.height - 115
-        ) {
-          // event.stopPropagation();
-          player.sound.pause();
-          player.velocity.y = 0;
-        } else {
-          // in this case 1st of all object will falling down by this expression
-          // and then how it rich bottom of the canvas it's stops
-          player.velocity.y += gravity;
-        }
-      }
-      break;
-    case ' ':
-      player.sound.volume = 0;
-      break;
-    default:
-      console.log('Something goes wrong');
-      break;
-  }
+  player.switchUpButtonsLeft(event);
+
   // player2
-  switch (event.key) {
-    case 'ArrowRight':
-      keys.ArrowRight.pressed = false;
-      player2.soundStart = false;
-      player2.sound.pause();
-      player2.sound.currentTime = 0;
-      break;
-    case 'ArrowLeft':
-      keys.ArrowLeft.pressed = false;
-      player2.soundStart = false;
-      player2.sound.pause();
-      player2.sound.currentTime = 0;
-      break;
-    case 'ArrowUp':
-      if ((keys.ArrowUp.pressed = false && player2.lastKey === 'ArrowUp')) {
-        if (
-          player2.position.y + player2.height + player2.velocity.y >=
-          canvas.height - 115
-        ) {
-          // event.stopPropagation();
-          player2.sound.pause();
-          player2.velocity.y = 0;
-        } else {
-          // in this case 1st of all object will falling down by this expression
-          // and then how it rich bottom of the canvas it's stops
-          player2.velocity.y += gravity;
-        }
-      }
-      break;
-    default:
-      console.log('Something goes wrong');
-      break;
-  }
+  player2.switchUpButtonsKenji(event);
   // player3
-  switch (event.key) {
-    case 'd':
-      keys.d.pressed = false;
-      // player.soundStart = false;
-      player3.sound.pause();
-      // player.sound.currentTime = 0;
-      break;
-    case 'a':
-      keys.a.pressed = false;
-      // player.soundStart = false;
-      player3.sound.pause();
-      // player.sound.currentTime = 0;
-      break;
-    case 'w':
-      if ((keys.w.pressed = false && player3.lastKey === 'w')) {
-        if (
-          player3.position.y + player3.height + player3.velocity.y >=
-          canvas.height - 115
-        ) {
-          // event.stopPropagation();
-          player3.sound.pause();
-          player3.velocity.y = 0;
-        } else {
-          // in this case 1st of all object will falling down by this expression
-          // and then how it rich bottom of the canvas it's stops
-          player3.velocity.y += gravity;
-        }
-      }
-      break;
-    case ' ':
-      player3.sound.volume = 0;
-      break;
-    default:
-      console.log('Something goes wrong');
-      break;
-  }
+  player.switchUpButtonsLeft(event);
   // player3Reverse
-  switch (event.key) {
-    case 'ArrowRight':
-      keys.ArrowRight.pressed = false;
-      player3Reverse.soundStart = false;
-      player3Reverse.sound.pause();
-      player3Reverse.sound.currentTime = 0;
-      break;
-    case 'ArrowLeft':
-      keys.ArrowLeft.pressed = false;
-      player3Reverse.soundStart = false;
-      player3Reverse.sound.pause();
-      player3Reverse.sound.currentTime = 0;
-      break;
-    case 'ArrowUp':
-      if (
-        (keys.ArrowUp.pressed = false && player3Reverse.lastKey === 'ArrowUp')
-      ) {
-        if (
-          player3Reverse.position.y +
-            player3Reverse.height +
-            player3Reverse.velocity.y >=
-          canvas.height - 115
-        ) {
-          // event.stopPropagation();
-          player3Reverse.sound.pause();
-          player3Reverse.velocity.y = 0;
-        } else {
-          // in this case 1st of all object will falling down by this expression
-          // and then how it rich bottom of the canvas it's stops
-          player3Reverse.velocity.y += gravity;
-        }
-      }
-      break;
-    default:
-      console.log('Something goes wrong');
-      break;
-  }
+  player3Reverse.switchUpButtonsRight(event);
   // console.log(event.key);
 });

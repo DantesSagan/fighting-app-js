@@ -110,8 +110,9 @@ class Sprite {
     // takes frames elapsed divided by frames hold and if the remainder(остаток) is zero
     // we call rest of code
     if (this.framesElapsed % this.framesHold === 0) {
-      if (this.countFramesMax > 0) {
+      if (this.countFramesMax > 0 || this.countFramesMax > this.framesCurrent) {
         this.countFramesMax--;
+        this.framesCurrent++;
       } else {
         this.countFramesMax = this.framesMax - 1;
       }
@@ -199,7 +200,7 @@ class Fighter extends Sprite {
 
   // We are creating draw method
   drawSecond() {
-    // player and player2
+    // player and this
     c.fillStyle = this.color;
     // c.save();
     // c.rotate(0.17);
@@ -357,6 +358,196 @@ class Fighter extends Sprite {
     this.switchSprite('idle');
   }
 
+  switchButtons(event) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = true;
+        this.lastKey = 'd';
+        this.sound.play();
+        break;
+      case 'a':
+        keys.a.pressed = true;
+        this.lastKey = 'a';
+        this.sound.play();
+        break;
+      case 'w':
+        if (keys.w.pressed && this.lastKey === 'w') {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        } else {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // if you want to holding "w" and jump infinite so use
+            // keys.w.pressed = true;
+            // if you want to jump once per pressing "w" so don't this line use
+            // keys.w.pressed = true;
+            // keys.w.pressed = true;
+            this.lastKey = 'w';
+            this.sound.play();
+            this.velocity.y = -15;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case ' ':
+        this.attack();
+        this.sound.play();
+        break;
+      case 'c':
+        this.attackTwo();
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchButtonsKenji(event) {
+    switch (event.key) {
+      // this switch statement
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = true;
+        this.lastKey = 'ArrowRight';
+        this.sound.play();
+        break;
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = true;
+        this.lastKey = 'ArrowLeft';
+        this.sound.play();
+        break;
+      case 'ArrowUp':
+        if (keys.ArrowUp.pressed && this.lastKey === 'ArrowUp') {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        } else {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // if you want to holding ArrowUp and jump infinite so use
+            // keys.ArrowUp.pressed = true;
+            // if you want to jump once per pressing Arrow up so don't this line use
+            // keys.ArrowUp.pressed = true;
+            // keys.ArrowUp.pressed = true;
+            this.lastKey = 'ArrowUp';
+            this.sound.play();
+            this.velocity.y = -15;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case 'ArrowDown':
+        this.attack();
+        // this.isAttacking = true;
+        break;
+      case 'l':
+        this.attackTwo();
+        // this.isAttacking = true;
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchUpButtonsLeft(event) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = false;
+        // player.soundStart = false;
+        this.sound.pause();
+        // player.sound.currentTime = 0;
+        break;
+      case 'a':
+        keys.a.pressed = false;
+        // player.soundStart = false;
+        this.sound.pause();
+        // player.sound.currentTime = 0;
+        break;
+      case 'w':
+        if ((keys.w.pressed = false && this.lastKey === 'w')) {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.sound.pause();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case ' ':
+        this.sound.volume = 0;
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchUpButtonsKenji(event) {
+    // player2
+    switch (event.key) {
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = false;
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = false;
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'ArrowUp':
+        if ((keys.ArrowUp.pressed = false && this.lastKey === 'ArrowUp')) {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.sound.pause();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
   // switch sprites for better logic statements
   switchSprite(sprite) {
     // overriding all other animations with the attack && damaged && death animations
@@ -571,7 +762,7 @@ class FighterReverse extends Sprite {
 
   // We are creating draw method
   drawSecond() {
-    // player and player2
+    // player and this
     c.fillStyle = this.color;
     // c.save();
     // c.rotate(0.17);
@@ -728,6 +919,101 @@ class FighterReverse extends Sprite {
   restartRound() {
     this.switchSprite('idle');
   }
+  switchUpButtonsRight(event) {
+    // player2
+    switch (event.key) {
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = false;
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = false;
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'ArrowUp':
+        if ((keys.ArrowUp.pressed = false && this.lastKey === 'ArrowUp')) {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.sound.pause();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchButtonsRight(event) {
+    switch (event.key) {
+      // this switch statement
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = true;
+        this.lastKey = 'ArrowRight';
+        this.sound.play();
+        break;
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = true;
+        this.lastKey = 'ArrowLeft';
+        this.sound.play();
+        break;
+      case 'ArrowUp':
+        if (keys.ArrowUp.pressed && this.lastKey === 'ArrowUp') {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        } else {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // if you want to holding ArrowUp and jump infinite so use
+            // keys.ArrowUp.pressed = true;
+            // if you want to jump once per pressing Arrow up so don't this line use
+            // keys.ArrowUp.pressed = true;
+            // keys.ArrowUp.pressed = true;
+            this.lastKey = 'ArrowUp';
+            this.sound.play();
+            this.velocity.y = -15;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case 'ArrowDown':
+        this.attack();
+        // this.isAttacking = true;
+        break;
+      case 'l':
+        this.attackTwo();
+        // this.isAttacking = true;
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
 
   // switch sprites for better logic statements
   switchSprite(sprite) {
@@ -745,7 +1031,7 @@ class FighterReverse extends Sprite {
     if (
       this.image === this.sprites[0].damaged.image &&
       // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites[0].damaged.framesMax - 1
+      this.countFramesMax
     )
       return;
     // dead animation
@@ -799,14 +1085,14 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].jump.image;
           this.framesMax = this.sprites[0].jump.framesMax;
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'fall':
         if (this.image !== this.sprites[0].fall.image) {
           this.image = this.sprites[0].fall.image;
           this.framesMax = this.sprites[0].fall.framesMax;
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'attack1':
@@ -837,7 +1123,7 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].damaged.image;
           this.framesMax = this.sprites[0].damaged.framesMax;
-          this.framesCurrent = this.framesMax - 1;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'death':
@@ -850,7 +1136,8 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].death.image;
           this.framesMax = this.sprites[0].death.framesMax;
-          this.framesCurrent = this.framesMax - 1;
+          this.countFramesMax = this.framesMax - 1;
+          this.framesCurrent = 0;
         }
         break;
       case 'deathTwo':
