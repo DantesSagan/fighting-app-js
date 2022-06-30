@@ -32,6 +32,7 @@ const backgorund = new Sprite({
   },
   imageSrc: './assets/background.png',
   start: false,
+
 });
 // shop layout
 
@@ -58,7 +59,7 @@ const player = new Fighter({
     y: 0,
   },
   offset: {
-    x: 215,
+    x: 245,
     y: 170,
   },
   scale: 2.63,
@@ -285,24 +286,22 @@ const player3Reverse = new FighterReverse({
     y: 0,
   },
   offset: {
-    x: 115,
+    x: 150,
     y: 90,
   },
   scale: 2.05,
   color: 'black',
   imageSrc: './assets/Medieval King Pack/Idle.png',
-  // imageStyle: 'scale(-1, 1)',
-  imageID: 'img-scale',
   framesMax: 6,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Medieval King Pack/Idle.png',
-        imageID: 'img-scale',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Idle - Reverse.png',
+        imageStyle: 'scale(-1, 1)',
         framesMax: 6,
       },
       run: {
-        imageSrc: './assets/Medieval King Pack/Run.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
@@ -316,12 +315,12 @@ const player3Reverse = new FighterReverse({
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Medieval King Pack/Attack_1.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Attack_1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
-        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        imageSrc: './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
         framesMax: 6,
       },
       damaged: {
@@ -342,7 +341,7 @@ const player3Reverse = new FighterReverse({
   ],
   attackBox: {
     offset: {
-      x: -150,
+      x: -100,
       y: 30,
     },
     width: 150,
@@ -396,9 +395,10 @@ const keys = {
 
 // Declaration variable let with last used key
 let lastKey;
-
 function animate(event) {
   window.requestAnimationFrame(animate);
+  // let countPosition = (player.position.x += player.velocity.x);
+  // console.log(countPosition);
 
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
@@ -449,8 +449,24 @@ function animate(event) {
     // insert player
     // insert player2 or second player
     player.update();
+    // if (countPosition > 256) {
+    //   player.attackBox.offset.x = -200;
+    // } else if (countPosition > 612) {
+    //   player.attackBox.offset.x = -300;
+    // } else if (countPosition > 768) {
+    //   player.attackBox.offset.x = -400;
+    // } else {
+    //   player.attackBox.offset.x = 100;
+    // }
+    c.save();
+    // c.scale(-1, 1);
+    // player3Reverse.sprites[0].idle.imageStyle = 'scale(-1, 1)';
+    // c.translate(canvas.width, 0);
+    // c.scale(-1, 1);
     // insert player3 or second player
-    player3Reverse.update();
+    player3Reverse.updateReverse();
+    c.restore();
+    // c.setTransform(1, 0, 0, 1, 0, 0);
   }
   if (
     player3.start === true &&
@@ -462,8 +478,12 @@ function animate(event) {
     // insert player
     // insert player2 or second player
     player3.update();
+    // c.save();
+    // c.scale(-1, 1);
+    // c.setTransform(-1, 0, 0, 1, 0, 0);
+    player3Reverse.updateReverse();
     // insert player3 or second player
-    player3Reverse.update();
+    // c.restore();
   }
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
@@ -549,7 +569,7 @@ function animate(event) {
   }
 
   // Player 3 Reverse
-
+  // Because this is reverse version of player3 character need to set reverse buttons
   if (!player3Reverse.dead) {
     // player movements
     player3Reverse.velocity.x = 0;
@@ -850,7 +870,7 @@ function animate(event) {
       rectangle2: player3Reverse,
     }) &&
     player3Reverse.isAttacking &&
-    player3Reverse.framesCurrent === 4
+    player3Reverse.countFramesMax === 3
   ) {
     if (player.start === true) {
       player.damaged();
@@ -879,7 +899,7 @@ function animate(event) {
   }
 
   // if player1 is missing by attacking box
-  if (player3Reverse.isAttacking && player3Reverse.framesCurrent === 4) {
+  if (player3Reverse.isAttacking && player3Reverse.countFramesMax === 3) {
     player3Reverse.isAttacking = false;
   }
   // Player 3 is attacking Two animation
@@ -893,18 +913,18 @@ function animate(event) {
           : player,
       rectangle2: player3Reverse,
     }) &&
-    player3Reverse.isAttacking &&
-    player3Reverse.framesCurrent === 4
+    player3Reverse.isAttackingTwo &&
+    player3Reverse.countFramesMax === 3
   ) {
     if (player.start === true) {
       player.damagedTwo();
-      player3Reverse.isAttacking = false;
+      player3Reverse.isAttackingTwo = false;
     } else if (player3.start === true) {
       player3.damagedTwo();
-      player3Reverse.isAttacking = false;
+      player3Reverse.isAttackingTwo = false;
     } else {
       player.damagedTwo();
-      player3Reverse.isAttacking = false;
+      player3Reverse.isAttackingTwo = false;
     }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
     if (player.start === true) {
@@ -921,7 +941,7 @@ function animate(event) {
   }
 
   // if player3 is missing by attacking box
-  if (player3Reverse.isAttackingTwo && player3Reverse.framesCurrent === 4) {
+  if (player3Reverse.isAttackingTwo && player3Reverse.countFramesMax === 3) {
     player3Reverse.isAttackingTwo = false;
   }
 

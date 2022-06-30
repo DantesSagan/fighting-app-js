@@ -26,6 +26,7 @@ class Sprite {
     this.framesMax = framesMax;
     this.framesCurrent = 0;
     this.framesElapsed = 0;
+    this.countFramesMax = this.framesMax;
     // the lower this number (value)
     // then faster will be chaning frames of animation
     this.framesHold = 10;
@@ -57,7 +58,25 @@ class Sprite {
     //   -this.position.y - (this.img.height * this.scale) / 2
     // );
   }
-
+  drawReverse() {
+    c.drawImage(
+      this.image,
+      this.countFramesMax * (this.image.width / this.framesMax),
+      0,
+      this.image.width / this.framesMax,
+      this.image.height,
+      this.position.x - this.offset.x,
+      this.position.y - this.offset.y,
+      (this.image.width / this.framesMax) * this.scale,
+      this.image.height * this.scale
+    );
+    // need to create transform scale for skin to flip it horizontally
+    // c.rotate(this.angle);
+    // c.translate(
+    //   -this.position.x - (this.img.width * this.scale) / 2,
+    //   -this.position.y - (this.img.height * this.scale) / 2
+    // );
+  }
   // animate frame of boxes
   animateFrames() {
     // Elapsed frames = истекающие кадры
@@ -80,6 +99,23 @@ class Sprite {
   update() {
     this.draw();
     this.animateFrames();
+  }
+
+  animateFramesReverse() {
+    // Elapsed frames = истекающие кадры
+    this.framesElapsed++;
+    // this situation may be describe like this
+    // if elapsed frames divide by frames hold (which means number of stopping frames)
+    // and if this expression strict equal to 0 so let animation work
+    // takes frames elapsed divided by frames hold and if the remainder(остаток) is zero
+    // we call rest of code
+    if (this.framesElapsed % this.framesHold === 0) {
+      if (this.countFramesMax > 0) {
+        this.countFramesMax--;
+      } else {
+        this.countFramesMax = this.framesMax - 1;
+      }
+    }
   }
 }
 
@@ -165,18 +201,26 @@ class Fighter extends Sprite {
   drawSecond() {
     // player and player2
     c.fillStyle = this.color;
+    // c.save();
+    // c.rotate(0.17);
+    c.save();
+    // c.setTransform(-1, 0, 0, 1, canvas.width, 0);
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
+
+    // draw your object
+    // c.restore();
+    // c.drawImage(0, 0);
     // c.rotate((-360 * Math.PI) / 180);
     // attack box for both
 
     // default position of attacking box
-    // c.fillStyle = 'green';
-    // c.fillRect(
-    //   this.attackBox.position.x,
-    //   this.attackBox.position.y,
-    //   this.attackBox.width - 50,
-    //   this.attackBox.height - 25
-    // );
+    c.fillStyle = 'green';
+    c.fillRect(
+      this.attackBox.position.x,
+      this.attackBox.position.y,
+      this.attackBox.width - 50,
+      this.attackBox.height - 25
+    );
 
     // state when someone is attacking and changing state's of attacking box
     // by pressing key of attack
@@ -189,10 +233,20 @@ class Fighter extends Sprite {
         this.attackBox.height
       );
     }
+    if (this.isAttackingTwo) {
+      c.fillStyle = 'red';
+      c.fillRect(
+        this.attackBox.position.x,
+        this.attackBox.position.y,
+        this.attackBox.width,
+        this.attackBox.height
+      );
+    }
+    c.restore();
   }
   // updating method instantly
   update() {
-    // this.drawSecond();
+    this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -505,7 +559,6 @@ class FighterReverse extends Sprite {
       // this is objects that we currenlty looping over
       let varSprites = sprites[0];
       // console.log(sprite);
-
       varSprites[sprite].image = new Image();
       varSprites[sprite].image.src = varSprites[sprite].imageSrc;
       varSprites[sprite].image.style.transform = varSprites[sprite].imageStyle;
@@ -519,34 +572,27 @@ class FighterReverse extends Sprite {
   // We are creating draw method
   drawSecond() {
     // player and player2
-    c.drawImage(
-      this.image,
-      this.framesCurrent * (this.image.width / this.framesMax),
-      0,
-      this.image.width / this.framesMax,
-      this.image.height,
-      this.position.x - this.offset.x,
-      this.position.y - this.offset.y,
-      (this.image.width / this.framesMax) * this.scale,
-      this.image.height * this.scale
-    );
     c.fillStyle = this.color;
+    // c.save();
+    // c.rotate(0.17);
+    c.save();
+    // c.setTransform(-1, 0, 0, 1, canvas.width, 0);
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
-    // c.translate(this.width, 0);
-    c.scale(-1, 1);
-    // canvasContext.drawImage(image, 0, 0);
-    // c.scale(-1, 1);
+
+    // draw your object
+    // c.restore();
+    // c.drawImage(0, 0);
     // c.rotate((-360 * Math.PI) / 180);
     // attack box for both
 
     // default position of attacking box
-    // c.fillStyle = 'green';
-    // c.fillRect(
-    //   this.attackBox.position.x,
-    //   this.attackBox.position.y,
-    //   this.attackBox.width - 50,
-    //   this.attackBox.height - 25
-    // );
+    c.fillStyle = 'green';
+    c.fillRect(
+      this.attackBox.position.x,
+      this.attackBox.position.y,
+      this.attackBox.width - 50,
+      this.attackBox.height - 25
+    );
 
     // state when someone is attacking and changing state's of attacking box
     // by pressing key of attack
@@ -568,14 +614,15 @@ class FighterReverse extends Sprite {
         this.attackBox.height
       );
     }
+    c.restore();
   }
   // updating method instantly
-  update() {
-    // this.drawSecond();
-    this.draw();
+  updateReverse() {
+    this.drawSecond();
+    this.drawReverse();
     // if player is not dead so animate their frames
     // if dead do not animate
-    if (!this.dead) this.animateFrames();
+    if (!this.dead) this.animateFramesReverse();
 
     // attack boxes with offsets to make it more flexible by x and y axis
     this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
@@ -687,12 +734,12 @@ class FighterReverse extends Sprite {
     // overriding all other animations with the attack && damaged && death animations
     if (
       this.image === this.sprites[0].attack1.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites[0].attack1.framesMax - 1
+      this.countFramesMax
     )
       return;
     if (
       this.image === this.sprites[0].attack2.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
-      this.framesCurrent < this.sprites[0].attack2.framesMax - 1
+      this.countFramesMax
     )
       return;
     if (
@@ -728,7 +775,7 @@ class FighterReverse extends Sprite {
           this.image = this.sprites[0].idle.image;
           this.framesMax = this.sprites[0].idle.framesMax;
           // to solve problems with flashing frames need to set current frames to 0 and animation starts in the beginning
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'run':
@@ -740,7 +787,7 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].run.image;
           this.framesMax = this.sprites[0].run.framesMax;
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'jump':
@@ -770,14 +817,14 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].attack1.image;
           this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
           this.framesMax = this.sprites[0].attack2.framesMax;
-          this.framesCurrent = 0;
+          this.countFramesMax = this.framesMax - 1;
         }
         break;
       case 'damaged':
@@ -790,7 +837,7 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].damaged.image;
           this.framesMax = this.sprites[0].damaged.framesMax;
-          this.framesCurrent = 0;
+          this.framesCurrent = this.framesMax - 1;
         }
         break;
       case 'death':
@@ -803,14 +850,14 @@ class FighterReverse extends Sprite {
           }
           this.image = this.sprites[0].death.image;
           this.framesMax = this.sprites[0].death.framesMax;
-          this.framesCurrent = 0;
+          this.framesCurrent = this.framesMax - 1;
         }
         break;
       case 'deathTwo':
         if (this.image !== this.sprites[0].deathTwo.image) {
           this.image = this.sprites[0].deathTwo.image;
           this.framesMax = this.sprites[0].deathTwo.framesMax;
-          this.framesCurrent = 0;
+          this.framesCurrent = this.framesMax - 1;
         }
         break;
     }
