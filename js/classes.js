@@ -286,6 +286,35 @@ class Fighter extends Sprite {
 
     // console.log(this.position.y);
   }
+  heroMovements(keysLeft, keysRight, buttonLeft, buttonRight) {
+    if (!this.dead) {
+      // player movements
+      this.velocity.x = 0;
+      // this is default idle staying position without running animation
+      // this is running animation of player 1 whe you press "a" key
+      if (keysLeft && this.lastKey === buttonLeft) {
+        // player.soundStart = false;
+        this.runLeft();
+
+        // this is running animation of player 1 whe you press "d" key
+      } else if (keysRight && this.lastKey === buttonRight) {
+        // player.soundStart = false;
+        this.runRight();
+      } else {
+        this.switchSprite('idle');
+      }
+      if (this.velocity.y < 0) {
+        this.switchSprite('jump');
+      } else if (this.velocity.y > 0) {
+        this.switchSprite('fall');
+      }
+    }
+
+    if (this.restart === true) {
+      this.restartRound();
+    }
+  }
+
   // running to the left method with activating animation and sound
   runLeft() {
     this.soundStart = true;
@@ -321,18 +350,124 @@ class Fighter extends Sprite {
     // }, 1000);
   }
 
+  detectCollision(player, player2, player3, player4, missingFrame) {
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2:
+          player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player2,
+      }) &&
+      player.isAttacking &&
+      player.framesCurrent === missingFrame
+    ) {
+      if (player2.start === true) {
+        player2.damaged();
+        player.isAttacking = false;
+      } else if (player3.start === true) {
+        player3.damaged();
+        player.isAttacking = false;
+      } else if (player4.start === true) {
+        player4.damaged();
+        player.isAttacking = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player2.start === true) {
+        gsap.to('#player2Health', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#player2Health', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#player2Health', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (player.isAttacking && player.framesCurrent === missingFrame) {
+      player.isAttacking = false;
+    }
+  }
+  detectCollisionTwo(player, player2, player3, player4, missingFrame) {
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2:
+          player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player2,
+      }) &&
+      player.isAttackingTwo &&
+      player.framesCurrent === missingFrame
+    ) {
+      if (player2.start === true) {
+        player2.damagedTwo();
+        player.isAttackingTwo = false;
+      } else if (player3.start === true) {
+        player3.damagedTwo();
+        player.isAttackingTwo = false;
+      } else if (player4.start === true) {
+        player4.damagedTwo();
+        player.isAttackingTwo = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player2.start === true) {
+        gsap.to('#player2Health', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#player2Health', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#player2Health', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (player.isAttackingTwo && player.framesCurrent === missingFrame) {
+      player.isAttackingTwo = false;
+    }
+  }
   damaged() {
     this.health -= 20;
     if (this.health <= 0) {
-      player.restart = false;
-      player2.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
       // }, 3000);
     } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
       // in this case we auto play damaged sound
       this.sound.volume = volumeFight;
       this.sound.currentTime = 0;
@@ -350,6 +485,53 @@ class Fighter extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      this.switchSprite('damaged');
+    }
+  }
+
+  damagedByKenji() {
+    this.health -= 10;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      // in this case we auto play damaged sound
+      this.sound.volume = volumeFight;
+      this.sound.currentTime = 0;
+      this.sound.play();
+      // and also change sprite to damaged sprite
+      this.switchSprite('damaged');
+    }
+  }
+  damagedTwoByKenji() {
+    this.health -= 20;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }
@@ -882,12 +1064,146 @@ class FighterReverse extends Sprite {
     //   this.isAttacking = false;
     // }, 1000);
   }
+  heroMovementsReverse(keysLeft, keysRight, buttonLeft, buttonRight) {
+    if (!this.dead) {
+      // player movements
+      this.velocity.x = 0;
+      // this is default idle staying position without running animation
+      // this is running animation of player 1 whe you press "a" key
+      if (keysLeft && this.lastKey === buttonLeft) {
+        // player.soundStart = false;
+        this.runLeft();
+
+        // this is running animation of player 1 whe you press "d" key
+      } else if (keysRight && this.lastKey === buttonRight) {
+        // player.soundStart = false;
+        this.runRight();
+      } else {
+        this.switchSprite('idle');
+      }
+      if (this.velocity.y < 0) {
+        this.switchSprite('jump');
+      } else if (this.velocity.y > 0) {
+        this.switchSprite('fall');
+      }
+    }
+
+    if (this.restart === true) {
+      this.restartRound();
+    }
+  }
+  detectCollisionReverse(player, player2, player3, player4, missingFrame) {
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2:
+          player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player2,
+      }) &&
+      player.isAttacking &&
+      player.countFramesMax === missingFrame
+    ) {
+      if (player2.start === true) {
+        player2.damaged();
+        player.isAttacking = false;
+      } else if (player3.start === true) {
+        player3.damaged();
+        player.isAttacking = false;
+      } else if (player4.start === true) {
+        player4.damaged();
+        player.isAttacking = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player2.start === true) {
+        gsap.to('#playerHealth', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#playerHealth', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#playerHealth', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (player.isAttacking && player.countFramesMax === missingFrame) {
+      player.isAttacking = false;
+    }
+  }
+  detectCollisionTwoReverse(player, player2, player3, player4, missingFrame) {
+    if (
+      rectangularCollision({
+        rectangle1: player,
+        rectangle2:
+          player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player2,
+      }) &&
+      player.isAttackingTwo &&
+      player.countFramesMax === missingFrame
+    ) {
+      if (player2.start === true) {
+        player2.damagedTwo();
+        player.isAttackingTwo = false;
+      } else if (player3.start === true) {
+        player3.damagedTwo();
+        player.isAttackingTwo = false;
+      } else if (player4.start === true) {
+        player4.damagedTwo();
+        player.isAttackingTwo = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player2.start === true) {
+        gsap.to('#playerHealth', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#playerHealth', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#playerHealth', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (player.isAttackingTwo && player.countFramesMax === missingFrame) {
+      player.isAttackingTwo = false;
+    }
+  }
 
   damaged() {
     this.health -= 20;
     if (this.health <= 0) {
       player.restart = false;
+      playerReverse.restart = false;
       player2.restart = false;
+      player2Reverse.restart = false;
       player3.restart = false;
       player3Reverse.restart = false;
       this.switchSprite('death');
@@ -906,12 +1222,59 @@ class FighterReverse extends Sprite {
   damagedTwo() {
     this.health -= 35;
     if (this.health <= 0) {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
       //   console.log('deathTwo');
       // }, 3000);
     } else {
+      this.switchSprite('damaged');
+    }
+  }
+
+  damagedByKenji() {
+    this.health -= 10;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      // in this case we auto play damaged sound
+      this.sound.volume = volumeFight;
+      this.sound.currentTime = 0;
+      this.sound.play();
+      // and also change sprite to damaged sprite
+      this.switchSprite('damaged');
+    }
+  }
+  damagedTwoByKenji() {
+    this.health -= 20;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }

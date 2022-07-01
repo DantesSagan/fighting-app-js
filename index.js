@@ -729,288 +729,47 @@ function animate(event) {
   c.fillRect(0, 0, canvas.width, canvas.height);
   //   console.log('go')
   // console.log(player.sprites)
+  let moveLeftPL1 = keys.a.pressed;
+  let moveRightPL1 = keys.d.pressed;
+  let moveLeftPL2 = keys.ArrowLeft.pressed;
+  let moveRightPL2 = keys.ArrowRight.pressed;
   // Player 1
-  if (!player.dead) {
-    // player movements
-    player.velocity.x = 0;
-    // this is default idle staying position without running animation
-    // this is running animation of player 1 whe you press "a" key
-    if (keys.a.pressed && player.lastKey === 'a') {
-      // player.soundStart = false;
-      player.runLeft();
+  player.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
 
-      // this is running animation of player 1 whe you press "d" key
-    } else if (keys.d.pressed && player.lastKey === 'd') {
-      // player.soundStart = false;
-      player.runRight();
-    } else {
-      player.switchSprite('idle');
-    }
-    if (player.velocity.y < 0) {
-      player.switchSprite('jump');
-    } else if (player.velocity.y > 0) {
-      player.switchSprite('fall');
-    }
-  }
-
-  if (player.restart === true) {
-    player.restartRound();
-  }
   // Player 2
+  player2.heroMovements(moveLeftPL2, moveRightPL2, 'ArrowLeft', 'ArrowRight');
 
-  if (!player2.dead) {
-    // player2 movements
-    player2.velocity.x = 0;
-    if (keys.ArrowLeft.pressed && player2.lastKey === 'ArrowLeft') {
-      player2.runLeft();
-    } else if (keys.ArrowRight.pressed && player2.lastKey === 'ArrowRight') {
-      player2.runRight();
-    } else {
-      player2.switchSprite('idle');
-    }
-
-    if (player2.velocity.y < 0) {
-      player2.switchSprite('jump');
-    } else if (player2.velocity.y > 0) {
-      player2.switchSprite('fall');
-    }
-  }
-  if (player2.restart === true) {
-    player2.restartRound();
-  }
   // Player 3
-
-  if (!player3.dead) {
-    // player movements
-    player3.velocity.x = 0;
-    // this is default idle staying position without running animation
-    // this is running animation of player 1 whe you press "a" key
-    if (keys.a.pressed && player3.lastKey === 'a') {
-      // player.soundStart = false;
-      player3.runLeft();
-
-      // this is running animation of player 1 whe you press "d" key
-    } else if (keys.d.pressed && player3.lastKey === 'd') {
-      // player.soundStart = false;
-      player3.runRight();
-    } else {
-      player3.switchSprite('idle');
-    }
-    if (player3.velocity.y < 0) {
-      player3.switchSprite('jump');
-    } else if (player3.velocity.y > 0) {
-      player3.switchSprite('fall');
-    }
-  }
-
-  if (player3.restart === true) {
-    player3.restartRound();
-  }
+  player3.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
 
   // Player 3 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
-  if (!player3Reverse.dead) {
-    // player movements
-    player3Reverse.velocity.x = 0;
-    // this is default idle staying position without running animation
-    // this is running animation of player 1 whe you press "a" key
-    if (keys.ArrowLeft.pressed && player3Reverse.lastKey === 'ArrowLeft') {
-      // player.soundStart = false;
-      player3Reverse.runLeft();
-
-      // this is running animation of player 1 whe you press "d" key
-    } else if (
-      keys.ArrowRight.pressed &&
-      player3Reverse.lastKey === 'ArrowRight'
-    ) {
-      // player.soundStart = false;
-      player3Reverse.runRight();
-    } else {
-      player3Reverse.switchSprite('idle');
-    }
-    if (player3Reverse.velocity.y < 0) {
-      player3Reverse.switchSprite('jump');
-    } else if (player3Reverse.velocity.y > 0) {
-      player3Reverse.switchSprite('fall');
-    }
-  }
-
-  if (player3Reverse.restart === true) {
-    player3Reverse.restartRound();
-  }
+  player3Reverse.heroMovementsReverse(
+    moveLeftPL2,
+    moveRightPL2,
+    'ArrowLeft',
+    'ArrowRight'
+  );
 
   // Player  Reverse
   // Because this is reverse version of player character need to set reverse buttons
-  if (!playerReverse.dead) {
-    // player movements
-    playerReverse.velocity.x = 0;
-    // this is default idle staying position without running animation
-    // this is running animation of player 1 whe you press "a" key
-    if (keys.ArrowLeft.pressed && playerReverse.lastKey === 'ArrowLeft') {
-      // player.soundStart = false;
-      playerReverse.runLeft();
-
-      // this is running animation of player 1 whe you press "d" key
-    } else if (
-      keys.ArrowRight.pressed &&
-      playerReverse.lastKey === 'ArrowRight'
-    ) {
-      // player.soundStart = false;
-      playerReverse.runRight();
-    } else {
-      playerReverse.switchSprite('idle');
-    }
-    if (playerReverse.velocity.y < 0) {
-      playerReverse.switchSprite('jump');
-    } else if (playerReverse.velocity.y > 0) {
-      playerReverse.switchSprite('fall');
-    }
-  }
-
-  if (playerReverse.restart === true) {
-    playerReverse.restartRound();
-  }
-
+  playerReverse.heroMovementsReverse(
+    moveLeftPL2,
+    moveRightPL2,
+    'ArrowLeft',
+    'ArrowRight'
+  );
   // Player 2 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
-  if (!player2Reverse.dead) {
-    // player movements
-    player2Reverse.velocity.x = 0;
-    // this is default idle staying position without running animation
-    // this is running animation of player 1 whe you press "a" key
-    if (keys.a.pressed && player2Reverse.lastKey === 'a') {
-      // player.soundStart = false;
-      player2Reverse.runLeft();
+  player2Reverse.heroMovementsReverse(moveLeftPL1, moveRightPL1, 'a', 'd');
 
-      // this is running animation of player 1 whe you press "d" key
-    } else if (keys.d.pressed && player2Reverse.lastKey === 'd') {
-      // player.soundStart = false;
-      player2Reverse.runRight();
-    } else {
-      player2Reverse.switchSprite('idle');
-    }
-    if (player2Reverse.velocity.y < 0) {
-      player2Reverse.switchSprite('jump');
-    } else if (player2Reverse.velocity.y > 0) {
-      player2Reverse.switchSprite('fall');
-    }
-  }
-
-  if (player2Reverse.restart === true) {
-    player2Reverse.restartRound();
-  }
   // console.log(player2.restart);
   // detect collision
   // Player 1 is attacking 1st animation
-  if (
-    rectangularCollision({
-      rectangle1: player,
-      rectangle2:
-        player2.start === true
-          ? player2
-          : player3Reverse.start === true
-          ? player3Reverse
-          : playerReverse.start === true
-          ? playerReverse
-          : player2,
-    }) &&
-    player.isAttacking &&
-    player.framesCurrent === 4
-  ) {
-    if (player2.start === true) {
-      player2.damaged();
-      player.isAttacking = false;
-    } else if (player3Reverse.start === true) {
-      player3Reverse.damaged();
-      player.isAttacking = false;
-    } else if (playerReverse.start === true) {
-      playerReverse.damaged();
-      player.isAttacking = false;
-    } else {
-      player2.damaged();
-      player.isAttacking = false;
-    }
+  player.detectCollision(player, player2, player3Reverse, playerReverse, 4);
 
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
-
-  // if player1 is missing by attacking box
-  if (player.isAttacking && player.framesCurrent === 4) {
-    player.isAttacking = false;
-  }
   // Player 1 is attacking Two animation
-  if (
-    rectangularCollision({
-      rectangle1: player,
-      rectangle2:
-        player2.start === true
-          ? player2
-          : player3Reverse.start === true
-          ? player3Reverse
-          : playerReverse.start === true
-          ? playerReverse
-          : player2,
-    }) &&
-    player.isAttackingTwo &&
-    player.framesCurrent === 4
-  ) {
-    if (player2.start === true) {
-      player2.damagedTwo();
-      player.isAttacking = false;
-    } else if (player3Reverse.start === true) {
-      player3Reverse.damagedTwo();
-      player.isAttacking = false;
-    } else if (playerReverse.start === true) {
-      playerReverse.damagedTwo();
-      player.isAttacking = false;
-    } else {
-      player2.damagedTwo();
-      player.isAttacking = false;
-    }
-
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
-
-  // if player1 is missing by attacking box
-  if (player.isAttackingTwo && player.framesCurrent === 4) {
-    player.isAttackingTwo = false;
-  }
+  player.detectCollisionTwo(player, player2, player3Reverse, playerReverse, 4);
 
   // Player 2 && player2 is attacking animation
   if (
@@ -1029,13 +788,13 @@ function animate(event) {
     player2.framesCurrent === 1
   ) {
     if (player.start === true) {
-      player.damaged();
+      player.damagedByKenji();
       player2.isAttacking = false;
     } else if (player3.start === true) {
-      player3.damaged();
+      player3.damagedByKenji();
       player2.isAttacking = false;
     } else if (player2Reverse.start === true) {
-      player2Reverse.damaged();
+      player2Reverse.damagedByKenji();
       player2.isAttacking = false;
     }
     // document.querySelector('#playerHealth').style.width = player.health + '%';
@@ -1078,13 +837,13 @@ function animate(event) {
     player2.framesCurrent === 1
   ) {
     if (player.start === true) {
-      player.damagedTwo();
+      player.damagedTwoByKenji();
       player2.isAttacking = false;
     } else if (player3.start === true) {
-      player3.damagedTwo();
+      player3.damagedTwoByKenji();
       player2.isAttacking = false;
     } else if (player2Reverse.start === true) {
-      player2Reverse.damagedTwo();
+      player2Reverse.damagedTwoByKenji();
       player2.isAttacking = false;
     }
     // document.querySelector('#playerHealth').style.width = player.health + '%';
@@ -1111,313 +870,52 @@ function animate(event) {
   }
   // here
   // Player 3 is attacking 1st animation
-  if (
-    rectangularCollision({
-      rectangle1: player3,
-      rectangle2:
-        player3Reverse.start === true
-          ? player3Reverse
-          : player2.start === true
-          ? player2
-          : playerReverse.start === true
-          ? playerReverse
-          : player3Reverse,
-    }) &&
-    player3.isAttacking &&
-    player3.framesCurrent === 4
-  ) {
-    if (player3Reverse.start === true) {
-      player3Reverse.damaged();
-      player3.isAttacking = false;
-    } else if (player2.start === true) {
-      player2.damaged();
-      player3.isAttacking = false;
-    } else if (playerReverse.start === true) {
-      playerReverse.damaged();
-      player3.isAttacking = false;
-    } else {
-      player3Reverse.damaged();
-      player3.isAttacking = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
+  player3.detectCollision(player3, player3Reverse, player2, playerReverse, 4);
 
-  // if player1 is missing by attacking box
-  if (player3.isAttacking && player3.framesCurrent === 4) {
-    player3.isAttacking = false;
-  }
   // Player 3 is attacking Two animation
-  if (
-    rectangularCollision({
-      rectangle1: player3,
-      rectangle2:
-        player3Reverse.start === true
-          ? player3Reverse
-          : player2.start === true
-          ? player2
-          : playerReverse.start === true
-          ? playerReverse
-          : player3Reverse,
-    }) &&
-    player3.isAttackingTwo &&
-    player3.framesCurrent === 4
-  ) {
-    if (player3Reverse.start === true) {
-      player3Reverse.damagedTwo();
-      player3.isAttacking = false;
-    } else if (player2.start === true) {
-      player2.damagedTwo();
-      player3.isAttacking = false;
-    } else if (playerReverse.start === true) {
-      playerReverse.damagedTwo();
-      player3.isAttacking = false;
-    } else {
-      player3Reverse.damagedTwo();
-      player3Reverse.isAttacking = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
-
-  // if player3 is missing by attacking box
-  if (player3.isAttackingTwo && player3.framesCurrent === 4) {
-    player3.isAttackingTwo = false;
-  }
+  player3.detectCollisionTwo(
+    player3,
+    player3Reverse,
+    player2,
+    playerReverse,
+    4
+  );
 
   // Player 3Reverse is attacking 1st animation
-  if (
-    rectangularCollision({
-      rectangle1: player3Reverse,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player,
-    }) &&
-    player3Reverse.isAttacking &&
-    player3Reverse.countFramesMax === 3
-  ) {
-    if (player.start === true) {
-      player.damaged();
-      player3Reverse.isAttacking = false;
-    } else if (player3.start === true) {
-      player3.damaged();
-      player3Reverse.isAttacking = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damaged();
-      player3Reverse.isAttacking = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
+  player3Reverse.detectCollisionReverse(
+    player3Reverse,
+    player,
+    player3,
+    player2Reverse,
+    3
+  );
 
-  // if player1 is missing by attacking box
-  if (player3Reverse.isAttacking && player3Reverse.countFramesMax === 3) {
-    player3Reverse.isAttacking = false;
-  }
   // Player 3Reverse is attacking Two animation
-  if (
-    rectangularCollision({
-      rectangle1: player3Reverse,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player,
-    }) &&
-    player3Reverse.isAttackingTwo &&
-    player3Reverse.countFramesMax === 3
-  ) {
-    if (player.start === true) {
-      player.damagedTwo();
-      player3Reverse.isAttackingTwo = false;
-    } else if (player3.start === true) {
-      player3.damagedTwo();
-      player3Reverse.isAttackingTwo = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damagedTwo();
-      player3Reverse.isAttackingTwo = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
-
-  // if player3 is missing by attacking box
-  if (player3Reverse.isAttackingTwo && player3Reverse.countFramesMax === 3) {
-    player3Reverse.isAttackingTwo = false;
-  }
+  player3Reverse.detectCollisionTwoReverse(
+    player3Reverse,
+    player,
+    player3,
+    player2Reverse,
+    3
+  );
 
   // Player Reverse is attacking 1st animation
-  if (
-    rectangularCollision({
-      rectangle1: playerReverse,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player,
-    }) &&
-    playerReverse.isAttacking &&
-    playerReverse.countFramesMax === 2
-  ) {
-    if (player.start === true) {
-      player.damaged();
-      playerReverse.isAttacking = false;
-    } else if (player3.start === true) {
-      player3.damaged();
-      playerReverse.isAttacking = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damaged();
-      playerReverse.isAttacking = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
+  playerReverse.detectCollisionReverse(
+    playerReverse,
+    player,
+    player3,
+    player2Reverse,
+    2
+  );
 
-  // if player1 is missing by attacking box
-  if (playerReverse.isAttacking && playerReverse.countFramesMax === 2) {
-    playerReverse.isAttacking = false;
-  }
   // Player Reverse is attacking Two animation
-  if (
-    rectangularCollision({
-      rectangle1: playerReverse,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player,
-    }) &&
-    playerReverse.isAttackingTwo &&
-    playerReverse.countFramesMax === 2
-  ) {
-    if (player.start === true) {
-      player.damagedTwo();
-      playerReverse.isAttackingTwo = false;
-    } else if (player3.start === true) {
-      player3.damagedTwo();
-      playerReverse.isAttackingTwo = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damagedTwo();
-      playerReverse.isAttackingTwo = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
-
-  // if player3 is missing by attacking box
-  if (playerReverse.isAttackingTwo && playerReverse.countFramesMax === 2) {
-    playerReverse.isAttackingTwo = false;
-  }
+  playerReverse.detectCollisionTwoReverse(
+    playerReverse,
+    player,
+    player3,
+    player2Reverse,
+    2
+  );
 
   // Player 2 Reverse is attacking 1st animation
   if (
@@ -1436,13 +934,13 @@ function animate(event) {
     player2Reverse.countFramesMax === 3
   ) {
     if (playerReverse.start === true) {
-      playerReverse.damaged();
+      playerReverse.damagedByKenji();
       player2Reverse.isAttacking = false;
     } else if (player3Reverse.start === true) {
-      player3Reverse.damaged();
+      player3Reverse.damagedByKenji();
       player2Reverse.isAttacking = false;
     } else if (player2.start === true) {
-      player2.damaged();
+      player2.damagedByKenji();
       player2Reverse.isAttacking = false;
     }
     // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1487,34 +985,34 @@ function animate(event) {
     player2Reverse.countFramesMax === 3
   ) {
     if (playerReverse.start === true) {
-      playerReverse.damagedTwo();
+      playerReverse.damagedTwoByKenji();
       player2Reverse.isAttackingTwo = false;
     } else if (player3Reverse.start === true) {
-      player3Reverse.damagedTwo();
+      player3Reverse.damagedTwoByKenji();
       player2Reverse.isAttackingTwo = false;
     } else if (player2.start === true) {
-      player2.damagedTwo();
+      player2.damagedTwoByKenji();
       player2Reverse.isAttackingTwo = false;
     }
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      if (playerReverse.start === true) {
-        gsap.to('#player2Health', {
-          width: playerReverse.health + '%',
-        });
-      }
-      if (player3Reverse.start === true) {
-        gsap.to('#player2Health', {
-          width: player3Reverse.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      // console.log('you attack player2');
+    // document.querySelector('#player2Health').style.width = player2.health + '%';
+    if (playerReverse.start === true) {
+      gsap.to('#player2Health', {
+        width: playerReverse.health + '%',
+      });
     }
-  
+    if (player3Reverse.start === true) {
+      gsap.to('#player2Health', {
+        width: player3Reverse.health + '%',
+      });
+    }
+    if (player2.start === true) {
+      gsap.to('#player2Health', {
+        width: player2.health + '%',
+      });
+    }
+    // console.log('you attack player2');
+  }
+
   // if player3 is missing by attacking box
   if (player2Reverse.isAttackingTwo && player2Reverse.countFramesMax === 3) {
     player2Reverse.isAttackingTwo = false;
@@ -1523,6 +1021,7 @@ function animate(event) {
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
   // Player Mack
+
   if (
     player.start === true &&
     player2.start === true &&
