@@ -44,6 +44,7 @@ function decreaseTimer() {
   if (timer === 0) {
     // when where is if's statements equals to true so
     // apply this querySelector with style flex
+    // Player Mack
     if (
       player.start === true &&
       player2.start === true &&
@@ -53,6 +54,118 @@ function decreaseTimer() {
       let pl2 = player2;
       determineWinner({ pl1, pl2, timerId });
     } else if (
+      player.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // PlayerReverse Mack
+    if (
+      playerReverse.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = playerReverse;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      playerReverse.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = playerReverse;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      playerReverse.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = playerReverse;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // Player2
+    else if (
+      player2.start === true &&
+      player.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2.start === true &&
+      player3.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // Player2 Reverse
+    else if (
+      player2Reverse.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player3.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player3;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // Player3
+    else if (
+      player3.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
       player3.start === true &&
       player2.start === true &&
       menuMain.start === false
@@ -60,7 +173,9 @@ function decreaseTimer() {
       let pl1 = player3;
       let pl2 = player2;
       determineWinner({ pl1, pl2, timerId });
-    } else if (
+    }
+    // Player3Reverse
+    else if (
       player3.start === true &&
       player3Reverse.start === true &&
       menuMain.start === false
@@ -77,20 +192,12 @@ function decreaseTimer() {
       let pl2 = player3Reverse;
       determineWinner({ pl1, pl2, timerId });
     } else if (
-      player.start === true &&
-      playerReverse.start === true &&
+      player2Reverse.start === true &&
+      player3Reverse.start === true &&
       menuMain.start === false
     ) {
-      let pl1 = player;
-      let pl2 = playerReverse;
-      determineWinner({ pl1, pl2, timerId });
-    } else if (
-      player3.start === true &&
-      playerReverse.start === true &&
-      menuMain.start === false
-    ) {
-      let pl1 = player3;
-      let pl2 = playerReverse;
+      let pl1 = player2Reverse;
+      let pl2 = player3Reverse;
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -208,29 +315,15 @@ function PickKingPlayer1() {
   player3.start = true;
 }
 function PickKingPlayer2() {
-  // const hero1 = document.getElementById('hero1Player1');
-  // player.sprites.shift();
-  // // sprites.map((arrItem) => {
-  // //   let hero1 = arrItem;
-  // //   // console.log(hero1);
-  // // });
-  // player.sprites.push(sprites[0]);
-  // console.log(player.sprites);
   player3Reverse.start = true;
 }
 // console.log(sprites[0]);
 function PickKenjiPlayer2() {
-  // const hero1 = document.getElementById('hero1Player2');
-  // console.log(player2.sprites);
-  // player2.sprites.shift();
-  // console.log(player2.sprites);
-  // // sprites.map((arrItem) => {
-  // //   // console.log(arrItem);
-  // //   let hero1 = arrItem;
-  // // });
-  // player2.sprites.push(sprites[0]);
-  // console.log(player2.sprites);
   player2.start = true;
+}
+// Playing Kenji on left side like reverse for default side (right)
+function PickKenjiPlayer1() {
+  player2Reverse.start = true;
 }
 // console.log(
 //   array.map((arrItem) => {
@@ -254,55 +347,59 @@ function TrueStart() {
 // menu restart
 function MenuRestart() {
   player.start = false;
+  playerReverse.start = false;
   player2.start = false;
+  player2Reverse.start = false;
   player3.start = false;
   player3Reverse.start = false;
   menuMain.start = false;
 
-  if (
-    player.health < 100 ||
-    player2.health < 100 ||
-    (player.health < 100 && player2.health < 100) ||
-    player3.health < 100 ||
-    (player3.health < 100 && player2.health < 100) ||
-    player3Reverse.health < 100 ||
-    (player3Reverse.health < 100 && player.health < 100) ||
-    (player3Reverse.health < 100 && player3.health < 100) ||
-    (playerReverse.health < 100 && player.health < 100) ||
-    (playerReverse.health < 100 && player3.health < 100)
-  ) {
-    player.health = 100;
-    player3.health = 100;
-    gsap.to('#playerHealth', {
-      width: player.health + '%',
-    });
-    player2.health = 100;
-    player3Reverse.health = 100;
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
-    gsap.to('#player2Health', {
-      width: player3Reverse.health + '%',
-    });
-  }
+  player.health = 100;
+  player3.health = 100;
+  player2Reverse.health = 100;
+  gsap.to('#playerHealth', {
+    width: player.health + '%',
+  });
+  gsap.to('#playerHealth', {
+    width: player3.health + '%',
+  });
+  gsap.to('#playerHealth', {
+    width: player2Reverse.health + '%',
+  });
+
+  playerReverse.health = 100;
+  player2.health = 100;
+  player3Reverse.health = 100;
+  gsap.to('#player2Health', {
+    width: player2.health + '%',
+  });
+  gsap.to('#player2Health', {
+    width: player3Reverse.health + '%',
+  });
+  gsap.to('#player2Health', {
+    width: playerReverse.health + '%',
+  });
   if (
     player.restart === false ||
+    playerReverse.restart === false ||
     player2.restart === false ||
+    player2Reverse.restart === false ||
     player3.restart === false ||
-    player3Reverse.restart === false ||
-    playerReverse.restart === false
+    player3Reverse.restart === false
   ) {
     player.restart = true;
+    playerReverse.restart = true;
     player2.restart = true;
+    player2Reverse.restart = true;
     player3.restart = true;
     player3Reverse.restart = true;
-    playerReverse.restart = true;
     setTimeout(() => {
       player.restart = false;
+      playerReverse.restart = false;
       player2.restart = false;
+      player2Reverse.restart = false;
       player3.restart = false;
       player3Reverse.restart = false;
-      playerReverse.restart = true;
     }, 1000);
   }
   document.querySelector('#mainMenu').style.display = 'flex';
@@ -316,54 +413,52 @@ function MenuRestart() {
 }
 // function restart when round ends
 function TrueRestart() {
-  if (
-    player.health < 100 ||
-    player2.health < 100 ||
-    (player.health < 100 && player2.health < 100) ||
-    player3.health < 100 ||
-    (player3.health < 100 && player2.health < 100) ||
-    player3Reverse.health < 100 ||
-    (player3Reverse.health < 100 && player.health < 100) ||
-    (player3Reverse.health < 100 && player3.health < 100) ||
-    (playerReverse.health < 100 && player.health < 100) ||
-    (playerReverse.health < 100 && player3.health < 100)
-  ) {
-    player.health = 100;
-    player3.health = 100;
-    gsap.to('#playerHealth', {
-      width: player.health + '%',
-    });
-    player2.health = 100;
-    player3Reverse.health = 100;
-    playerReverse.health = 100;
-    gsap.to('#player2Health', {
-      width: player2.health + '%',
-    });
-    gsap.to('#player2Health', {
-      width: player3Reverse.health + '%',
-    });
-    gsap.to('#player2Health', {
-      width: playerReverse.health + '%',
-    });
-  }
+  player.health = 100;
+  player3.health = 100;
+  player2Reverse.health = 100;
+  gsap.to('#playerHealth', {
+    width: player.health + '%',
+  });
+  gsap.to('#playerHealth', {
+    width: player3.health + '%',
+  });
+  gsap.to('#playerHealth', {
+    width: player2Reverse.health + '%',
+  });
+
+  playerReverse.health = 100;
+  player2.health = 100;
+  player3Reverse.health = 100;
+  gsap.to('#player2Health', {
+    width: player2.health + '%',
+  });
+  gsap.to('#player2Health', {
+    width: player3Reverse.health + '%',
+  });
+  gsap.to('#player2Health', {
+    width: playerReverse.health + '%',
+  });
   if (
     player.restart === false ||
+    playerReverse.restart === false ||
     player2.restart === false ||
+    player2Reverse.restart === false ||
     player3.restart === false ||
-    player3Reverse === false ||
-    playerReverse === false
+    player3Reverse.restart === false
   ) {
     player.restart = true;
+    playerReverse.restart = true;
     player2.restart = true;
+    player2Reverse.restart = true;
     player3.restart = true;
     player3Reverse.restart = true;
-    playerReverse.restart = true;
     setTimeout(() => {
       player.restart = false;
+      playerReverse.restart = false;
       player2.restart = false;
+      player2Reverse.restart = false;
       player3.restart = false;
       player3Reverse.restart = false;
-      playerReverse.restart = false;
     }, 1000);
   }
 

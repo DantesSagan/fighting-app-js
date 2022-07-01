@@ -1014,7 +1014,101 @@ class FighterReverse extends Sprite {
         break;
     }
   }
-
+  switchButtons(event) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = true;
+        this.lastKey = 'd';
+        this.sound.play();
+        break;
+      case 'a':
+        keys.a.pressed = true;
+        this.lastKey = 'a';
+        this.sound.play();
+        break;
+      case 'w':
+        if (keys.w.pressed && this.lastKey === 'w') {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        } else {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // if you want to holding "w" and jump infinite so use
+            // keys.w.pressed = true;
+            // if you want to jump once per pressing "w" so don't this line use
+            // keys.w.pressed = true;
+            // keys.w.pressed = true;
+            this.lastKey = 'w';
+            this.sound.play();
+            this.velocity.y = -15;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case ' ':
+        this.attack();
+        this.sound.play();
+        break;
+      case 'c':
+        this.attackTwo();
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchUpButtonsLeft(event) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = false;
+        // player.soundStart = false;
+        this.sound.pause();
+        // player.sound.currentTime = 0;
+        break;
+      case 'a':
+        keys.a.pressed = false;
+        // player.soundStart = false;
+        this.sound.pause();
+        // player.sound.currentTime = 0;
+        break;
+      case 'w':
+        if ((keys.w.pressed = false && this.lastKey === 'w')) {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.sound.pause();
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it rich bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case ' ':
+        this.sound.volume = 0;
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
   // switch sprites for better logic statements
   switchSprite(sprite) {
     // overriding all other animations with the attack && damaged && death animations

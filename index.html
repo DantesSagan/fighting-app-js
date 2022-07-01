@@ -102,9 +102,9 @@
         style=" position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:125; right:0;bottom: 0; margin-top:0px;">
         <div
             style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:5px; color:black; ">
-            <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
+            <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; margin-right:5px;">
                 <div id="parentColumnOne"
-                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
                     <p style="font-size:small;">
 
                         Player 1
@@ -121,17 +121,18 @@
                         <img src="/assets/Medieval King Pack/singleKing.png" alt="hero2"
                             style="width: 48px; height:48px;" />
                     </div>
-                    <div>
-                        <p>Hero 3</p>
+                    <div onclick="PickKenjiPlayer1();"
+                        style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                        <p style="font-size:small;">Kenji</p>
                         <img src="/assets/kenji/singleKenjiReverse.png" alt="hero3" style="width: 48px; height:48px;" />
                     </div>
                     <div>
-                        <p>Hero 4</p>
+                        <p style="font-size:small;">Hero 4</p>
                         <img src="/assets/samuraiMack/singleMack.png" alt="hero4" style="width: 48px; height:48px;" />
                     </div>
                 </div>
                 <div
-                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center;">
+                    style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
                     <p style="font-size:small;">
 
                         Player 2
