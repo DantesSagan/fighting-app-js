@@ -95,7 +95,7 @@ const player = new Fighter({
         framesMax: 6,
       },
       attack3: {
-        imageSrc: './assets/samuraiMack/Attack2.png',
+        imageSrc: './assets/samuraiMack/Attack3 ext.png',
         framesMax: 6,
       },
       damaged: {
@@ -411,7 +411,7 @@ const playerReverse = new FighterReverse({
         framesMax: 6,
       },
       attack3: {
-        imageSrc: './assets/samuraiMack/reverseMack/Attack2 - Reverse.png',
+        imageSrc: './assets/samuraiMack/reverseMack/Attack3 - Reverse.png',
         framesMax: 6,
       },
       damaged: {
@@ -1117,6 +1117,16 @@ function animate(event) {
     4
   );
 
+  // Player 1 is attacking Three animation
+  player.detectCollisionThree(
+    player,
+    player2,
+    player3Reverse,
+    playerReverse,
+    player4Reverse,
+    4
+  );
+
   // Player 2 && player2 is attacking animation
   if (
     rectangularCollision({
@@ -1317,6 +1327,16 @@ function animate(event) {
 
   // Player Reverse is attacking Two animation
   playerReverse.detectCollisionTwoReverse(
+    playerReverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    2
+  );
+
+  // Player Reverse is attacking Three animation
+  playerReverse.detectCollisionThreeReverse(
     playerReverse,
     player,
     player3,
