@@ -94,6 +94,10 @@ const player = new Fighter({
         imageSrc: './assets/samuraiMack/Attack2.png',
         framesMax: 6,
       },
+      attack3: {
+        imageSrc: './assets/samuraiMack/Attack2.png',
+        framesMax: 6,
+      },
       damaged: {
         imageSrc:
           './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
@@ -165,6 +169,10 @@ const player2 = new Fighter({
         framesMax: 4,
       },
       attack2: {
+        imageSrc: './assets/kenji/Attack2.png',
+        framesMax: 4,
+      },
+      attack3: {
         imageSrc: './assets/kenji/Attack2.png',
         framesMax: 4,
       },
@@ -240,6 +248,10 @@ const player3 = new Fighter({
         framesMax: 6,
       },
       attack2: {
+        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        framesMax: 6,
+      },
+      attack3: {
         imageSrc: './assets/Medieval King Pack/Attack_2.png',
         framesMax: 6,
       },
@@ -319,6 +331,11 @@ const player3Reverse = new FighterReverse({
           './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
         framesMax: 6,
       },
+      attack3: {
+        imageSrc:
+          './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
+        framesMax: 6,
+      },
       damaged: {
         imageSrc: './assets/Medieval King Pack/kingReverse/Hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
@@ -390,6 +407,10 @@ const playerReverse = new FighterReverse({
         framesMax: 6,
       },
       attack2: {
+        imageSrc: './assets/samuraiMack/reverseMack/Attack2 - Reverse.png',
+        framesMax: 6,
+      },
+      attack3: {
         imageSrc: './assets/samuraiMack/reverseMack/Attack2 - Reverse.png',
         framesMax: 6,
       },
@@ -468,6 +489,10 @@ const player2Reverse = new FighterReverse({
         imageSrc: './assets/kenji/reverseKenji/Attack2 - Reverse.png',
         framesMax: 4,
       },
+      attack3: {
+        imageSrc: './assets/kenji/reverseKenji/Attack2 - Reverse.png',
+        framesMax: 4,
+      },
       damaged: {
         imageSrc:
           './assets/kenji/reverseKenji/Take Hit - white silhouette - blood - Reverse.png',
@@ -541,6 +566,10 @@ const player4 = new Fighter({
       },
       attack2: {
         imageSrc: './assets/Medieval King Pack 2/Sprites/Attack2.png',
+        framesMax: 4,
+      },
+      attack3: {
+        imageSrc: './assets/Medieval King Pack 2/Sprites/Attack3.png',
         framesMax: 4,
       },
       damaged: {
@@ -622,6 +651,11 @@ const player4Reverse = new FighterReverse({
       attack2: {
         imageSrc:
           './assets/Medieval King Pack 2/SpritesReverse/Attack2 - Reverse.png',
+        framesMax: 4,
+      },
+      attack3: {
+        imageSrc:
+          './assets/Medieval King Pack 2/SpritesReverse/Attack3 - Reverse.png',
         framesMax: 4,
       },
       damaged: {
@@ -1222,7 +1256,7 @@ function animate(event) {
   );
 
   // Player4 is attacking animation
-  player4.detectCollision(
+  player4.detectCollisionKing2(
     player4,
     playerReverse,
     player2,
@@ -1232,7 +1266,17 @@ function animate(event) {
   );
 
   // Player4 is attackingTwo animation
-  player4.detectCollisionTwo(
+  player4.detectCollisionTwoKing2(
+    player4,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    2
+  );
+
+  // Player4 is attackingThree animation
+  player4.detectCollisionThreeKing2(
     player4,
     playerReverse,
     player2,
@@ -1282,7 +1326,7 @@ function animate(event) {
   );
 
   // Player4Reverse is attacking 1st animation
-  player4Reverse.detectCollisionReverse(
+  player4Reverse.detectCollisionReverseKing2(
     player4Reverse,
     player,
     player3,
@@ -1292,7 +1336,7 @@ function animate(event) {
   );
 
   // Player4Reverse is attacking Two animation
-  player4Reverse.detectCollisionTwoReverse(
+  player4Reverse.detectCollisionTwoReverseKing2(
     player4Reverse,
     player,
     player3,
@@ -1301,6 +1345,15 @@ function animate(event) {
     1
   );
 
+  // Player4Reverse is attacking Three animation
+  player4Reverse.detectCollisionThreeReverseKing2(
+    player4Reverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    1
+  );
   // Player 2 Reverse is attacking 1st animation
   if (
     rectangularCollision({
@@ -1788,7 +1841,17 @@ window.addEventListener('keydown', (event) => {
     (player4.start === true && menuMain.start === false) ||
     (player4Reverse === true && menuMain.start === false)
   ) {
-    if (!player.dead) {
+    if (
+      !player.dead &&
+      player.AIHero === false &&
+      player.playableHero === true
+    ) {
+      player.switchButtons(event);
+    } else if (
+      !player.dead &&
+      player.AIHero === true &&
+      player.playableHero === false
+    ) {
       player.switchButtons(event);
     }
     if (!player2.dead) {

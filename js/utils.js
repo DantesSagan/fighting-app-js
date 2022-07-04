@@ -1,3 +1,15 @@
+// 1) A finite set of states of the game. In our game, each state would represent a certain configuration of the grid.
+// 2) A finite set of players which are the agents playing the game. In Fihgting game there’s only two players: the human player and the AI.
+// 3) A finite set of actions that the players can do. Here, there's several actions that need to describe:
+//  a.Define move to left AI;
+//  b.Define move to right AI;
+//  c.Define jump to AI;
+//  d.Define attack1 to AI;
+//  e.Define attack2 to AI;
+// 4) A transition function that takes the current state and the played action and returns the next state in the game.
+// 5) A terminal test function that checks if a state is terminal (that is if the game ends at this state).
+// 6) A score function that calculates the score of the player at a terminal state
+
 // new function which listen collision between two boxes (rectangular) or sprites
 function rectangularCollision({ rectangle1, rectangle2 }) {
   return (
@@ -407,28 +419,14 @@ function PickMackPlayer1() {
   // // });
   // player.sprites.push(sprites[0]);
   // console.log(player.sprites);
+  player.playableHero = true;
+  player.AIHero = false;
   player.start = true;
 }
 function PickMackPlayer2() {
-  // const hero1 = document.getElementById('hero1Player1');
-  // player.sprites.shift();
-  // // sprites.map((arrItem) => {
-  // //   let hero1 = arrItem;
-  // //   // console.log(hero1);
-  // // });
-  // player.sprites.push(sprites[0]);
-  // console.log(player.sprites);
   playerReverse.start = true;
 }
 function PickKingPlayer1() {
-  // const hero1 = document.getElementById('hero1Player1');
-  // player.sprites.shift();
-  // // sprites.map((arrItem) => {
-  // //   let hero1 = arrItem;
-  // //   // console.log(hero1);
-  // // });
-  // player.sprites.push(sprites[0]);
-  // console.log(player.sprites);
   player3.start = true;
 }
 function PickKingPlayer2() {
@@ -449,13 +447,7 @@ function PickKing2Player1() {
 function PickKing2Player2() {
   player4Reverse.start = true;
 }
-// console.log(
-//   array.map((arrItem) => {
-//     return arrItem.samuraiMack;
-//   })
-// );
-// console.log(player.sprites);
-// starting game without a choice hero
+
 function TrueStart() {
   // home();
   // player.start = true;
@@ -524,6 +516,7 @@ function MenuRestart() {
     player4.restart === false ||
     player4Reverse.restart === false
   ) {
+    // restart set to true
     player.restart = true;
     playerReverse.restart = true;
     player2.restart = true;
@@ -532,6 +525,15 @@ function MenuRestart() {
     player3Reverse.restart = true;
     player4.restart = true;
     player4Reverse.restart = true;
+    // position x like in the start of round(game)
+    player.position.x = 256;
+    playerReverse.position.x = 768;
+    player2.position.x = 768;
+    player2Reverse.position.x = 256;
+    player3.position.x = 256;
+    player3Reverse.position.x = 768;
+    player4.position.x = 256;
+    player4Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;
@@ -599,6 +601,7 @@ function TrueRestart() {
     player4.restart === false ||
     player4Reverse.restart === false
   ) {
+    // restart set to true
     player.restart = true;
     playerReverse.restart = true;
     player2.restart = true;
@@ -607,6 +610,15 @@ function TrueRestart() {
     player3Reverse.restart = true;
     player4.restart = true;
     player4Reverse.restart = true;
+    // position x like in the start of round(game)
+    player.position.x = 256;
+    playerReverse.position.x = 768;
+    player2.position.x = 768;
+    player2Reverse.position.x = 256;
+    player3.position.x = 256;
+    player3Reverse.position.x = 768;
+    player4.position.x = 256;
+    player4Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;

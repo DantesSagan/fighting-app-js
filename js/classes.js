@@ -12,7 +12,8 @@ class Sprite {
     restart = false,
     imageStyle,
     imageID,
-    angle = 0,
+    playableHero = true,
+    AIHero = false,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
@@ -36,7 +37,8 @@ class Sprite {
     this.sound.volume = volume;
     this.start = start;
     this.restart = restart;
-    this.angle = angle;
+    this.playableHero = playableHero;
+    this.AIHero = AIHero;
   }
   // We are creating draw method
   draw() {
@@ -174,6 +176,7 @@ class Fighter extends Sprite {
     this.color = color;
     this.isAttacking;
     this.isAttackingTwo;
+    this.isAttackingThree;
     this.health = 100;
     this.framesCurrent = 0;
     this.framesElapsed = 0;
@@ -279,13 +282,25 @@ class Fighter extends Sprite {
         this.velocity.y = 0;
       } else {
         // in this case 1st of all object will falling down by this expression
-        // and then how it rich bottom of the canvas it's stops
+        // and then how it reach bottom of the canvas it's stops
         this.velocity.y += gravity;
       }
     }
 
     // console.log(this.position.y);
   }
+
+  // startUpdate(pl2, menu, shop) {
+  //   if (this.start === true && pl2.start === true && menu.start === false) {
+  //     // insert shop
+  //     shop.update();
+  //     // insert player
+  //     this.update();
+  //     // insert player2 or second player
+  //     pl2.updateR();
+  //   }
+  // }
+
   heroMovements(keysLeft, keysRight, buttonLeft, buttonRight) {
     if (!this.dead) {
       // player movements
@@ -350,6 +365,13 @@ class Fighter extends Sprite {
     // }, 1000);
   }
 
+  attackThree() {
+    this.switchSprite('attack3');
+    this.isAttackingThree = true;
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
   detectCollision(
     playerAttack,
     player1,
@@ -492,6 +514,219 @@ class Fighter extends Sprite {
       playerAttack.isAttackingTwo = false;
     }
   }
+  detectCollisionKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttacking &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player2.start === true) {
+        player2.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player3.start === true) {
+        player3.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player4.start === true) {
+        player4.damagedByKing2();
+        playerAttack.isAttacking = false;
+      }
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#player2Health', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#player2Health', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#player2Health', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#player2Health', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttacking &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      playerAttack.isAttacking = false;
+    }
+  }
+  detectCollisionTwoKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttackingTwo &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player2.start === true) {
+        player2.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player3.start === true) {
+        player3.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player4.start === true) {
+        player4.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      }
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#player2Health', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#player2Health', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#player2Health', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#player2Health', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttackingTwo &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      playerAttack.isAttackingTwo = false;
+    }
+  }
+  detectCollisionThreeKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttackingThree &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player2.start === true) {
+        player2.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player3.start === true) {
+        player3.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player4.start === true) {
+        player4.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      }
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#player2Health', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#player2Health', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#player2Health', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#player2Health', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttackingThree &&
+      playerAttack.framesCurrent === missingFrame
+    ) {
+      playerAttack.isAttackingThree = false;
+    }
+  }
   damaged() {
     this.health -= 20;
     if (this.health <= 0) {
@@ -507,6 +742,7 @@ class Fighter extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       // in this case we auto play damaged sound
       this.sound.volume = volumeFight;
       this.sound.currentTime = 0;
@@ -531,6 +767,7 @@ class Fighter extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }
@@ -550,6 +787,7 @@ class Fighter extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       // in this case we auto play damaged sound
       this.sound.volume = volumeFight;
       this.sound.currentTime = 0;
@@ -574,6 +812,71 @@ class Fighter extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
+      this.switchSprite('damaged');
+    }
+  }
+  damagedByKing2() {
+    this.health -= 10;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
+      // in this case we auto play damaged sound
+      this.sound.volume = volumeFight;
+      this.sound.currentTime = 0;
+      this.sound.play();
+      // and also change sprite to damaged sprite
+      this.switchSprite('damaged');
+    }
+  }
+  damagedTwoByKing2() {
+    this.health -= 20;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
+      this.switchSprite('damaged');
+    }
+  }
+  damagedThreeByKing2() {
+    this.health -= 25;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }
@@ -604,7 +907,7 @@ class Fighter extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         } else {
@@ -622,7 +925,7 @@ class Fighter extends Sprite {
             this.velocity.y = -15;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -633,6 +936,9 @@ class Fighter extends Sprite {
         break;
       case 'c':
         this.attackTwo();
+        break;
+      case 'r':
+        this.attackThree();
         break;
       default:
         console.log('Something goes wrong');
@@ -662,7 +968,7 @@ class Fighter extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         } else {
@@ -680,7 +986,7 @@ class Fighter extends Sprite {
             this.velocity.y = -15;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -689,7 +995,7 @@ class Fighter extends Sprite {
         this.attack();
         // this.isAttacking = true;
         break;
-      case 'l':
+      case '2':
         this.attackTwo();
         // this.isAttacking = true;
         break;
@@ -723,7 +1029,7 @@ class Fighter extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -762,7 +1068,7 @@ class Fighter extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -783,6 +1089,11 @@ class Fighter extends Sprite {
     if (
       this.image === this.sprites[0].attack2.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
       this.framesCurrent < this.sprites[0].attack2.framesMax - 1
+    )
+      return;
+    if (
+      this.image === this.sprites[0].attack3.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
+      this.framesCurrent < this.sprites[0].attack3.framesMax - 1
     )
       return;
     if (
@@ -867,6 +1178,13 @@ class Fighter extends Sprite {
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
           this.framesMax = this.sprites[0].attack2.framesMax;
+          this.framesCurrent = 0;
+        }
+        break;
+      case 'attack3':
+        if (this.image !== this.sprites[0].attack3.image) {
+          this.image = this.sprites[0].attack3.image;
+          this.framesMax = this.sprites[0].attack3.framesMax;
           this.framesCurrent = 0;
         }
         break;
@@ -960,6 +1278,7 @@ class FighterReverse extends Sprite {
     this.color = color;
     this.isAttacking;
     this.isAttackingTwo;
+    this.isAttackingThree;
     this.health = 100;
     this.framesCurrent = 0;
     this.framesElapsed = 0;
@@ -1065,7 +1384,7 @@ class FighterReverse extends Sprite {
         this.velocity.y = 0;
       } else {
         // in this case 1st of all object will falling down by this expression
-        // and then how it rich bottom of the canvas it's stops
+        // and then how it reach bottom of the canvas it's stops
         this.velocity.y += gravity;
       }
     }
@@ -1102,6 +1421,13 @@ class FighterReverse extends Sprite {
   attackTwo() {
     this.switchSprite('attack2');
     this.isAttackingTwo = true;
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
+  attackThree() {
+    this.switchSprite('attack3');
+    this.isAttackingThree = true;
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1279,6 +1605,221 @@ class FighterReverse extends Sprite {
     }
   }
 
+  detectCollisionReverseKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttacking &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player2.start === true) {
+        player2.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player3.start === true) {
+        player3.damagedByKing2();
+        playerAttack.isAttacking = false;
+      } else if (player4.start === true) {
+        player4.damagedByKing2();
+        playerAttack.isAttacking = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#playerHealth', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#playerHealth', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#playerHealth', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#playerHealth', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttacking &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      playerAttack.isAttacking = false;
+    }
+  }
+  detectCollisionTwoReverseKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttackingTwo &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player2.start === true) {
+        player2.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player3.start === true) {
+        player3.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      } else if (player4.start === true) {
+        player4.damagedTwoByKing2();
+        playerAttack.isAttackingTwo = false;
+      }
+
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#playerHealth', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#playerHealth', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#playerHealth', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#playerHealth', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttackingTwo &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      playerAttack.isAttackingTwo = false;
+    }
+  }
+  detectCollisionThreeReverseKing2(
+    playerAttack,
+    player1,
+    player2,
+    player3,
+    player4,
+    missingFrame
+  ) {
+    if (
+      rectangularCollision({
+        rectangle1: playerAttack,
+        rectangle2:
+          player1.start === true
+            ? player1
+            : player2.start === true
+            ? player2
+            : player3.start === true
+            ? player3
+            : player4.start === true
+            ? player4
+            : player1,
+      }) &&
+      playerAttack.isAttackingThree &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      if (player1.start === true) {
+        player1.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player2.start === true) {
+        player2.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player3.start === true) {
+        player3.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      } else if (player4.start === true) {
+        player4.damagedThreeByKing2();
+        playerAttack.isAttackingThree = false;
+      }
+      // document.querySelector('#player2Health').style.width = player2.health + '%';
+      // if we are using gsap we get to say of id and property with what need to do
+      // and also give a smooth animation of decreasing healthbar
+      if (player1.start === true) {
+        gsap.to('#playerHealth', {
+          width: player1.health + '%',
+        });
+      }
+      if (player2.start === true) {
+        gsap.to('#playerHealth', {
+          width: player2.health + '%',
+        });
+      }
+      if (player3.start === true) {
+        gsap.to('#playerHealth', {
+          width: player3.health + '%',
+        });
+      }
+      if (player4.start === true) {
+        gsap.to('#playerHealth', {
+          width: player4.health + '%',
+        });
+      }
+      // console.log('you attack player2');
+    }
+    // if player1 is missing by attacking box
+    if (
+      playerAttack.isAttackingThree &&
+      playerAttack.countFramesMax === missingFrame
+    ) {
+      playerAttack.isAttackingThree = false;
+    }
+  }
   damaged() {
     this.health -= 20;
     if (this.health <= 0) {
@@ -1289,6 +1830,7 @@ class FighterReverse extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
@@ -1312,6 +1854,7 @@ class FighterReverse extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
@@ -1337,6 +1880,7 @@ class FighterReverse extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       // in this case we auto play damaged sound
       this.sound.volume = volumeFight;
       this.sound.currentTime = 0;
@@ -1361,10 +1905,76 @@ class FighterReverse extends Sprite {
       player3.restart = false;
       player3Reverse.restart = false;
       player4.restart = false;
+      player4Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }
 
+  damagedByKing2() {
+    this.health -= 10;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
+      // in this case we auto play damaged sound
+      this.sound.volume = volumeFight;
+      this.sound.currentTime = 0;
+      this.sound.play();
+      // and also change sprite to damaged sprite
+      this.switchSprite('damaged');
+    }
+  }
+
+  damagedTwoByKing2() {
+    this.health -= 20;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
+      this.switchSprite('damaged');
+    }
+  }
+  damagedThreeByKing2() {
+    this.health -= 25;
+    if (this.health <= 0) {
+      this.switchSprite('death');
+      // setTimeout(() => {
+      //   this.switchSprite('deathTwo');
+      //   console.log('deathTwo');
+      // }, 3000);
+    } else {
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
+      this.switchSprite('damaged');
+    }
+  }
   restartRound() {
     this.switchSprite('idle');
   }
@@ -1394,7 +2004,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -1427,7 +2037,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         } else {
@@ -1445,7 +2055,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = -15;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -1454,8 +2064,12 @@ class FighterReverse extends Sprite {
         this.attack();
         // this.isAttacking = true;
         break;
-      case 'l':
+      case '2':
         this.attackTwo();
+        // this.isAttacking = true;
+        break;
+      case '3':
+        this.attackThree();
         // this.isAttacking = true;
         break;
       default:
@@ -1485,7 +2099,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         } else {
@@ -1503,7 +2117,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = -15;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -1545,7 +2159,7 @@ class FighterReverse extends Sprite {
             this.velocity.y = 0;
           } else {
             // in this case 1st of all object will falling down by this expression
-            // and then how it rich bottom of the canvas it's stops
+            // and then how it reach bottom of the canvas it's stops
             this.velocity.y += gravity;
           }
         }
@@ -1568,6 +2182,11 @@ class FighterReverse extends Sprite {
       return;
     if (
       this.image === this.sprites[0].attack2.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
+      this.countFramesMax
+    )
+      return;
+    if (
+      this.image === this.sprites[0].attack3.image && // but as soon it's frame current goes above the frames max  we are going to continue other animation by pressing keys
       this.countFramesMax
     )
       return;
@@ -1653,6 +2272,13 @@ class FighterReverse extends Sprite {
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
           this.framesMax = this.sprites[0].attack2.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        break;
+      case 'attack3':
+        if (this.image !== this.sprites[0].attack3.image) {
+          this.image = this.sprites[0].attack3.image;
+          this.framesMax = this.sprites[0].attack3.framesMax;
           this.countFramesMax = this.framesMax - 1;
         }
         break;
