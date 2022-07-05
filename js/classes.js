@@ -333,15 +333,31 @@ class Fighter extends Sprite {
 
   // running to the left method with activating animation and sound
   runLeft() {
-    this.sprites[0].run.soundStart = true;
-    // this.soundStart = true;
+    // audio.Walking.once('load', () => {
+    //   audio.Walking.play();
+    //   audio.Walking.volume(volumeMove);
+    // });
+
+    // // Fires when the sound finishes playing.
+    // audio.Walking.on('end', () => {
+    //   console.log('Finished!');
+    // });
+    this.soundStart = true;
     this.velocity.x = -6;
     this.switchSprite('run');
   }
   // running to the right method with activating animation and sound
   runRight() {
-    this.sprites[0].run.soundStart = true;
-    // this.soundStart = true;
+    // audio.Walking.once('load', () => {
+    //   audio.Walking.play();
+    //   audio.Walking.volume(volumeMove);
+    // });
+
+    // // Fires when the sound finishes playing.
+    // audio.Walking.on('end', () => {
+    //   console.log('Finished!');
+    // });
+    this.soundStart = true;
     this.velocity.x = 6;
     this.switchSprite('run');
   }
@@ -818,6 +834,8 @@ class Fighter extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       // in this case we auto play damaged sound
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       // and also change sprite to damaged sprite
@@ -841,6 +859,8 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       this.switchSprite('damaged');
@@ -863,6 +883,8 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       this.switchSprite('damaged');
@@ -986,11 +1008,30 @@ class Fighter extends Sprite {
       case 'd':
         keys.d.pressed = true;
         this.lastKey = 'd';
-    
+        // Clear listener after first call.
+        // audio.Walking.once('load', () => {
+          // audio.Walking.play();
+          // audio.Walking.volume(volumeMove);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Walking.on('end', () => {
+          // console.log('Finished!');
+        // });
         break;
       case 'a':
         keys.a.pressed = true;
         this.lastKey = 'a';
+        // Clear listener after first call.
+        // audio.Walking.once('load', () => {
+        //   audio.Walking.play();
+        //   audio.Walking.volume(volumeMove);
+        // });
+
+        // // Fires when the sound finishes playing.
+        // audio.Walking.on('end', () => {
+        //   console.log('Finished!');
+        // });
         break;
       case 'w':
         if (keys.w.pressed && this.lastKey === 'w') {
@@ -1046,15 +1087,17 @@ class Fighter extends Sprite {
     switch (event.key) {
       case 'd':
         keys.d.pressed = false;
-        this.sprites[0].run.soundStart = false;
+        // this.sprites[0].run.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
+        // audio.Walking.stop();
         break;
       case 'a':
         keys.a.pressed = false;
-        this.sprites[0].run.soundStart = false;
+        // this.sprites[0].run.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
+        // audio.Walking.stop();
         break;
       case 'w':
         if ((keys.w.pressed = false && this.lastKey === 'w')) {
@@ -1074,21 +1117,6 @@ class Fighter extends Sprite {
           }
         }
         break;
-      case ' ':
-        this.soundStart = false;
-        this.sound.pause();
-        this.sound.currentTime = 0;
-        break;
-      case 'c':
-        this.soundStart = false;
-        this.sound.pause();
-        this.sound.currentTime = 0;
-        break;
-      case 'r':
-        this.soundStart = false;
-        this.sound.pause();
-        this.sound.currentTime = 0;
-        break;
       default:
         console.log('Something goes wrong');
         break;
@@ -1100,12 +1128,12 @@ class Fighter extends Sprite {
       case 'ArrowRight':
         keys.ArrowRight.pressed = true;
         this.lastKey = 'ArrowRight';
-        this.sound.play();
+        // this.sound.play();
         break;
       case 'ArrowLeft':
         keys.ArrowLeft.pressed = true;
         this.lastKey = 'ArrowLeft';
-        this.sound.play();
+        // this.sound.play();
         break;
       case 'ArrowUp':
         if (keys.ArrowUp.pressed && this.lastKey === 'ArrowUp') {
@@ -1158,15 +1186,15 @@ class Fighter extends Sprite {
     switch (event.key) {
       case 'ArrowRight':
         keys.ArrowRight.pressed = false;
-        this.soundStart = false;
-        this.sound.pause();
-        this.sound.currentTime = 0;
+        // this.soundStart = false;
+        // this.sound.pause();
+        // this.sound.currentTime = 0;
         break;
       case 'ArrowLeft':
         keys.ArrowLeft.pressed = false;
-        this.soundStart = false;
-        this.sound.pause();
-        this.sound.currentTime = 0;
+        // this.soundStart = false;
+        // this.sound.pause();
+        // this.sound.currentTime = 0;
         break;
       case 'ArrowUp':
         if ((keys.ArrowUp.pressed = false && this.lastKey === 'ArrowUp')) {
@@ -1245,23 +1273,27 @@ class Fighter extends Sprite {
         break;
       case 'run':
         if (this.image !== this.sprites[0].run.image) {
+          if (this.sound !== this.sprites[0].run.sound) {
+            this.sound = this.sprites[0].run.sound;
+            this.sound.volume = volumeMove;
+            this.sound.play();
+          }
           this.image = this.sprites[0].run.image;
           this.framesMax = this.sprites[0].run.framesMax;
           this.framesCurrent = 0;
         }
-        if (this.sound !== this.sprites[0].run.sound) {
-          this.sound = this.sprites[0].run.sound;
-          this.sound.volume = volumeMove;
-          // if (
-          //   (this.soundStart === true && keys.a.pressed === true) ||
-          //   (this.soundStart === true && keys.d.pressed === true) ||
-          //   (this.soundStart === true && keys.ArrowLeft.pressed === true) ||
-          //   (this.soundStart === true && keys.ArrowRight.pressed === true)
-          // ) {
-          //   this.sound.play();
-          //   this.sound.currentTime = 0;
-          // }
-        }
+
+        // // // Clear listener after first call.
+        // audio.Walking.once('load', () => {
+        //   audio.Walking.play();
+        //   audio.Walking.volume(volumeMove);
+        // });
+
+        // // Fires when the sound finishes playing.
+        // audio.Walking.on('end', () => {
+        //   console.log('Finished!');
+        // });
+
         break;
       case 'jump':
         if (this.image !== this.sprites[0].jump.image) {
@@ -1284,36 +1316,53 @@ class Fighter extends Sprite {
         break;
       case 'attack1':
         if (this.image !== this.sprites[0].attack1.image) {
-          if (this.sound !== this.sprites[0].attack1.sound) {
-            this.sound = this.sprites[0].attack1.sound;
-            this.sound.volume = volumeFight;
-          }
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
           this.image = this.sprites[0].attack1.image;
           this.framesMax = this.sprites[0].attack1.framesMax;
           this.framesCurrent = 0;
         }
+        // audio.Swing.once('load', () => {
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
         break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
-          if (this.sound !== this.sprites[0].attack2.sound) {
-            this.sound = this.sprites[0].attack2.sound;
-            this.sound.volume = volumeFight;
-          }
+          // if (this.sound !== this.sprites[0].attack2.sound) {
+          //   this.sound = this.sprites[0].attack2.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+
           this.image = this.sprites[0].attack2.image;
           this.framesMax = this.sprites[0].attack2.framesMax;
           this.framesCurrent = 0;
         }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
-          if (this.sound !== this.sprites[0].attack3.sound) {
-            this.sound = this.sprites[0].attack3.sound;
-            this.sound.volume = volumeFight;
-          }
+          // if (this.sound !== this.sprites[0].attack3.sound) {
+          //   this.sound = this.sprites[0].attack3.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+
           this.image = this.sprites[0].attack3.image;
           this.framesMax = this.sprites[0].attack3.framesMax;
           this.framesCurrent = 0;
         }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         break;
       case 'damaged':
         if (this.image !== this.sprites[0].damaged.image) {
@@ -1322,10 +1371,13 @@ class Fighter extends Sprite {
             this.sound.volume = volumeFight;
             // this.sound.play();
           }
+
           this.image = this.sprites[0].damaged.image;
           this.framesMax = this.sprites[0].damaged.framesMax;
           this.framesCurrent = 0;
         }
+        audio.Damaged.play();
+        audio.Damaged.volume(volumeFight);
         break;
       case 'death':
         if (this.image !== this.sprites[0].death.image) {
@@ -2036,9 +2088,11 @@ class FighterReverse extends Sprite {
       // }, 3000);
     } else {
       // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
+      // this.sound.volume = volumeFight;
+      // this.sound.currentTime = 0;
+      // this.sound.play();
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
@@ -2060,6 +2114,8 @@ class FighterReverse extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
     }
   }
@@ -2080,6 +2136,8 @@ class FighterReverse extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
     }
   }
@@ -2300,12 +2358,12 @@ class FighterReverse extends Sprite {
       case 'd':
         keys.d.pressed = true;
         this.lastKey = 'd';
-        this.sound.play();
+        // this.sound.play();
         break;
       case 'a':
         keys.a.pressed = true;
         this.lastKey = 'a';
-        this.sound.play();
+        // this.sound.play();
         break;
       case 'w':
         if (keys.w.pressed && this.lastKey === 'w') {
@@ -2342,7 +2400,6 @@ class FighterReverse extends Sprite {
         break;
       case ' ':
         this.attack();
-        this.sound.play();
         break;
       case 'c':
         this.attackTwo();
@@ -2358,13 +2415,13 @@ class FighterReverse extends Sprite {
         keys.d.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
-        // player.sound.currentTime = 0;
+        player.sound.currentTime = 0;
         break;
       case 'a':
         keys.a.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
-        // player.sound.currentTime = 0;
+        player.sound.currentTime = 0;
         break;
       case 'w':
         if ((keys.w.pressed = false && this.lastKey === 'w')) {
@@ -2381,9 +2438,6 @@ class FighterReverse extends Sprite {
             this.velocity.y += gravity;
           }
         }
-        break;
-      case ' ':
-        this.sound.volume = 0;
         break;
       default:
         console.log('Something goes wrong');
@@ -2477,14 +2531,16 @@ class FighterReverse extends Sprite {
         break;
       case 'attack1':
         if (this.image !== this.sprites[0].attack1.image) {
-          if (this.sound !== this.sprites[0].attack1.sound) {
-            this.sound = this.sprites[0].attack1.sound;
-            this.sound.volume = volumeFight;
-          }
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
           this.image = this.sprites[0].attack1.image;
           this.framesMax = this.sprites[0].attack1.framesMax;
           this.countFramesMax = this.framesMax - 1;
         }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
@@ -2492,6 +2548,8 @@ class FighterReverse extends Sprite {
           this.framesMax = this.sprites[0].attack2.framesMax;
           this.countFramesMax = this.framesMax - 1;
         }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
@@ -2499,15 +2557,18 @@ class FighterReverse extends Sprite {
           this.framesMax = this.sprites[0].attack3.framesMax;
           this.countFramesMax = this.framesMax - 1;
         }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         break;
       case 'damaged':
         if (this.image !== this.sprites[0].damaged.image) {
-          if (this.sound !== this.sprites[0].damaged.sound) {
-            this.sound = this.sprites[0].damaged.sound;
-            this.sound.volume = volumeFight;
-            this.sound.currentTime = 0;
-            this.sound.play();
-          }
+          // if (this.sound !== this.sprites[0].damaged.sound) {
+          //   this.sound = this.sprites[0].damaged.sound;
+          //   this.sound.volume = volumeFight;
+          //   this.sound.currentTime = 0;
+          //   this.sound.play();
+          // }
+
           this.image = this.sprites[0].damaged.image;
           this.framesMax = this.sprites[0].damaged.framesMax;
           this.countFramesMax = this.framesMax - 1;

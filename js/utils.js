@@ -470,7 +470,7 @@ function MenuRestart() {
   player3Reverse.start = false;
   player4.start = false;
   player4Reverse.start = false;
-  menuMain.start = false;
+  menuMain.start = true;
 
   // Left side hero
   player.health = 100;
@@ -711,6 +711,7 @@ const rangeValueDeath = () => {
 // changing volume walking | jump sounds
 let volMove = document.querySelector('input[value="volumeMove"]');
 let volumeMove = Number(volMove.value);
+
 const rangeValueMove = () => {
   const resultMove = document.getElementById('resultMove');
   const inputHandler = (e) => {
