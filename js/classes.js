@@ -197,6 +197,7 @@ class Fighter extends Sprite {
       varSprites[sprite].image.id = varSprites[sprite].imageID;
       varSprites[sprite].sound = new Audio();
       varSprites[sprite].sound.src = varSprites[sprite].soundSrc;
+      varSprites[sprite].soundStart;
     }
     // console.log(sprites[0].attack1);
   }
@@ -332,13 +333,15 @@ class Fighter extends Sprite {
 
   // running to the left method with activating animation and sound
   runLeft() {
-    this.soundStart = true;
+    this.sprites[0].run.soundStart = true;
+    // this.soundStart = true;
     this.velocity.x = -6;
     this.switchSprite('run');
   }
   // running to the right method with activating animation and sound
   runRight() {
-    this.soundStart = true;
+    this.sprites[0].run.soundStart = true;
+    // this.soundStart = true;
     this.velocity.x = 6;
     this.switchSprite('run');
   }
@@ -358,16 +361,16 @@ class Fighter extends Sprite {
   // }
 
   attackTwo() {
-    this.switchSprite('attack2');
     this.isAttackingTwo = true;
+    this.switchSprite('attack2');
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
   }
 
   attackThree() {
-    this.switchSprite('attack3');
     this.isAttackingThree = true;
+    this.switchSprite('attack3');
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -815,9 +818,8 @@ class Fighter extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
+      // this.sound.volume = volumeFight;
+      // this.sound.currentTime = 0;
       // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
@@ -839,6 +841,8 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      // this.sound.volume = volumeFight;
+      // this.sound.currentTime = 0;
       this.switchSprite('damaged');
     }
   }
@@ -859,6 +863,8 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      // this.sound.volume = volumeFight;
+      // this.sound.currentTime = 0;
       this.switchSprite('damaged');
     }
   }
@@ -980,12 +986,11 @@ class Fighter extends Sprite {
       case 'd':
         keys.d.pressed = true;
         this.lastKey = 'd';
-        this.sound.play();
+    
         break;
       case 'a':
         keys.a.pressed = true;
         this.lastKey = 'a';
-        this.sound.play();
         break;
       case 'w':
         if (keys.w.pressed && this.lastKey === 'w') {
@@ -1022,13 +1027,67 @@ class Fighter extends Sprite {
         break;
       case ' ':
         this.attack();
-        this.sound.play();
+        // this.sound.play();
         break;
       case 'c':
         this.attackTwo();
+        // this.sound.play();
         break;
       case 'r':
         this.attackThree();
+        // this.sound.play();
+        break;
+      default:
+        console.log('Something goes wrong');
+        break;
+    }
+  }
+  switchUpButtonsLeft(event) {
+    switch (event.key) {
+      case 'd':
+        keys.d.pressed = false;
+        this.sprites[0].run.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'a':
+        keys.a.pressed = false;
+        this.sprites[0].run.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'w':
+        if ((keys.w.pressed = false && this.lastKey === 'w')) {
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 115
+          ) {
+            // event.stopPropagation();
+            this.soundStart = false;
+            this.sound.pause();
+            this.sound.currentTime = 0;
+            this.velocity.y = 0;
+          } else {
+            // in this case 1st of all object will falling down by this expression
+            // and then how it reach bottom of the canvas it's stops
+            this.velocity.y += gravity;
+          }
+        }
+        break;
+      case ' ':
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'c':
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
+        break;
+      case 'r':
+        this.soundStart = false;
+        this.sound.pause();
+        this.sound.currentTime = 0;
         break;
       default:
         console.log('Something goes wrong');
@@ -1088,44 +1147,6 @@ class Fighter extends Sprite {
       case '2':
         this.attackTwo();
         // this.isAttacking = true;
-        break;
-      default:
-        console.log('Something goes wrong');
-        break;
-    }
-  }
-  switchUpButtonsLeft(event) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = false;
-        // player.soundStart = false;
-        this.sound.pause();
-        // player.sound.currentTime = 0;
-        break;
-      case 'a':
-        keys.a.pressed = false;
-        // player.soundStart = false;
-        this.sound.pause();
-        // player.sound.currentTime = 0;
-        break;
-      case 'w':
-        if ((keys.w.pressed = false && this.lastKey === 'w')) {
-          if (
-            this.position.y + this.height + this.velocity.y >=
-            canvas.height - 115
-          ) {
-            // event.stopPropagation();
-            this.sound.pause();
-            this.velocity.y = 0;
-          } else {
-            // in this case 1st of all object will falling down by this expression
-            // and then how it reach bottom of the canvas it's stops
-            this.velocity.y += gravity;
-          }
-        }
-        break;
-      case ' ':
-        this.sound.volume = 0;
         break;
       default:
         console.log('Something goes wrong');
@@ -1224,14 +1245,22 @@ class Fighter extends Sprite {
         break;
       case 'run':
         if (this.image !== this.sprites[0].run.image) {
-          if (this.sound !== this.sprites[0].run.sound) {
-            this.sound = this.sprites[0].run.sound;
-            this.sound.volume = volumeMove;
-            this.sound.play();
-          }
           this.image = this.sprites[0].run.image;
           this.framesMax = this.sprites[0].run.framesMax;
           this.framesCurrent = 0;
+        }
+        if (this.sound !== this.sprites[0].run.sound) {
+          this.sound = this.sprites[0].run.sound;
+          this.sound.volume = volumeMove;
+          // if (
+          //   (this.soundStart === true && keys.a.pressed === true) ||
+          //   (this.soundStart === true && keys.d.pressed === true) ||
+          //   (this.soundStart === true && keys.ArrowLeft.pressed === true) ||
+          //   (this.soundStart === true && keys.ArrowRight.pressed === true)
+          // ) {
+          //   this.sound.play();
+          //   this.sound.currentTime = 0;
+          // }
         }
         break;
       case 'jump':
@@ -1239,7 +1268,7 @@ class Fighter extends Sprite {
           if (this.sound !== this.sprites[0].jump.sound) {
             this.sound = this.sprites[0].jump.sound;
             this.sound.volume = volumeMove;
-            this.sound.play();
+            // this.sound.play();
           }
           this.image = this.sprites[0].jump.image;
           this.framesMax = this.sprites[0].jump.framesMax;
@@ -1266,6 +1295,10 @@ class Fighter extends Sprite {
         break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
+          if (this.sound !== this.sprites[0].attack2.sound) {
+            this.sound = this.sprites[0].attack2.sound;
+            this.sound.volume = volumeFight;
+          }
           this.image = this.sprites[0].attack2.image;
           this.framesMax = this.sprites[0].attack2.framesMax;
           this.framesCurrent = 0;
@@ -1273,6 +1306,10 @@ class Fighter extends Sprite {
         break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
+          if (this.sound !== this.sprites[0].attack3.sound) {
+            this.sound = this.sprites[0].attack3.sound;
+            this.sound.volume = volumeFight;
+          }
           this.image = this.sprites[0].attack3.image;
           this.framesMax = this.sprites[0].attack3.framesMax;
           this.framesCurrent = 0;
@@ -1283,8 +1320,7 @@ class Fighter extends Sprite {
           if (this.sound !== this.sprites[0].damaged.sound) {
             this.sound = this.sprites[0].damaged.sound;
             this.sound.volume = volumeFight;
-            this.sound.currentTime = 0;
-            this.sound.play();
+            // this.sound.play();
           }
           this.image = this.sprites[0].damaged.image;
           this.framesMax = this.sprites[0].damaged.framesMax;

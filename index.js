@@ -74,6 +74,7 @@ const player = new Fighter({
       run: {
         imageSrc: './assets/samuraiMack/Run.png',
         soundSrc: './audio/walking.wav',
+        soundStart: false,
         framesMax: 8,
       },
       jump: {
@@ -92,10 +93,12 @@ const player = new Fighter({
       },
       attack2: {
         imageSrc: './assets/samuraiMack/Attack2.png',
+        soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack3: {
         imageSrc: './assets/samuraiMack/Attack3 ext.png',
+        soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       damaged: {
