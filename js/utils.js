@@ -332,16 +332,343 @@ function decreaseTimer() {
   }
 }
 
-// menu function
-function menu() {
-  setInterval(() => {
-    menuMain.sound.play();
-    menuMain.sound.volume = volume;
-  }, 1000);
-  if (menuMain.start === true) {
-    menuMain.sound.src = '../audio/ambient_menu.wav';
-  } else if (menuMain.start === false) {
-    menuMain.sound.src = '../audio/Hard void (Finish - Rock 5).wav';
+  // Determine winner by less then zero health point
+function DetermineWinnerByLessThenZeroHP() {
+  // Player Mack
+  if (
+    player.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player2;
+    if (player.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player3Reverse;
+    if (player.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = playerReverse;
+    if (player.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player4Reverse;
+    if (player.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // PlayerReverse Mack
+  if (
+    playerReverse.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = playerReverse;
+    let pl2 = player2;
+    if (playerReverse.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    playerReverse.start === true &&
+    player3.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = playerReverse;
+    let pl2 = player3;
+    if (playerReverse.health <= 0 || player3.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = playerReverse;
+    if (player2Reverse.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    playerReverse.start === true &&
+    player4.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = playerReverse;
+    if (player4.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player2
+  else if (
+    player2.start === true &&
+    player.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player2;
+    if (player2.health <= 0 || player.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2.start === true &&
+    player3.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player2;
+    if (player2.health <= 0 || player3.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player2;
+    if (player2Reverse.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player2;
+    if (player4.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player2 Reverse
+  else if (
+    player2Reverse.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = playerReverse;
+    if (player2Reverse.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player3Reverse;
+    if (player2Reverse.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player2;
+    if (player2Reverse.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player4Reverse;
+    if (player2Reverse.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player3
+  else if (
+    player3.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = playerReverse;
+    if (player3.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player3Reverse;
+    if (player3.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player2;
+    if (player3.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player4Reverse;
+    if (player3.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player3Reverse
+  else if (
+    player3.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player3Reverse;
+    if (player3.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player3Reverse;
+    if (player.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player3Reverse;
+    if (player2Reverse.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player3Reverse;
+    if (player4.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player4
+  else if (
+    player4.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = playerReverse;
+    if (player4.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player3Reverse;
+    if (player4.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player2;
+    if (player4.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player4Reverse;
+    if (player4.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player4Reverse
+  else if (
+    player4Reverse.start === true &&
+    player.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player4Reverse;
+    if (player4Reverse.health <= 0 || player.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4Reverse.start === true &&
+    player3.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player4Reverse;
+    if (player4Reverse.health <= 0 || player3.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4Reverse.start === true &&
+    player2Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player4Reverse;
+    if (player4Reverse.health <= 0 || player2Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4Reverse.start === true &&
+    player4.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player4Reverse;
+    if (player4Reverse.health <= 0 || player4.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
 }
 
@@ -460,100 +787,6 @@ function TrueStart() {
   // console.log(player.sprites, player2.sprites);
 }
 
-// menu restart
-function MenuRestart() {
-  player.start = false;
-  playerReverse.start = false;
-  player2.start = false;
-  player2Reverse.start = false;
-  player3.start = false;
-  player3Reverse.start = false;
-  player4.start = false;
-  player4Reverse.start = false;
-  menuMain.start = true;
-
-  // Left side hero
-  player.health = 100;
-  player3.health = 100;
-  player2Reverse.health = 100;
-  player4.health = 100;
-  gsap.to('#playerHealth', {
-    width: player.health + '%',
-  });
-  gsap.to('#playerHealth', {
-    width: player3.health + '%',
-  });
-  gsap.to('#playerHealth', {
-    width: player2Reverse.health + '%',
-  });
-  gsap.to('#playerHealth', {
-    width: player4.health + '%',
-  });
-
-  // Right side hero
-  playerReverse.health = 100;
-  player2.health = 100;
-  player3Reverse.health = 100;
-  gsap.to('#player2Health', {
-    width: player2.health + '%',
-  });
-  gsap.to('#player2Health', {
-    width: player3Reverse.health + '%',
-  });
-  gsap.to('#player2Health', {
-    width: playerReverse.health + '%',
-  });
-  gsap.to('#player2Health', {
-    width: player4Reverse.health + '%',
-  });
-  if (
-    player.restart === false ||
-    playerReverse.restart === false ||
-    player2.restart === false ||
-    player2Reverse.restart === false ||
-    player3.restart === false ||
-    player3Reverse.restart === false ||
-    player4.restart === false ||
-    player4Reverse.restart === false
-  ) {
-    // restart set to true
-    player.restart = true;
-    playerReverse.restart = true;
-    player2.restart = true;
-    player2Reverse.restart = true;
-    player3.restart = true;
-    player3Reverse.restart = true;
-    player4.restart = true;
-    player4Reverse.restart = true;
-    // position x like in the start of round(game)
-    player.position.x = 256;
-    playerReverse.position.x = 768;
-    player2.position.x = 768;
-    player2Reverse.position.x = 256;
-    player3.position.x = 256;
-    player3Reverse.position.x = 768;
-    player4.position.x = 256;
-    player4Reverse.position.x = 768;
-    setTimeout(() => {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-    }, 1000);
-  }
-  document.querySelector('#mainMenu').style.display = 'flex';
-  document.querySelector('#displayText').innerHTML = '';
-  document.querySelector('#infoPlayers').style.display = 'none';
-  document.querySelector('#restart').style.display = 'none';
-  let diff = 30 - timer;
-  // console.log(diff);
-  document.querySelector('#timer').innerHTML =
-    timer < 30 ? (timer += diff) : null;
-}
 // function restart when round ends
 function TrueRestart() {
   player.health = 100;
