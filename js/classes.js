@@ -738,7 +738,7 @@ class Fighter extends Sprite {
 
   switchButtons(event) {
     switch (event.key) {
-      case 'd':
+      case 'd' || 'в':
         keys.d.pressed = true;
         this.lastKey = 'd';
         // Clear listener after first call.
@@ -752,7 +752,7 @@ class Fighter extends Sprite {
         // console.log('Finished!');
         // });
         break;
-      case 'a':
+      case 'a' || 'ф':
         keys.a.pressed = true;
         this.lastKey = 'a';
         // Clear listener after first call.
@@ -766,7 +766,7 @@ class Fighter extends Sprite {
         //   console.log('Finished!');
         // });
         break;
-      case 'w':
+      case 'w' || 'ц':
         if (keys.w.pressed && this.lastKey === 'w') {
           if (
             this.position.y + this.height + this.velocity.y >=
@@ -803,11 +803,11 @@ class Fighter extends Sprite {
         this.attack();
         // this.sound.play();
         break;
-      case 'c':
+      case 'c' || 'с':
         this.attackTwo();
         // this.sound.play();
         break;
-      case 'r':
+      case 'r' || 'к':
         this.attackThree();
         // this.sound.play();
         break;
@@ -1515,49 +1515,49 @@ class FighterReverse extends Sprite {
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-     if (playerAttack === playerCompare) {
-       if (player1.start === true) {
-         gsap.to('#player2Health', {
-           width: player1.health + '%',
-         });
-       }
-       if (player2.start === true) {
-         gsap.to('#player2Health', {
-           width: player2.health + '%',
-         });
-       }
-       if (player3.start === true) {
-         gsap.to('#player2Health', {
-           width: player3.health + '%',
-         });
-       }
-       if (player4.start === true) {
-         gsap.to('#player2Health', {
-           width: player4.health + '%',
-         });
-       }
-     } else {
-       if (player1.start === true) {
-         gsap.to('#playerHealth', {
-           width: player1.health + '%',
-         });
-       }
-       if (player2.start === true) {
-         gsap.to('#playerHealth', {
-           width: player2.health + '%',
-         });
-       }
-       if (player3.start === true) {
-         gsap.to('#playerHealth', {
-           width: player3.health + '%',
-         });
-       }
-       if (player4.start === true) {
-         gsap.to('#playerHealth', {
-           width: player4.health + '%',
-         });
-       }
-     }
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
+      }
       // console.log('you attack player2');
     }
     // if player1 is missing by attacking box

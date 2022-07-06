@@ -45,15 +45,12 @@
             <!-- player health -->
             <div style="position: relative; height:30px; width:100%;display:flex;">
                 <div style="position: absolute; color: white; height: 50px; bottom:40; left: 0; ">
-                    <h1>
-
-                        Игрок 1
+                    <h1 style="display:flex;" id="playerOne">
                     </h1>
                 </div>
                 <div style="position: relative; height:30px; width:100%;display:flex; justify-content:flex-end;">
-                    <div
-                        style="background-color:red; text-align:center;height:30px; width: 100%; border: 2px solid white; border-radius: 15px;">
-                        Игрок 1
+                    <div style="display:flex;background-color:red; text-align:center;height:30px; width: 100%; border: 2px solid white; border-radius: 15px;"
+                        id="playerOne">
                     </div>
                     <div id="playerHealth"
                         style="position: absolute; background-color:blue; top:0; right: 0; bottom: 0; width: 100%; border: 2px solid white; border-radius: 15px;">
@@ -75,14 +72,12 @@
             <!-- player2 health -->
             <div style="position: relative; height:30px; width:100%;display:flex; ">
                 <div style="position: absolute; color: white; height: 50px; bottom:40; right: 0; ">
-                    <h1>
-                        Игрок 2
+                    <h1 id="playerTwo">
                     </h1>
                 </div>
                 <div style="position: relative; height:30px; width:100%;">
-                    <div
-                        style="background-color:red; text-align:center;height:30px; border: 2px solid white; border-radius: 15px;">
-                        Игрок 2
+                    <div style="background-color:red; text-align:center;height:30px; border: 2px solid white; border-radius: 15px;"
+                        id="playerTwo">
                     </div>
                     <div id="player2Health"
                         style=" position: absolute; background-color:blue; top:0; right: 0; bottom: 0; left: 0; border: 2px solid white; border-radius: 15px;">
@@ -109,55 +104,52 @@
             style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; background-color:white; border-radius:15px; padding:5px;">
             <div id="parentColumnOne"
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
-                <p style="font-size:small;">
-
-                    Player 1
+                <p style="font-size:small;" id="pickPlayer1">
                 </p>
                 <!-- Hero list -->
                 <div class="focus-div" id="hero1Player1" onclick="PickMackPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">Mack</p>
+                    <p style="font-size:small;" id="pickMack1"></p>
                     <img src="/assets/samuraiMack/singleMack.png" alt="hero1" style="width: 48px; height:48px;" />
                 </div>
                 <div onclick="PickKingPlayer1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">King</p>
+                    <p style="font-size:small;" id="pickKing1"></p>
                     <img src="/assets/Medieval King Pack/singleKing.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
                 <div onclick="PickKenjiPlayer1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">Kenji</p>
+                    <p style="font-size:small;" id="pickKenji1"></p>
                     <img src="/assets/kenji/singleKenjiReverse.png" alt="hero3" style="width: 48px; height:48px;" />
                 </div>
                 <div onclick="PickKing2Player1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">King - 2 </p>
+                    <p style="font-size:small;" id="pickKingTwo1"></p>
                     <img src="/assets/Medieval King Pack 2/Sprites/King2 solo.png" alt="hero4"
                         style="width: 48px; height:48px;" />
                 </div>
             </div>
             <div
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-left:5px;">
-                <p style="font-size:small;">
-                    Player 2
+                <p style="font-size:small;" id="pickPlayer2">
                 </p>
                 <!-- Hero list -->
                 <div onclick="PickMackPlayer2();" id="hero1Player2"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;"> Mack</p>
+                    <p style="font-size:small;" id="pickMack2"> </p>
                     <img src="/assets/samuraiMack/reverseMack/singleMackReverse.png" alt="hero1"
                         style="width: 48px; height:48px;" />
                 </div>
                 <div onclick="PickKingPlayer2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">King</p>
+                    <p style="font-size:small;" id="pickKing2"></p>
                     <img src="/assets/Medieval King Pack/singleKingReverse.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
                 <div id="hero1Player2" onclick="PickKenjiPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;"> Kenji</p>
+                    <p style="font-size:small;" id="pickKenji2"> </p>
                     <img src="/assets/kenji/singleKenji.png" alt="hero1" style="width: 48px; height:48px;" />
                 </div>
                 <div onclick="PickKing2Player2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
-                    <p style="font-size:small;">King - 2</p>
+                    <p style="font-size:small;" id="pickKingTwo2"></p>
                     <img src="/assets/Medieval King Pack 2/Sprites/King2 solo Reverse.png" alt="hero4"
                         style="width: 48px; height:48px;" />
                 </div>
@@ -165,13 +157,11 @@
         </div>
         <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
-            onclick="TrueStart();">
-            Play
+            onclick="TrueStart();" id='menuPlay'>
         </button>
         <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; "
-            onclick="TrueBack();">
-            Back
+            onclick="TrueBack();" id="back">
         </button>
 
     </div>
@@ -184,13 +174,11 @@
         style="position:absolute; color: white;  align-items:center; justify-content: center; display:none; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
         <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
-            onclick="TrueRestart();">
-            Restart
+            onclick="TrueRestart();" id="restartButton">
         </button>
         <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
-            onclick="MenuRestart();">
-            Menu
+            onclick="MenuRestart();" id="restartMenu">
         </button>
     </div>
 
@@ -198,44 +186,38 @@
     <div id="mainMenu"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; width: 612px; height:300px; top: 100; left:200; right:0;bottom: 0; ">
         <div style="display:flex; flex-direction:column; padding:15px;">
-            <h1 style="color: white; align-items:center; justify-content: center;">
-                Fighting-game-app
+            <h1 style="color: white; align-items:center; justify-content: center;" id="mainTitle">
             </h1>
-            <h2 style=" color: white; height: 50px; text-align:center;">
-                Menu
+            <h2 style=" color: white; height: 50px; text-align:center;" id="menuTitle">
             </h2>
             <button
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
-                onclick="HeroList();">
-                Start game
+                onclick="HeroList();" id="pickHeroes">
             </button>
             <button onclick="Settings();"
-                style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;">
-                Settings
+                style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                id="menuSettings">
             </button>
             <button
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
-                onclick="TrueAbout();">
-                How to play
+                onclick="TrueAbout();" id="menuHowToPlay">
             </button>
             <button
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
-                onclick="TrueExit();">
-                Exit
+                onclick="TrueExit();" id="menuExit">
             </button>
         </div>
 
     </div>
-    <!-- Settings page -->
 
+    <!-- Settings page -->
     <div id="settings"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column; width: 612px; height:400px; top: 100; left:200; right:0;bottom: 0; ">
-        <h1 style="color: white; align-items:center; justify-content: center;">
-            Settings
+        <h1 style="color: white; align-items:center; justify-content: center;" id="settingsTitle">
         </h1>
-        <p>Audio settings:</p>
+        <p id="settingsAudioTitle"></p>
         <div style="display:flex; flex-direction:column;">
-            <label for="volume">Menu music</label>
+            <label for="volume" id="settingsMenuMusic"></label>
             <input type="range" id="volume" value="volume" step="0.01" name="audio" min="0" max="1"
                 onchange="rangeValue();"">
             <div id='result'
@@ -244,7 +226,7 @@
             0.5
         </div>
         <hr />
-        <label for=" volumeFight">Attack sound and damaged sound</label>
+        <label for="volumeFight" id="settingsAttackMusic"></label>
         <input type="range" id="volumeFight" value="volumeFight" step="0.01" name="audio" min="0" max="1"
             onchange="rangeValueFight();"">
         <div id='resultFight'
@@ -253,7 +235,7 @@
         0.5
     </div>
     <hr />
-    <label for=" volumeDeath">Death sound</label>
+    <label for=" volumeDeath" id="settingsDeathSound"></label>
     <input type="range" id="volumeDeath" value="volumeDeath" step="0.01" name="audio" min="0" max="1"
         onchange="rangeValueDeath();"">
     <div id='resultDeath'
@@ -262,7 +244,7 @@
     0.5
     </div>
     <hr />
-    <label for="volumeMove">Move sound</label>
+    <label for="volumeMove" id="settingsMoveSound"></label>
     <input type="range" id="volumeMove" value="volumeMove" step="0.01" name="audio" min="0" max="1"
         onchange="rangeValueMove();"">
         <div id='resultMove'
@@ -271,71 +253,55 @@
     0.5
     </div>
     <hr />
-    <button onclick="WithoutBlood();" style="cursor: pointer;">
-        WithoutBlood
+    <button onclick="ChangeLanguage();" style="cursor: pointer;" id="changeLanguage">
     </button>
     </div>
-    <button id="back"
+    <button
         style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
-        onclick="TrueBack();">
-        Back
+        onclick="TrueBack();" id="settingsBack">
     </button>
     </div>
 
     <!-- How to play page -->
     <div id="howToPlay"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width:612px; height:500px; top: 0; left:200; right:0;bottom: 0; grid-template-rows: repeat(3, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top:50px;">
-        <h2
-            style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;  margin-bottom:200px;">
-            How to play
+        <h2 style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;  margin-bottom:200px;"
+            id="howMain">
         </h2>
         <div
             style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black; margin-right:5px;">
             <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
-                <h3
-                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
-                    Player 1
+                <h3 style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;"
+                    id="howPlayerOne">
                 </h3>
                 <div
                     style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
-                    <div style="padding:5px;">
-                        A button
+                    <div style="padding:5px;" id="howA">
                     </div>
-                    <div style="padding:5px;">
-                        W button
+                    <div style="padding:5px;" id="howW">
                     </div>
-                    <div style="padding:5px;">
-                        D button
+                    <div style="padding:5px;" id="howD">
                     </div>
-                    <div style="padding:5px;">
-                        Space button
+                    <div style="padding:5px;" id="howSpace">
                     </div>
-                    <div style="padding:5px;">
-                        C button
+                    <div style="padding:5px;" id="howC">
                     </div>
-                    <div style="padding:5px;">
-                        R button
+                    <div style="padding:5px;" id="howR">
                     </div>
                 </div>
                 <div
                     style="display:grid; grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
-                    <div style="padding:5px;">
-                        Move to the left
+                    <div style="padding:5px;" id="howLeft">
                     </div>
-                    <div style="padding:5px;">
-                        Jump
+                    <div style="padding:5px;" id="howJump">
                     </div>
-                    <div style="padding:5px;">
-                        Move to the right
+                    <div style="padding:5px;" id="howRight">
                     </div>
-                    <div style="padding:5px;">
-                        Light attack (-20)
+                    <div style="padding:5px;" id="howLightAttack">
                     </div>
-                    <div style="padding:5px;">
-                        Middle attack (-25)
+                    <div style="padding:5px;" id="howMiddleAttack">
                     </div>
-                    <div style="padding:5px;">
-                        Hard attack (-35)
+                    <div style="padding:5px;" id="howHardAttack">
                     </div>
                 </div>
             </div>
@@ -343,59 +309,45 @@
         <div
             style="background-color: rgba(255, 255 ,255, 0.65); border:1px solid black; border-radius: 15px; padding:15px; color:black;  margin-left:5px;">
             <div style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%;">
-                <h3
-                    style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;">
-                    Player 2
+                <h3 style="color: black; align-items:center; justify-content: center;text-align:center; grid-column: span 3 / span 3;"
+                    id="howPlayerTwo">
                 </h3>
                 <div
                     style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
-                    <div style="padding:5px;">
-                        Arrow left
+                    <div style="padding:5px;" id="howLeft2">
                     </div>
-                    <div style="padding:5px;">
-                        Arrow up
+                    <div style="padding:5px;" id="howUp2">
                     </div>
-                    <div style="padding:5px;">
-                        Arrow right
+                    <div style="padding:5px;" id="howRight2">
                     </div>
-                    <div style="padding:5px;">
-                        Arrow down
+                    <div style="padding:5px;" id="howDown2">
                     </div>
-                    <div style="padding:5px;">
-                        2 button
+                    <div style="padding:5px;" id="howTwo2">
                     </div>
-                    <div style="padding:5px;">
-                        3 button
+                    <div style="padding:5px;" id="howThree2">
                     </div>
                 </div>
                 <div
                     style="display:grid; grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr));">
-                    <div style="padding:5px;">
-                        Move to the left
+                    <div style="padding:5px;" id="howMoveLeft2">
                     </div>
-                    <div style="padding:5px;">
-                        Jump
+                    <div style="padding:5px;" id="howMoveJump2">
                     </div>
-                    <div style="padding:5px;">
-                        Move to the right
+                    <div style="padding:5px;" id="howMoveRight2">
                     </div>
-                    <div style="padding:5px;">
-                        Light attack (-20)
+                    <div style="padding:5px;" id="howLightAttack2">
                     </div>
-                    <div style="padding:5px;">
-                        Middle attack (-25 )
+                    <div style="padding:5px;" id="howMiddleAttack2">
                     </div>
-                    <div style="padding:5px;">
-                        Hard attack (-35)
+                    <div style="padding:5px;" id="howHardAttack2">
                     </div>
                 </div>
             </div>
         </div>
 
-        <button id="back"
+        <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:200px;"
-            onclick="TrueBack();">
-            Back
+            onclick="TrueBack();" id="howToPlayBack">
         </button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"

@@ -28,15 +28,27 @@ function determineWinner({ pl1, pl2, timerId }) {
   document.querySelector('#displayText').style.display = 'flex';
   // console.log(pl1.health);
   if (pl1.health === pl2.health) {
-    document.querySelector('#displayText').innerHTML = 'Ничья';
+    if (language === 'eng') {
+      document.querySelector('#displayText').innerHTML = 'Tie';
+    } else if (language === 'ru') {
+      document.querySelector('#displayText').innerHTML = 'Ничья';
+    }
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Tie');
   } else if (pl1.health > pl2.health) {
-    document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
+    if (language === 'eng') {
+      document.querySelector('#displayText').innerHTML = 'Player 1 won!';
+    } else if (language === 'ru') {
+      document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
+    }
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Player 1 Win!!!');
   } else if (pl1.health < pl2.health) {
-    document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
+    if (language === 'eng') {
+      document.querySelector('#displayText').innerHTML = 'Player 2 won!';
+    } else if (language === 'ru') {
+      document.querySelector('#displayText').innerHTML = 'Игрок 2 выиграл!!!';
+    }
     document.querySelector('#restart').style.display = 'flex';
     // console.log('Player 2 Win!!!');
   }
@@ -332,7 +344,7 @@ function decreaseTimer() {
   }
 }
 
-  // Determine winner by less then zero health point
+// Determine winner by less then zero health point
 function DetermineWinnerByLessThenZeroHP() {
   // Player Mack
   if (
@@ -779,6 +791,7 @@ function TrueStart() {
   // home();
   // player.start = true;
   // player2.start = true;
+
   menuMain.start = false;
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
@@ -900,6 +913,173 @@ function TrueAbout() {
 function Settings() {
   document.querySelector('#mainMenu').style.display = 'none';
   document.querySelector('#settings').style.display = 'flex';
+}
+
+function ChangeLanguage() {
+  if (language === 'ru') {
+    language = 'eng';
+  } else if (language === 'eng') {
+    language = 'ru';
+  }
+  if (language === 'ru') {
+    // Интерфейс в игре
+    document.querySelector('#playerOne').innerHTML = 'Игрок 1';
+    document.querySelector('#playerTwo').innerHTML = 'Игрок 2';
+    // Главное меню
+    document.querySelector('#mainTitle').innerHTML =
+      'Бойцовский клуб-игра-приложение';
+    document.querySelector('#menuTitle').innerHTML = 'Меню';
+    document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
+    document.querySelector('#menuSettings').innerHTML = 'Настройки';
+    document.querySelector('#menuHowToPlay').innerHTML = 'Как играть';
+    document.querySelector('#menuExit').innerHTML = 'Выйти';
+    // Настройки
+    document.querySelector('#settingsAudioTitle').innerHTML = 'Настройки аудио';
+    document.querySelector('#settingsTitle').innerHTML = 'Настройки';
+    document.querySelector('#settingsMenuMusic').innerHTML = 'Музыка из меню';
+    document.querySelector('#settingsAttackMusic').innerHTML =
+      'Звуки атаки и повреждения';
+    document.querySelector('#settingsDeathSound').innerHTML = 'Звуки смерти';
+    document.querySelector('#settingsMoveSound').innerHTML =
+      'Звуки передвижения';
+    document.querySelector('#changeLanguage').innerHTML = 'Изменить язык';
+    // Как играть
+    document.querySelector('#howPlayerOne').innerHTML = 'Игрок 1';
+    //
+    document.querySelector('#howMain').innerHTML = 'Как играть';
+    document.querySelector('#howA').innerHTML = 'Ф кнопка';
+    document.querySelector('#howW').innerHTML = 'Ц кнопка';
+    document.querySelector('#howD').innerHTML = 'В кнопка';
+    document.querySelector('#howSpace').innerHTML = 'Пробел кнопка';
+    document.querySelector('#howC').innerHTML = 'С кнопка';
+    document.querySelector('#howR').innerHTML = 'К кнопка';
+    document.querySelector('#howLeft').innerHTML = 'Движение налево';
+    document.querySelector('#howJump').innerHTML = 'Прыжок';
+    document.querySelector('#howRight').innerHTML = 'Движение направо';
+    document.querySelector('#howLightAttack').innerHTML = 'Легкая атака';
+    document.querySelector('#howMiddleAttack').innerHTML = 'Средняя атака';
+    document.querySelector('#howHardAttack').innerHTML = 'Тяжелая атака';
+    // Как играть 2
+    document.querySelector('#howPlayerTwo').innerHTML = 'Игрок 2';
+    //
+    document.querySelector('#howLeft2').innerHTML = 'Стрелка влево';
+    document.querySelector('#howUp2').innerHTML = 'Стрелка вверх';
+    document.querySelector('#howRight2').innerHTML = 'Стрелка вправо';
+    document.querySelector('#howDown2').innerHTML = 'Стрелка вниз';
+    document.querySelector('#howTwo2').innerHTML = '2 кнопка';
+    document.querySelector('#howThree2').innerHTML = '3 кнопка';
+    document.querySelector('#howMoveLeft2').innerHTML = 'Движение налево';
+    document.querySelector('#howMoveJump2').innerHTML = 'Прыжок';
+    document.querySelector('#howMoveRight2').innerHTML = 'Движение направо';
+    document.querySelector('#howLightAttack2').innerHTML = 'Легкая атака';
+    document.querySelector('#howMiddleAttack2').innerHTML = 'Средняя атака';
+    document.querySelector('#howHardAttack2').innerHTML = 'Тяжелая атака';
+    // Меню выбора героев
+    // Игрок 1
+    document.querySelector('#pickPlayer1').innerHTML = 'Игрок 1';
+    document.querySelector('#pickMack1').innerHTML = 'Мэк';
+    document.querySelector('#pickKing1').innerHTML = 'Король';
+    document.querySelector('#pickKenji1').innerHTML = 'Кэнджи';
+    document.querySelector('#pickKingTwo1').innerHTML = 'Король - 2';
+    // Игрок 2
+    document.querySelector('#pickPlayer2').innerHTML = 'Игрок 2';
+    document.querySelector('#pickMack2').innerHTML = 'Мэк';
+    document.querySelector('#pickKing2').innerHTML = 'Король';
+    document.querySelector('#pickKenji2').innerHTML = 'Кэнджи';
+    document.querySelector('#pickKingTwo2').innerHTML = 'Король - 2';
+    // Играть и назад
+    document.querySelector('#menuPlay').innerHTML = 'Играть';
+    document.querySelector('#back').innerHTML = 'Назад';
+    // Перезапустить и вернуться в меню
+    document.querySelector('#restartButton').innerHTML = 'Перезапустить';
+    document.querySelector('#restartMenu').innerHTML = 'Меню';
+    // Назад кнопка - Как играть
+    document.querySelector('#howToPlayBack').innerHTML = 'Назад';
+    // Назад кнопка - Настройки
+    document.querySelector('#settingsBack').innerHTML = 'Назад';
+  } else if (language === 'eng') {
+    // Interface in a game
+    document.querySelector('#playerOne').innerHTML = 'Player 1';
+    document.querySelector('#playerTwo').innerHTML = 'Player 2';
+    // Main menu
+    document.querySelector('#mainTitle').innerHTML = 'Fighting club-game-app';
+    document.querySelector('#menuTitle').innerHTML = 'Menu';
+    document.querySelector('#pickHeroes').innerHTML = 'Pick heroes';
+    document.querySelector('#menuSettings').innerHTML = 'Settings';
+    document.querySelector('#menuHowToPlay').innerHTML = 'How to play';
+    document.querySelector('#menuExit').innerHTML = 'Exit';
+    // Settings
+    document.querySelector('#settingsTitle').innerHTML = 'Settings';
+    document.querySelector('#settingsAudioTitle').innerHTML = 'Audio settings';
+    document.querySelector('#settingsMenuMusic').innerHTML = 'Menu music';
+    document.querySelector('#settingsAttackMusic').innerHTML =
+      'Attack sound and damaged sound';
+    document.querySelector('#settingsDeathSound').innerHTML = 'Death sound';
+    document.querySelector('#settingsMoveSound').innerHTML = 'Move sound';
+    document.querySelector('#changeLanguage').innerHTML = 'Change language';
+    // How to play
+    document.querySelector('#howPlayerOne').innerHTML = 'Player 1';
+    //
+    document.querySelector('#howMain').innerHTML = 'How to play';
+    document.querySelector('#howA').innerHTML = 'A button';
+    document.querySelector('#howW').innerHTML = 'W button';
+    document.querySelector('#howD').innerHTML = 'D button';
+    document.querySelector('#howSpace').innerHTML = 'Space button';
+    document.querySelector('#howC').innerHTML = 'C button';
+    document.querySelector('#howR').innerHTML = 'R button';
+    document.querySelector('#howLeft').innerHTML = 'Move to the left';
+    document.querySelector('#howJump').innerHTML = 'Jump';
+    document.querySelector('#howRight').innerHTML = 'Move to the right';
+    document.querySelector('#howLightAttack').innerHTML = 'Light attack';
+    document.querySelector('#howMiddleAttack').innerHTML = 'Middle attack';
+    document.querySelector('#howHardAttack').innerHTML = 'Hard attack';
+    // How to play 2
+    document.querySelector('#howPlayerTwo').innerHTML = 'Player 2';
+    //
+    document.querySelector('#howLeft2').innerHTML = 'Arrow Left';
+    document.querySelector('#howUp2').innerHTML = 'Arrow Up';
+    document.querySelector('#howRight2').innerHTML = 'Arrow Right';
+    document.querySelector('#howDown2').innerHTML = 'Arrow Down';
+    document.querySelector('#howTwo2').innerHTML = '2 button';
+    document.querySelector('#howThree2').innerHTML = '3 button';
+    document.querySelector('#howMoveLeft2').innerHTML = 'Move to the left';
+    document.querySelector('#howMoveJump2').innerHTML = 'Jump';
+    document.querySelector('#howMoveRight2').innerHTML = 'Move to the right';
+    document.querySelector('#howLightAttack2').innerHTML = 'Light attack';
+    document.querySelector('#howMiddleAttack2').innerHTML = 'Middle attack';
+    document.querySelector('#howHardAttack2').innerHTML = 'Hard attack';
+    // Menu
+    document.querySelector('#pickPlayer1').innerHTML = 'Игрок 1';
+    document.querySelector('#pickPlayer2').innerHTML = 'Игрок 2';
+    // Player 1
+    document.querySelector('#pickPlayer1').innerHTML = 'Player 1';
+    document.querySelector('#pickMack1').innerHTML = 'Mack';
+    document.querySelector('#pickKing1').innerHTML = 'King';
+    document.querySelector('#pickKenji1').innerHTML = 'Kenji';
+    document.querySelector('#pickKingTwo1').innerHTML = 'King - 2';
+    // Player 2
+    document.querySelector('#pickPlayer2').innerHTML = 'Игрок 2';
+    document.querySelector('#pickMack2').innerHTML = 'Mack';
+    document.querySelector('#pickKing2').innerHTML = 'King';
+    document.querySelector('#pickKenji2').innerHTML = 'Kenji';
+    document.querySelector('#pickKingTwo2').innerHTML = 'King - 2';
+    // Play and back
+    document.querySelector('#menuPlay').innerHTML = 'Play';
+    document.querySelector('#back').innerHTML = 'Back';
+    // Restart and menu
+    document.querySelector('#restartButton').innerHTML = 'Restart';
+    document.querySelector('#restartMenu').innerHTML = 'Menu';
+    // Назад кнопка 1
+    document.querySelector('#howToPlayBack').innerHTML = 'Back';
+    // Назад кнопка - Настройки
+    document.querySelector('#settingsBack').innerHTML = 'Back';
+  }
+}
+
+function ChangeLanguageToEng() {
+  language = 'eng';
+  document.querySelector('#displayEng').style.display = 'flex';
+  document.querySelector('#displayRu').style.display = 'none';
 }
 
 // changing volume menu music

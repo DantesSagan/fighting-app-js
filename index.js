@@ -12,6 +12,9 @@ canvas.width = 1024;
 canvas.height = 596;
 
 c.fillRect(0, 0, canvas.width, canvas.height);
+// Change language
+let language = 'eng';
+ChangeLanguage();
 
 // This is means whitch velocity to falling down to bottom of the canvas
 // And how faster this rich bottom by this
