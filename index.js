@@ -1099,15 +1099,24 @@ function animate(event) {
   );
 
   // console.log(player2.restart);
-  // detect collision
+
+  // Detect collision
   // Player 1 is attacking 1st animation
+  // When 1st arg = playerAttack
+  // 2n arg = player1
+  // 3d arg = player2
+  // 4th arg = player3
+  // 5th arg = player4
+  // 6th arg = attack animation (collision)
+  // 7th arg = value of dealing dmg
   player.detectCollision(
     player,
     player2,
     player3Reverse,
     playerReverse,
     player4Reverse,
-    4
+    4,
+    20
   );
 
   // Player 1 is attacking Two animation
@@ -1117,7 +1126,8 @@ function animate(event) {
     player3Reverse,
     playerReverse,
     player4Reverse,
-    4
+    4,
+    25
   );
 
   // Player 1 is attacking Three animation
@@ -1127,126 +1137,158 @@ function animate(event) {
     player3Reverse,
     playerReverse,
     player4Reverse,
-    4
+    4,
+    30
   );
 
   // Player 2 && player2 is attacking animation
-  if (
-    rectangularCollision({
-      rectangle1: player2,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player4.start === true
-          ? player4
-          : player,
-    }) &&
-    player2.isAttacking &&
-    player2.framesCurrent === 1
-  ) {
-    if (player.start === true) {
-      player.damagedByKenji();
-      player2.isAttacking = false;
-    } else if (player3.start === true) {
-      player3.damagedByKenji();
-      player2.isAttacking = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damagedByKenji();
-      player2.isAttacking = false;
-    } else if (player4.start === true) {
-      player4.damagedByKenji();
-      player2.isAttacking = false;
-    }
-    // document.querySelector('#playerHealth').style.width = player.health + '%';
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    if (player4.start === true) {
-      gsap.to('#playerHealth', {
-        width: player4.health + '%',
-      });
-    }
-    console.log('you attack player1');
-  }
-  // if player2 is missing by attacking box
-  if (player2.isAttacking && player2.framesCurrent === 1) {
-    player2.isAttacking = false;
-  }
+  // Detect collision
+  // Player 1 is attacking 1st animation
+  // When 1st arg = playerAttack
+  // 2n arg = player1
+  // 3d arg = player2
+  // 4th arg = player3
+  // 5th arg = player4
+  // 6th arg = attack animation (collision)
+  // 7th arg = value of dealing dmg
+  // 8th arg = player for compare to detect collision between two players.
+  // Player 2 on right side (player2Health) detect collision to (playerHealth) on left side
+  player2.detectCollision(
+    player2,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    1,
+    10,
+    player2
+  );
+  player2.detectCollisionTwo(
+    player2,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    1,
+    20,
+    player2
+  );
+  // if (
+  //   rectangularCollision({
+  //     rectangle1: player2,
+  //     rectangle2:
+  //       player.start === true
+  //         ? player
+  //         : player3.start === true
+  //         ? player3
+  //         : player2Reverse.start === true
+  //         ? player2Reverse
+  //         : player4.start === true
+  //         ? player4
+  //         : player,
+  //   }) &&
+  //   player2.isAttacking &&
+  //   player2.framesCurrent === 1
+  // ) {
+  //   if (player.start === true) {
+  //     player.damagedByKenji();
+  //     player2.isAttacking = false;
+  //   } else if (player3.start === true) {
+  //     player3.damagedByKenji();
+  //     player2.isAttacking = false;
+  //   } else if (player2Reverse.start === true) {
+  //     player2Reverse.damagedByKenji();
+  //     player2.isAttacking = false;
+  //   } else if (player4.start === true) {
+  //     player4.damagedByKenji();
+  //     player2.isAttacking = false;
+  //   }
+  //   // document.querySelector('#playerHealth').style.width = player.health + '%';
+  //   if (player.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player.health + '%',
+  //     });
+  //   }
+  //   if (player3.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player3.health + '%',
+  //     });
+  //   }
+  //   if (player2Reverse.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player2Reverse.health + '%',
+  //     });
+  //   }
+  //   if (player4.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player4.health + '%',
+  //     });
+  //   }
+  //   console.log('you attack player1');
+  // }
+  // // if player2 is missing by attacking box
+  // if (player2.isAttacking && player2.framesCurrent === 1) {
+  //   player2.isAttacking = false;
+  // }
 
-  // Player 2 && player2 is attackingTwo animation
-  if (
-    rectangularCollision({
-      rectangle1: player2,
-      rectangle2:
-        player.start === true
-          ? player
-          : player3.start === true
-          ? player3
-          : player2Reverse.start === true
-          ? player2Reverse
-          : player4.start === true
-          ? player4
-          : player,
-    }) &&
-    player2.isAttackingTwo &&
-    player2.framesCurrent === 1
-  ) {
-    if (player.start === true) {
-      player.damagedTwoByKenji();
-      player2.isAttackingTwo = false;
-    } else if (player3.start === true) {
-      player3.damagedTwoByKenji();
-      player2.isAttackingTwo = false;
-    } else if (player2Reverse.start === true) {
-      player2Reverse.damagedTwoByKenji();
-      player2.isAttackingTwo = false;
-    } else if (player4.start === true) {
-      player4.damagedTwoByKenji();
-      player2.isAttackingTwo = false;
-    }
-    // document.querySelector('#playerHealth').style.width = player.health + '%';
-    if (player.start === true) {
-      gsap.to('#playerHealth', {
-        width: player.health + '%',
-      });
-    }
-    if (player3.start === true) {
-      gsap.to('#playerHealth', {
-        width: player3.health + '%',
-      });
-    }
-    if (player2Reverse.start === true) {
-      gsap.to('#playerHealth', {
-        width: player2Reverse.health + '%',
-      });
-    }
-    if (player4.start === true) {
-      gsap.to('#playerHealth', {
-        width: player4.health + '%',
-      });
-    }
-    console.log('you attack player1');
-  }
-  // if player2 is missing by attacking box
-  if (player2.isAttackingTwo && player2.framesCurrent === 1) {
-    player2.isAttackingTwo = false;
-  }
+  // // Player 2 && player2 is attackingTwo animation
+  // if (
+  //   rectangularCollision({
+  //     rectangle1: player2,
+  //     rectangle2:
+  //       player.start === true
+  //         ? player
+  //         : player3.start === true
+  //         ? player3
+  //         : player2Reverse.start === true
+  //         ? player2Reverse
+  //         : player4.start === true
+  //         ? player4
+  //         : player,
+  //   }) &&
+  //   player2.isAttackingTwo &&
+  //   player2.framesCurrent === 1
+  // ) {
+  //   if (player.start === true) {
+  //     player.damagedTwoByKenji();
+  //     player2.isAttackingTwo = false;
+  //   } else if (player3.start === true) {
+  //     player3.damagedTwoByKenji();
+  //     player2.isAttackingTwo = false;
+  //   } else if (player2Reverse.start === true) {
+  //     player2Reverse.damagedTwoByKenji();
+  //     player2.isAttackingTwo = false;
+  //   } else if (player4.start === true) {
+  //     player4.damagedTwoByKenji();
+  //     player2.isAttackingTwo = false;
+  //   }
+  //   // document.querySelector('#playerHealth').style.width = player.health + '%';
+  //   if (player.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player.health + '%',
+  //     });
+  //   }
+  //   if (player3.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player3.health + '%',
+  //     });
+  //   }
+  //   if (player2Reverse.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player2Reverse.health + '%',
+  //     });
+  //   }
+  //   if (player4.start === true) {
+  //     gsap.to('#playerHealth', {
+  //       width: player4.health + '%',
+  //     });
+  //   }
+  //   console.log('you attack player1');
+  // }
+  // // if player2 is missing by attacking box
+  // if (player2.isAttackingTwo && player2.framesCurrent === 1) {
+  //   player2.isAttackingTwo = false;
+  // }
   // here
   // Player 3 is attacking 1st animation
   player3.detectCollision(
@@ -1255,7 +1297,8 @@ function animate(event) {
     player2,
     playerReverse,
     player4Reverse,
-    4
+    4,
+    20
   );
 
   // Player 3 is attacking Two animation
@@ -1265,37 +1308,41 @@ function animate(event) {
     player2,
     playerReverse,
     player4Reverse,
-    4
+    4,
+    25
   );
 
   // Player4 is attacking animation
-  player4.detectCollisionKing2(
+  player4.detectCollision(
     player4,
     playerReverse,
     player2,
     player3Reverse,
     player4Reverse,
-    2
+    2,
+    10
   );
 
   // Player4 is attackingTwo animation
-  player4.detectCollisionTwoKing2(
+  player4.detectCollisionTwo(
     player4,
     playerReverse,
     player2,
     player3Reverse,
     player4Reverse,
-    2
+    2,
+    20
   );
 
   // Player4 is attackingThree animation
-  player4.detectCollisionThreeKing2(
+  player4.detectCollisionThree(
     player4,
     playerReverse,
     player2,
     player3Reverse,
     player4Reverse,
-    2
+    2,
+    30
   );
 
   // Player 3Reverse is attacking 1st animation
@@ -1305,7 +1352,8 @@ function animate(event) {
     player3,
     player2Reverse,
     player4,
-    3
+    3,
+    20
   );
 
   // Player 3Reverse is attacking Two animation
@@ -1315,7 +1363,8 @@ function animate(event) {
     player3,
     player2Reverse,
     player4,
-    3
+    3,
+    25
   );
 
   // Player Reverse is attacking 1st animation
@@ -1325,7 +1374,8 @@ function animate(event) {
     player3,
     player2Reverse,
     player4,
-    2
+    2,
+    20
   );
 
   // Player Reverse is attacking Two animation
@@ -1335,7 +1385,8 @@ function animate(event) {
     player3,
     player2Reverse,
     player4,
-    2
+    2,
+    25
   );
 
   // Player Reverse is attacking Three animation
@@ -1345,158 +1396,194 @@ function animate(event) {
     player3,
     player2Reverse,
     player4,
-    2
+    2,
+    30
   );
 
   // Player4Reverse is attacking 1st animation
-  player4Reverse.detectCollisionReverseKing2(
+  player4Reverse.detectCollisionReverse(
     player4Reverse,
     player,
     player3,
     player2Reverse,
     player4,
-    1
+    1,
+    10
   );
 
   // Player4Reverse is attacking Two animation
-  player4Reverse.detectCollisionTwoReverseKing2(
+  player4Reverse.detectCollisionTwoReverse(
     player4Reverse,
     player,
     player3,
     player2Reverse,
     player4,
-    1
+    1,
+    20
   );
 
   // Player4Reverse is attacking Three animation
-  player4Reverse.detectCollisionThreeReverseKing2(
+  player4Reverse.detectCollisionThreeReverse(
     player4Reverse,
     player,
     player3,
     player2Reverse,
     player4,
-    1
+    1,
+    30
   );
   // Player 2 Reverse is attacking 1st animation
-  if (
-    rectangularCollision({
-      rectangle1: player2Reverse,
-      rectangle2:
-        playerReverse.start === true
-          ? playerReverse
-          : player3Reverse.start === true
-          ? player3Reverse
-          : player2.start === true
-          ? player2
-          : player4Reverse.start === true
-          ? player4Reverse
-          : player,
-    }) &&
-    player2Reverse.isAttacking &&
-    player2Reverse.countFramesMax === 3
-  ) {
-    if (playerReverse.start === true) {
-      playerReverse.damagedByKenji();
-      player2Reverse.isAttacking = false;
-    } else if (player3Reverse.start === true) {
-      player3Reverse.damagedByKenji();
-      player2Reverse.isAttacking = false;
-    } else if (player2.start === true) {
-      player2.damagedByKenji();
-      player2Reverse.isAttacking = false;
-    } else if (player4Reverse.start === true) {
-      player4Reverse.damagedByKenji();
-      player2Reverse.isAttacking = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    // if we are using gsap we get to say of id and property with what need to do
-    // and also give a smooth animation of decreasing healthbar
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player4Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player4Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
+  // Detect collision
+  // Player 1 is attacking 1st animation
+  // When 1st arg = playerAttack
+  // 2n arg = player1
+  // 3d arg = player2
+  // 4th arg = player3
+  // 5th arg = player4
+  // 6th arg = attack animation (collision)
+  // 7th arg = value of dealing dmg
+  // 8th arg = player for compare to detect collision between two players.
+  // Player 2 on left side (playerHealth) detect collision to (player2Health) on right side
+  player2Reverse.detectCollisionReverse(
+    player2Reverse,
+    playerReverse,
+    player3Reverse,
+    player2,
+    player4Reverse,
+    3,
+    10,
+    player2Reverse
+  );
+  player2Reverse.detectCollisionTwoReverse(
+    player2Reverse,
+    playerReverse,
+    player3Reverse,
+    player2,
+    player4Reverse,
+    3,
+    20,
+    player2Reverse
+  );
 
-  // if player1 is missing by attacking box
-  if (player2Reverse.isAttacking && player2Reverse.countFramesMax === 3) {
-    player2Reverse.isAttacking = false;
-  }
-  // Player 2 Reverse is attacking Two animation
-  if (
-    rectangularCollision({
-      rectangle1: player2Reverse,
-      rectangle2:
-        playerReverse.start === true
-          ? playerReverse
-          : player3Reverse.start === true
-          ? player3Reverse
-          : player2.start === true
-          ? player2
-          : player4Reverse.start === true
-          ? player4Reverse
-          : player,
-    }) &&
-    player2Reverse.isAttackingTwo &&
-    player2Reverse.countFramesMax === 3
-  ) {
-    if (playerReverse.start === true) {
-      playerReverse.damagedTwoByKenji();
-      player2Reverse.isAttackingTwo = false;
-    } else if (player3Reverse.start === true) {
-      player3Reverse.damagedTwoByKenji();
-      player2Reverse.isAttackingTwo = false;
-    } else if (player2.start === true) {
-      player2.damagedTwoByKenji();
-      player2Reverse.isAttackingTwo = false;
-    } else if (player4Reverse.start === true) {
-      player4Reverse.damagedTwoByKenji();
-      player2Reverse.isAttackingTwo = false;
-    }
-    // document.querySelector('#player2Health').style.width = player2.health + '%';
-    if (playerReverse.start === true) {
-      gsap.to('#player2Health', {
-        width: playerReverse.health + '%',
-      });
-    }
-    if (player3Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player3Reverse.health + '%',
-      });
-    }
-    if (player2.start === true) {
-      gsap.to('#player2Health', {
-        width: player2.health + '%',
-      });
-    }
-    if (player4Reverse.start === true) {
-      gsap.to('#player2Health', {
-        width: player4Reverse.health + '%',
-      });
-    }
-    // console.log('you attack player2');
-  }
+  // if (
+  //   rectangularCollision({
+  //     rectangle1: player2Reverse,
+  //     rectangle2:
+  //       playerReverse.start === true
+  //         ? playerReverse
+  //         : player3Reverse.start === true
+  //         ? player3Reverse
+  //         : player2.start === true
+  //         ? player2
+  //         : player4Reverse.start === true
+  //         ? player4Reverse
+  //         : player,
+  //   }) &&
+  //   player2Reverse.isAttacking &&
+  //   player2Reverse.countFramesMax === 3
+  // ) {
+  //   if (playerReverse.start === true) {
+  //     playerReverse.damagedByKenji();
+  //     player2Reverse.isAttacking = false;
+  //   } else if (player3Reverse.start === true) {
+  //     player3Reverse.damagedByKenji();
+  //     player2Reverse.isAttacking = false;
+  //   } else if (player2.start === true) {
+  //     player2.damagedByKenji();
+  //     player2Reverse.isAttacking = false;
+  //   } else if (player4Reverse.start === true) {
+  //     player4Reverse.damagedByKenji();
+  //     player2Reverse.isAttacking = false;
+  //   }
+  //   // document.querySelector('#player2Health').style.width = player2.health + '%';
+  //   // if we are using gsap we get to say of id and property with what need to do
+  //   // and also give a smooth animation of decreasing healthbar
+  //   if (playerReverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: playerReverse.health + '%',
+  //     });
+  //   }
+  //   if (player3Reverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player3Reverse.health + '%',
+  //     });
+  //   }
+  //   if (player2.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player2.health + '%',
+  //     });
+  //   }
+  //   if (player4Reverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player4Reverse.health + '%',
+  //     });
+  //   }
+  //   // console.log('you attack player2');
+  // }
 
-  // if player3 is missing by attacking box
-  if (player2Reverse.isAttackingTwo && player2Reverse.countFramesMax === 3) {
-    player2Reverse.isAttackingTwo = false;
-  }
+  // // if player1 is missing by attacking box
+  // if (player2Reverse.isAttacking && player2Reverse.countFramesMax === 3) {
+  //   player2Reverse.isAttacking = false;
+  // }
+  // // Player 2 Reverse is attacking Two animation
+  // if (
+  //   rectangularCollision({
+  //     rectangle1: player2Reverse,
+  //     rectangle2:
+  //       playerReverse.start === true
+  //         ? playerReverse
+  //         : player3Reverse.start === true
+  //         ? player3Reverse
+  //         : player2.start === true
+  //         ? player2
+  //         : player4Reverse.start === true
+  //         ? player4Reverse
+  //         : player,
+  //   }) &&
+  //   player2Reverse.isAttackingTwo &&
+  //   player2Reverse.countFramesMax === 3
+  // ) {
+  //   if (playerReverse.start === true) {
+  //     playerReverse.damagedTwoByKenji();
+  //     player2Reverse.isAttackingTwo = false;
+  //   } else if (player3Reverse.start === true) {
+  //     player3Reverse.damagedTwoByKenji();
+  //     player2Reverse.isAttackingTwo = false;
+  //   } else if (player2.start === true) {
+  //     player2.damagedTwoByKenji();
+  //     player2Reverse.isAttackingTwo = false;
+  //   } else if (player4Reverse.start === true) {
+  //     player4Reverse.damagedTwoByKenji();
+  //     player2Reverse.isAttackingTwo = false;
+  //   }
+  //   // document.querySelector('#player2Health').style.width = player2.health + '%';
+  //   if (playerReverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: playerReverse.health + '%',
+  //     });
+  //   }
+  //   if (player3Reverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player3Reverse.health + '%',
+  //     });
+  //   }
+  //   if (player2.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player2.health + '%',
+  //     });
+  //   }
+  //   if (player4Reverse.start === true) {
+  //     gsap.to('#player2Health', {
+  //       width: player4Reverse.health + '%',
+  //     });
+  //   }
+  //   // console.log('you attack player2');
+  // }
+
+  // // if player3 is missing by attacking box
+  // if (player2Reverse.isAttackingTwo && player2Reverse.countFramesMax === 3) {
+  //   player2Reverse.isAttackingTwo = false;
+  // }
 
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';

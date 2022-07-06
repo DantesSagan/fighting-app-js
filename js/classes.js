@@ -397,7 +397,9 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -417,41 +419,66 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damaged();
+        player1.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player2.start === true) {
-        player2.damaged();
+        player2.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player3.start === true) {
-        player3.damaged();
+        player3.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
-        player4.damaged();
+        player4.damaged(dmg);
         playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
       }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
-      }
+      // if player2Reverse (Kenji on Left side) strict equal to comparedPlayer so
+
       // console.log('you attack player2');
     }
     // if player1 is missing by attacking box
@@ -468,7 +495,9 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -488,40 +517,63 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedTwo();
+        player1.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player2.start === true) {
-        player2.damagedTwo();
+        player2.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player3.start === true) {
-        player3.damagedTwo();
+        player3.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
-        player4.damagedTwo();
+        player4.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -539,7 +591,8 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg
   ) {
     if (
       rectangularCollision({
@@ -559,16 +612,16 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedThree();
+        player1.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player2.start === true) {
-        player2.damagedThree();
+        player2.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player3.start === true) {
-        player3.damagedThree();
+        player3.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
-        player4.damagedThree();
+        player4.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -604,221 +657,9 @@ class Fighter extends Sprite {
       playerAttack.isAttackingThree = false;
     }
   }
-  detectCollisionKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttacking &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player2.start === true) {
-        player2.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player3.start === true) {
-        player3.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player4.start === true) {
-        player4.damagedByKing2();
-        playerAttack.isAttacking = false;
-      }
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttacking &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      playerAttack.isAttacking = false;
-    }
-  }
-  detectCollisionTwoKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttackingTwo &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player2.start === true) {
-        player2.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player3.start === true) {
-        player3.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player4.start === true) {
-        player4.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      }
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttackingTwo &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      playerAttack.isAttackingTwo = false;
-    }
-  }
-  detectCollisionThreeKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttackingThree &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player2.start === true) {
-        player2.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player3.start === true) {
-        player3.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player4.start === true) {
-        player4.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      }
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttackingThree &&
-      playerAttack.framesCurrent === missingFrame
-    ) {
-      playerAttack.isAttackingThree = false;
-    }
-  }
-  damaged() {
-    this.health -= 20;
+
+  damaged(dealingDmg) {
+    this.health -= dealingDmg;
     if (this.health <= 0) {
       this.switchSprite('death');
       // setTimeout(() => {
@@ -842,8 +683,8 @@ class Fighter extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedTwo() {
-    this.health -= 25;
+  damagedTwo(dealingDmgTwo) {
+    this.health -= dealingDmgTwo;
     if (this.health <= 0) {
       this.switchSprite('death');
       // setTimeout(() => {
@@ -866,8 +707,8 @@ class Fighter extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedThree() {
-    this.health -= 30;
+  damagedThree(dealingDmgThree) {
+    this.health -= dealingDmgThree;
     if (this.health <= 0) {
       this.switchSprite('death');
       // setTimeout(() => {
@@ -887,114 +728,6 @@ class Fighter extends Sprite {
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
-      this.switchSprite('damaged');
-    }
-  }
-  damagedByKenji() {
-    this.health -= 10;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
-      // and also change sprite to damaged sprite
-      this.switchSprite('damaged');
-    }
-  }
-  damagedTwoByKenji() {
-    this.health -= 20;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      this.switchSprite('damaged');
-    }
-  }
-  damagedByKing2() {
-    this.health -= 10;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
-      // and also change sprite to damaged sprite
-      this.switchSprite('damaged');
-    }
-  }
-  damagedTwoByKing2() {
-    this.health -= 20;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      this.switchSprite('damaged');
-    }
-  }
-  damagedThreeByKing2() {
-    this.health -= 25;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
       this.switchSprite('damaged');
     }
   }
@@ -1010,13 +743,13 @@ class Fighter extends Sprite {
         this.lastKey = 'd';
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
-          // audio.Walking.play();
-          // audio.Walking.volume(volumeMove);
+        // audio.Walking.play();
+        // audio.Walking.volume(volumeMove);
         // });
 
         // Fires when the sound finishes playing.
         // audio.Walking.on('end', () => {
-          // console.log('Finished!');
+        // console.log('Finished!');
         // });
         break;
       case 'a':
@@ -1638,13 +1371,16 @@ class FighterReverse extends Sprite {
       this.restartRound();
     }
   }
+
   detectCollisionReverse(
     playerAttack,
     player1,
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -1664,42 +1400,67 @@ class FighterReverse extends Sprite {
       playerAttack.countFramesMax === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damaged();
+        player1.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player2.start === true) {
-        player2.damaged();
+        player2.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player3.start === true) {
-        player3.damaged();
+        player3.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
-        player4.damaged();
+        player4.damaged(dmg);
         playerAttack.isAttacking = false;
       }
 
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
+      // if player2Reverse (Kenji on Left side) strict equal to comparedPlayer so
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
       }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
+
       // console.log('you attack player2');
     }
     // if player1 is missing by attacking box
@@ -1716,7 +1477,9 @@ class FighterReverse extends Sprite {
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -1736,42 +1499,65 @@ class FighterReverse extends Sprite {
       playerAttack.countFramesMax === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedTwo();
+        player1.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player2.start === true) {
-        player2.damagedTwo();
+        player2.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player3.start === true) {
-        player3.damagedTwo();
+        player3.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
-        player4.damagedTwo();
+        player4.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       }
 
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
+     if (playerAttack === playerCompare) {
+       if (player1.start === true) {
+         gsap.to('#player2Health', {
+           width: player1.health + '%',
+         });
+       }
+       if (player2.start === true) {
+         gsap.to('#player2Health', {
+           width: player2.health + '%',
+         });
+       }
+       if (player3.start === true) {
+         gsap.to('#player2Health', {
+           width: player3.health + '%',
+         });
+       }
+       if (player4.start === true) {
+         gsap.to('#player2Health', {
+           width: player4.health + '%',
+         });
+       }
+     } else {
+       if (player1.start === true) {
+         gsap.to('#playerHealth', {
+           width: player1.health + '%',
+         });
+       }
+       if (player2.start === true) {
+         gsap.to('#playerHealth', {
+           width: player2.health + '%',
+         });
+       }
+       if (player3.start === true) {
+         gsap.to('#playerHealth', {
+           width: player3.health + '%',
+         });
+       }
+       if (player4.start === true) {
+         gsap.to('#playerHealth', {
+           width: player4.health + '%',
+         });
+       }
+     }
       // console.log('you attack player2');
     }
     // if player1 is missing by attacking box
@@ -1782,14 +1568,14 @@ class FighterReverse extends Sprite {
       playerAttack.isAttackingTwo = false;
     }
   }
-
   detectCollisionThreeReverse(
     playerAttack,
     player1,
     player2,
     player3,
     player4,
-    missingFrame
+    missingFrame,
+    dmg
   ) {
     if (
       rectangularCollision({
@@ -1809,16 +1595,16 @@ class FighterReverse extends Sprite {
       playerAttack.countFramesMax === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedThree();
+        player1.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player2.start === true) {
-        player2.damagedThree();
+        player2.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player3.start === true) {
-        player3.damagedThre();
+        player3.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
-        player4.damagedThree();
+        player4.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
 
@@ -1856,232 +1642,9 @@ class FighterReverse extends Sprite {
     }
   }
 
-  detectCollisionReverseKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttacking &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player2.start === true) {
-        player2.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player3.start === true) {
-        player3.damagedByKing2();
-        playerAttack.isAttacking = false;
-      } else if (player4.start === true) {
-        player4.damagedByKing2();
-        playerAttack.isAttacking = false;
-      }
-
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttacking &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      playerAttack.isAttacking = false;
-    }
-  }
-  detectCollisionTwoReverseKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttackingTwo &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player2.start === true) {
-        player2.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player3.start === true) {
-        player3.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      } else if (player4.start === true) {
-        player4.damagedTwoByKing2();
-        playerAttack.isAttackingTwo = false;
-      }
-
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttackingTwo &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      playerAttack.isAttackingTwo = false;
-    }
-  }
-  detectCollisionThreeReverseKing2(
-    playerAttack,
-    player1,
-    player2,
-    player3,
-    player4,
-    missingFrame
-  ) {
-    if (
-      rectangularCollision({
-        rectangle1: playerAttack,
-        rectangle2:
-          player1.start === true
-            ? player1
-            : player2.start === true
-            ? player2
-            : player3.start === true
-            ? player3
-            : player4.start === true
-            ? player4
-            : player1,
-      }) &&
-      playerAttack.isAttackingThree &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      if (player1.start === true) {
-        player1.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player2.start === true) {
-        player2.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player3.start === true) {
-        player3.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      } else if (player4.start === true) {
-        player4.damagedThreeByKing2();
-        playerAttack.isAttackingThree = false;
-      }
-      // document.querySelector('#player2Health').style.width = player2.health + '%';
-      // if we are using gsap we get to say of id and property with what need to do
-      // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
-      // console.log('you attack player2');
-    }
-    // if player1 is missing by attacking box
-    if (
-      playerAttack.isAttackingThree &&
-      playerAttack.countFramesMax === missingFrame
-    ) {
-      playerAttack.isAttackingThree = false;
-    }
-  }
-  damaged() {
-    this.health -= 20;
+  damaged(dealingDmg) {
+    this.health -= dealingDmg;
     if (this.health <= 0) {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
       this.switchSprite('death');
       // setTimeout(() => {
       //   this.switchSprite('deathTwo');
@@ -2091,36 +1654,22 @@ class FighterReverse extends Sprite {
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       // this.sound.play();
+      player.restart = false;
+      playerReverse.restart = false;
+      player2.restart = false;
+      player2Reverse.restart = false;
+      player3.restart = false;
+      player3Reverse.restart = false;
+      player4.restart = false;
+      player4Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
   }
-  damagedTwo() {
-    this.health -= 25;
-    if (this.health <= 0) {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      audio.Damaged.play();
-      audio.Damaged.volume(volumeFight);
-      this.switchSprite('damaged');
-    }
-  }
-  damagedThree() {
-    this.health -= 30;
+  damagedTwo(dealingDmgTwo) {
+    this.health -= dealingDmgTwo;
     if (this.health <= 0) {
       this.switchSprite('death');
       // setTimeout(() => {
@@ -2141,32 +1690,8 @@ class FighterReverse extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedByKenji() {
-    this.health -= 10;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
-      // and also change sprite to damaged sprite
-      this.switchSprite('damaged');
-    }
-  }
-  damagedTwoByKenji() {
-    this.health -= 20;
+  damagedThree(dealingDmgThree) {
+    this.health -= dealingDmgThree;
     if (this.health <= 0) {
       this.switchSprite('death');
       // setTimeout(() => {
@@ -2182,75 +1707,12 @@ class FighterReverse extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      audio.Damaged.play();
+      audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
     }
   }
 
-  damagedByKing2() {
-    this.health -= 10;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      // in this case we auto play damaged sound
-      this.sound.volume = volumeFight;
-      this.sound.currentTime = 0;
-      this.sound.play();
-      // and also change sprite to damaged sprite
-      this.switchSprite('damaged');
-    }
-  }
-
-  damagedTwoByKing2() {
-    this.health -= 20;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      this.switchSprite('damaged');
-    }
-  }
-  damagedThreeByKing2() {
-    this.health -= 25;
-    if (this.health <= 0) {
-      this.switchSprite('death');
-      // setTimeout(() => {
-      //   this.switchSprite('deathTwo');
-      //   console.log('deathTwo');
-      // }, 3000);
-    } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      this.switchSprite('damaged');
-    }
-  }
   restartRound() {
     this.switchSprite('idle');
   }
