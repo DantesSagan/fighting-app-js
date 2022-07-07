@@ -1049,8 +1049,8 @@ function ChangeLanguage() {
     document.querySelector('#howMiddleAttack2').innerHTML = 'Middle attack';
     document.querySelector('#howHardAttack2').innerHTML = 'Hard attack';
     // Menu
-    document.querySelector('#pickPlayer1').innerHTML = 'Игрок 1';
-    document.querySelector('#pickPlayer2').innerHTML = 'Игрок 2';
+    document.querySelector('#pickPlayer1').innerHTML = 'Player 1';
+    document.querySelector('#pickPlayer2').innerHTML = 'Player 2';
     // Player 1
     document.querySelector('#pickPlayer1').innerHTML = 'Player 1';
     document.querySelector('#pickMack1').innerHTML = 'Mack';
@@ -1058,7 +1058,7 @@ function ChangeLanguage() {
     document.querySelector('#pickKenji1').innerHTML = 'Kenji';
     document.querySelector('#pickKingTwo1').innerHTML = 'King - 2';
     // Player 2
-    document.querySelector('#pickPlayer2').innerHTML = 'Игрок 2';
+    document.querySelector('#pickPlayer2').innerHTML = 'Player 2';
     document.querySelector('#pickMack2').innerHTML = 'Mack';
     document.querySelector('#pickKing2').innerHTML = 'King';
     document.querySelector('#pickKenji2').innerHTML = 'Kenji';
