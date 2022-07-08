@@ -397,6 +397,7 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg,
     playerCompare
@@ -413,6 +414,8 @@ class Fighter extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -429,6 +432,9 @@ class Fighter extends Sprite {
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
         player4.damaged(dmg);
+        playerAttack.isAttacking = false;
+      } else if (player5.start === true) {
+        player5.damaged(dmg);
         playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -455,6 +461,11 @@ class Fighter extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -474,6 +485,11 @@ class Fighter extends Sprite {
         if (player4.start === true) {
           gsap.to('#player2Health', {
             width: player4.health + '%',
+          });
+        }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
           });
         }
       }
@@ -495,6 +511,7 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg,
     playerCompare
@@ -511,6 +528,8 @@ class Fighter extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -527,6 +546,9 @@ class Fighter extends Sprite {
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
         player4.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
+      } else if (player5.start === true) {
+        player5.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -553,6 +575,11 @@ class Fighter extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -574,6 +601,11 @@ class Fighter extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -591,6 +623,7 @@ class Fighter extends Sprite {
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg
   ) {
@@ -606,6 +639,8 @@ class Fighter extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -622,6 +657,9 @@ class Fighter extends Sprite {
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
         player4.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
+      } else if (player5.start === true) {
+        player5.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -645,6 +683,11 @@ class Fighter extends Sprite {
       if (player4.start === true) {
         gsap.to('#player2Health', {
           width: player4.health + '%',
+        });
+      }
+      if (player5.start === true) {
+        gsap.to('#player2Health', {
+          width: player5.health + '%',
         });
       }
       // console.log('you attack player2');
@@ -674,6 +717,7 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       // in this case we auto play damaged sound
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
@@ -700,6 +744,7 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
@@ -724,6 +769,7 @@ class Fighter extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
@@ -1378,6 +1424,7 @@ class FighterReverse extends Sprite {
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg,
     playerCompare
@@ -1394,6 +1441,8 @@ class FighterReverse extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -1410,6 +1459,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
         player4.damaged(dmg);
+        playerAttack.isAttacking = false;
+      } else if (player5.start === true) {
+        player5.damaged(dmg);
         playerAttack.isAttacking = false;
       }
 
@@ -1438,6 +1490,11 @@ class FighterReverse extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -1459,6 +1516,11 @@ class FighterReverse extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
       }
 
       // console.log('you attack player2');
@@ -1471,12 +1533,14 @@ class FighterReverse extends Sprite {
       playerAttack.isAttacking = false;
     }
   }
+
   detectCollisionTwoReverse(
     playerAttack,
     player1,
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg,
     playerCompare
@@ -1493,6 +1557,8 @@ class FighterReverse extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -1509,6 +1575,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
         player4.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
+      } else if (player5.start === true) {
+        player5.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       }
 
@@ -1536,6 +1605,11 @@ class FighterReverse extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -1557,6 +1631,11 @@ class FighterReverse extends Sprite {
             width: player4.health + '%',
           });
         }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -1574,6 +1653,7 @@ class FighterReverse extends Sprite {
     player2,
     player3,
     player4,
+    player5,
     missingFrame,
     dmg
   ) {
@@ -1589,6 +1669,8 @@ class FighterReverse extends Sprite {
             ? player3
             : player4.start === true
             ? player4
+            : player5.start === true
+            ? player5
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -1605,6 +1687,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
         player4.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
+      } else if (player5.start === true) {
+        player5.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
 
@@ -1629,6 +1714,11 @@ class FighterReverse extends Sprite {
       if (player4.start === true) {
         gsap.to('#playerHealth', {
           width: player4.health + '%',
+        });
+      }
+      if (player5.start === true) {
+        gsap.to('#playerHealth', {
+          width: player5.health + '%',
         });
       }
       // console.log('you attack player2');
@@ -1662,6 +1752,7 @@ class FighterReverse extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // and also change sprite to damaged sprite
@@ -1685,6 +1776,7 @@ class FighterReverse extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
@@ -1707,6 +1799,7 @@ class FighterReverse extends Sprite {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');

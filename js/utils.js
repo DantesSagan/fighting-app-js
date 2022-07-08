@@ -136,6 +136,14 @@ function decreaseTimer() {
       let pl1 = player4;
       let pl2 = playerReverse;
       determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
     }
     // Player2
     else if (
@@ -168,6 +176,14 @@ function decreaseTimer() {
       menuMain.start === false
     ) {
       let pl1 = player4;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
       let pl2 = player2;
       determineWinner({ pl1, pl2, timerId });
     }
@@ -272,6 +288,14 @@ function decreaseTimer() {
       let pl1 = player4;
       let pl2 = player3Reverse;
       determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
     }
     // Player4
     else if (
@@ -340,6 +364,48 @@ function decreaseTimer() {
       let pl1 = player4;
       let pl2 = player4Reverse;
       determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player4Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player4Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // Player5
+    else if (
+      player5.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player4Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player4Reverse;
+      determineWinner({ pl1, pl2, timerId });
     }
   }
 }
@@ -387,6 +453,16 @@ function DetermineWinnerByLessThenZeroHP() {
     if (player.health <= 0 || player4Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
+  } else if (
+    player.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player5Reverse;
+    if (player.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
   // PlayerReverse Mack
   if (
@@ -427,6 +503,16 @@ function DetermineWinnerByLessThenZeroHP() {
     let pl1 = player4;
     let pl2 = playerReverse;
     if (player4.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = playerReverse;
+    if (player5.health <= 0 || playerReverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -471,6 +557,26 @@ function DetermineWinnerByLessThenZeroHP() {
     if (player4.health <= 0 || player2.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
+  } else if (
+    player5.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player2;
+    if (player5.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player5Reverse;
+    if (player5.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
   // Player2 Reverse
   else if (
@@ -511,6 +617,16 @@ function DetermineWinnerByLessThenZeroHP() {
     let pl1 = player2Reverse;
     let pl2 = player4Reverse;
     if (player2Reverse.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player5Reverse;
+    if (player2Reverse.health <= 0 || player5Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -555,6 +671,16 @@ function DetermineWinnerByLessThenZeroHP() {
     if (player3.health <= 0 || player4Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
+  } else if (
+    player3.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player5Reverse;
+    if (player3.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
   // Player3Reverse
   else if (
@@ -595,6 +721,16 @@ function DetermineWinnerByLessThenZeroHP() {
     let pl1 = player4;
     let pl2 = player3Reverse;
     if (player4.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player3Reverse;
+    if (player5.health <= 0 || player3Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -639,6 +775,16 @@ function DetermineWinnerByLessThenZeroHP() {
     if (player4.health <= 0 || player4Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
+  } else if (
+    player4.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player5Reverse;
+    if (player4.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
   // Player4Reverse
   else if (
@@ -679,6 +825,121 @@ function DetermineWinnerByLessThenZeroHP() {
     let pl1 = player4;
     let pl2 = player4Reverse;
     if (player4Reverse.health <= 0 || player4.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player4Reverse;
+    if (player4Reverse.health <= 0 || player5.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+  // Player5
+  else if (
+    player5.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = playerReverse;
+    if (player5.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player3Reverse;
+    if (player5.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player2;
+    if (player5.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player4Reverse;
+    if (player5.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player5Reverse;
+    if (player5.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+
+  // Player5 Reverse
+  else if (
+    player.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player5Reverse;
+    if (player5.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2;
+    let pl2 = player5Reverse;
+    if (player2.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player5Reverse;
+    if (player3.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player5Reverse;
+    if (player4.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player5Reverse;
+    if (player5.health <= 0 || player5Reverse.health <= 0) {
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -737,6 +998,7 @@ function WithoutBlood() {
   player.sprites.shift();
   player.sprites.push(sprites[0]);
 }
+
 // picking hero from hero list
 function HeroList() {
   // const div = document.createElement('div');
@@ -747,6 +1009,12 @@ function HeroList() {
   // parent.append(div); // or: parent.appendChild(h1)
   document.querySelector('#pickMenu').style.display = 'flex';
   document.querySelector('#mainMenu').style.display = 'none';
+}
+
+// picking hero from hero list two
+function HeroListTwo() {
+  document.querySelector('#pickMenu').style.display = 'none';
+  document.querySelector('#pickMenuTwo').style.display = 'flex';
 }
 
 function PickMackPlayer1() {
@@ -786,18 +1054,19 @@ function PickKing2Player1() {
 function PickKing2Player2() {
   player4Reverse.start = true;
 }
+function PickEvilWizardPlayer1() {
+  player5.start = true;
+}
+function PickEvilWizardPlayer2() {
+  player5Reverse.start = true;
+}
 
 function TrueStart() {
-  // home();
-  // player.start = true;
-  // player2.start = true;
-
   menuMain.start = false;
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
+  document.querySelector('#pickMenuTwo').style.display = 'none';
   decreaseTimer();
-  // console.log('Click start', player3.start, player2.start);
-  // console.log(player.sprites, player2.sprites);
 }
 
 // function restart when round ends
@@ -806,6 +1075,7 @@ function TrueRestart() {
   player3.health = 100;
   player2Reverse.health = 100;
   player4.health = 100;
+  player5.health = 100;
   gsap.to('#playerHealth', {
     width: player.health + '%',
   });
@@ -818,11 +1088,15 @@ function TrueRestart() {
   gsap.to('#playerHealth', {
     width: player4.health + '%',
   });
+  gsap.to('#playerHealth', {
+    width: player5.health + '%',
+  });
 
   playerReverse.health = 100;
   player2.health = 100;
   player3Reverse.health = 100;
   player4Reverse.health = 100;
+  player5Reverse.health = 100;
 
   gsap.to('#player2Health', {
     width: player2.health + '%',
@@ -836,6 +1110,9 @@ function TrueRestart() {
   gsap.to('#player2Health', {
     width: player4Reverse.health + '%',
   });
+  gsap.to('#player2Health', {
+    width: player5Reverse.health + '%',
+  });
 
   if (
     player.restart === false ||
@@ -845,7 +1122,9 @@ function TrueRestart() {
     player3.restart === false ||
     player3Reverse.restart === false ||
     player4.restart === false ||
-    player4Reverse.restart === false
+    player4Reverse.restart === false ||
+    player5.restart === false ||
+    player5Reverse.restart === false
   ) {
     // restart set to true
     player.restart = true;
@@ -856,6 +1135,8 @@ function TrueRestart() {
     player3Reverse.restart = true;
     player4.restart = true;
     player4Reverse.restart = true;
+    player5.restart = true;
+    player5Reverse.restart = true;
     // position x like in the start of round(game)
     player.position.x = 256;
     playerReverse.position.x = 768;
@@ -865,6 +1146,8 @@ function TrueRestart() {
     player3Reverse.position.x = 768;
     player4.position.x = 256;
     player4Reverse.position.x = 768;
+    player5.position.x = 256;
+    player5Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;
@@ -874,6 +1157,8 @@ function TrueRestart() {
       player3Reverse.restart = false;
       player4.restart = false;
       player4Reverse.restart = false;
+      player5.restart = false;
+      player5Reverse.restart = false;
     }, 1000);
   }
 
@@ -893,6 +1178,15 @@ function TrueRestart() {
 function TrueBack() {
   document.querySelector('#mainMenu').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
+  document.querySelector('#settings').style.display = 'none';
+  document.querySelector('#howToPlay').style.display = 'none';
+  document.querySelector('#restart').style.display = 'none';
+}
+
+function ListTwoBack() {
+  document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#pickMenu').style.display = 'flex';
+  document.querySelector('#pickMenuTwo').style.display = 'none';
   document.querySelector('#settings').style.display = 'none';
   document.querySelector('#howToPlay').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
@@ -974,7 +1268,7 @@ function ChangeLanguage() {
     document.querySelector('#howLightAttack2').innerHTML = 'Легкая атака';
     document.querySelector('#howMiddleAttack2').innerHTML = 'Средняя атака';
     document.querySelector('#howHardAttack2').innerHTML = 'Тяжелая атака';
-    // Меню выбора героев
+    // Меню выбора героев - список 1
     // Игрок 1
     document.querySelector('#pickPlayer1').innerHTML = 'Игрок 1';
     document.querySelector('#pickMack1').innerHTML = 'Мэк';
@@ -989,7 +1283,22 @@ function ChangeLanguage() {
     document.querySelector('#pickKingTwo2').innerHTML = 'Король - 2';
     // Играть и назад
     document.querySelector('#menuPlay').innerHTML = 'Играть';
+    document.querySelector('#heroListTwo').innerHTML = 'Список 2';
     document.querySelector('#back').innerHTML = 'Назад';
+
+    // Меню выбора героев - список 2
+    // Игрок 1
+    document.querySelector('#pickPlayerListTwo1').innerHTML = 'Игрок 1';
+    document.querySelector('#pickEvilWizard1').innerHTML = 'Злой волшебник 1';
+
+    // Игрок 2
+    document.querySelector('#pickPlayerListTwo2').innerHTML = 'Игрок 2';
+    document.querySelector('#pickEvilWizard2').innerHTML = 'Злой волшебник 2';
+
+    // Список два кнопки играть и  назад
+    document.querySelector('#menuPlayTwo').innerHTML = 'Играть';
+    document.querySelector('#backTwo').innerHTML = 'Назад';
+
     // Перезапустить и вернуться в меню
     document.querySelector('#restartButton').innerHTML = 'Перезапустить';
     document.querySelector('#restartMenu').innerHTML = 'Меню';
@@ -1065,7 +1374,19 @@ function ChangeLanguage() {
     document.querySelector('#pickKingTwo2').innerHTML = 'King - 2';
     // Play and back
     document.querySelector('#menuPlay').innerHTML = 'Play';
+    document.querySelector('#heroListTwo').innerHTML = 'List 2';
     document.querySelector('#back').innerHTML = 'Back';
+    // Menu picking heroes - list 2
+    // Player 1
+    document.querySelector('#pickPlayerListTwo1').innerHTML = 'Player 1';
+    document.querySelector('#pickEvilWizard1').innerHTML = 'Evil Wizard 1';
+
+    // Player 2
+    document.querySelector('#pickPlayerListTwo2').innerHTML = 'Player 2';
+    document.querySelector('#pickEvilWizard2').innerHTML = 'Evil Wizard 2';
+    //ListTwo Play and back
+    document.querySelector('#menuPlayTwo').innerHTML = 'Play';
+    document.querySelector('#backTwo').innerHTML = 'Back';
     // Restart and menu
     document.querySelector('#restartButton').innerHTML = 'Restart';
     document.querySelector('#restartMenu').innerHTML = 'Menu';

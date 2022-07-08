@@ -96,12 +96,13 @@
         <canvas class="" id=""></canvas>
     </div>
 
-    <!-- menu with pucking heroes -->
+    <!-- menu with picking heroes 1st list -->
     <div id="pickMenu"
-        style=" position:absolute; color: black;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:100; right:0;bottom: 0; margin-top:0px;">
+        style="position:absolute; color: black;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:100; right:0;bottom: 0; margin-top:0px;">
 
         <div
             style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; background-color:white; border-radius:15px; padding:5px;">
+            <!-- 1st list - Player2 -->
             <div id="parentColumnOne"
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
                 <p style="font-size:small;" id="pickPlayer1">
@@ -127,6 +128,7 @@
                         style="width: 48px; height:48px;" />
                 </div>
             </div>
+            <!-- Second list - Player2 -->
             <div
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-left:5px;">
                 <p style="font-size:small;" id="pickPlayer2">
@@ -157,6 +159,10 @@
         </div>
         <button
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
+            onclick="HeroListTwo();" id='heroListTwo'>
+        </button>
+        <button
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
             onclick="TrueStart();" id='menuPlay'>
         </button>
         <button
@@ -165,7 +171,49 @@
         </button>
 
     </div>
+    <!-- menu with picking heroes second list -->
+    <div id="pickMenuTwo"
+        style="position:absolute; color: black;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:100; right:0;bottom: 0; margin-top:0px;">
 
+        <div
+            style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; background-color:white; border-radius:15px; padding:5px;">
+            <!-- 1st list - Player1 -->
+            <div
+                style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
+                <p style="font-size:small;" id="pickPlayerListTwo1">
+                </p>
+                <!-- Hero list -->
+                <div class="focus-div" onclick="PickEvilWizardPlayer1();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                    <p style="font-size:small;" id="pickEvilWizard1"></p>
+                    <img src="/assets/Evil Wizard/Sprites/EvilWizardSingle.png" alt="hero1"
+                        style="width: 48px; height:48px;" />
+                </div>
+            </div>
+            <!-- Second list - Player2 -->
+            <div
+                style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-left:5px;">
+                <p style="font-size:small;" id="pickPlayerListTwo2">
+                </p>
+                <!-- Hero list -->
+                <div onclick="PickEvilWizardPlayer2();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                    <p style="font-size:small;" id="pickEvilWizard2"> </p>
+                    <img src="/assets/Evil Wizard/SpritesReverse/EvilWizardSingleReverse.png" alt="hero1"
+                        style="width: 48px; height:48px;" />
+                </div>
+            </div>
+        </div>
+        <button
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
+            onclick="TrueStart();" id='menuPlayTwo'>
+        </button>
+        <button
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; "
+            onclick="ListTwoBack();" id="backTwo">
+        </button>
+
+    </div>
 
 
     </div>
