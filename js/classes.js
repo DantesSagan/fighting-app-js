@@ -260,7 +260,7 @@ class Fighter extends Sprite {
   }
   // updating method instantly
   update() {
-    this.drawSecond();
+    // this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -816,6 +816,7 @@ class Fighter extends Sprite {
       case 'd' || 'в':
         keys.d.pressed = true;
         this.lastKey = 'd';
+        this.sound.currentTime = 0;
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
         // audio.Walking.play();
@@ -830,6 +831,7 @@ class Fighter extends Sprite {
       case 'a' || 'ф':
         keys.a.pressed = true;
         this.lastKey = 'a';
+        this.sound.currentTime = 0;
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
         //   audio.Walking.play();
@@ -1482,6 +1484,20 @@ class FighterReverse extends Sprite {
     //   this.isAttacking = false;
     // }, 1000);
   }
+  attackFireTwo() {
+    this.isAttackingTwo = true;
+    this.switchSprite('attack2Fire');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
+  attackFireThree() {
+    this.isAttackingTwo = true;
+    this.switchSprite('attack3Fire');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
   // // attack method missing
   // attackMissing() {
   //   this.isAttacking = false;
@@ -2016,11 +2032,19 @@ class FighterReverse extends Sprite {
         // this.isAttacking = true;
         break;
       case '2':
-        this.attackTwo();
+        if (player5Reverse.start === true) {
+          this.attackFireTwo();
+        } else {
+          this.attackTwo();
+        }
         // this.isAttacking = true;
         break;
       case '3':
-        this.attackThree();
+        if (player5Reverse.start === true) {
+          this.attackFireThree();
+        } else {
+          this.attackThree();
+        }
         // this.isAttacking = true;
         break;
       default:
@@ -2248,6 +2272,28 @@ class FighterReverse extends Sprite {
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
         break;
+      case 'attack2Fire':
+        if (this.image !== this.sprites[0].attack2.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.Fire1.play();
+        audio.Fire1.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
           this.image = this.sprites[0].attack3.image;
@@ -2256,6 +2302,28 @@ class FighterReverse extends Sprite {
         }
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
+        break;
+      case 'attack3Fire':
+        if (this.image !== this.sprites[0].attack3.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack3.image;
+          this.framesMax = this.sprites[0].attack3.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.Fire1.play();
+        audio.Fire1.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
         break;
       case 'damaged':
         if (this.image !== this.sprites[0].damaged.image) {
