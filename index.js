@@ -733,7 +733,7 @@ const player5 = new Fighter({
       },
       attack1: {
         imageSrc: './assets/Evil Wizard/Sprites/Attack.png',
-        soundSrc: './audio/swing.wav',
+        soundSrc: './audio/EvilWizard1/Attack1_2.wav',
         framesMax: 8,
       },
       attack2: {
@@ -741,8 +741,8 @@ const player5 = new Fighter({
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Attack3.png',
-        framesMax: 4,
+        imageSrc: './assets/Evil Wizard/Sprites/Attack3Two.png',
+        framesMax: 5,
       },
       damaged: {
         imageSrc: './assets/Evil Wizard/Sprites/Take Hit.png',
@@ -1251,6 +1251,18 @@ function animate(event) {
     player5Reverse,
     3,
     25
+  );
+
+  // Player5 is attacking 3d animation
+  player5.detectCollisionThree(
+    player5,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    player5Reverse,
+    3,
+    35
   );
 
   // Player 3Reverse is attacking 1st animation
