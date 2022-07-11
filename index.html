@@ -103,7 +103,7 @@
         <div
             style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; background-color:white; border-radius:15px; padding:5px;">
             <!-- 1st list - Player2 -->
-            <div id="parentColumnOne"
+            <div id="listOne"
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
                 <p style="font-size:small;" id="pickPlayer1">
                 </p>
@@ -113,44 +113,49 @@
                     <p style="font-size:small;" id="pickMack1"></p>
                     <img src="/assets/samuraiMack/singleMack.png" alt="hero1" style="width: 48px; height:48px;" />
                 </div>
-                <div onclick="PickKingPlayer1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                <div id="hero2Player1" onclick="PickKingPlayer1();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKing1"></p>
                     <img src="/assets/Medieval King Pack/singleKing.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
-                <div onclick="PickKenjiPlayer1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                <div id="hero3Player1" onclick="PickKenjiPlayer1();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKenji1"></p>
                     <img src="/assets/kenji/singleKenjiReverse.png" alt="hero3" style="width: 48px; height:48px;" />
                 </div>
-                <div onclick="PickKing2Player1();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                <div id="hero4Player1" onclick="PickKing2Player1();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKingTwo1"></p>
                     <img src="/assets/Medieval King Pack 2/Sprites/King2 solo.png" alt="hero4"
                         style="width: 48px; height:48px;" />
                 </div>
             </div>
             <!-- Second list - Player2 -->
-            <div
+            <div id="listTwo"
                 style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-left:5px;">
                 <p style="font-size:small;" id="pickPlayer2">
                 </p>
                 <!-- Hero list -->
-                <div onclick="PickMackPlayer2();" id="hero1Player2"
+                <div onclick="PickMackPlayer2();" id="hero1Player2" 
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickMack2"> </p>
                     <img src="/assets/samuraiMack/reverseMack/singleMackReverse.png" alt="hero1"
                         style="width: 48px; height:48px;" />
                 </div>
-                <div onclick="PickKingPlayer2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                <div id="hero2Player2" onclick="PickKingPlayer2();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKing2"></p>
                     <img src="/assets/Medieval King Pack/singleKingReverse.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
-                <div id="hero1Player2" onclick="PickKenjiPlayer2();"
+                <div id="hero3Player2" onclick="PickKenjiPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKenji2"> </p>
                     <img src="/assets/kenji/singleKenji.png" alt="hero1" style="width: 48px; height:48px;" />
                 </div>
-                <div onclick="PickKing2Player2();" style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                <div id="hero4Player2" onclick="PickKing2Player2();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKingTwo2"></p>
                     <img src="/assets/Medieval King Pack 2/Sprites/King2 solo Reverse.png" alt="hero4"
                         style="width: 48px; height:48px;" />
@@ -183,7 +188,7 @@
                 <p style="font-size:small;" id="pickPlayerListTwo1">
                 </p>
                 <!-- Hero list -->
-                <div class="focus-div" onclick="PickEvilWizardPlayer1();"
+                <div id="hero5Player1" class="focus-div" onclick="PickEvilWizardPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizard1"></p>
                     <img src="/assets/Evil Wizard/Sprites/EvilWizardSingle.png" alt="hero1"
@@ -196,7 +201,7 @@
                 <p style="font-size:small;" id="pickPlayerListTwo2">
                 </p>
                 <!-- Hero list -->
-                <div onclick="PickEvilWizardPlayer2();"
+                <div id="hero5Player2" onclick="PickEvilWizardPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizard2"> </p>
                     <img src="/assets/Evil Wizard/SpritesReverse/EvilWizardSingleReverse.png" alt="hero1"

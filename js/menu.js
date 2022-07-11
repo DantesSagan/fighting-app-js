@@ -12,6 +12,7 @@ function menu() {
 }
 // menu restart
 function MenuRestart() {
+  // restart boolean
   player.start = false;
   playerReverse.start = false;
   player2.start = false;
@@ -23,6 +24,31 @@ function MenuRestart() {
   player5.start = false;
   player5Reverse.start = false;
   menuMain.start = true;
+  // pickedHeroes boolean to false when button menu pressed
+  player.pickedHero = false;
+  playerReverse.pickedHero = false;
+  player2.pickedHero = false;
+  player2Reverse.pickedHero = false;
+  player3.pickedHero = false;
+  player3Reverse.pickedHero = false;
+  player4.pickedHero = false;
+  player4Reverse.pickedHero = false;
+  player5.pickedHero = false;
+  player5Reverse.pickedHero = false;
+  // change color or selected hero before
+  // 1st list of heroes
+  document.querySelector('#hero1Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero2Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero3Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero4Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero5Player1').style.backgroundColor = 'white';
+
+  // second list of heroes
+  document.querySelector('#hero1Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero2Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero3Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero4Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero5Player2').style.backgroundColor = 'white';
 
   // Left side hero
   player.health = 100;

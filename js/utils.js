@@ -1026,39 +1026,125 @@ function PickMackPlayer1() {
   // // });
   // player.sprites.push(sprites[0]);
   // console.log(player.sprites);
-  player.playableHero = true;
-  player.AIHero = false;
-  player.start = true;
-}
-function PickMackPlayer2() {
-  playerReverse.start = true;
+  player.pickedHero = !player.pickedHero;
+
+  if (player.pickedHero === true) {
+    player.start = true;
+    document.querySelector('#hero1Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero1Player1').style.backgroundColor = 'white';
+    player.pickedHero = false;
+    player.start = false;
+  }
+
+  // player.playableHero = true;
+  // player.AIHero = false;
+  // player.start = true;
 }
 function PickKingPlayer1() {
-  player3.start = true;
-}
-function PickKingPlayer2() {
-  player3Reverse.start = true;
-}
-// console.log(sprites[0]);
-function PickKenjiPlayer2() {
-  player2.start = true;
+  player3.pickedHero = !player3.pickedHero;
+  if (player3.pickedHero === true) {
+    player3.start = true;
+    document.querySelector('#hero2Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero2Player1').style.backgroundColor = 'white';
+    player3.pickedHero = false;
+    player3.start = false;
+  }
 }
 // Playing Kenji on left side like reverse for default side (right)
 function PickKenjiPlayer1() {
-  player2Reverse.start = true;
+  player2Reverse.pickedHero = !player2Reverse.pickedHero;
+  if (player2Reverse.pickedHero === true) {
+    player2Reverse.start = true;
+    document.querySelector('#hero3Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero3Player1').style.backgroundColor = 'white';
+    player2Reverse.pickedHero = false;
+    player2Reverse.start = false;
+  }
 }
 // Player4 like King 2
 function PickKing2Player1() {
-  player4.start = true;
-}
-function PickKing2Player2() {
-  player4Reverse.start = true;
+  player4.pickedHero = !player4.pickedHero;
+  if (player4.pickedHero === true) {
+    player4.start = true;
+    document.querySelector('#hero4Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero4Player1').style.backgroundColor = 'white';
+    player4.pickedHero = false;
+    player4.start = false;
+  }
 }
 function PickEvilWizardPlayer1() {
-  player5.start = true;
+  player5.pickedHero = !player5.pickedHero;
+  if (player5.pickedHero === true) {
+    player5.start = true;
+    document.querySelector('#hero5Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero5Player1').style.backgroundColor = 'white';
+    player5.pickedHero = false;
+    player5.start = false;
+  }
 }
+function PickMackPlayer2() {
+  playerReverse.pickedHero = !playerReverse.pickedHero;
+  if (playerReverse.pickedHero === true) {
+    playerReverse.start = true;
+    document.querySelector('#hero1Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero1Player2').style.backgroundColor = 'white';
+    playerReverse.pickedHero = false;
+    playerReverse.start = false;
+  }
+}
+
+function PickKingPlayer2() {
+  player3Reverse.pickedHero = !player3Reverse.pickedHero;
+  if (player3Reverse.pickedHero === true) {
+    player3Reverse.start = true;
+    document.querySelector('#hero2Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero2Player2').style.backgroundColor = 'white';
+    player3Reverse.pickedHero = false;
+    player3Reverse.start = false;
+  }
+}
+// console.log(sprites[0]);
+function PickKenjiPlayer2() {
+  player2.pickedHero = !player2.pickedHero;
+  if (player2.pickedHero === true) {
+    player2.start = true;
+    document.querySelector('#hero3Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero3Player2').style.backgroundColor = 'white';
+    player2.pickedHero = false;
+    player2.start = false;
+  }
+}
+
+function PickKing2Player2() {
+  player4Reverse.pickedHero = !player4Reverse.pickedHero;
+  if (player4Reverse.pickedHero === true) {
+    player4Reverse.start = true;
+    document.querySelector('#hero4Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero4Player2').style.backgroundColor = 'white';
+    player4Reverse.pickedHero = false;
+    player4Reverse.start = false;
+  }
+}
+
 function PickEvilWizardPlayer2() {
-  player5Reverse.start = true;
+  player5Reverse.pickedHero = !player5Reverse.pickedHero;
+  if (player5Reverse.pickedHero === true) {
+    player5Reverse.start = true;
+    document.querySelector('#hero5Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero5Player2').style.backgroundColor = 'white';
+    player5Reverse.pickedHero = false;
+    player5Reverse.start = false;
+  }
 }
 
 function TrueStart() {

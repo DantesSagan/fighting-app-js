@@ -145,6 +145,7 @@ class Fighter extends Sprite {
     soundSrc,
     start,
     restart,
+    pickedHero
   }) {
     super({
       position,
@@ -186,6 +187,7 @@ class Fighter extends Sprite {
     this.sprites = sprites;
     this.dead = false;
     this.soundStart = true;
+    this.pickedHero = pickedHero;
     // we looping through object sprites to switching between two images
     for (const sprite in this.sprites[0]) {
       // this is objects that we currenlty looping over
@@ -1313,6 +1315,7 @@ class FighterReverse extends Sprite {
     soundSrc,
     start,
     restart,
+    pickedHero
   }) {
     super({
       position,
@@ -1354,6 +1357,7 @@ class FighterReverse extends Sprite {
     this.sprites = sprites;
     this.dead = false;
     this.soundStart = true;
+    this.pickedHero = pickedHero;
     // we looping through object sprites to switching between two images
     for (const sprite in this.sprites[0]) {
       // this is objects that we currenlty looping over
