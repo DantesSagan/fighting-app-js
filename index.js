@@ -24,7 +24,8 @@ const menuMain = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: './assets/background.png',
+  imageSrc: './assets/background - clouds - two.png',
+  framesMax: 6,
   start: true,
 });
 // background image

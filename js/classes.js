@@ -30,7 +30,7 @@ class Sprite {
     this.countFramesMax = this.framesMax;
     // the lower this number (value)
     // then faster will be chaning frames of animation
-    this.framesHold = 10;
+    this.framesHold = 20;
     this.offset = offset;
     this.sound = new Audio();
     this.sound.src = soundSrc;
