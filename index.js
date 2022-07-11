@@ -179,8 +179,8 @@ const player2 = new Fighter({
         framesMax: 4,
       },
       attack3: {
-        imageSrc: './assets/kenji/Attack2.png',
-        framesMax: 4,
+        imageSrc: './assets/kenji/Attack3 - Two.png',
+        framesMax: 8,
       },
       damaged: {
         imageSrc:
@@ -496,8 +496,8 @@ const player2Reverse = new FighterReverse({
         framesMax: 4,
       },
       attack3: {
-        imageSrc: './assets/kenji/reverseKenji/Attack2 - Reverse.png',
-        framesMax: 4,
+        imageSrc: './assets/kenji/reverseKenji/Attack3 - Two - Reverse.png',
+        framesMax: 8,
       },
       damaged: {
         imageSrc:
@@ -1052,6 +1052,17 @@ function animate(event) {
     20,
     player2
   );
+  player2.detectCollisionThree(
+    player2,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    player5,
+    4,
+    30,
+    player2
+  );
   // if (
   //   rectangularCollision({
   //     rectangle1: player2,
@@ -1431,7 +1442,17 @@ function animate(event) {
     20,
     player2Reverse
   );
-
+  player2Reverse.detectCollisionThreeReverse(
+    player2Reverse,
+    player,
+    player3,
+    player2,
+    player4,
+    player5,
+    4,
+    30,
+    player2Reverse
+  );
   // if (
   //   rectangularCollision({
   //     rectangle1: player2Reverse,
@@ -1638,7 +1659,7 @@ window.addEventListener('keyup', (event) => {
   player.switchUpButtonsLeft(event);
 
   // player3(King)
-  player.switchUpButtonsLeft(event);
+  player3.switchUpButtonsLeft(event);
 
   // playerReverse(SamuraiKenji on Left side)
   player2Reverse.switchUpButtonsLeft(event);

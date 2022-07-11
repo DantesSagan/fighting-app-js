@@ -145,7 +145,7 @@ class Fighter extends Sprite {
     soundSrc,
     start,
     restart,
-    pickedHero
+    pickedHero,
   }) {
     super({
       position,
@@ -656,7 +656,8 @@ class Fighter extends Sprite {
     player4,
     player5,
     missingFrame,
-    dmg
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -696,30 +697,58 @@ class Fighter extends Sprite {
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#player2Health', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#player2Health', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#player2Health', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#player2Health', {
-          width: player4.health + '%',
-        });
-      }
-      if (player5.start === true) {
-        gsap.to('#player2Health', {
-          width: player5.health + '%',
-        });
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -998,6 +1027,10 @@ class Fighter extends Sprite {
         break;
       case '2':
         this.attackTwo();
+        // this.isAttacking = true;
+        break;
+      case '3':
+        this.attackThree();
         // this.isAttacking = true;
         break;
       default:
@@ -1315,7 +1348,7 @@ class FighterReverse extends Sprite {
     soundSrc,
     start,
     restart,
-    pickedHero
+    pickedHero,
   }) {
     super({
       position,
@@ -1788,7 +1821,8 @@ class FighterReverse extends Sprite {
     player4,
     player5,
     missingFrame,
-    dmg
+    dmg,
+    playerCompare
   ) {
     if (
       rectangularCollision({
@@ -1829,30 +1863,58 @@ class FighterReverse extends Sprite {
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
       // and also give a smooth animation of decreasing healthbar
-      if (player1.start === true) {
-        gsap.to('#playerHealth', {
-          width: player1.health + '%',
-        });
-      }
-      if (player2.start === true) {
-        gsap.to('#playerHealth', {
-          width: player2.health + '%',
-        });
-      }
-      if (player3.start === true) {
-        gsap.to('#playerHealth', {
-          width: player3.health + '%',
-        });
-      }
-      if (player4.start === true) {
-        gsap.to('#playerHealth', {
-          width: player4.health + '%',
-        });
-      }
-      if (player5.start === true) {
-        gsap.to('#playerHealth', {
-          width: player5.health + '%',
-        });
+      if (playerAttack === playerCompare) {
+        if (player1.start === true) {
+          gsap.to('#player2Health', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#player2Health', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#player2Health', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#player2Health', {
+            width: player4.health + '%',
+          });
+        }
+        if (player5.start === true) {
+          gsap.to('#player2Health', {
+            width: player5.health + '%',
+          });
+        }
+      } else {
+        if (player1.start === true) {
+          gsap.to('#playerHealth', {
+            width: player1.health + '%',
+          });
+        }
+        if (player2.start === true) {
+          gsap.to('#playerHealth', {
+            width: player2.health + '%',
+          });
+        }
+        if (player3.start === true) {
+          gsap.to('#playerHealth', {
+            width: player3.health + '%',
+          });
+        }
+        if (player4.start === true) {
+          gsap.to('#playerHealth', {
+            width: player4.health + '%',
+          });
+        }
+        if (player5.start === true) {
+          gsap.to('#playerHealth', {
+            width: player5.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -2106,6 +2168,9 @@ class FighterReverse extends Sprite {
         break;
       case 'c':
         this.attackTwo();
+        break;
+      case 'r':
+        this.attackThree();
         break;
       default:
         console.log('Something goes wrong');
