@@ -429,6 +429,7 @@ class Fighter extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -447,6 +448,8 @@ class Fighter extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -466,6 +469,9 @@ class Fighter extends Sprite {
         playerAttack.isAttacking = false;
       } else if (player5.start === true) {
         player5.damaged(dmg);
+        playerAttack.isAttacking = false;
+      } else if (player6.start === true) {
+        player6.damaged(dmg);
         playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -497,6 +503,11 @@ class Fighter extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -521,6 +532,11 @@ class Fighter extends Sprite {
         if (player5.start === true) {
           gsap.to('#player2Health', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
           });
         }
       }
@@ -543,6 +559,7 @@ class Fighter extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -561,6 +578,8 @@ class Fighter extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -581,6 +600,9 @@ class Fighter extends Sprite {
       } else if (player5.start === true) {
         player5.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
+      } else if (player6.start === true) {
+        player6.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
@@ -611,6 +633,11 @@ class Fighter extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -635,6 +662,11 @@ class Fighter extends Sprite {
         if (player5.start === true) {
           gsap.to('#player2Health', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
           });
         }
       }
@@ -655,6 +687,7 @@ class Fighter extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -673,6 +706,8 @@ class Fighter extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -692,6 +727,9 @@ class Fighter extends Sprite {
         playerAttack.isAttackingThree = false;
       } else if (player5.start === true) {
         player5.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
+      } else if (player6.start === true) {
+        player6.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -723,6 +761,11 @@ class Fighter extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -747,6 +790,11 @@ class Fighter extends Sprite {
         if (player5.start === true) {
           gsap.to('#player2Health', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
           });
         }
       }
@@ -778,6 +826,8 @@ class Fighter extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       // in this case we auto play damaged sound
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
@@ -805,6 +855,8 @@ class Fighter extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
@@ -830,6 +882,8 @@ class Fighter extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
@@ -1591,6 +1645,7 @@ class FighterReverse extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -1609,6 +1664,8 @@ class FighterReverse extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -1628,6 +1685,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttacking = false;
       } else if (player5.start === true) {
         player5.damaged(dmg);
+        playerAttack.isAttacking = false;
+      } else if (player6.start === true) {
+        player6.damaged(dmg);
         playerAttack.isAttacking = false;
       }
 
@@ -1661,6 +1721,11 @@ class FighterReverse extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -1685,6 +1750,11 @@ class FighterReverse extends Sprite {
         if (player5.start === true) {
           gsap.to('#playerHealth', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
           });
         }
       }
@@ -1707,6 +1777,7 @@ class FighterReverse extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -1725,6 +1796,8 @@ class FighterReverse extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -1745,6 +1818,9 @@ class FighterReverse extends Sprite {
       } else if (player5.start === true) {
         player5.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
+      } else if (player6.start === true) {
+        player6.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
       }
 
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1776,6 +1852,11 @@ class FighterReverse extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -1800,6 +1881,11 @@ class FighterReverse extends Sprite {
         if (player5.start === true) {
           gsap.to('#playerHealth', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
           });
         }
       }
@@ -1820,6 +1906,7 @@ class FighterReverse extends Sprite {
     player3,
     player4,
     player5,
+    player6,
     missingFrame,
     dmg,
     playerCompare
@@ -1838,6 +1925,8 @@ class FighterReverse extends Sprite {
             ? player4
             : player5.start === true
             ? player5
+            : player6.start === true
+            ? player6
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -1857,6 +1946,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttackingThree = false;
       } else if (player5.start === true) {
         player5.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
+      } else if (player6.start === true) {
+        player6.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
 
@@ -1889,6 +1981,11 @@ class FighterReverse extends Sprite {
             width: player5.health + '%',
           });
         }
+        if (player6.start === true) {
+          gsap.to('#player2Health', {
+            width: player6.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -1913,6 +2010,11 @@ class FighterReverse extends Sprite {
         if (player5.start === true) {
           gsap.to('#playerHealth', {
             width: player5.health + '%',
+          });
+        }
+        if (player6.start === true) {
+          gsap.to('#playerHealth', {
+            width: player6.health + '%',
           });
         }
       }
@@ -1948,6 +2050,8 @@ class FighterReverse extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // and also change sprite to damaged sprite
@@ -1972,6 +2076,8 @@ class FighterReverse extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
@@ -1995,6 +2101,8 @@ class FighterReverse extends Sprite {
       player4.restart = false;
       player4Reverse.restart = false;
       player5.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');

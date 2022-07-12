@@ -23,6 +23,8 @@ function MenuRestart() {
   player4Reverse.start = false;
   player5.start = false;
   player5Reverse.start = false;
+  player6.start = false;
+  player6Reverse.start = false;
   menuMain.start = true;
   // pickedHeroes boolean to false when button menu pressed
   player.pickedHero = false;
@@ -35,6 +37,8 @@ function MenuRestart() {
   player4Reverse.pickedHero = false;
   player5.pickedHero = false;
   player5Reverse.pickedHero = false;
+  player6.pickedHero = false;
+  player6Reverse.pickedHero = false;
   // change color or selected hero before
   // 1st list of heroes
   document.querySelector('#hero1Player1').style.backgroundColor = 'white';
@@ -42,6 +46,7 @@ function MenuRestart() {
   document.querySelector('#hero3Player1').style.backgroundColor = 'white';
   document.querySelector('#hero4Player1').style.backgroundColor = 'white';
   document.querySelector('#hero5Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero6Player1').style.backgroundColor = 'white';
 
   // second list of heroes
   document.querySelector('#hero1Player2').style.backgroundColor = 'white';
@@ -49,6 +54,7 @@ function MenuRestart() {
   document.querySelector('#hero3Player2').style.backgroundColor = 'white';
   document.querySelector('#hero4Player2').style.backgroundColor = 'white';
   document.querySelector('#hero5Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero6Player2').style.backgroundColor = 'white';
 
   // Left side hero
   player.health = 100;
@@ -56,6 +62,7 @@ function MenuRestart() {
   player2Reverse.health = 100;
   player4.health = 100;
   player5.health = 100;
+  player6.health = 100;
   gsap.to('#playerHealth', {
     width: player.health + '%',
   });
@@ -71,12 +78,16 @@ function MenuRestart() {
   gsap.to('#playerHealth', {
     width: player5.health + '%',
   });
+  gsap.to('#playerHealth', {
+    width: player6.health + '%',
+  });
 
   // Right side hero
   playerReverse.health = 100;
   player2.health = 100;
   player3Reverse.health = 100;
   player5Reverse.health = 100;
+  player6Reverse.health = 100;
   gsap.to('#player2Health', {
     width: player2.health + '%',
   });
@@ -92,6 +103,9 @@ function MenuRestart() {
   gsap.to('#player2Health', {
     width: player5Reverse.health + '%',
   });
+  gsap.to('#player2Health', {
+    width: player6Reverse.health + '%',
+  });
 
   if (
     player.restart === false ||
@@ -103,7 +117,9 @@ function MenuRestart() {
     player4.restart === false ||
     player4Reverse.restart === false ||
     player5.restart === false ||
-    player5Reverse.restart === false
+    player5Reverse.restart === false ||
+    player6.restart === false ||
+    player6Reverse.restart === false
   ) {
     // restart set to true
     player.restart = true;
@@ -116,6 +132,8 @@ function MenuRestart() {
     player4Reverse.restart = true;
     player5.restart = true;
     player5Reverse.restart = true;
+    player6.restart = true;
+    player6Reverse.restart = true;
     // position x like in the start of round(game)
     player.position.x = 256;
     playerReverse.position.x = 768;
@@ -127,6 +145,8 @@ function MenuRestart() {
     player4Reverse.position.x = 768;
     player5.position.x = 256;
     player5Reverse.position.x = 768;
+    player6.position.x = 256;
+    player6Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;
@@ -138,6 +158,8 @@ function MenuRestart() {
       player4Reverse.restart = false;
       player5.restart = false;
       player5Reverse.restart = false;
+      player6.restart = false;
+      player6Reverse.restart = false;
     }, 1000);
   }
   document.querySelector('#mainMenu').style.display = 'flex';
@@ -615,5 +637,117 @@ function MenuFalsePlayersTrue() {
     player5Reverse.updateReverse();
     // insert player3 or second player
     // c.restore();
+  }
+
+  // Player6
+  if (
+    player6.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    playerReverse.updateReverse();
+  }
+  // Player6
+  if (
+    player6.start === true &&
+    player2Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player2Reverse.updateReverse();
+  }
+  // Player6
+  if (
+    player6.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player3Reverse.updateReverse();
+  }
+  // Player6
+  if (
+    player6.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player4Reverse.updateReverse();
+  }
+  // Player6
+  if (
+    player6.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player5Reverse.updateReverse();
+  }
+
+  // Player6Reverse
+  if (
+    player.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player.update();
+    player6Reverse.updateReverse();
+  }
+  // Player6Reverse
+  if (
+    player2Reverse.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    player6Reverse.updateReverse();
+  }
+  // Player6Reverse
+  if (
+    player3.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    player6Reverse.updateReverse();
+  }
+  // Player6Reverse
+  if (
+    player4.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    player6Reverse.updateReverse();
+  }
+  // Player6Reverse
+  if (
+    player5.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    player6Reverse.updateReverse();
+  }
+  // Player6
+  if (
+    player6.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player6Reverse.updateReverse();
   }
 }
