@@ -401,6 +401,20 @@ class Fighter extends Sprite {
     //   this.isAttacking = false;
     // }, 1000);
   }
+  attackDark() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Dark');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
+  attackDarkTwo() {
+    this.isAttacking = true;
+    this.switchSprite('attack2Dark');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
   // // attack method missing
   // attackMissing() {
   //   this.isAttacking = false;
@@ -901,7 +915,7 @@ class Fighter extends Sprite {
       case 'd' || 'в':
         keys.d.pressed = true;
         this.lastKey = 'd';
-        this.sound.play()
+        this.sound.play();
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
         // audio.Walking.play();
@@ -964,6 +978,8 @@ class Fighter extends Sprite {
       case ' ':
         if (player5.start === true) {
           this.attackFire();
+        } else if (player6.start === true) {
+          this.attackDark();
         } else {
           this.attack();
         }
@@ -972,6 +988,8 @@ class Fighter extends Sprite {
       case 'c' || 'с':
         if (player5.start === true) {
           this.attackFireTwo();
+        } else if (player6.start === true) {
+          this.attackDarkTwo();
         } else {
           this.attackTwo();
         }
@@ -1246,6 +1264,28 @@ class Fighter extends Sprite {
         console.log('Finished!');
         // });
         break;
+      case 'attack1Dark':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.framesCurrent = 0;
+        }
+        // audio.Swing.once('load', () => {
+        audio.darkAttack.play();
+        audio.darkAttack.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
       case 'attack1Fire':
         if (this.image !== this.sprites[0].attack1.image) {
           // if (this.sound !== this.sprites[0].attack1.sound) {
@@ -1297,6 +1337,28 @@ class Fighter extends Sprite {
         // audio.Swing.once('load', () => {
         audio.Fire1.play();
         audio.Fire1.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
+      case 'attack2Dark':
+        if (this.image !== this.sprites[0].attack2.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.framesCurrent = 0;
+        }
+        // audio.Swing.once('load', () => {
+        audio.darkAttack2.play();
+        audio.darkAttack2.volume(volumeFight);
         // });
 
         // Fires when the sound finishes playing.
@@ -1584,6 +1646,20 @@ class FighterReverse extends Sprite {
   attackFireThree() {
     this.isAttackingTwo = true;
     this.switchSprite('attack3Fire');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
+  attackDark() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Dark');
+    // setTimeout(() => {
+    //   this.isAttacking = false;
+    // }, 1000);
+  }
+  attackDarkTwo() {
+    this.isAttackingTwo = true;
+    this.switchSprite('attack2Dark');
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -2199,6 +2275,8 @@ class FighterReverse extends Sprite {
       case 'ArrowDown':
         if (player5Reverse.start === true) {
           this.attackFire();
+        } else if (player6.start === true) {
+          this.attackDark();
         } else {
           this.attack();
         }
@@ -2207,6 +2285,8 @@ class FighterReverse extends Sprite {
       case '2':
         if (player5Reverse.start === true) {
           this.attackFireTwo();
+        } else if (player6.start === true) {
+          this.attackDarkTwo();
         } else {
           this.attackTwo();
         }
@@ -2438,6 +2518,28 @@ class FighterReverse extends Sprite {
         console.log('Finished!');
         // });
         break;
+      case 'attack1Dark':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.darkAttack.play();
+        audio.darkAttack.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
@@ -2462,6 +2564,28 @@ class FighterReverse extends Sprite {
         // audio.Swing.once('load', () => {
         audio.Fire1.play();
         audio.Fire1.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
+      case 'attack2Dark':
+        if (this.image !== this.sprites[0].attack2.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.darkAttack2.play();
+        audio.darkAttack2.volume(volumeFight);
         // });
 
         // Fires when the sound finishes playing.

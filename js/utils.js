@@ -407,6 +407,140 @@ function decreaseTimer() {
       let pl2 = player4Reverse;
       determineWinner({ pl1, pl2, timerId });
     }
+    // Player5Reverse
+    else if (
+      player.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player4.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player4;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } // Player6
+    else if (
+      player6.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player4Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player4Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+
+    // Player6Reverse
+    else if (
+      player.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player4.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player4;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player6Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
   }
 }
 
@@ -1302,10 +1436,10 @@ function TrueStart() {
   if (menuMain.start === true) {
     const music = '../audio/ambient_menu.wav';
 
-      menu({ music });
+    menu({ music });
   } else {
     const music = '../audio/Hard void (Finish - Rock 5).wav';
-      menu({ music });
+    menu({ music });
   }
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
@@ -1425,7 +1559,9 @@ function TrueRestart() {
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#mainMenu').style.display = 'none';
+  document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
+    clearTimeout(timerId);
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
@@ -1460,6 +1596,10 @@ function TrueAbout() {
   document.querySelector('#mainMenu').style.display = 'none';
   document.querySelector('#howToPlay').style.display = 'grid';
   // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
+}
+// Escape menu
+function EscapeClose() {
+  document.querySelector('#EscapeMenu').style.display = 'none';
 }
 
 // settings function
@@ -1571,6 +1711,11 @@ function ChangeLanguage() {
     document.querySelector('#howToPlayBack').innerHTML = 'Назад';
     // Назад кнопка - Настройки
     document.querySelector('#settingsBack').innerHTML = 'Назад';
+    // Меню escape
+    document.querySelector('#EscapeMainTitle').innerHTML = 'Меню (esc)';
+    document.querySelector('#EscapeMenuSettings').innerHTML = 'В главное меню';
+    document.querySelector('#EscapeMenuRestart').innerHTML = 'Перезапустить';
+    document.querySelector('#EscapeClose').innerHTML = 'Закрыть';
   } else if (language === 'eng') {
     // Interface in a game
     document.querySelector('#playerOne').innerHTML = 'Player 1';
@@ -1661,6 +1806,11 @@ function ChangeLanguage() {
     document.querySelector('#howToPlayBack').innerHTML = 'Back';
     // Назад кнопка - Настройки
     document.querySelector('#settingsBack').innerHTML = 'Back';
+    // Меню escape
+    document.querySelector('#EscapeMainTitle').innerHTML = 'Menu (esc)';
+    document.querySelector('#EscapeMenuSettings').innerHTML = 'To main menu';
+    document.querySelector('#EscapeMenuRestart').innerHTML = 'Restart';
+    document.querySelector('#EscapeClose').innerHTML = 'Close';
   }
 }
 

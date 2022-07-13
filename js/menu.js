@@ -174,6 +174,7 @@ function MenuRestart() {
   document.querySelector('#mainMenu').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#infoPlayers').style.display = 'none';
+  document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
   let diff = 30 - timer;
   // console.log(diff);

@@ -1869,6 +1869,10 @@ window.addEventListener('keydown', (event) => {
     (player6.start === true && menuMain.start === false) ||
     (player6Reverse.start === true && menuMain.start === false)
   ) {
+    if (event.key === 'Escape') {
+      document.querySelector('#EscapeMenu').style.display = 'flex';
+      console.log('Escape pressed');
+    }
     if (
       !player.dead &&
       player.AIHero === false &&

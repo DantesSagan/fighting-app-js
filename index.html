@@ -275,6 +275,28 @@
 
     </div>
 
+    <!-- Escape menu -->
+    <div id="EscapeMenu"
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width: 612px; height:300px; top: 100; left:200; right:0;bottom: 0; ">
+        <div style="display:flex; flex-direction:column; padding:15px;">
+            <h1 style="color: white; align-items:center; justify-content: center;" id="EscapeMainTitle">
+            </h1>
+            <button onclick="MenuRestart();"
+                style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                id="EscapeMenuSettings">
+            </button>
+            <button
+                style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                onclick="TrueRestart();" id="EscapeMenuRestart">
+            </button>
+            <button
+                style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
+                onclick="EscapeClose();" id="EscapeClose">
+            </button>
+        </div>
+
+    </div>
+
     <!-- Settings page -->
     <div id="settings"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column; width: 612px; height:400px; top: 100; left:200; right:0;bottom: 0; ">
