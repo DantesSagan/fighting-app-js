@@ -708,48 +708,48 @@ const player5 = new Fighter({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Evil Wizard/Sprites/Idle.png',
+  imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Evil Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Evil Wizard/Sprites/Move.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Move.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Evil Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 8,
       },
       fall: {
-        imageSrc: './assets/Evil Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
         framesMax: 8,
       },
       attack1: {
-        imageSrc: './assets/Evil Wizard/Sprites/Attack.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Attack.png',
         soundSrc: './audio/EvilWizard1/Attack1_2.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Evil Wizard/Sprites/Attack2.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Attack2.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Evil Wizard/Sprites/Attack3Three.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Attack3Three.png',
         framesMax: 5,
       },
       damaged: {
-        imageSrc: './assets/Evil Wizard/Sprites/Take Hit.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Take Hit.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Evil Wizard/Sprites/Death.png',
+        imageSrc: './assets/Fire Wizard/Sprites/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 5,
       },
@@ -785,48 +785,48 @@ const player5Reverse = new FighterReverse({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Evil Wizard/SpritesReverse/Idle - Reverse.png',
+  imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Move - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Move - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 8,
       },
       fall: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       attack1: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Attack - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Attack2 - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Attack3 - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack3 - Reverse.png',
         framesMax: 5,
       },
       damaged: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Take Hit - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Take Hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Evil Wizard/SpritesReverse/Death - Reverse.png',
+        imageSrc: './assets/Fire Wizard/SpritesReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 5,
       },
@@ -862,48 +862,48 @@ const player6 = new Fighter({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/EVil Wizard 2/Sprites/Idle.png',
+  imageSrc: './assets/Dark Wizard 2/Sprites/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Idle.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Run.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Run.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Jump.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Fall.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Attack1.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Attack1.png',
         soundSrc: './audio/EvilWizard1/Attack1_2.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Attack2.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Attack2.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Evil Wizard 2/Sprites/Attack2.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Attack2.png',
         framesMax: 8,
       },
       damaged: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Take hit.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Take hit.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 3,
       },
       death: {
-        imageSrc: './assets/EVil Wizard 2/Sprites/Death.png',
+        imageSrc: './assets/Dark Wizard 2/Sprites/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 7,
       },
@@ -939,48 +939,48 @@ const player6Reverse = new FighterReverse({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Evil Wizard 2/SpriteReverse/Idle - Reverse.png',
+  imageSrc: './assets/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Idle - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Run - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Jump - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Fall - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Attack1 - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Attack2 - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Attack2 - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       damaged: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Take hit - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Take hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 3,
       },
       death: {
-        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Death - Reverse.png',
+        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 7,
       },
