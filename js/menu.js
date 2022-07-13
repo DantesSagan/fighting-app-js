@@ -1,14 +1,13 @@
 // menu function
-function menu() {
-  setInterval(() => {
+function menu({ music }) {
+  menuMain.sound.pause();
+  menuMain.sound.currentTime = 0;
+  menuMain.sound.src = music;
+  setInterval(()=>{
+
     menuMain.sound.play();
     menuMain.sound.volume = volume;
-  }, 1000);
-  if (menuMain.start === true) {
-    menuMain.sound.src = '../audio/ambient_menu.wav';
-  } else if (menuMain.start === false) {
-    menuMain.sound.src = '../audio/Hard void (Finish - Rock 5).wav';
-  }
+  },1000)
 }
 // menu restart
 function MenuRestart() {
@@ -39,6 +38,16 @@ function MenuRestart() {
   player5Reverse.pickedHero = false;
   player6.pickedHero = false;
   player6Reverse.pickedHero = false;
+  // change music by menu music when pressed menu restart button on fight round
+  if (menuMain.start === true) {
+    const music = '../audio/ambient_menu.wav';
+
+    menu({ music });
+  } else {
+    const music = '../audio/Hard void (Finish - Rock 5).wav';
+
+    menu({ music });
+  }
   // change color or selected hero before
   // 1st list of heroes
   document.querySelector('#hero1Player1').style.backgroundColor = 'white';
@@ -173,15 +182,15 @@ function MenuRestart() {
 }
 
 function MenuFalsePlayersTrue() {
-  if (
-    player.start === false &&
-    player2.start === false &&
-    menuMain.start === true
-  ) {
-    menuMain.update();
-    // insert shop
-    shop.update();
-  }
+  // if (
+  //   player.start === false &&
+  //   player2.start === false &&
+  //   menuMain.start === true
+  // ) {
+  //   menuMain.update();
+  //   // insert shop
+  //   shop.update();
+  // }
   if (
     player.start === true &&
     player2.start === true &&
@@ -652,12 +661,12 @@ function MenuFalsePlayersTrue() {
   // Player6
   if (
     player6.start === true &&
-    player2Reverse.start === true &&
+    player2.start === true &&
     menuMain.start === false
   ) {
     shop.update();
     player6.update();
-    player2Reverse.updateReverse();
+    player2.update();
   }
   // Player6
   if (

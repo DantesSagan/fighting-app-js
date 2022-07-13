@@ -901,7 +901,7 @@ class Fighter extends Sprite {
       case 'd' || 'в':
         keys.d.pressed = true;
         this.lastKey = 'd';
-        this.sound.currentTime = 0;
+        this.sound.play()
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
         // audio.Walking.play();
@@ -916,7 +916,7 @@ class Fighter extends Sprite {
       case 'a' || 'ф':
         keys.a.pressed = true;
         this.lastKey = 'a';
-        this.sound.currentTime = 0;
+        this.sound.play();
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
         //   audio.Walking.play();
@@ -1035,12 +1035,12 @@ class Fighter extends Sprite {
       case 'ArrowRight':
         keys.ArrowRight.pressed = true;
         this.lastKey = 'ArrowRight';
-        // this.sound.play();
+        this.sound.play();
         break;
       case 'ArrowLeft':
         keys.ArrowLeft.pressed = true;
         this.lastKey = 'ArrowLeft';
-        // this.sound.play();
+        this.sound.play();
         break;
       case 'ArrowUp':
         if (keys.ArrowUp.pressed && this.lastKey === 'ArrowUp') {
@@ -1098,14 +1098,14 @@ class Fighter extends Sprite {
       case 'ArrowRight':
         keys.ArrowRight.pressed = false;
         // this.soundStart = false;
-        // this.sound.pause();
-        // this.sound.currentTime = 0;
+        this.sound.pause();
+        this.sound.currentTime = 0;
         break;
       case 'ArrowLeft':
         keys.ArrowLeft.pressed = false;
         // this.soundStart = false;
-        // this.sound.pause();
-        // this.sound.currentTime = 0;
+        this.sound.pause();
+        this.sound.currentTime = 0;
         break;
       case 'ArrowUp':
         if ((keys.ArrowUp.pressed = false && this.lastKey === 'ArrowUp')) {
@@ -1187,7 +1187,6 @@ class Fighter extends Sprite {
           if (this.sound !== this.sprites[0].run.sound) {
             this.sound = this.sprites[0].run.sound;
             this.sound.volume = volumeMove;
-            this.sound.play();
           }
           this.image = this.sprites[0].run.image;
           this.framesMax = this.sprites[0].run.framesMax;
@@ -2231,12 +2230,12 @@ class FighterReverse extends Sprite {
       case 'd':
         keys.d.pressed = true;
         this.lastKey = 'd';
-        // this.sound.play();
+        this.sound.play();
         break;
       case 'a':
         keys.a.pressed = true;
         this.lastKey = 'a';
-        // this.sound.play();
+        this.sound.play();
         break;
       case 'w':
         if (keys.w.pressed && this.lastKey === 'w') {
@@ -2291,13 +2290,13 @@ class FighterReverse extends Sprite {
         keys.d.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
-        player.sound.currentTime = 0;
+        this.sound.currentTime = 0;
         break;
       case 'a':
         keys.a.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
-        player.sound.currentTime = 0;
+        this.sound.currentTime = 0;
         break;
       case 'w':
         if ((keys.w.pressed = false && this.lastKey === 'w')) {
@@ -2379,7 +2378,6 @@ class FighterReverse extends Sprite {
           if (this.sound !== this.sprites[0].run.sound) {
             this.sound = this.sprites[0].run.sound;
             this.sound.volume = volumeMove;
-            this.sound.play();
           }
           this.image = this.sprites[0].run.image;
           this.framesMax = this.sprites[0].run.framesMax;

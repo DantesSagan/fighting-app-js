@@ -525,9 +525,7 @@ const player3Reverse = new FighterReverse({
   restart: false,
 });
 
-
 // player2Reverse playing on left side not on right side as usual because default skin of Kenji sets to right place
-
 
 const player4 = new Fighter({
   position: {
@@ -896,8 +894,8 @@ const player6 = new Fighter({
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Evil Wizard/Sprites/Attack3Three.png',
-        framesMax: 5,
+        imageSrc: './assets/Evil Wizard 2/Sprites/Attack2.png',
+        framesMax: 8,
       },
       damaged: {
         imageSrc: './assets/EVil Wizard 2/Sprites/Take hit.png',
@@ -977,8 +975,7 @@ const player6Reverse = new FighterReverse({
         framesMax: 8,
       },
       damaged: {
-        imageSrc:
-          './assets/Evil Wizard 2/SpriteReverse/Take hit - Reverse.png',
+        imageSrc: './assets/Evil Wizard 2/SpriteReverse/Take hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 3,
       },
@@ -1004,7 +1001,14 @@ const player6Reverse = new FighterReverse({
   start: false,
   restart: false,
 });
-menu();
+
+if (menuMain.start === true) {
+  const music = '../audio/ambient_menu.wav';
+  menu({ music });
+} else {
+  const music = '../audio/Hard void (Finish - Rock 5).wav';
+  menu({ music });
+}
 
 // function Start() {
 //   const p = document.getElementById('start');
@@ -1056,8 +1060,14 @@ function animate(event) {
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
+  if (menuMain.start === true) {
+    menuMain.update();
+  } else {
+    background.update();
+  }
+
   // insert background image
-  background.update();
+  // background.update();
   // canvas.style.transform = 'scale(-1, 1)';
 
   // By default menu is true and when you select players on both side's menu changing to false

@@ -1299,6 +1299,14 @@ function PickEvilWizardTwoPlayer2() {
 
 function TrueStart() {
   menuMain.start = false;
+  if (menuMain.start === true) {
+    const music = '../audio/ambient_menu.wav';
+
+      menu({ music });
+  } else {
+    const music = '../audio/Hard void (Finish - Rock 5).wav';
+      menu({ music });
+  }
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
   document.querySelector('#pickMenuTwo').style.display = 'none';
@@ -1540,13 +1548,15 @@ function ChangeLanguage() {
     // Меню выбора героев - список 2
     // Игрок 1
     document.querySelector('#pickPlayerListTwo1').innerHTML = 'Игрок 1';
-    document.querySelector('#pickEvilWizard1').innerHTML = 'Огненный волшебник 1';
+    document.querySelector('#pickEvilWizard1').innerHTML =
+      'Огненный волшебник 1';
     document.querySelector('#pickEvilWizardTwo1').innerHTML =
       'Темныё волшебник 2';
 
     // Игрок 2
     document.querySelector('#pickPlayerListTwo2').innerHTML = 'Игрок 2';
-    document.querySelector('#pickEvilWizard2').innerHTML = 'Огненный волшебник 1';
+    document.querySelector('#pickEvilWizard2').innerHTML =
+      'Огненный волшебник 1';
     document.querySelector('#pickEvilWizardTwo2').innerHTML =
       'Тёмный волшебник 2';
 
