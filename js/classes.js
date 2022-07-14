@@ -1093,7 +1093,7 @@ class Fighter extends Sprite {
           }
         }
         break;
-      case 'ArrowDown':
+      case '1':
         this.attack();
         // this.isAttacking = true;
         break;
@@ -2272,7 +2272,7 @@ class FighterReverse extends Sprite {
           }
         }
         break;
-      case 'ArrowDown':
+      case '1':
         if (player5Reverse.start === true) {
           this.attackFire();
         } else if (player6Reverse.start === true) {

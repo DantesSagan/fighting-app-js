@@ -1658,7 +1658,7 @@ function ChangeLanguage() {
     document.querySelector('#howLeft2').innerHTML = 'Стрелка влево';
     document.querySelector('#howUp2').innerHTML = 'Стрелка вверх';
     document.querySelector('#howRight2').innerHTML = 'Стрелка вправо';
-    document.querySelector('#howDown2').innerHTML = 'Стрелка вниз';
+    document.querySelector('#howOne2').innerHTML = '1 кнопка';
     document.querySelector('#howTwo2').innerHTML = '2 кнопка';
     document.querySelector('#howThree2').innerHTML = '3 кнопка';
     document.querySelector('#howMoveLeft2').innerHTML = 'Движение налево';
@@ -1758,7 +1758,7 @@ function ChangeLanguage() {
     document.querySelector('#howLeft2').innerHTML = 'Arrow Left';
     document.querySelector('#howUp2').innerHTML = 'Arrow Up';
     document.querySelector('#howRight2').innerHTML = 'Arrow Right';
-    document.querySelector('#howDown2').innerHTML = 'Arrow Down';
+    document.querySelector('#howOne2').innerHTML = '1 button';
     document.querySelector('#howTwo2').innerHTML = '2 button';
     document.querySelector('#howThree2').innerHTML = '3 button';
     document.querySelector('#howMoveLeft2').innerHTML = 'Move to the left';
