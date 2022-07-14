@@ -286,6 +286,14 @@ const player2 = new Fighter({
     width: 150,
     height: 50,
   },
+  // attackBoxTwo: {
+  //   offset: {
+  //     x: -250,
+  //     y: 30,
+  //   },
+  //   width: 150,
+  //   height: 50,
+  // },
   start: false,
   restart: false,
 });
@@ -299,7 +307,7 @@ const player2Reverse = new FighterReverse({
     y: 0,
   },
   offset: {
-    x: 215,
+    x: 235,
     y: 170,
   },
   scale: 2.5,
@@ -357,7 +365,7 @@ const player2Reverse = new FighterReverse({
   ],
   attackBox: {
     offset: {
-      x: 150,
+      x: 75,
       y: 30,
     },
     width: 150,
@@ -434,7 +442,7 @@ const player3 = new Fighter({
   ],
   attackBox: {
     offset: {
-      x: 50,
+      x: 35,
       y: 30,
     },
     width: 150,

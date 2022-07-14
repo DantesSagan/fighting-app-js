@@ -1620,7 +1620,7 @@ function ChangeLanguage() {
     document.querySelector('#playerTwo').innerHTML = 'Игрок 2';
     // Главное меню
     document.querySelector('#mainTitle').innerHTML =
-      'Бойцовский клуб-игра-приложение';
+      'Бойцовский клуб';
     document.querySelector('#menuTitle').innerHTML = 'Меню';
     document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
     document.querySelector('#menuSettings').innerHTML = 'Настройки';
@@ -1721,7 +1721,7 @@ function ChangeLanguage() {
     document.querySelector('#playerOne').innerHTML = 'Player 1';
     document.querySelector('#playerTwo').innerHTML = 'Player 2';
     // Main menu
-    document.querySelector('#mainTitle').innerHTML = 'Fighting club-game-app';
+    document.querySelector('#mainTitle').innerHTML = 'Fighting club';
     document.querySelector('#menuTitle').innerHTML = 'Menu';
     document.querySelector('#pickHeroes').innerHTML = 'Pick heroes';
     document.querySelector('#menuSettings').innerHTML = 'Settings';

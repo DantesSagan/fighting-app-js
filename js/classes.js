@@ -142,6 +142,16 @@ class Fighter extends Sprite {
       width: undefined,
       height: undefined,
     },
+    attackBoxTwo = {
+      offset: {},
+      width: undefined,
+      height: undefined,
+    },
+    attackBoxThree = {
+      offset: {},
+      width: undefined,
+      height: undefined,
+    },
     soundSrc,
     start,
     restart,
@@ -173,6 +183,24 @@ class Fighter extends Sprite {
       offset: attackBox.offset,
       width: attackBox.width,
       height: attackBox.height,
+    };
+    this.attackBoxTwo = {
+      position: {
+        x: this.position.x,
+        y: this.position.y,
+      },
+      offset: attackBoxTwo.offset,
+      width: attackBoxTwo.width,
+      height: attackBoxTwo.height,
+    };
+    this.attackBoxThree = {
+      position: {
+        x: this.position.x,
+        y: this.position.y,
+      },
+      offset: attackBoxThree.offset,
+      width: attackBoxThree.width,
+      height: attackBoxThree.height,
     };
     this.color = color;
     this.isAttacking;
@@ -262,7 +290,7 @@ class Fighter extends Sprite {
   }
   // updating method instantly
   update() {
-    // this.drawSecond();
+    this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -271,6 +299,9 @@ class Fighter extends Sprite {
     // attack boxes with offsets to make it more flexible by x and y axis
     this.attackBox.position.x = this.position.x + this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y + this.attackBox.offset.y;
+    // // attack boxesTwo with offsets to make it more flexible by x and y axis
+    // this.attackBoxTwo.position.x = this.position.x + this.attackBoxTwo.offset.x;
+    // this.attackBoxTwo.position.y = this.position.y + this.attackBoxTwo.offset.y;
     // then greater speed then long falls
     this.position.y += this.velocity.y;
     this.position.x += this.velocity.x;
@@ -376,6 +407,13 @@ class Fighter extends Sprite {
   attack() {
     this.isAttacking = true;
     this.switchSprite('attack1');
+    if (player.start === true) {
+      this.attackBox.offset.x = 100;
+    } else if (player3.start === true) {
+      this.attackBox.offset.x = 35;
+    } else if (player4.start === true) {
+      this.attackBox.offset.x = 60;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -383,6 +421,9 @@ class Fighter extends Sprite {
   attackFire() {
     this.isAttacking = true;
     this.switchSprite('attack1Fire');
+    if (player5.start === true) {
+      this.attackBox.offset.x = 50;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -390,6 +431,10 @@ class Fighter extends Sprite {
   attackFireTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fire');
+    if (player5.start === true) {
+      this.attackBox.offset.x = 80;
+      this.attackBox.width = 150;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -404,6 +449,7 @@ class Fighter extends Sprite {
   attackDark() {
     this.isAttacking = true;
     this.switchSprite('attack1Dark');
+
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -411,6 +457,10 @@ class Fighter extends Sprite {
   attackDarkTwo() {
     this.isAttacking = true;
     this.switchSprite('attack2Dark');
+    if (player6.start === true) {
+      this.attackBox.offset.x = 140;
+      this.attackBox.width = 200;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -424,6 +474,14 @@ class Fighter extends Sprite {
   attackTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2');
+    if (player.start === true) {
+      this.attackBox.offset.x = 120;
+    } else if (player3.start === true) {
+      this.attackBox.offset.x = 45;
+    } else if (player4.start === true) {
+      this.attackBox.offset.x = 85;
+    }
+
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -432,6 +490,13 @@ class Fighter extends Sprite {
   attackThree() {
     this.isAttackingThree = true;
     this.switchSprite('attack3');
+    if (player.start === true) {
+      this.attackBox.offset.x = 60;
+    } else if (player3.start === true) {
+      this.attackBox.offset.x = 40;
+    } else if (player4.start === true) {
+      this.attackBox.offset.x = 60;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1099,10 +1164,16 @@ class Fighter extends Sprite {
         break;
       case '2':
         this.attackTwo();
+        if (player2.start === true) {
+          player2.attackBox.offset.x = -190;
+        }
         // this.isAttacking = true;
         break;
       case '3':
         this.attackThree();
+        if (player2.start === true) {
+          player2.attackBox.offset.x = -150;
+        }
         // this.isAttacking = true;
         break;
       default:
@@ -1570,7 +1641,7 @@ class FighterReverse extends Sprite {
   }
   // updating method instantly
   updateReverse() {
-    // this.drawSecond();
+    this.drawSecond();
     this.drawReverse();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -1625,6 +1696,13 @@ class FighterReverse extends Sprite {
   attack() {
     this.isAttacking = true;
     this.switchSprite('attack1');
+    if (playerReverse.start === true) {
+      this.attackBox.offset.x = -210;
+    } else if (player3Reverse.start === true) {
+      this.attackBox.offset.x = -140;
+    } else if (player4Reverse.start === true) {
+      this.attackBox.offset.x = -180;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1632,6 +1710,9 @@ class FighterReverse extends Sprite {
   attackFire() {
     this.isAttacking = true;
     this.switchSprite('attack1Fire');
+    if (player5Reverse.start === true) {
+      this.attackBox.offset.x = -150;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1639,6 +1720,9 @@ class FighterReverse extends Sprite {
   attackFireTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fire');
+    if (player5Reverse.start === true) {
+      this.attackBox.offset.x = -160;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1646,6 +1730,9 @@ class FighterReverse extends Sprite {
   attackFireThree() {
     this.isAttackingTwo = true;
     this.switchSprite('attack3Fire');
+    if (player5Reverse.start === true) {
+      this.attackBox.offset.x = -180;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1653,6 +1740,9 @@ class FighterReverse extends Sprite {
   attackDark() {
     this.isAttacking = true;
     this.switchSprite('attack1Dark');
+    if (player6Reverse.start === true) {
+      this.attackBox.offset.x = -260;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1660,6 +1750,10 @@ class FighterReverse extends Sprite {
   attackDarkTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Dark');
+    if (player6Reverse.start === true) {
+      this.attackBox.offset.x = -280;
+      this.attackBox.width = 200;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -1673,6 +1767,13 @@ class FighterReverse extends Sprite {
   attackTwo() {
     this.switchSprite('attack2');
     this.isAttackingTwo = true;
+    if (playerReverse.start === true) {
+      this.attackBox.offset.x = -225;
+    } else if (player3Reverse.start === true) {
+      this.attackBox.offset.x = -150;
+    } else if (player4Reverse.start === true) {
+      this.attackBox.offset.x = -180;
+    }
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -2355,9 +2456,15 @@ class FighterReverse extends Sprite {
         break;
       case 'c':
         this.attackTwo();
+        if (player2Reverse.start === true) {
+          player2Reverse.attackBox.offset.x = 85;
+        }
         break;
       case 'r':
         this.attackThree();
+        if (player2Reverse.start === true) {
+          player2Reverse.attackBox.offset.x = 60;
+        }
         break;
       default:
         console.log('Something goes wrong');
