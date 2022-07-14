@@ -2275,7 +2275,7 @@ class FighterReverse extends Sprite {
       case 'ArrowDown':
         if (player5Reverse.start === true) {
           this.attackFire();
-        } else if (player6.start === true) {
+        } else if (player6Reverse.start === true) {
           this.attackDark();
         } else {
           this.attack();
@@ -2285,7 +2285,7 @@ class FighterReverse extends Sprite {
       case '2':
         if (player5Reverse.start === true) {
           this.attackFireTwo();
-        } else if (player6.start === true) {
+        } else if (player6Reverse.start === true) {
           this.attackDarkTwo();
         } else {
           this.attackTwo();
