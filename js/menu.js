@@ -201,7 +201,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     playerReverse.updateReverse();
   }
@@ -210,7 +209,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     player2.update();
   }
@@ -219,7 +217,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     player3Reverse.updateReverse();
   }
@@ -228,7 +225,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     player4Reverse.updateReverse();
   }
@@ -237,7 +233,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     player5Reverse.updateReverse();
   }
@@ -246,7 +241,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player.update();
     player6Reverse.updateReverse();
   }
@@ -256,7 +250,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     playerReverse.updateReverse();
   }
@@ -265,7 +258,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     player2.update();
   }
@@ -274,7 +266,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     player3Reverse.updateReverse();
   }
@@ -283,7 +274,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     player4Reverse.updateReverse();
   }
@@ -292,7 +282,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     player5Reverse.updateReverse();
   }
@@ -301,7 +290,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player2Reverse.updateReverse();
     player6Reverse.updateReverse();
   }
@@ -311,7 +299,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.update();
     playerReverse.updateReverse();
   }
@@ -320,7 +307,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.update();
     player2.update();
   }
@@ -329,7 +315,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.update();
     player3Reverse.updateReverse();
   }
@@ -338,7 +323,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.update();
     player4Reverse.updateReverse();
   }
@@ -347,7 +331,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.update();
     player5Reverse.updateReverse();
   }
@@ -356,7 +339,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player3.updateReverse();
     player6Reverse.updateReverse();
   }
@@ -366,7 +348,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     playerReverse.updateReverse();
   }
@@ -375,7 +356,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     player2.update();
   }
@@ -384,7 +364,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     player3Reverse.updateReverse();
   }
@@ -393,7 +372,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     player4Reverse.updateReverse();
   }
@@ -402,7 +380,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     player5Reverse.updateReverse();
   }
@@ -411,7 +388,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player4.update();
     player6Reverse.updateReverse();
   }
@@ -422,7 +398,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     playerReverse.updateReverse();
   }
@@ -431,7 +406,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     player2.update();
   }
@@ -440,7 +414,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     player3Reverse.updateReverse();
   }
@@ -449,7 +422,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     player4Reverse.updateReverse();
   }
@@ -458,7 +430,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     player5Reverse.updateReverse();
   }
@@ -467,7 +438,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player5.update();
     player6Reverse.updateReverse();
   }
@@ -477,7 +447,6 @@ function MenuFalsePlayersTrueCheck({
     playerReverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     playerReverse.updateReverse();
   }
@@ -486,7 +455,6 @@ function MenuFalsePlayersTrueCheck({
     player2.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     player2.update();
   }
@@ -495,7 +463,6 @@ function MenuFalsePlayersTrueCheck({
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     player3Reverse.updateReverse();
   }
@@ -504,7 +471,6 @@ function MenuFalsePlayersTrueCheck({
     player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     player4Reverse.updateReverse();
   }
@@ -513,7 +479,6 @@ function MenuFalsePlayersTrueCheck({
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     player5Reverse.updateReverse();
   }
@@ -522,7 +487,6 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
-    shop.update();
     player6.update();
     player6Reverse.updateReverse();
   }

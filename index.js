@@ -1099,16 +1099,22 @@ function animate(event) {
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
+
   if (menuMain.start === true) {
     menuMain.update();
   } else {
     background.update();
   }
-
+  shop.update()
   // insert background image
   // background.update();
   // canvas.style.transform = 'scale(-1, 1)';
 
+
+
+  // By default menu is true and when you select players on both side's menu changing to false
+  // And when menu false players sets to true which you selected to started the round
+  // MenuFalsePlayersTrue();
   MenuFalsePlayersTrueCheck({
     player,
     playerReverse,
@@ -1123,11 +1129,6 @@ function animate(event) {
     player6,
     player6Reverse,
   });
-
-  // By default menu is true and when you select players on both side's menu changing to false
-  // And when menu false players sets to true which you selected to started the round
-  // MenuFalsePlayersTrue();
-
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
   c.fillRect(0, 0, canvas.width, canvas.height);
