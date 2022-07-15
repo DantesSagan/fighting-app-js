@@ -1160,6 +1160,9 @@ class Fighter extends Sprite {
         break;
       case '1':
         this.attack();
+        if (player2.start === true) {
+          player2.attackBox.offset.x = -150;
+        }
         // this.isAttacking = true;
         break;
       case '2':

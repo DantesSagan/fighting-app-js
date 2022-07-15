@@ -1078,9 +1078,24 @@ function animate(event) {
   // background.update();
   // canvas.style.transform = 'scale(-1, 1)';
 
+  MenuFalsePlayersTrueCheck({
+    player,
+    playerReverse,
+    player2,
+    player2Reverse,
+    player3,
+    player3Reverse,
+    player4,
+    player4Reverse,
+    player5,
+    player5Reverse,
+    player6,
+    player6Reverse,
+  });
+
   // By default menu is true and when you select players on both side's menu changing to false
   // And when menu false players sets to true which you selected to started the round
-  MenuFalsePlayersTrue();
+  // MenuFalsePlayersTrue();
 
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';

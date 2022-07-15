@@ -3,11 +3,10 @@ function menu({ music }) {
   menuMain.sound.pause();
   menuMain.sound.currentTime = 0;
   menuMain.sound.src = music;
-  setInterval(()=>{
-
+  setInterval(() => {
     menuMain.sound.play();
     menuMain.sound.volume = volume;
-  },1000)
+  }, 1000);
 }
 // menu restart
 function MenuRestart() {
@@ -39,11 +38,12 @@ function MenuRestart() {
   player6.pickedHero = false;
   player6Reverse.pickedHero = false;
   // change music by menu music when pressed menu restart button on fight round
-  if (menuMain.start === true) {
+  if (menuMain.start === false) {
     const music = '../audio/ambient_menu.wav';
 
     menu({ music });
-  } else {
+  }
+  {
     const music = '../audio/Hard void (Finish - Rock 5).wav';
 
     menu({ music });
@@ -182,525 +182,66 @@ function MenuRestart() {
     timer < 30 ? (timer += diff) : null;
 }
 
-function MenuFalsePlayersTrue() {
-  // if (
-  //   player.start === false &&
-  //   player2.start === false &&
-  //   menuMain.start === true
-  // ) {
-  //   menuMain.update();
-  //   // insert shop
-  //   shop.update();
-  // }
+function MenuFalsePlayersTrueCheck({
+  player,
+  playerReverse,
+  player2,
+  player2Reverse,
+  player3,
+  player3Reverse,
+  player4,
+  player4Reverse,
+  player5,
+  player5Reverse,
+  player6,
+  player6Reverse,
+}) {
+  // Player start
+  if (
+    player.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player.update();
+    playerReverse.updateReverse();
+  }
   if (
     player.start === true &&
     player2.start === true &&
     menuMain.start === false
   ) {
-    // insert shop
     shop.update();
-    // insert player
     player.update();
-    // insert player2 or second player
     player2.update();
-  }
-  if (
-    player3.start === true &&
-    player2.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player2.update();
-    // insert player3 or second player
-    player3.update();
   }
   if (
     player.start === true &&
     player3Reverse.start === true &&
     menuMain.start === false
   ) {
-    // insert shop
     shop.update();
-    // insert player
-    // insert player2 or second player
     player.update();
-    // if (countPosition > 256) {
-    //   player.attackBox.offset.x = -200;
-    // } else if (countPosition > 612) {
-    //   player.attackBox.offset.x = -300;
-    // } else if (countPosition > 768) {
-    //   player.attackBox.offset.x = -400;
-    // } else {
-    //   player.attackBox.offset.x = 100;
-    // }
-    c.save();
-    // c.scale(-1, 1);
-    // player3Reverse.sprites[0].idle.imageStyle = 'scale(-1, 1)';
-    // c.translate(canvas.width, 0);
-    // c.scale(-1, 1);
-    // insert player3 or second player
     player3Reverse.updateReverse();
-    c.restore();
-    // c.setTransform(1, 0, 0, 1, 0, 0);
   }
-  if (
-    player3.start === true &&
-    player3Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player3.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player3Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player and PlayerReverse
   if (
     player.start === true &&
-    playerReverse.start === true &&
+    player4Reverse.start === true &&
     menuMain.start === false
   ) {
-    // insert shop
     shop.update();
-    // insert player
-    // insert player2 or second player
     player.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    playerReverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player3 and PlayerReverse
-  if (
-    player3.start === true &&
-    playerReverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player3.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    playerReverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player2Reverse && PlayerReverse
-  if (
-    playerReverse.start === true &&
-    player2Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    playerReverse.updateReverse();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player2Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player2 && Player2Reverse
-  if (
-    player2.start === true &&
-    player2Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player2.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player2Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player3Reverser && player2Reverse
-  if (
-    player3Reverse.start === true &&
-    player2Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player3Reverse.updateReverse();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player2Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player4 && playerReverse
-  if (
-    player4.start === true &&
-    playerReverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player4.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    playerReverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player4 && player2
-  if (
-    player4.start === true &&
-    player2.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player4.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player2.update();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player4 && player3Reverse
-  if (
-    player4.start === true &&
-    player3Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player4.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player3Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player4Reverse && player
-  if (
-    player4Reverse.start === true &&
-    player.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
     player4Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
   }
-
-  // Player4Reverse && player2Reverse
-  if (
-    player4Reverse.start === true &&
-    player2Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player2Reverse.updateReverse();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player4Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player4Reverse && player3
-  if (
-    player4Reverse.start === true &&
-    player3.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player3.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player4Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player4Reverse && player4
-  if (
-    player4Reverse.start === true &&
-    player4.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player4.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player4Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5 && playerReverse
-  if (
-    player5.start === true &&
-    playerReverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player5.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    playerReverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5 && player2Reverse
-  if (
-    player5.start === true &&
-    player2.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player5.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player2.update();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5 && player3Reverse
-  if (
-    player5.start === true &&
-    player3Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player5.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player3Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5 && player4Reverse
-  if (
-    player5.start === true &&
-    player4Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player5.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player4Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player5Reverse && player
   if (
     player.start === true &&
     player5Reverse.start === true &&
     menuMain.start === false
   ) {
-    // insert shop
     shop.update();
-    // insert player
-    // insert player2 or second player
     player.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player5Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5Reverse && player2Reverse
-  if (
-    player2Reverse.start === true &&
-    player5Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player2Reverse.updateReverse();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player5Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5Reverse && player3
-  if (
-    player3.start === true &&
-    player5Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player3.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player5Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player5Reverse && player4
-  if (
-    player4.start === true &&
-    player5Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player4.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player5Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-  // Player5 && player5Reverse
-  if (
-    player5.start === true &&
-    player5Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    // insert shop
-    shop.update();
-    // insert player
-    // insert player2 or second player
-    player5.update();
-    // c.save();
-    // c.scale(-1, 1);
-    // c.setTransform(-1, 0, 0, 1, 0, 0);
-    player5Reverse.updateReverse();
-    // insert player3 or second player
-    // c.restore();
-  }
-
-  // Player6
-  if (
-    player6.start === true &&
-    playerReverse.start === true &&
-    menuMain.start === false
-  ) {
-    shop.update();
-    player6.update();
-    playerReverse.updateReverse();
-  }
-  // Player6
-  if (
-    player6.start === true &&
-    player2.start === true &&
-    menuMain.start === false
-  ) {
-    shop.update();
-    player6.update();
-    player2.update();
-  }
-  // Player6
-  if (
-    player6.start === true &&
-    player3Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    shop.update();
-    player6.update();
-    player3Reverse.updateReverse();
-  }
-  // Player6
-  if (
-    player6.start === true &&
-    player4Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    shop.update();
-    player6.update();
-    player4Reverse.updateReverse();
-  }
-  // Player6
-  if (
-    player6.start === true &&
-    player5Reverse.start === true &&
-    menuMain.start === false
-  ) {
-    shop.update();
-    player6.update();
     player5Reverse.updateReverse();
   }
-
-  // Player6Reverse
   if (
     player.start === true &&
     player6Reverse.start === true &&
@@ -710,7 +251,52 @@ function MenuFalsePlayersTrue() {
     player.update();
     player6Reverse.updateReverse();
   }
-  // Player6Reverse
+  // Player2 Reverse start
+  if (
+    player2Reverse.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    playerReverse.updateReverse();
+  }
+  if (
+    player2Reverse.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    player2.update();
+  }
+  if (
+    player2Reverse.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player2Reverse.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player2Reverse.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player2Reverse.updateReverse();
+    player5Reverse.updateReverse();
+  }
   if (
     player2Reverse.start === true &&
     player6Reverse.start === true &&
@@ -720,17 +306,107 @@ function MenuFalsePlayersTrue() {
     player2Reverse.updateReverse();
     player6Reverse.updateReverse();
   }
-  // Player6Reverse
+  // Player3 start
+  if (
+    player3.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    playerReverse.updateReverse();
+  }
+  if (
+    player3.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    player2.update();
+  }
+  if (
+    player3.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player3.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player3.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player3.update();
+    player5Reverse.updateReverse();
+  }
   if (
     player3.start === true &&
     player6Reverse.start === true &&
     menuMain.start === false
   ) {
     shop.update();
-    player3.update();
+    player3.updateReverse();
     player6Reverse.updateReverse();
   }
-  // Player6Reverse
+  // Player4 start
+  if (
+    player4.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    playerReverse.updateReverse();
+  }
+  if (
+    player4.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    player2.update();
+  }
+  if (
+    player4.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player4.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player4.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player4.update();
+    player5Reverse.updateReverse();
+  }
   if (
     player4.start === true &&
     player6Reverse.start === true &&
@@ -740,7 +416,53 @@ function MenuFalsePlayersTrue() {
     player4.update();
     player6Reverse.updateReverse();
   }
-  // Player6Reverse
+
+  // Player5 start
+  if (
+    player5.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    playerReverse.updateReverse();
+  }
+  if (
+    player5.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    player2.update();
+  }
+  if (
+    player5.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player5.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player5.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player5.update();
+    player5Reverse.updateReverse();
+  }
   if (
     player5.start === true &&
     player6Reverse.start === true &&
@@ -750,7 +472,52 @@ function MenuFalsePlayersTrue() {
     player5.update();
     player6Reverse.updateReverse();
   }
-  // Player6
+  // Player6 start
+  if (
+    player6.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    playerReverse.updateReverse();
+  }
+  if (
+    player6.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player2.update();
+  }
+  if (
+    player6.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player6.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player6.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    shop.update();
+    player6.update();
+    player5Reverse.updateReverse();
+  }
   if (
     player6.start === true &&
     player6Reverse.start === true &&
@@ -761,3 +528,5 @@ function MenuFalsePlayersTrue() {
     player6Reverse.updateReverse();
   }
 }
+
+
