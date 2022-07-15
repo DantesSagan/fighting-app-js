@@ -1561,7 +1561,7 @@ function TrueRestart() {
   document.querySelector('#mainMenu').style.display = 'none';
   document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
-    clearTimeout(timerId);
+  clearTimeout(timerId);
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
@@ -1609,18 +1609,17 @@ function Settings() {
 }
 
 function ChangeLanguage() {
-  if (language === 'ru') {
-    language = 'eng';
-  } else if (language === 'eng') {
+  if (language === 'eng') {
     language = 'ru';
+  } else if (language === 'ru') {
+    language = 'eng';
   }
   if (language === 'ru') {
     // Интерфейс в игре
     document.querySelector('#playerOne').innerHTML = 'Игрок 1';
     document.querySelector('#playerTwo').innerHTML = 'Игрок 2';
     // Главное меню
-    document.querySelector('#mainTitle').innerHTML =
-      'Бойцовский клуб';
+    document.querySelector('#mainTitle').innerHTML = 'Бойцовский клуб';
     document.querySelector('#menuTitle').innerHTML = 'Меню';
     document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
     document.querySelector('#menuSettings').innerHTML = 'Настройки';
@@ -1635,7 +1634,14 @@ function ChangeLanguage() {
     document.querySelector('#settingsDeathSound').innerHTML = 'Звуки смерти';
     document.querySelector('#settingsMoveSound').innerHTML =
       'Звуки передвижения';
+    document.querySelector('#language').innerHTML = 'Язык';
     document.querySelector('#changeLanguage').innerHTML = 'Изменить язык';
+    document.querySelector('#combinationChange').innerHTML =
+      'Комбинация: Shift + Alt';
+    document.querySelector('#languageButton').innerHTML = 'Язык';
+    document.querySelector('#audioButton').innerHTML = 'Звук';
+    document.querySelector('#audioBack').innerHTML = 'Назад';
+    document.querySelector('#languageBack').innerHTML = 'Назад';
     // Как играть
     document.querySelector('#howPlayerOne').innerHTML = 'Игрок 1';
     //
@@ -1735,7 +1741,14 @@ function ChangeLanguage() {
       'Attack sound and damaged sound';
     document.querySelector('#settingsDeathSound').innerHTML = 'Death sound';
     document.querySelector('#settingsMoveSound').innerHTML = 'Move sound';
+    document.querySelector('#language').innerHTML = 'Language';
     document.querySelector('#changeLanguage').innerHTML = 'Change language';
+    document.querySelector('#combinationChange').innerHTML =
+      'Combination: Shift + Alt';
+    document.querySelector('#languageButton').innerHTML = 'Language';
+    document.querySelector('#audioButton').innerHTML = 'Audio';
+    document.querySelector('#audioBack').innerHTML = 'Back';
+    document.querySelector('#languageBack').innerHTML = 'Back';
     // How to play
     document.querySelector('#howPlayerOne').innerHTML = 'Player 1';
     //
@@ -1814,6 +1827,22 @@ function ChangeLanguage() {
   }
 }
 
+function AudioButton() {
+  document.querySelector('#audioSettings').style.display = 'flex';
+  document.querySelector('#settings').style.display = 'none';
+}
+function BackAudio() {
+  document.querySelector('#audioSettings').style.display = 'none';
+  document.querySelector('#settings').style.display = 'flex';
+}
+function LanguageButton() {
+  document.querySelector('#languageSettings').style.display = 'flex';
+  document.querySelector('#settings').style.display = 'none';
+}
+function BackLanguage() {
+  document.querySelector('#languageSettings').style.display = 'none';
+  document.querySelector('#settings').style.display = 'flex';
+}
 function ChangeLanguageToEng() {
   language = 'eng';
   document.querySelector('#displayEng').style.display = 'flex';

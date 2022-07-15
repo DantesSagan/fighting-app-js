@@ -38,12 +38,11 @@ function MenuRestart() {
   player6.pickedHero = false;
   player6Reverse.pickedHero = false;
   // change music by menu music when pressed menu restart button on fight round
-  if (menuMain.start === false) {
+  if (menuMain.start === true) {
     const music = '../audio/ambient_menu.wav';
 
     menu({ music });
-  }
-  {
+  } else {
     const music = '../audio/Hard void (Finish - Rock 5).wav';
 
     menu({ music });
@@ -528,5 +527,3 @@ function MenuFalsePlayersTrueCheck({
     player6Reverse.updateReverse();
   }
 }
-
-

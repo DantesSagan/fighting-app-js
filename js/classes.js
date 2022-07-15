@@ -347,7 +347,9 @@ class Fighter extends Sprite {
   heroMovements(keysLeft, keysRight, buttonLeft, buttonRight) {
     if (!this.dead) {
       // player movements
+      // console.log(language);
       this.velocity.x = 0;
+
       // this is default idle staying position without running animation
       // this is running animation of player 1 whe you press "a" key
       if (keysLeft && this.lastKey === buttonLeft) {
@@ -976,10 +978,10 @@ class Fighter extends Sprite {
   }
 
   switchButtons(event) {
-    switch (event.key) {
-      case 'd' || 'в':
-        keys.d.pressed = true;
-        this.lastKey = 'd';
+    switch (event.code) {
+      case 'KeyD':
+        keys.KeyD.pressed = true;
+        this.lastKey = 'KeyD';
         this.sound.play();
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
@@ -992,9 +994,9 @@ class Fighter extends Sprite {
         // console.log('Finished!');
         // });
         break;
-      case 'a' || 'ф':
-        keys.a.pressed = true;
-        this.lastKey = 'a';
+      case 'KeyA':
+        keys.KeyA.pressed = true;
+        this.lastKey = 'KeyA';
         this.sound.play();
         // Clear listener after first call.
         // audio.Walking.once('load', () => {
@@ -1007,8 +1009,8 @@ class Fighter extends Sprite {
         //   console.log('Finished!');
         // });
         break;
-      case 'w' || 'ц':
-        if (keys.w.pressed && this.lastKey === 'w') {
+      case 'KeyW':
+        if (keys.KeyW.pressed && this.lastKey === 'KeyW') {
           if (
             this.position.y + this.height + this.velocity.y >=
             canvas.height - 115
@@ -1030,7 +1032,7 @@ class Fighter extends Sprite {
             // if you want to jump once per pressing "w" so don't this line use
             // keys.w.pressed = true;
             // keys.w.pressed = true;
-            this.lastKey = 'w';
+            this.lastKey = 'KeyW';
             this.sound.play();
             this.velocity.y = -15;
           } else {
@@ -1040,7 +1042,7 @@ class Fighter extends Sprite {
           }
         }
         break;
-      case ' ':
+      case 'Space':
         if (player5.start === true) {
           this.attackFire();
         } else if (player6.start === true) {
@@ -1050,7 +1052,7 @@ class Fighter extends Sprite {
         }
         // this.sound.play();
         break;
-      case 'c' || 'с':
+      case 'KeyC':
         if (player5.start === true) {
           this.attackFireTwo();
         } else if (player6.start === true) {
@@ -1060,7 +1062,7 @@ class Fighter extends Sprite {
         }
         // this.sound.play();
         break;
-      case 'r' || 'к':
+      case 'KeyR':
         if (player5.start === true) {
           this.attackFireThree();
         } else {
@@ -1074,23 +1076,23 @@ class Fighter extends Sprite {
     }
   }
   switchUpButtonsLeft(event) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = false;
+    switch (event.code) {
+      case 'KeyD':
+        keys.KeyD.pressed = false;
         // this.sprites[0].run.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
         // audio.Walking.stop();
         break;
-      case 'a':
-        keys.a.pressed = false;
+      case 'KeyA':
+        keys.KeyA.pressed = false;
         // this.sprites[0].run.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
         // audio.Walking.stop();
         break;
-      case 'w':
-        if ((keys.w.pressed = false && this.lastKey === 'w')) {
+      case 'KeyW':
+        if ((keys.KeyW.pressed = false && this.lastKey === 'KeyW')) {
           if (
             this.position.y + this.height + this.velocity.y >=
             canvas.height - 115
@@ -2410,19 +2412,19 @@ class FighterReverse extends Sprite {
     }
   }
   switchButtons(event) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = true;
-        this.lastKey = 'd';
+    switch (event.code) {
+      case 'KeyD':
+        keys.KeyD.pressed = true;
+        this.lastKey = 'KeyD';
         this.sound.play();
         break;
-      case 'a':
-        keys.a.pressed = true;
-        this.lastKey = 'a';
+      case 'KeyA':
+        keys.KeyA.pressed = true;
+        this.lastKey = 'KeyA';
         this.sound.play();
         break;
-      case 'w':
-        if (keys.w.pressed && this.lastKey === 'w') {
+      case 'KeyW':
+        if (keys.KeyW.pressed && this.lastKey === 'KeyW') {
           if (
             this.position.y + this.height + this.velocity.y >=
             canvas.height - 115
@@ -2444,7 +2446,7 @@ class FighterReverse extends Sprite {
             // if you want to jump once per pressing "w" so don't this line use
             // keys.w.pressed = true;
             // keys.w.pressed = true;
-            this.lastKey = 'w';
+            this.lastKey = 'KeyW';
             this.sound.play();
             this.velocity.y = -15;
           } else {
@@ -2454,16 +2456,16 @@ class FighterReverse extends Sprite {
           }
         }
         break;
-      case ' ':
+      case 'Space':
         this.attack();
         break;
-      case 'c':
+      case 'KeyC':
         this.attackTwo();
         if (player2Reverse.start === true) {
           player2Reverse.attackBox.offset.x = 85;
         }
         break;
-      case 'r':
+      case 'KeyR':
         this.attackThree();
         if (player2Reverse.start === true) {
           player2Reverse.attackBox.offset.x = 60;
@@ -2475,21 +2477,21 @@ class FighterReverse extends Sprite {
     }
   }
   switchUpButtonsLeft(event) {
-    switch (event.key) {
-      case 'd':
-        keys.d.pressed = false;
+    switch (event.code) {
+      case 'KeyD':
+        keys.KeyD.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
         break;
-      case 'a':
-        keys.a.pressed = false;
+      case 'KeyA':
+        keys.KeyA.pressed = false;
         // player.soundStart = false;
         this.sound.pause();
         this.sound.currentTime = 0;
         break;
-      case 'w':
-        if ((keys.w.pressed = false && this.lastKey === 'w')) {
+      case 'KeyW':
+        if ((keys.KeyW.pressed = false && this.lastKey === 'KeyW')) {
           if (
             this.position.y + this.height + this.velocity.y >=
             canvas.height - 115

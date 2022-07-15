@@ -24,7 +24,7 @@ const menuMain = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: './assets/background - clouds - two.png',
+  imageSrc: './assets/Etc/background - clouds - two.png',
   framesMax: 6,
   start: true,
 });
@@ -34,7 +34,7 @@ const background = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: './assets/background.png',
+  imageSrc: './assets/Etc/background.png',
   start: false,
 });
 // shop layout
@@ -44,7 +44,7 @@ const shop = new Sprite({
     x: 615,
     y: 115,
   },
-  imageSrc: './assets/shop - eye - animation.png',
+  imageSrc: './assets/Etc/shop - eye - animation.png',
   scale: 2.85,
   framesMax: 6,
   start: false,
@@ -67,57 +67,57 @@ const player = new Fighter({
   },
   scale: 2.63,
   color: 'blue',
-  imageSrc: './assets/samuraiMack/Idle.png',
+  imageSrc: './assets/Samurai/samuraiMack/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/samuraiMack/Idle.png',
+        imageSrc: './assets/Samurai/samuraiMack/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/samuraiMack/Run.png',
+        imageSrc: './assets/Samurai/samuraiMack/Run.png',
         soundSrc: './audio/walking.wav',
         soundStart: false,
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/samuraiMack/Jump.png',
+        imageSrc: './assets/Samurai/samuraiMack/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/samuraiMack/Fall.png',
+        imageSrc: './assets/Samurai/samuraiMack/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/samuraiMack/Attack1.png',
+        imageSrc: './assets/Samurai/samuraiMack/Attack1.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
-        imageSrc: './assets/samuraiMack/Attack2.png',
+        imageSrc: './assets/Samurai/samuraiMack/Attack2.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack3: {
-        imageSrc: './assets/samuraiMack/Attack3 ext.png',
+        imageSrc: './assets/Samurai/samuraiMack/Attack3 ext.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       damaged: {
         imageSrc:
-          './assets/samuraiMack/blood/Take Hit - white silhouette - blood.png',
+          './assets/Samurai/samuraiMack/blood/Take Hit - white silhouette - blood.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/samuraiMack/blood/Death - blood.png',
+        imageSrc: './assets/Samurai/samuraiMack/blood/Death - blood.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 6,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -148,55 +148,58 @@ const playerReverse = new FighterReverse({
   },
   scale: 2.63,
   color: 'blue',
-  imageSrc: './assets/samuraiMack/Idle.png',
+  imageSrc: './assets/Samurai/samuraiMack/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/samuraiMack/reverseMack/Idle - Reverse.png',
+        imageSrc: './assets/Samurai/samuraiMack/reverseMack/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/samuraiMack/reverseMack/Run - Reverse.png',
+        imageSrc: './assets/Samurai/samuraiMack/reverseMack/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/samuraiMack/reverseMack/Jump - Reverse.png',
+        imageSrc: './assets/Samurai/samuraiMack/reverseMack/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/samuraiMack/reverseMack/Fall - Reverse.png',
+        imageSrc: './assets/Samurai/samuraiMack/reverseMack/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/samuraiMack/reverseMack/Attack1 - Reverse.png',
+        imageSrc:
+          './assets/Samurai/samuraiMack/reverseMack/Attack1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
-        imageSrc: './assets/samuraiMack/reverseMack/Attack2 - Reverse.png',
+        imageSrc:
+          './assets/Samurai/samuraiMack/reverseMack/Attack2 - Reverse.png',
         framesMax: 6,
       },
       attack3: {
-        imageSrc: './assets/samuraiMack/reverseMack/Attack3 - Reverse.png',
+        imageSrc:
+          './assets/Samurai/samuraiMack/reverseMack/Attack3 - Reverse.png',
         framesMax: 6,
       },
       damaged: {
         imageSrc:
-          './assets/samuraiMack/reverseMack/Take Hit - white silhouette - blood - Reverse.png',
+          './assets/Samurai/samuraiMack/reverseMack/Take Hit - white silhouette - blood - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
         imageSrc:
-          './assets/samuraiMack/reverseMack/Death - blood - Reverse.png',
+          './assets/Samurai/samuraiMack/reverseMack/Death - blood - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 6,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -227,53 +230,53 @@ const player2 = new Fighter({
   },
   scale: 2.5,
   color: 'red',
-  imageSrc: './assets/kenji/Idle.png',
+  imageSrc: './assets/Samurai/kenji/Idle.png',
   framesMax: 4,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/kenji/Idle.png',
+        imageSrc: './assets/Samurai/kenji/Idle.png',
         framesMax: 4,
       },
       run: {
-        imageSrc: './assets/kenji/Run.png',
+        imageSrc: './assets/Samurai/kenji/Run.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/kenji/Jump.png',
+        imageSrc: './assets/Samurai/kenji/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/kenji/Fall.png',
+        imageSrc: './assets/Samurai/kenji/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/kenji/Attack1.png',
+        imageSrc: './assets/Samurai/kenji/Attack1.png',
         framesMax: 4,
       },
       attack2: {
-        imageSrc: './assets/kenji/Attack2.png',
+        imageSrc: './assets/Samurai/kenji/Attack2.png',
         framesMax: 4,
       },
       attack3: {
-        imageSrc: './assets/kenji/Attack3 - Two.png',
+        imageSrc: './assets/Samurai/kenji/Attack3 - Two.png',
         framesMax: 8,
       },
       damaged: {
         imageSrc:
-          './assets/kenji/blood/Take Hit - white silhouette - blood.png',
+          './assets/Samurai/kenji/blood/Take Hit - white silhouette - blood.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/kenji/blood/Death - blood.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood.png',
         soundSrc: './audio/death.wav',
         framesMax: 7,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -312,53 +315,55 @@ const player2Reverse = new FighterReverse({
   },
   scale: 2.5,
   color: 'red',
-  imageSrc: './assets/kenji/Idle.png',
+  imageSrc: './assets/Samurai/kenji/Idle.png',
   framesMax: 4,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/kenji/reverseKenji/Idle - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Idle - Reverse.png',
         framesMax: 4,
       },
       run: {
-        imageSrc: './assets/kenji/reverseKenji/Run - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/kenji/reverseKenji/Jump - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/kenji/reverseKenji/Fall - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/kenji/reverseKenji/Attack1 - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Attack1 - Reverse.png',
         framesMax: 4,
       },
       attack2: {
-        imageSrc: './assets/kenji/reverseKenji/Attack2 - Reverse.png',
+        imageSrc: './assets/Samurai/kenji/reverseKenji/Attack2 - Reverse.png',
         framesMax: 4,
       },
       attack3: {
-        imageSrc: './assets/kenji/reverseKenji/Attack3 - Two - Reverse.png',
+        imageSrc:
+          './assets/Samurai/kenji/reverseKenji/Attack3 - Two - Reverse.png',
         framesMax: 8,
       },
       damaged: {
         imageSrc:
-          './assets/kenji/reverseKenji/Take Hit - white silhouette - blood - Reverse.png',
+          './assets/Samurai/kenji/reverseKenji/Take Hit - white silhouette - blood - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/kenji/reverseKenji/Death - blood - Reverse.png',
+        imageSrc:
+          './assets/Samurai/kenji/reverseKenji/Death - blood - Reverse.png',
         soundSrc: './audio/death.wav',
         framesMax: 7,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -389,53 +394,53 @@ const player3 = new Fighter({
   },
   scale: 2.05,
   color: 'blue',
-  imageSrc: './assets/Medieval King Pack/Idle.png',
+  imageSrc: './assets/KnightsKings/Medieval King Pack/Idle.png',
   framesMax: 1,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Medieval King Pack/Idle.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Idle.png',
         framesMax: 6,
       },
       run: {
-        imageSrc: './assets/Medieval King Pack/Run.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Run.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Medieval King Pack/Jump.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Medieval King Pack/Fall.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Medieval King Pack/Attack_1.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Attack_1.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
-        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Attack_2.png',
         framesMax: 6,
       },
       attack3: {
-        imageSrc: './assets/Medieval King Pack/Attack_2.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Attack_2.png',
         framesMax: 6,
       },
       damaged: {
-        imageSrc: './assets/Medieval King Pack/Hit.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Hit.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Medieval King Pack/Death.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 11,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -467,56 +472,62 @@ const player3Reverse = new FighterReverse({
   },
   scale: 2.05,
   color: 'black',
-  imageSrc: './assets/Medieval King Pack/Idle.png',
+  imageSrc: './assets/KnightsKings/Medieval King Pack/Idle.png',
   framesMax: 6,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Idle - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Idle - Reverse.png',
         framesMax: 6,
       },
       run: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Run - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Jump - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Fall - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
         imageSrc:
-          './assets/Medieval King Pack/kingReverse/Attack_1 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Attack_1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 6,
       },
       attack2: {
         imageSrc:
-          './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
         framesMax: 6,
       },
       attack3: {
         imageSrc:
-          './assets/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Attack_2 - Reverse.png',
         framesMax: 6,
       },
       damaged: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Hit - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Medieval King Pack/kingReverse/Death - Reverse.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack/kingReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 11,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -550,54 +561,58 @@ const player4 = new Fighter({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Medieval King Pack 2/Sprites/Idle.png',
+  imageSrc: './assets/KnightsKings/Medieval King Pack 2/Sprites/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Idle.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack 2/Sprites/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Run.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack 2/Sprites/Run.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Jump.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack 2/Sprites/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Fall.png',
+        imageSrc: './assets/KnightsKings/Medieval King Pack 2/Sprites/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Attack1.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack 2/Sprites/Attack1.png',
         soundSrc: './audio/swing.wav',
         framesMax: 4,
       },
       attack2: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Attack2.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack 2/Sprites/Attack2.png',
         framesMax: 4,
       },
       attack3: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Attack3.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack 2/Sprites/Attack3.png',
         framesMax: 4,
       },
       damaged: {
         imageSrc:
-          './assets/Medieval King Pack 2/Sprites/Take Hit - white silhouette.png',
+          './assets/KnightsKings/Medieval King Pack 2/Sprites/Take Hit - white silhouette.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Medieval King Pack 2/Sprites/Death.png',
+        imageSrc:
+          './assets/KnightsKings/Medieval King Pack 2/Sprites/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 6,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -629,62 +644,63 @@ const player4Reverse = new FighterReverse({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Medieval King Pack 2/SpritesReverse/Idle - Reverse.png',
+  imageSrc:
+    './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Idle - Reverse.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Idle - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Run - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Jump - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Fall - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Attack1 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Attack1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 4,
       },
       attack2: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Attack2 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Attack2 - Reverse.png',
         framesMax: 4,
       },
       attack3: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Attack3 - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Attack3 - Reverse.png',
         framesMax: 4,
       },
       damaged: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Take Hit - white silhouette - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Take Hit - white silhouette - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
         imageSrc:
-          './assets/Medieval King Pack 2/SpritesReverse/Death - Reverse.png',
+          './assets/KnightsKings/Medieval King Pack 2/SpritesReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 6,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -716,53 +732,53 @@ const player5 = new Fighter({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
+  imageSrc: './assets/Wizards/Fire Wizard/Sprites/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Fire Wizard/Sprites/Move.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Move.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Idle.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 8,
       },
       fall: {
-        imageSrc: './assets/Fire Wizard/Sprites/Idle.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Idle.png',
         framesMax: 8,
       },
       attack1: {
-        imageSrc: './assets/Fire Wizard/Sprites/Attack.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Attack.png',
         soundSrc: './audio/EvilWizard1/Attack1_2.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Fire Wizard/Sprites/Attack2.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Attack2.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Fire Wizard/Sprites/Attack3Three.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Attack3Three.png',
         framesMax: 5,
       },
       damaged: {
-        imageSrc: './assets/Fire Wizard/Sprites/Take Hit.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Take Hit.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Fire Wizard/Sprites/Death.png',
+        imageSrc: './assets/Wizards/Fire Wizard/Sprites/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 5,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -793,53 +809,62 @@ const player5Reverse = new FighterReverse({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
+  imageSrc: './assets/Wizards/Fire Wizard/SpritesReverse/Idle - Reverse.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Move - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Move - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 8,
       },
       fall: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Idle - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       attack1: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Attack - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack2 - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Attack3 - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Attack3 - Reverse.png',
         framesMax: 5,
       },
       damaged: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Take Hit - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Take Hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 4,
       },
       death: {
-        imageSrc: './assets/Fire Wizard/SpritesReverse/Death - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Fire Wizard/SpritesReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 5,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -870,53 +895,53 @@ const player6 = new Fighter({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Dark Wizard 2/Sprites/Idle.png',
+  imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Idle.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Idle.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Idle.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Run.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Run.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Jump.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Jump.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Fall.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Fall.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Attack1.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Attack1.png',
         soundSrc: './audio/EvilWizard1/Attack1_2.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Attack2.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Attack2.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Attack2.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Attack2.png',
         framesMax: 8,
       },
       damaged: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Take hit.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Take hit.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 3,
       },
       death: {
-        imageSrc: './assets/Dark Wizard 2/Sprites/Death.png',
+        imageSrc: './assets/Wizards/Dark Wizard 2/Sprites/Death.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 7,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -947,53 +972,62 @@ const player6Reverse = new FighterReverse({
   },
   scale: 2.73,
   color: 'blue',
-  imageSrc: './assets/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
+  imageSrc: './assets/Wizards/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
   framesMax: 8,
   sprites: [
     {
       idle: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Idle - Reverse.png',
         framesMax: 8,
       },
       run: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Run - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Run - Reverse.png',
         soundSrc: './audio/walking.wav',
         framesMax: 8,
       },
       jump: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Jump - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Jump - Reverse.png',
         soundSrc: './audio/jump.mp3',
         framesMax: 2,
       },
       fall: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Fall - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Fall - Reverse.png',
         framesMax: 2,
       },
       attack1: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack1 - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Attack1 - Reverse.png',
         soundSrc: './audio/swing.wav',
         framesMax: 8,
       },
       attack2: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       attack3: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Attack2 - Reverse.png',
         framesMax: 8,
       },
       damaged: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Take hit - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Take hit - Reverse.png',
         soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
         framesMax: 3,
       },
       death: {
-        imageSrc: './assets/Dark Wizard 2/SpriteReverse/Death - Reverse.png',
+        imageSrc:
+          './assets/Wizards/Dark Wizard 2/SpriteReverse/Death - Reverse.png',
         soundSrc: './audio/death 2.wav',
         framesMax: 7,
       },
       deathTwo: {
-        imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
         framesMax: 3,
       },
     },
@@ -1032,16 +1066,13 @@ if (menuMain.start === true) {
 // console.log(player);
 
 const keys = {
-  a: {
+  KeyW: {
     pressed: false,
   },
-  d: {
+  KeyA: {
     pressed: false,
   },
-  w: {
-    pressed: false,
-  },
-  space: {
+  KeyD: {
     pressed: false,
   },
   space: {
@@ -1102,27 +1133,27 @@ function animate(event) {
   c.fillRect(0, 0, canvas.width, canvas.height);
   // console.log(player.sprites)
 
-  let moveLeftPL1 = keys.a.pressed;
-  let moveRightPL1 = keys.d.pressed;
+  let moveLeftPL1 = keys.KeyA.pressed;
+  let moveRightPL1 = keys.KeyD.pressed;
   let moveLeftPL2 = keys.ArrowLeft.pressed;
   let moveRightPL2 = keys.ArrowRight.pressed;
   // Player 1
-  player.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player 2
   player2.heroMovements(moveLeftPL2, moveRightPL2, 'ArrowLeft', 'ArrowRight');
 
   // Player 3
-  player3.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player3.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player4
-  player4.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player4.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player5
-  player5.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player5.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player 6
-  player6.heroMovements(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player6.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player 3 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
@@ -1144,7 +1175,12 @@ function animate(event) {
 
   // Player 2 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
-  player2Reverse.heroMovementsReverse(moveLeftPL1, moveRightPL1, 'a', 'd');
+  player2Reverse.heroMovementsReverse(
+    moveLeftPL1,
+    moveRightPL1,
+    'KeyA',
+    'KeyD'
+  );
 
   // Player4 Reverse
   // Because this is reverse version of player character need to set reverse buttons
@@ -1861,6 +1897,9 @@ function animate(event) {
 animate();
 
 window.addEventListener('keydown', (event) => {
+  if (event.shiftKey && event.altKey) {
+    ChangeLanguage();
+  }
   // console.log(event.key);
   // player switch statement
   if (
@@ -1894,8 +1933,9 @@ window.addEventListener('keydown', (event) => {
   ) {
     if (event.key === 'Escape') {
       document.querySelector('#EscapeMenu').style.display = 'flex';
-      console.log('Escape pressed');
+      // console.log('Escape pressed');
     }
+
     if (
       !player.dead &&
       player.AIHero === false &&
@@ -1944,7 +1984,7 @@ window.addEventListener('keydown', (event) => {
     }
   }
 
-  console.log(event.key);
+  // console.log(event.key);
 });
 
 window.addEventListener('keyup', (event) => {
