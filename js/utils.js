@@ -448,7 +448,8 @@ function decreaseTimer() {
       let pl1 = player5;
       let pl2 = player5Reverse;
       determineWinner({ pl1, pl2, timerId });
-    } // Player6
+    }
+    // Player6
     else if (
       player6.start === true &&
       playerReverse.start === true &&
@@ -539,6 +540,107 @@ function decreaseTimer() {
     ) {
       let pl1 = player6;
       let pl2 = player6Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+    // Player7
+    else if (
+      player7.start === true &&
+      playerReverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = playerReverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player7.start === true &&
+      player2.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = player2;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player7.start === true &&
+      player3Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = player3Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player7.start === true &&
+      player4Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = player4Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player7.start === true &&
+      player5Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = player5Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    }
+
+    // Player7Reverse
+    else if (
+      player.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player2Reverse.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player2Reverse;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player3.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player3;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player4.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player4;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player5.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player5;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player6.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player6;
+      let pl2 = player7Reverse;
+      determineWinner({ pl1, pl2, timerId });
+    } else if (
+      player7.start === true &&
+      player7Reverse.start === true &&
+      menuMain.start === false
+    ) {
+      let pl1 = player7;
+      let pl2 = player7Reverse;
       determineWinner({ pl1, pl2, timerId });
     }
   }
@@ -1204,61 +1306,147 @@ function DetermineWinnerByLessThenZeroHP() {
       determineWinner({ pl1, pl2, timerId });
     }
   }
+
+  // Player7
+  else if (
+    player7.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = playerReverse;
+    if (player7.health <= 0 || playerReverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player3Reverse;
+    if (player7.health <= 0 || player3Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player2;
+    if (player7.health <= 0 || player2.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player4Reverse;
+    if (player7.health <= 0 || player4Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player5Reverse;
+    if (player7.health <= 0 || player5Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player6Reverse;
+    if (player7.health <= 0 || player6Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
+
+  // Player7 Reverse
+  else if (
+    player.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player;
+    let pl2 = player7Reverse;
+    if (player.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player2Reverse.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player2Reverse;
+    let pl2 = player7Reverse;
+    if (player2Reverse.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player3.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player3;
+    let pl2 = player7Reverse;
+    if (player3.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player4.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player4;
+    let pl2 = player7Reverse;
+    if (player4.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player5.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player5;
+    let pl2 = player7Reverse;
+    if (player5.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player6.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player6;
+    let pl2 = player7Reverse;
+    if (player6.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  } else if (
+    player7.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    let pl1 = player7;
+    let pl2 = player7Reverse;
+    if (player7.health <= 0 || player7Reverse.health <= 0) {
+      determineWinner({ pl1, pl2, timerId });
+    }
+  }
 }
 
 // concept 1 changing sprites with shifting past sprite and pushing new with the same players 1 and player 2 !== work
 // concept 2 create additional players and sets them individual characteristics but idk how to determine winner with multiple sets  and settings
 // concept 3
-
-const sprites = [
-  {
-    idle: {
-      imageSrc: './assets/samuraiMack/Idle.png',
-      framesMax: 8,
-    },
-    run: {
-      imageSrc: './assets/samuraiMack/Run.png',
-      soundSrc: './audio/walking.wav',
-      framesMax: 8,
-    },
-    jump: {
-      imageSrc: './assets/samuraiMack/Jump.png',
-      soundSrc: './audio/jump.mp3',
-      framesMax: 2,
-    },
-    fall: {
-      imageSrc: './assets/samuraiMack/Fall.png',
-      framesMax: 2,
-    },
-    attack1: {
-      imageSrc: './assets/samuraiMack/Attack1.png',
-      soundSrc: './audio/swing.wav',
-      framesMax: 6,
-    },
-    attack2: {
-      imageSrc: './assets/samuraiMack/Attack2.png',
-      framesMax: 6,
-    },
-    damaged: {
-      imageSrc: './assets/samuraiMack/Take Hit - white silhouette.png',
-      soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
-      framesMax: 4,
-    },
-    death: {
-      imageSrc: './assets/samuraiMack/Death.png',
-      soundSrc: './audio/death 2.wav',
-      framesMax: 6,
-    },
-    deathTwo: {
-      imageSrc: './assets/kenji/blood/Death - blood - last 2.png',
-      framesMax: 3,
-    },
-  },
-];
-function WithoutBlood() {
-  player.sprites.shift();
-  player.sprites.push(sprites[0]);
-}
 
 // picking hero from hero list
 function HeroList() {
@@ -1359,6 +1547,18 @@ function PickEvilWizard2Player1() {
     player6.start = false;
   }
 }
+function PickFantasyWarrior1Player1() {
+  player7.pickedHero = !player7.pickedHero;
+  if (player7.pickedHero === true) {
+    player7.start = true;
+    document.querySelector('#hero7Player1').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero7Player1').style.backgroundColor = 'white';
+    player7.pickedHero = false;
+    player7.start = false;
+  }
+}
+
 function PickMackPlayer2() {
   playerReverse.pickedHero = !playerReverse.pickedHero;
   if (playerReverse.pickedHero === true) {
@@ -1431,6 +1631,18 @@ function PickEvilWizardTwoPlayer2() {
   }
 }
 
+function PickFantasyWarrior1Player2() {
+  player7Reverse.pickedHero = !player7Reverse.pickedHero;
+  if (player7Reverse.pickedHero === true) {
+    player7Reverse.start = true;
+    document.querySelector('#hero7Player2').style.backgroundColor = 'red';
+  } else {
+    document.querySelector('#hero7Player2').style.backgroundColor = 'white';
+    player7Reverse.pickedHero = false;
+    player7Reverse.start = false;
+  }
+}
+
 function TrueStart() {
   menuMain.start = false;
   if (menuMain.start === true) {
@@ -1455,6 +1667,7 @@ function TrueRestart() {
   player4.health = 100;
   player5.health = 100;
   player6.health = 100;
+  player7.health = 100;
   gsap.to('#playerHealth', {
     width: player.health + '%',
   });
@@ -1473,6 +1686,9 @@ function TrueRestart() {
   gsap.to('#playerHealth', {
     width: player6.health + '%',
   });
+  gsap.to('#playerHealth', {
+    width: player7.health + '%',
+  });
 
   playerReverse.health = 100;
   player2.health = 100;
@@ -1480,6 +1696,7 @@ function TrueRestart() {
   player4Reverse.health = 100;
   player5Reverse.health = 100;
   player6Reverse.health = 100;
+  player7Reverse.health = 100;
   gsap.to('#player2Health', {
     width: player2.health + '%',
   });
@@ -1498,6 +1715,9 @@ function TrueRestart() {
   gsap.to('#player2Health', {
     width: player6Reverse.health + '%',
   });
+  gsap.to('#player2Health', {
+    width: player7Reverse.health + '%',
+  });
 
   if (
     player.restart === false ||
@@ -1511,7 +1731,9 @@ function TrueRestart() {
     player5.restart === false ||
     player5Reverse.restart === false ||
     player6.restart === false ||
-    player6Reverse.restart === false
+    player6Reverse.restart === false ||
+    player7.restart === false ||
+    player7Reverse.restart === false
   ) {
     // restart set to true
     player.restart = true;
@@ -1526,6 +1748,8 @@ function TrueRestart() {
     player5Reverse.restart = true;
     player6.restart = true;
     player6Reverse.restart = true;
+    player7.restart = true;
+    player7Reverse.restart = true;
     // position x like in the start of round(game)
     player.position.x = 256;
     playerReverse.position.x = 768;
@@ -1539,6 +1763,8 @@ function TrueRestart() {
     player5Reverse.position.x = 768;
     player6.position.x = 256;
     player6Reverse.position.x = 768;
+    player7.position.x = 256;
+    player7Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;
@@ -1552,6 +1778,8 @@ function TrueRestart() {
       player5Reverse.restart = false;
       player6.restart = false;
       player6Reverse.restart = false;
+      player7.restart = false;
+      player7Reverse.restart = false;
     }, 1000);
   }
 
@@ -1694,17 +1922,19 @@ function ChangeLanguage() {
     // Меню выбора героев - список 2
     // Игрок 1
     document.querySelector('#pickPlayerListTwo1').innerHTML = 'Игрок 1';
-    document.querySelector('#pickEvilWizard1').innerHTML =
-      'Огненный волшебник 1';
+    document.querySelector('#pickEvilWizard1').innerHTML = 'Огненный волшебник';
     document.querySelector('#pickEvilWizardTwo1').innerHTML =
-      'Темныё волшебник 2';
+      'Темныё волшебник';
+    document.querySelector('#pickFantasyWarriorTwo1').innerHTML =
+      'Фэнтэзи воин';
 
     // Игрок 2
     document.querySelector('#pickPlayerListTwo2').innerHTML = 'Игрок 2';
-    document.querySelector('#pickEvilWizard2').innerHTML =
-      'Огненный волшебник 1';
+    document.querySelector('#pickEvilWizard2').innerHTML = 'Огненный волшебник';
     document.querySelector('#pickEvilWizardTwo2').innerHTML =
-      'Тёмный волшебник 2';
+      'Тёмный волшебник';
+    document.querySelector('#pickFantasyWarriorTwo2').innerHTML =
+      'Фэнтэзи воин';
 
     // Список два кнопки играть и  назад
     document.querySelector('#menuPlayTwo').innerHTML = 'Играть';
@@ -1802,13 +2032,17 @@ function ChangeLanguage() {
     // Menu picking heroes - list 2
     // Player 1
     document.querySelector('#pickPlayerListTwo1').innerHTML = 'Player 1';
-    document.querySelector('#pickEvilWizard1').innerHTML = 'Fire Wizard 1';
-    document.querySelector('#pickEvilWizardTwo1').innerHTML = 'Dark Wizard 2';
+    document.querySelector('#pickEvilWizard1').innerHTML = 'Fire Wizard';
+    document.querySelector('#pickEvilWizardTwo1').innerHTML = 'Dark Wizard';
+    document.querySelector('#pickFantasyWarriorTwo1').innerHTML =
+      'Fantasy Warrior';
 
     // Player 2
     document.querySelector('#pickPlayerListTwo2').innerHTML = 'Player 2';
-    document.querySelector('#pickEvilWizard2').innerHTML = 'Fire Wizard 1';
-    document.querySelector('#pickEvilWizardTwo2').innerHTML = 'Dark Wizard 2';
+    document.querySelector('#pickEvilWizard2').innerHTML = 'Fire Wizard';
+    document.querySelector('#pickEvilWizardTwo2').innerHTML = 'Dark Wizard';
+    document.querySelector('#pickFantasyWarriorTwo2').innerHTML =
+      'Fantasy Warrior';
     //ListTwo Play and back
     document.querySelector('#menuPlayTwo').innerHTML = 'Play';
     document.querySelector('#backTwo').innerHTML = 'Back';

@@ -1043,6 +1043,160 @@ const player6Reverse = new FighterReverse({
   start: false,
   restart: false,
 });
+const player7 = new Fighter({
+  position: {
+    x: 256,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 205,
+    y: 145,
+  },
+  scale: 2.90,
+  color: 'blue',
+  imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Idle.png',
+  framesMax: 10,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Idle.png',
+        framesMax: 10,
+      },
+      run: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 3,
+      },
+      fall: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Fall.png',
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Attack1.png',
+        soundSrc: './audio/EvilWizard1/Attack1_2.wav',
+        framesMax: 7,
+      },
+      attack2: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Attack2.png',
+        framesMax: 7,
+      },
+      attack3: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Attack3.png',
+        framesMax: 8,
+      },
+      damaged: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Take hit.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 3,
+      },
+      death: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/Sprites/Death.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 7,
+      },
+      deathTwo: {
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: 80,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
+const player7Reverse = new FighterReverse({
+  position: {
+    x: 768,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 205,
+    y: 145,
+  },
+  scale: 2.90,
+  color: 'blue',
+  imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Idle - Reverse.png',
+  framesMax: 10,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Idle - Reverse.png',
+        framesMax: 10,
+      },
+      run: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Run - Reverse.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 8,
+      },
+      jump: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Jump - Reverse.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 3,
+      },
+      fall: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Fall - Reverse.png',
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Attack1 - Reverse.png',
+        soundSrc: './audio/EvilWizard1/Attack1_2.wav',
+        framesMax: 7,
+      },
+      attack2: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Attack2 - Reverse.png',
+        framesMax: 7,
+      },
+      attack3: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Attack3 - Reverse.png',
+        framesMax: 8,
+      },
+      damaged: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Take hit - Reverse.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 3,
+      },
+      death: {
+        imageSrc: './assets/KnightsKings/Fantasy Warrior/SpritesReverse/Death - Reverse.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 7,
+      },
+      deathTwo: {
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: -80,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
 
 if (menuMain.start === true) {
   const music = '../audio/ambient_menu.wav';
@@ -1051,19 +1205,6 @@ if (menuMain.start === true) {
   const music = '../audio/Hard void (Finish - Rock 5).wav';
   menu({ music });
 }
-
-// function Start() {
-//   const p = document.getElementById('start');
-//   p.onclick = TrueStart();
-// }
-
-// window.onclick = () => {
-//   // rewrite your code here
-//   TrueStart();
-// };
-
-// menu();
-// console.log(player);
 
 const keys = {
   KeyW: {
@@ -1099,18 +1240,15 @@ function animate(event) {
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
-
   if (menuMain.start === true) {
     menuMain.update();
   } else {
     background.update();
   }
-  shop.update()
+  shop.update();
   // insert background image
   // background.update();
   // canvas.style.transform = 'scale(-1, 1)';
-
-
 
   // By default menu is true and when you select players on both side's menu changing to false
   // And when menu false players sets to true which you selected to started the round
@@ -1128,6 +1266,8 @@ function animate(event) {
     player5Reverse,
     player6,
     player6Reverse,
+    player7,
+    player7Reverse,
   });
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
@@ -1155,6 +1295,9 @@ function animate(event) {
 
   // Player 6
   player6.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+
+  // Player 7
+  player7.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player 3 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
@@ -1208,6 +1351,14 @@ function animate(event) {
     'ArrowRight'
   );
 
+  // Player7 Reverse
+  player7Reverse.heroMovementsReverse(
+    moveLeftPL2,
+    moveRightPL2,
+    'ArrowLeft',
+    'ArrowRight'
+  );
+
   // console.log(player2.restart);
 
   // Detect collision
@@ -1221,12 +1372,13 @@ function animate(event) {
   // 7th arg = value of dealing dmg
   player.detectCollision(
     player,
+    playerReverse,
     player2,
     player3Reverse,
-    playerReverse,
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     20
   );
@@ -1234,12 +1386,13 @@ function animate(event) {
   // Player 1 is attacking Two animation
   player.detectCollisionTwo(
     player,
+    playerReverse,
     player2,
     player3Reverse,
-    playerReverse,
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     25
   );
@@ -1247,12 +1400,13 @@ function animate(event) {
   // Player 1 is attacking Three animation
   player.detectCollisionThree(
     player,
+    playerReverse,
     player2,
     player3Reverse,
-    playerReverse,
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     30
   );
@@ -1277,6 +1431,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     1,
     10,
     player2
@@ -1289,6 +1444,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     1,
     20,
     player2
@@ -1301,6 +1457,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     4,
     30,
     player2
@@ -1425,12 +1582,13 @@ function animate(event) {
   // Player 3 is attacking 1st animation
   player3.detectCollision(
     player3,
-    player3Reverse,
-    player2,
     playerReverse,
+    player2,
+    player3Reverse,
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     20
   );
@@ -1438,12 +1596,13 @@ function animate(event) {
   // Player 3 is attacking Two animation
   player3.detectCollisionTwo(
     player3,
-    player3Reverse,
-    player2,
     playerReverse,
+    player2,
+    player3Reverse,
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     25
   );
@@ -1457,6 +1616,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     2,
     10
   );
@@ -1470,6 +1630,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     2,
     20
   );
@@ -1483,6 +1644,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     2,
     30
   );
@@ -1496,6 +1658,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     2,
     15
   );
@@ -1509,6 +1672,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     3,
     25
   );
@@ -1522,6 +1686,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     3,
     35
   );
@@ -1535,6 +1700,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     15
   );
@@ -1548,8 +1714,51 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     5,
     25
+  );
+
+  // Player7 is attacking animation
+  player7.detectCollision(
+    player7,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    player5Reverse,
+    player6Reverse,
+    player7Reverse,
+    5,
+    15
+  );
+
+  // Player7 is attacking 2nd animation
+  player7.detectCollisionTwo(
+    player7,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    player5Reverse,
+    player6Reverse,
+    player7Reverse,
+    3,
+    25
+  );
+
+  // Player7 is attacking 3d animation
+  player7.detectCollisionThree(
+    player7,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    player5Reverse,
+    player6Reverse,
+    player7Reverse,
+    5,
+    35
   );
 
   // Player 3Reverse is attacking 1st animation
@@ -1561,6 +1770,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     20
   );
@@ -1574,6 +1784,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     25
   );
@@ -1587,6 +1798,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     20
   );
@@ -1600,6 +1812,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     25
   );
@@ -1613,6 +1826,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     30
   );
@@ -1626,6 +1840,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     1,
     10
   );
@@ -1639,6 +1854,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     1,
     20
   );
@@ -1652,6 +1868,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     1,
     30
   );
@@ -1665,6 +1882,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     6,
     15
   );
@@ -1678,6 +1896,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     4,
     25
   );
@@ -1691,6 +1910,7 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     2,
     35
   );
@@ -1704,11 +1924,12 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     4,
     15
   );
 
-  // Player5Reverse is attacking 2d animation
+  // Player6Reverse is attacking 2d animation
   player6Reverse.detectCollisionTwoReverse(
     player6Reverse,
     player,
@@ -1717,8 +1938,51 @@ function animate(event) {
     player4,
     player5,
     player6,
+    player7,
     3,
     25
+  );
+
+  // Player7Reverse is attacking 1st animation
+  player7Reverse.detectCollisionReverse(
+    player7Reverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    player5,
+    player6,
+    player7,
+    3,
+    15
+  );
+
+  // Player7Reverse is attacking 2d animation
+  player7Reverse.detectCollisionTwoReverse(
+    player7Reverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    player5,
+    player6,
+    player7,
+    5,
+    25
+  );
+
+  // Player7Reverse is attacking 3d animation
+  player7Reverse.detectCollisionThreeReverse(
+    player7Reverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    player5,
+    player6,
+    player7,
+    4,
+    35
   );
 
   // Player 2 Reverse is attacking 1st animation
@@ -1741,6 +2005,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     3,
     10,
     player2Reverse
@@ -1753,6 +2018,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     3,
     20,
     player2Reverse
@@ -1765,6 +2031,7 @@ function animate(event) {
     player4Reverse,
     player5Reverse,
     player6Reverse,
+    player7Reverse,
     4,
     30,
     player2Reverse
@@ -1915,7 +2182,9 @@ window.addEventListener('keydown', (event) => {
     (player5.start === false && menuMain.start === true) ||
     (player5Reverse.start === false && menuMain.start === true) ||
     (player6.start === false && menuMain.start === true) ||
-    (player6Reverse.start === false && menuMain.start === true)
+    (player6Reverse.start === false && menuMain.start === true) ||
+    (player7.start === false && menuMain.start === true) ||
+    (player7Reverse.start === false && menuMain.start === true)
   ) {
     return null;
   } else if (
@@ -1930,7 +2199,9 @@ window.addEventListener('keydown', (event) => {
     (player5.start === true && menuMain.start === false) ||
     (player5Reverse.start === true && menuMain.start === false) ||
     (player6.start === true && menuMain.start === false) ||
-    (player6Reverse.start === true && menuMain.start === false)
+    (player6Reverse.start === true && menuMain.start === false) ||
+    (player7.start === true && menuMain.start === false) ||
+    (player7Reverse.start === true && menuMain.start === false)
   ) {
     if (event.key === 'Escape') {
       document.querySelector('#EscapeMenu').style.display = 'flex';
@@ -1965,6 +2236,9 @@ window.addEventListener('keydown', (event) => {
     if (!player6.dead) {
       player6.switchButtons(event);
     }
+    if (!player7.dead) {
+      player7.switchButtons(event);
+    }
     if (!player3Reverse.dead) {
       player3Reverse.switchButtonsRight(event);
     }
@@ -1982,6 +2256,9 @@ window.addEventListener('keydown', (event) => {
     }
     if (!player6Reverse.dead) {
       player6Reverse.switchButtonsRight(event);
+    }
+    if (!player7Reverse.dead) {
+      player7Reverse.switchButtonsRight(event);
     }
   }
 
@@ -2007,6 +2284,9 @@ window.addEventListener('keyup', (event) => {
   // player6(Evil Wizard 2)
   player6.switchUpButtonsLeft(event);
 
+  // player7(Fantasy warrior)
+  player7.switchUpButtonsLeft(event);
+
   // playerReverse(SamuraiMack)
   playerReverse.switchUpButtonsRight(event);
 
@@ -2024,6 +2304,9 @@ window.addEventListener('keyup', (event) => {
 
   // player6Reverse(Evil Wizard 2)
   player6Reverse.switchUpButtonsRight(event);
+
+  // player7Reverse(Fantasy warrior)
+  player7Reverse.switchUpButtonsRight(event);
 
   // console.log(event.key);
 });
