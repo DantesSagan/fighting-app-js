@@ -23,6 +23,12 @@ const audio = {
   FantasyAttack3: new Howl({
     src: '../audio/FantasyWarrior/Attack3.wav',
   }),
+  AxeWarriorSwing: new Howl({
+    src: '../audio/AxeWarrior/AxeSwing_2.wav',
+  }),
+  AxeWarriorAttack: new Howl({
+    src: '../audio/AxeWarrior/AxeAttack2.wav',
+  }),
   Damaged: new Howl({
     src: '../audio/mixkit-sword-cutting-flesh-2788.wav',
   }),

@@ -484,6 +484,23 @@ class Fighter extends Sprite {
       this.attackBox.width = 150;
     }
   }
+  attackAxe() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Axe');
+    if (player8.start === true) {
+      this.attackBox.offset.x = 220;
+      this.attackBox.width = 150;
+    }
+  }
+  attackAxeTwo() {
+    this.isAttackingTwo = true;
+    this.switchSprite('attack2Axe');
+    if (player8.start === true) {
+      this.attackBox.offset.x = 110;
+      this.attackBox.width = 150;
+    }
+  }
+
   // // attack method missing
   // attackMissing() {
   //   this.isAttacking = false;
@@ -529,6 +546,7 @@ class Fighter extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -551,6 +569,8 @@ class Fighter extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -577,6 +597,9 @@ class Fighter extends Sprite {
       } else if (player7.start === true) {
         player7.damaged(dmg);
         playerAttack.isAttacking = false;
+      } else if (player8.start === true) {
+        player8.damaged(dmg);
+        playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
@@ -617,6 +640,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -653,6 +681,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       }
       // if player2Reverse (Kenji on Left side) strict equal to comparedPlayer so
 
@@ -675,6 +708,7 @@ class Fighter extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -697,6 +731,8 @@ class Fighter extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -723,6 +759,9 @@ class Fighter extends Sprite {
       } else if (player7.start === true) {
         player7.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
+      } else if (player8.start === true) {
+        player8.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
@@ -763,6 +802,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -799,6 +843,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -819,6 +868,7 @@ class Fighter extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -841,6 +891,8 @@ class Fighter extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -867,6 +919,9 @@ class Fighter extends Sprite {
       } else if (player7.start === true) {
         player7.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
+      } else if (player8.start === true) {
+        player8.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
       // if we are using gsap we get to say of id and property with what need to do
@@ -907,6 +962,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -943,6 +1003,11 @@ class Fighter extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -963,20 +1028,15 @@ class Fighter extends Sprite {
       //   this.switchSprite('deathTwo');
       // }, 3000);
     } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
       // in this case we auto play damaged sound
-      audio.Damaged.play();
-      audio.Damaged.volume(volumeFight);
+      // if (player8.start === true || player8Reverse.start === true) {
+      //   audio.AxeWarriorAttack.play();
+      //   audio.AxeWarriorAttack.volume(volumeFight);
+      // } else {
+        audio.Damaged.play();
+        audio.Damaged.volume(volumeFight);
+      // }
+
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       // and also change sprite to damaged sprite
@@ -992,19 +1052,14 @@ class Fighter extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
-      audio.Damaged.play();
-      audio.Damaged.volume(volumeFight);
+      // if (player8.start === true || player8Reverse.start === true) {
+      //   audio.AxeWarriorAttack.play();
+      //   audio.AxeWarriorAttack.volume(volumeFight);
+      // } else {
+        audio.Damaged.play();
+        audio.Damaged.volume(volumeFight);
+      // }
+
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       this.switchSprite('damaged');
@@ -1019,17 +1074,6 @@ class Fighter extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       // this.sound.volume = volumeFight;
@@ -1114,6 +1158,8 @@ class Fighter extends Sprite {
           this.attackDark();
         } else if (player7.start === true) {
           this.attackFantasy();
+        } else if (player8.start === true) {
+          this.attackAxe();
         } else {
           this.attack();
         }
@@ -1126,6 +1172,8 @@ class Fighter extends Sprite {
           this.attackDarkTwo();
         } else if (player7.start === true) {
           this.attackFantasyTwo();
+        } else if (player8.start === true) {
+          this.attackAxeTwo();
         } else {
           this.attackTwo();
         }
@@ -1477,6 +1525,28 @@ class Fighter extends Sprite {
         console.log('Finished!');
         // });
         break;
+      case 'attack1Axe':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.framesCurrent = 0;
+        }
+        // audio.Swing.once('load', () => {
+        audio.AxeWarriorSwing.play();
+        audio.AxeWarriorSwing.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           // if (this.sound !== this.sprites[0].attack2.sound) {
@@ -1550,6 +1620,28 @@ class Fighter extends Sprite {
         // audio.Swing.once('load', () => {
         audio.FantasyAttack2.play();
         audio.FantasyAttack2.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
+      case 'attack2Axe':
+        if (this.image !== this.sprites[0].attack2.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.framesCurrent = 0;
+        }
+        // audio.Swing.once('load', () => {
+        audio.AxeWarriorSwing.play();
+        audio.AxeWarriorSwing.volume(volumeFight);
         // });
 
         // Fires when the sound finishes playing.
@@ -1933,12 +2025,24 @@ class FighterReverse extends Sprite {
       this.attackBox.width = 150;
     }
   }
-
-  // // attack method missing
-  // attackMissing() {
-  //   this.isAttacking = false;
-  //   this.switchSprite('attack1');
-  // }
+  attackAxe() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Axe');
+    if (player8Reverse.start === true) {
+      this.attackBox.offset.x = -220;
+      this.attackBox.width = 150;
+      player8Reverse.offset.x = 320;
+    }
+  }
+  attackAxeTwo() {
+    this.isAttackingTwo = true;
+    this.switchSprite('attack2Axe');
+    if (player8Reverse.start === true) {
+      this.attackBox.offset.x = -210;
+      this.attackBox.width = 150;
+      player8Reverse.offset.x = 320;
+    }
+  }
 
   attackTwo() {
     this.switchSprite('attack2');
@@ -1999,6 +2103,7 @@ class FighterReverse extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -2021,6 +2126,8 @@ class FighterReverse extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttacking &&
@@ -2046,6 +2153,9 @@ class FighterReverse extends Sprite {
         playerAttack.isAttacking = false;
       } else if (player7.start === true) {
         player7.damaged(dmg);
+        playerAttack.isAttacking = false;
+      } else if (player8.start === true) {
+        player8.damaged(dmg);
         playerAttack.isAttacking = false;
       }
 
@@ -2089,6 +2199,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -2125,6 +2240,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       }
 
       // console.log('you attack player2');
@@ -2134,6 +2254,7 @@ class FighterReverse extends Sprite {
       playerAttack.isAttacking &&
       playerAttack.countFramesMax === missingFrame
     ) {
+      // player8Reverse.offset.x = 100;
       playerAttack.isAttacking = false;
     }
   }
@@ -2147,6 +2268,7 @@ class FighterReverse extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -2169,6 +2291,8 @@ class FighterReverse extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttackingTwo &&
@@ -2195,6 +2319,9 @@ class FighterReverse extends Sprite {
       } else if (player7.start === true) {
         player7.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
+      } else if (player8.start === true) {
+        player8.damagedTwo(dmg);
+        playerAttack.isAttackingTwo = false;
       }
 
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -2236,6 +2363,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -2272,6 +2404,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -2280,6 +2417,7 @@ class FighterReverse extends Sprite {
       playerAttack.isAttackingTwo &&
       playerAttack.countFramesMax === missingFrame
     ) {
+      // player8Reverse.offset.x = 100;
       playerAttack.isAttackingTwo = false;
     }
   }
@@ -2292,6 +2430,7 @@ class FighterReverse extends Sprite {
     player5,
     player6,
     player7,
+    player8,
     missingFrame,
     dmg,
     playerCompare
@@ -2314,6 +2453,8 @@ class FighterReverse extends Sprite {
             ? player6
             : player7.start === true
             ? player7
+            : player8.start === true
+            ? player8
             : player1,
       }) &&
       playerAttack.isAttackingThree &&
@@ -2340,6 +2481,9 @@ class FighterReverse extends Sprite {
       } else if (player7.start === true) {
         player7.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
+      } else if (player8.start === true) {
+        player8.damagedThree(dmg);
+        playerAttack.isAttackingThree = false;
       }
 
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -2381,6 +2525,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#player2Health', {
+            width: player8.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -2417,6 +2566,11 @@ class FighterReverse extends Sprite {
             width: player7.health + '%',
           });
         }
+        if (player8.start === true) {
+          gsap.to('#playerHealth', {
+            width: player8.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -2441,19 +2595,15 @@ class FighterReverse extends Sprite {
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       // this.sound.play();
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
-      audio.Damaged.play();
-      audio.Damaged.volume(volumeFight);
+      // if (player8.start === true || player8Reverse.start === true) {
+      //   audio.AxeWarriorAttack.play();
+      //   audio.AxeWarriorAttack.volume(volumeFight);
+        player8Reverse.offset.x = 100;
+      // } else {
+        audio.Damaged.play();
+        audio.Damaged.volume(volumeFight);
+      // }
+     
       // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
@@ -2467,19 +2617,15 @@ class FighterReverse extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
-      audio.Damaged.play();
-      audio.Damaged.volume(volumeFight);
+      // if (player8.start === true || player8Reverse.start === true) {
+        // audio.AxeWarriorAttack.play();
+        // audio.AxeWarriorAttack.volume(volumeFight);
+        player8Reverse.offset.x = 100;
+      // } else {
+        audio.Damaged.play();
+        audio.Damaged.volume(volumeFight);
+      // }
+     
       this.switchSprite('damaged');
     }
   }
@@ -2492,17 +2638,6 @@ class FighterReverse extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      player.restart = false;
-      playerReverse.restart = false;
-      player2.restart = false;
-      player2Reverse.restart = false;
-      player3.restart = false;
-      player3Reverse.restart = false;
-      player4.restart = false;
-      player4Reverse.restart = false;
-      player5.restart = false;
-      player6.restart = false;
-      player6Reverse.restart = false;
       audio.Damaged.play();
       audio.Damaged.volume(volumeFight);
       this.switchSprite('damaged');
@@ -2604,6 +2739,8 @@ class FighterReverse extends Sprite {
           this.attackDark();
         } else if (player7Reverse.start === true) {
           this.attackFantasy();
+        } else if (player8Reverse.start === true) {
+          this.attackAxe();
         } else {
           this.attack();
         }
@@ -2616,6 +2753,8 @@ class FighterReverse extends Sprite {
           this.attackDarkTwo();
         } else if (player7Reverse.start === true) {
           this.attackFantasyTwo();
+        } else if (player8Reverse.start === true) {
+          this.attackAxeTwo();
         } else {
           this.attackTwo();
         }
@@ -2788,6 +2927,7 @@ class FighterReverse extends Sprite {
           this.framesMax = this.sprites[0].idle.framesMax;
           // to solve problems with flashing frames need to set current frames to 0 and animation starts in the beginning
           this.countFramesMax = this.framesMax - 1;
+          player8Reverse.offset.x = 100;
         }
         break;
       case 'run':
@@ -2899,6 +3039,28 @@ class FighterReverse extends Sprite {
         console.log('Finished!');
         // });
         break;
+      case 'attack1Axe':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.AxeWarriorSwing.play();
+        audio.AxeWarriorSwing.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
@@ -2967,6 +3129,28 @@ class FighterReverse extends Sprite {
         // audio.Swing.once('load', () => {
         audio.FantasyAttack2.play();
         audio.FantasyAttack2.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
+      case 'attack2Axe':
+        if (this.image !== this.sprites[0].attack2.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack2.image;
+          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        // audio.Swing.once('load', () => {
+        audio.AxeWarriorSwing.play();
+        audio.AxeWarriorSwing.volume(volumeFight);
         // });
 
         // Fires when the sound finishes playing.

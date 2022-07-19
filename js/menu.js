@@ -25,6 +25,8 @@ function MenuRestart() {
   player6Reverse.start = false;
   player7.start = false;
   player7Reverse.start = false;
+  player8.start = false;
+  player8Reverse.start = false;
   menuMain.start = true;
   // pickedHeroes boolean to false when button menu pressed
   player.pickedHero = false;
@@ -41,6 +43,8 @@ function MenuRestart() {
   player6Reverse.pickedHero = false;
   player7.pickedHero = false;
   player7Reverse.pickedHero = false;
+  player8.pickedHero = false;
+  player8Reverse.pickedHero = false;
   // change music by menu music when pressed menu restart button on fight round
   if (menuMain.start === true) {
     const music = '../audio/ambient_menu.wav';
@@ -60,6 +64,7 @@ function MenuRestart() {
   document.querySelector('#hero5Player1').style.backgroundColor = 'white';
   document.querySelector('#hero6Player1').style.backgroundColor = 'white';
   document.querySelector('#hero7Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero8Player1').style.backgroundColor = 'white';
 
   // second list of heroes
   document.querySelector('#hero1Player2').style.backgroundColor = 'white';
@@ -69,6 +74,7 @@ function MenuRestart() {
   document.querySelector('#hero5Player2').style.backgroundColor = 'white';
   document.querySelector('#hero6Player2').style.backgroundColor = 'white';
   document.querySelector('#hero7Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero8Player2').style.backgroundColor = 'white';
 
   // Left side hero
   player.health = 100;
@@ -78,6 +84,7 @@ function MenuRestart() {
   player5.health = 100;
   player6.health = 100;
   player7.health = 100;
+  player8.health = 100;
   gsap.to('#playerHealth', {
     width: player.health + '%',
   });
@@ -99,6 +106,9 @@ function MenuRestart() {
   gsap.to('#playerHealth', {
     width: player7.health + '%',
   });
+  gsap.to('#playerHealth', {
+    width: player8.health + '%',
+  });
 
   // Right side hero
   playerReverse.health = 100;
@@ -107,6 +117,7 @@ function MenuRestart() {
   player5Reverse.health = 100;
   player6Reverse.health = 100;
   player7Reverse.health = 100;
+  player8Reverse.health = 100;
   gsap.to('#player2Health', {
     width: player2.health + '%',
   });
@@ -128,6 +139,10 @@ function MenuRestart() {
   gsap.to('#player2Health', {
     width: player7Reverse.health + '%',
   });
+  gsap.to('#player2Health', {
+    width: player8Reverse.health + '%',
+  });
+
   if (
     player.restart === false ||
     playerReverse.restart === false ||
@@ -142,7 +157,9 @@ function MenuRestart() {
     player6.restart === false ||
     player6Reverse.restart === false ||
     player7.restart === false ||
-    player7Reverse.restart === false
+    player7Reverse.restart === false ||
+    player8.restart === false ||
+    player8Reverse.restart === false
   ) {
     // restart set to true
     player.restart = true;
@@ -159,6 +176,8 @@ function MenuRestart() {
     player6Reverse.restart = true;
     player7.restart = true;
     player7Reverse.restart = true;
+    player8.restart = true;
+    player8Reverse.restart = true;
     // position x like in the start of round(game)
     player.position.x = 256;
     playerReverse.position.x = 768;
@@ -174,6 +193,8 @@ function MenuRestart() {
     player6Reverse.position.x = 768;
     player7.position.x = 256;
     player7Reverse.position.x = 768;
+    player8.position.x = 256;
+    player8Reverse.position.x = 768;
     setTimeout(() => {
       player.restart = false;
       playerReverse.restart = false;
@@ -189,6 +210,8 @@ function MenuRestart() {
       player6Reverse.restart = false;
       player7.restart = false;
       player7Reverse.restart = false;
+      player8.restart = false;
+      player8Reverse.restart = false;
     }, 1000);
   }
   document.querySelector('#mainMenu').style.display = 'flex';
@@ -217,6 +240,8 @@ function MenuFalsePlayersTrueCheck({
   player6Reverse,
   player7,
   player7Reverse,
+  player8,
+  player8Reverse,
 }) {
   // Player start
   if (
@@ -275,6 +300,14 @@ function MenuFalsePlayersTrueCheck({
     player.update();
     player7Reverse.updateReverse();
   }
+  if (
+    player.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player.update();
+    player8Reverse.updateReverse();
+  }
   // Player2 Reverse start
   if (
     player2Reverse.start === true &&
@@ -331,6 +364,14 @@ function MenuFalsePlayersTrueCheck({
   ) {
     player2Reverse.updateReverse();
     player7Reverse.updateReverse();
+  }
+  if (
+    player2Reverse.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player2Reverse.updateReverse();
+    player8Reverse.updateReverse();
   }
   // Player3 start
   if (
@@ -389,6 +430,14 @@ function MenuFalsePlayersTrueCheck({
     player3.update();
     player7Reverse.updateReverse();
   }
+  if (
+    player3.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player3.update();
+    player8Reverse.updateReverse();
+  }
   // Player4 start
   if (
     player4.start === true &&
@@ -445,6 +494,14 @@ function MenuFalsePlayersTrueCheck({
   ) {
     player4.update();
     player7Reverse.updateReverse();
+  }
+  if (
+    player4.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player4.update();
+    player8Reverse.updateReverse();
   }
   // Player5 start
   if (
@@ -503,6 +560,14 @@ function MenuFalsePlayersTrueCheck({
     player5.update();
     player7Reverse.updateReverse();
   }
+  if (
+    player5.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player5.update();
+    player8Reverse.updateReverse();
+  }
   // Player6 start
   if (
     player6.start === true &&
@@ -560,6 +625,14 @@ function MenuFalsePlayersTrueCheck({
     player6.update();
     player7Reverse.updateReverse();
   }
+  if (
+    player6.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player6.update();
+    player8Reverse.updateReverse();
+  }
   // Player7 start
   if (
     player7.start === true &&
@@ -616,5 +689,78 @@ function MenuFalsePlayersTrueCheck({
   ) {
     player7.update();
     player7Reverse.updateReverse();
+  }
+  if (
+    player7.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player7.update();
+    player8Reverse.updateReverse();
+  }
+  // Player8 start
+  if (
+    player8.start === true &&
+    playerReverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    playerReverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player2.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player2.update();
+  }
+  if (
+    player8.start === true &&
+    player3Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player3Reverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player4Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player4Reverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player5Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player7.update();
+    player5Reverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player6Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player6Reverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player7Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player7Reverse.updateReverse();
+  }
+  if (
+    player8.start === true &&
+    player8Reverse.start === true &&
+    menuMain.start === false
+  ) {
+    player8.update();
+    player8Reverse.updateReverse();
   }
 }
