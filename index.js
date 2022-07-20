@@ -1379,8 +1379,13 @@ if (menuMain.start === true) {
   const music = '../audio/ambient_menu.wav';
   menu({ music });
 } else {
-  const music = '';
-  menu({ music });
+  if (menuMain.combatMusic === true) {
+    const music = '../audio/Hard void (Finish - Rock 5).wav';
+    menu({ music });
+  } else {
+    const music = '';
+    menu({ music });
+  }
 }
 
 const keys = {
@@ -1984,7 +1989,7 @@ function animate(event) {
     5,
     25
   );
-  
+
   // Player8 is attacking 2nd animation
   player8.detectCollisionTwo(
     player8,

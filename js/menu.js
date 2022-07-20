@@ -51,10 +51,13 @@ function MenuRestart() {
 
     menu({ music });
   } else {
-    // '../audio/Hard void (Finish - Rock 5).wav';
-    const music = '';
-
-    menu({ music });
+    if (menuMain.combatMusic === true) {
+      const music = '../audio/Hard void (Finish - Rock 5).wav';
+      menu({ music });
+    } else {
+      const music = '';
+      menu({ music });
+    }
   }
   // change color or selected hero before
   // 1st list of heroes

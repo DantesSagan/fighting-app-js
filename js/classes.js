@@ -39,6 +39,7 @@ class Sprite {
     this.restart = restart;
     this.playableHero = playableHero;
     this.AIHero = AIHero;
+    this.combatMusic
   }
   // We are creating draw method
   draw() {

@@ -1945,8 +1945,13 @@ function TrueStart() {
 
     menu({ music });
   } else {
-    const music = '';
-    menu({ music });
+    if (menuMain.combatMusic === true) {
+      const music = '../audio/Hard void (Finish - Rock 5).wav';
+      menu({ music });
+    } else {
+      const music = '';
+      menu({ music });
+    }
   }
   document.querySelector('#infoPlayers').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
@@ -2178,6 +2183,7 @@ function ChangeLanguage() {
       'Комбинация: Shift + Alt';
     document.querySelector('#languageButton').innerHTML = 'Язык';
     document.querySelector('#audioButton').innerHTML = 'Звук';
+    document.querySelector('#audioCombat').innerHTML = 'Музыка в бою';
     document.querySelector('#audioBack').innerHTML = 'Назад';
     document.querySelector('#languageBack').innerHTML = 'Назад';
     // Как играть
@@ -2289,6 +2295,7 @@ function ChangeLanguage() {
       'Combination: Shift + Alt';
     document.querySelector('#languageButton').innerHTML = 'Language';
     document.querySelector('#audioButton').innerHTML = 'Audio';
+    document.querySelector('#audioCombat').innerHTML = 'Music in combat';
     document.querySelector('#audioBack').innerHTML = 'Back';
     document.querySelector('#languageBack').innerHTML = 'Back';
     // How to play
@@ -2382,6 +2389,9 @@ function AudioButton() {
   document.querySelector('#audioSettings').style.display = 'flex';
   document.querySelector('#settings').style.display = 'none';
 }
+function CombatMusic() {
+  menuMain.combatMusic = !menuMain.combatMusic;
+}
 function BackAudio() {
   document.querySelector('#audioSettings').style.display = 'none';
   document.querySelector('#settings').style.display = 'flex';
@@ -2403,7 +2413,7 @@ function ChangeLanguageToEng() {
 // changing volume menu music
 let vol = document.querySelector('input[value="volume"]');
 let volume = Number(vol.value);
-volume = 0.2
+volume = 0.2;
 const rangeValue = () => {
   const result = document.getElementById('result');
   const inputHandler = (e) => {
@@ -2417,7 +2427,7 @@ const rangeValue = () => {
 // changing volume fighting sounds
 let volFight = document.querySelector('input[value="volumeFight"]');
 let volumeFight = Number(volFight.value);
-volumeFight = 0.2
+volumeFight = 0.2;
 const rangeValueFight = () => {
   const resultFight = document.getElementById('resultFight');
   const inputHandler = (e) => {
