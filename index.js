@@ -1365,7 +1365,7 @@ const player8Reverse = new FighterReverse({
   ],
   attackBox: {
     offset: {
-      x: 100,
+      x: -100,
       y: 30,
     },
     width: 150,
@@ -1379,7 +1379,7 @@ if (menuMain.start === true) {
   const music = '../audio/ambient_menu.wav';
   menu({ music });
 } else {
-  const music = '../audio/Hard void (Finish - Rock 5).wav';
+  const music = '';
   menu({ music });
 }
 

@@ -1945,7 +1945,7 @@ function TrueStart() {
 
     menu({ music });
   } else {
-    const music = '../audio/Hard void (Finish - Rock 5).wav';
+    const music = '';
     menu({ music });
   }
   document.querySelector('#infoPlayers').style.display = 'flex';
@@ -2417,6 +2417,7 @@ const rangeValue = () => {
 // changing volume fighting sounds
 let volFight = document.querySelector('input[value="volumeFight"]');
 let volumeFight = Number(volFight.value);
+volumeFight = 0.2
 const rangeValueFight = () => {
   const resultFight = document.getElementById('resultFight');
   const inputHandler = (e) => {
@@ -2439,11 +2440,11 @@ const rangeValueDeath = () => {
   console.log(`${volumeDeath} = volumeDeath`);
   volDeath.addEventListener('change', inputHandler); // for IE8
 };
-
+volDeath = 0.2;
 // changing volume walking | jump sounds
 let volMove = document.querySelector('input[value="volumeMove"]');
 let volumeMove = Number(volMove.value);
-
+volumeMove = 0.2;
 const rangeValueMove = () => {
   const resultMove = document.getElementById('resultMove');
   const inputHandler = (e) => {

@@ -51,7 +51,8 @@ function MenuRestart() {
 
     menu({ music });
   } else {
-    const music = '../audio/Hard void (Finish - Rock 5).wav';
+    // '../audio/Hard void (Finish - Rock 5).wav';
+    const music = '';
 
     menu({ music });
   }

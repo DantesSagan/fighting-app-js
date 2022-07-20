@@ -290,7 +290,7 @@ class Fighter extends Sprite {
   }
   // updating method instantly
   update() {
-    // this.drawSecond();
+    this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -1029,13 +1029,13 @@ class Fighter extends Sprite {
       // }, 3000);
     } else {
       // in this case we auto play damaged sound
-      // if (player8.start === true || player8Reverse.start === true) {
-      //   audio.AxeWarriorAttack.play();
-      //   audio.AxeWarriorAttack.volume(volumeFight);
-      // } else {
+      if (player8Reverse.start === true) {
+        audio.AxeWarriorAttack.play();
+        audio.AxeWarriorAttack.volume(volumeFight);
+      } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
-      // }
+      }
 
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
@@ -1052,13 +1052,13 @@ class Fighter extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      // if (player8.start === true || player8Reverse.start === true) {
-      //   audio.AxeWarriorAttack.play();
-      //   audio.AxeWarriorAttack.volume(volumeFight);
-      // } else {
+      if (player8Reverse.start === true) {
+        audio.AxeWarriorAttack.play();
+        audio.AxeWarriorAttack.volume(volumeFight);
+      } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
-      // }
+      }
 
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
@@ -1719,8 +1719,6 @@ class Fighter extends Sprite {
           this.framesMax = this.sprites[0].damaged.framesMax;
           this.framesCurrent = 0;
         }
-        audio.Damaged.play();
-        audio.Damaged.volume(volumeFight);
         break;
       case 'death':
         if (this.image !== this.sprites[0].death.image) {
@@ -1884,7 +1882,7 @@ class FighterReverse extends Sprite {
   }
   // updating method instantly
   updateReverse() {
-    // this.drawSecond();
+    this.drawSecond();
     this.drawReverse();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -2029,8 +2027,8 @@ class FighterReverse extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1Axe');
     if (player8Reverse.start === true) {
-      this.attackBox.offset.x = -220;
-      this.attackBox.width = 150;
+      player8Reverse.attackBox.offset.x = -280;
+      player8Reverse.attackBox.width = 150;
       player8Reverse.offset.x = 320;
     }
   }
@@ -2038,7 +2036,7 @@ class FighterReverse extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Axe');
     if (player8Reverse.start === true) {
-      this.attackBox.offset.x = -210;
+      this.attackBox.offset.x = -205;
       this.attackBox.width = 150;
       player8Reverse.offset.x = 320;
     }
@@ -2595,15 +2593,15 @@ class FighterReverse extends Sprite {
       // this.sound.volume = volumeFight;
       // this.sound.currentTime = 0;
       // this.sound.play();
-      // if (player8.start === true || player8Reverse.start === true) {
-      //   audio.AxeWarriorAttack.play();
-      //   audio.AxeWarriorAttack.volume(volumeFight);
+      if (player8.start === true) {
+        audio.AxeWarriorAttack.play();
+        audio.AxeWarriorAttack.volume(volumeFight);
         player8Reverse.offset.x = 100;
-      // } else {
+      } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
-      // }
-     
+      }
+
       // and also change sprite to damaged sprite
       this.switchSprite('damaged');
     }
@@ -2617,15 +2615,15 @@ class FighterReverse extends Sprite {
       //   console.log('deathTwo');
       // }, 3000);
     } else {
-      // if (player8.start === true || player8Reverse.start === true) {
-        // audio.AxeWarriorAttack.play();
-        // audio.AxeWarriorAttack.volume(volumeFight);
+      if (player8.start === true) {
+        audio.AxeWarriorAttack.play();
+        audio.AxeWarriorAttack.volume(volumeFight);
         player8Reverse.offset.x = 100;
-      // } else {
+      } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
-      // }
-     
+      }
+
       this.switchSprite('damaged');
     }
   }
@@ -2940,6 +2938,7 @@ class FighterReverse extends Sprite {
           this.framesMax = this.sprites[0].run.framesMax;
           this.countFramesMax = this.framesMax - 1;
         }
+        player8Reverse.offset.x = 100;
         break;
       case 'jump':
         if (this.image !== this.sprites[0].jump.image) {
