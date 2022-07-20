@@ -291,7 +291,7 @@ class Fighter extends Sprite {
   }
   // updating method instantly
   update() {
-    this.drawSecond();
+    // this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -1883,7 +1883,7 @@ class FighterReverse extends Sprite {
   }
   // updating method instantly
   updateReverse() {
-    this.drawSecond();
+    // this.drawSecond();
     this.drawReverse();
     // if player is not dead so animate their frames
     // if dead do not animate
