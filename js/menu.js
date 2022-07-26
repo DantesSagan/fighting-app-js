@@ -73,6 +73,7 @@ function MenuRestart() {
   document.querySelector('#hero6Player1').style.backgroundColor = 'white';
   document.querySelector('#hero7Player1').style.backgroundColor = 'white';
   document.querySelector('#hero8Player1').style.backgroundColor = 'white';
+  document.querySelector('#hero9Player1').style.backgroundColor = 'white';
 
   // second list of heroes
   document.querySelector('#hero1Player2').style.backgroundColor = 'white';
@@ -83,6 +84,7 @@ function MenuRestart() {
   document.querySelector('#hero6Player2').style.backgroundColor = 'white';
   document.querySelector('#hero7Player2').style.backgroundColor = 'white';
   document.querySelector('#hero8Player2').style.backgroundColor = 'white';
+  document.querySelector('#hero9Player2').style.backgroundColor = 'white';
 
   // Left side hero
   player.health = 100;
@@ -243,7 +245,7 @@ function MenuRestart() {
   document.querySelector('#infoPlayers').style.display = 'none';
   document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
-    document.querySelector('#version').style.display = 'flex';
+  document.querySelector('#version').style.display = 'flex';
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
