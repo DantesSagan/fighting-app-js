@@ -165,12 +165,12 @@
                     </div>
                 </div>
             </div>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
                 onclick="TrueStart();">
                 Играть
             </button>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; "
                 onclick="TrueBack();">
                 Назад
@@ -183,12 +183,12 @@
         <!-- restart button -->
         <div id="restartRu"
             style="position:absolute; color: white;  align-items:center; justify-content: center; display:none; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
                 onclick="TrueRestart();">
                 Перезапустить
             </button>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
                 onclick="MenuRestart();">
                 Меню
@@ -205,21 +205,21 @@
                 <h2 style=" color: white; height: 50px; text-align:center;">
                     Меню
                 </h2>
-                <button
+                <button class="colorButton"
                     style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="HeroList();">
                     Начать игру
                 </button>
-                <button onclick="Settings();"
+                <button class="colorButton" onclick="Settings();"
                     style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;">
                     Настройки
                 </button>
-                <button
+                <button class="colorButton"
                     style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="TrueAbout();">
                     Как играть
                 </button>
-                <button
+                <button class="colorButton"
                     style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="TrueExit();">
                     Выйти
@@ -272,11 +272,11 @@
     0.5
     </div>
     <hr />
-    <button onclick="ChangeLanguageToEng();" style="cursor: pointer;">
+    <button class="colorButton" onclick="ChangeLanguageToEng();" style="cursor: pointer;">
         Изменить на Анг.
     </button>
     </div>
-    <button id="back"
+    <button class="colorButton" id="back"
         style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
         onclick="TrueBack();">
         Назад
@@ -393,7 +393,7 @@
             </div>
         </div>
 
-        <button id="back"
+        <button class="colorButton" id="back"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:200px;"
             onclick="TrueBack();">
             Назад
@@ -532,12 +532,12 @@
                     </div>
                 </div>
             </div>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3;"
                 onclick="TrueStart();">
                 Play
             </button>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; "
                 onclick="TrueBack();">
                 Back
@@ -550,12 +550,12 @@
         <!-- restart button -->
         <div id="restart"
             style="position:absolute; color: white;  align-items:center; justify-content: center; display:none; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
                 onclick="TrueRestart();">
                 Restart
             </button>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px;"
                 onclick="MenuRestart();">
                 Menu
@@ -572,21 +572,21 @@
                 <h2 style=" color: white; height: 50px; text-align:center;">
                     Menu
                 </h2>
-                <button
+                <button class="colorButton"
                     style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="HeroList();">
                     Start game
                 </button>
-                <button onclick="Settings();"
+                <button class="colorButton" onclick="Settings();"
                     style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;">
                     Settings
                 </button>
-                <button
+                <button class="colorButton"
                     style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="TrueAbout();">
                     How to play
                 </button>
-                <button
+                <button class="colorButton"
                     style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                     onclick="TrueExit();">
                     Exit
@@ -639,11 +639,11 @@
     0.5
     </div>
     <hr />
-    <button onclick="ChangeLanguageToRu();" style="cursor: pointer;">
+    <button class="colorButton" onclick="ChangeLanguageToRu();" style="cursor: pointer;">
         Change to Ru
     </button>
     </div>
-    <button id="back"
+    <button class="colorButton" id="back"
         style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:50px;"
         onclick="TrueBack();">
         Back
@@ -760,7 +760,7 @@
             </div>
         </div>
 
-        <button id="back"
+        <button class="colorButton" id="back"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:200px;"
             onclick="TrueBack();">
             Back

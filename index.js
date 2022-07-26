@@ -78,7 +78,6 @@ const player = new Fighter({
       run: {
         imageSrc: './assets/Samurai/samuraiMack/Run.png',
         soundSrc: './audio/walking.wav',
-        soundStart: false,
         framesMax: 8,
       },
       jump: {
@@ -1374,7 +1373,164 @@ const player8Reverse = new FighterReverse({
   start: false,
   restart: false,
 });
-
+const player9 = new Fighter({
+  position: {
+    x: 256,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 80,
+    y: 70,
+  },
+  scale: 0.9,
+  color: 'blue',
+  imageSrc: './assets/Vampire/Idle.png',
+  framesMax: 8,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/Vampire/Idle.png',
+        framesMax: 8,
+      },
+      run: {
+        imageSrc: './assets/Vampire/Run.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 6,
+      },
+      jump: {
+        imageSrc: './assets/Vampire/Jump.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/Vampire/Fall.png',
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: './assets/Vampire/Attack1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 5,
+      },
+      attack2: {
+        imageSrc: './assets/Vampire/Attack1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      attack3: {
+        imageSrc: './assets/Vampire/Attack1.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      damaged: {
+        imageSrc: './assets/Vampire/Take hit.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 3,
+      },
+      death: {
+        imageSrc: './assets/Vampire/Death.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 8,
+      },
+      deathTwo: {
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: 100,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
+const player9Reverse = new FighterReverse({
+  position: {
+    x: 768,
+    y: 0,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+  offset: {
+    x: 80,
+    y: 70,
+  },
+  scale: 0.9,
+  color: 'blue',
+  imageSrc: './assets/Vampire/reverse/Idle - Reverse.png',
+  framesMax: 8,
+  sprites: [
+    {
+      idle: {
+        imageSrc: './assets/Vampire/reverse/Idle - Reverse.png',
+        framesMax: 8,
+      },
+      run: {
+        imageSrc: './assets/Vampire/reverse/Run - Reverse.png',
+        soundSrc: './audio/walking.wav',
+        framesMax: 6,
+      },
+      jump: {
+        imageSrc: './assets/Vampire/reverse/Jump - Reverse.png',
+        soundSrc: './audio/jump.mp3',
+        framesMax: 2,
+      },
+      fall: {
+        imageSrc: './assets/Vampire/reverse/Fall - Reverse.png',
+        framesMax: 3,
+      },
+      attack1: {
+        imageSrc: './assets/Vampire/reverse/Attack1 - Reverse.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 5,
+      },
+      attack2: {
+        imageSrc: './assets/Vampire/reverse/Attack1 - Reverse.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      attack3: {
+        imageSrc: './assets/Vampire/reverse/Attack1 - Reverse.png',
+        soundSrc: './audio/swing.wav',
+        framesMax: 6,
+      },
+      damaged: {
+        imageSrc: './assets/Vampire/reverse/Take hit - Reverse.png',
+        soundSrc: './audio/mixkit-sword-cutting-flesh-2788.wav',
+        framesMax: 3,
+      },
+      death: {
+        imageSrc: './assets/Vampire/reverse/Death - Reverse.png',
+        soundSrc: './audio/death 2.wav',
+        framesMax: 8,
+      },
+      deathTwo: {
+        imageSrc: './assets/Samurai/kenji/blood/Death - blood - last 2.png',
+        framesMax: 3,
+      },
+    },
+  ],
+  attackBox: {
+    offset: {
+      x: -100,
+      y: 30,
+    },
+    width: 150,
+    height: 50,
+  },
+  start: false,
+  restart: false,
+});
 if (menuMain.start === true) {
   const music = '../audio/ambient_menu.wav';
   menu({ music });
@@ -1452,6 +1608,8 @@ function animate(event) {
     player7Reverse,
     player8,
     player8Reverse,
+    player9,
+    player9Reverse,
   });
   // background color
   c.fillStyle = 'rgba(255, 255 ,255, 0.15)';
@@ -1485,6 +1643,9 @@ function animate(event) {
 
   // Player 8
   player8.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+
+  // Player 9
+  player9.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
 
   // Player 3 Reverse
   // Because this is reverse version of player3 character need to set reverse buttons
@@ -1554,6 +1715,14 @@ function animate(event) {
     'ArrowRight'
   );
 
+  // Player9 Reverse
+  player9Reverse.heroMovementsReverse(
+    moveLeftPL2,
+    moveRightPL2,
+    'ArrowLeft',
+    'ArrowRight'
+  );
+
   // console.log(player2.restart);
 
   // Detect collision
@@ -1575,6 +1744,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     20
   );
@@ -1590,6 +1760,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     25
   );
@@ -1605,6 +1776,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     30
   );
@@ -1631,6 +1803,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     1,
     10,
     player2
@@ -1645,6 +1818,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     1,
     20,
     player2
@@ -1659,127 +1833,12 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     4,
     30,
     player2
   );
-  // if (
-  //   rectangularCollision({
-  //     rectangle1: player2,
-  //     rectangle2:
-  //       player.start === true
-  //         ? player
-  //         : player3.start === true
-  //         ? player3
-  //         : player2Reverse.start === true
-  //         ? player2Reverse
-  //         : player4.start === true
-  //         ? player4
-  //         : player,
-  //   }) &&
-  //   player2.isAttacking &&
-  //   player2.framesCurrent === 1
-  // ) {
-  //   if (player.start === true) {
-  //     player.damagedByKenji();
-  //     player2.isAttacking = false;
-  //   } else if (player3.start === true) {
-  //     player3.damagedByKenji();
-  //     player2.isAttacking = false;
-  //   } else if (player2Reverse.start === true) {
-  //     player2Reverse.damagedByKenji();
-  //     player2.isAttacking = false;
-  //   } else if (player4.start === true) {
-  //     player4.damagedByKenji();
-  //     player2.isAttacking = false;
-  //   }
-  //   // document.querySelector('#playerHealth').style.width = player.health + '%';
-  //   if (player.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player.health + '%',
-  //     });
-  //   }
-  //   if (player3.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player3.health + '%',
-  //     });
-  //   }
-  //   if (player2Reverse.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player2Reverse.health + '%',
-  //     });
-  //   }
-  //   if (player4.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player4.health + '%',
-  //     });
-  //   }
-  //   console.log('you attack player1');
-  // }
-  // // if player2 is missing by attacking box
-  // if (player2.isAttacking && player2.framesCurrent === 1) {
-  //   player2.isAttacking = false;
-  // }
 
-  // // Player 2 && player2 is attackingTwo animation
-  // if (
-  //   rectangularCollision({
-  //     rectangle1: player2,
-  //     rectangle2:
-  //       player.start === true
-  //         ? player
-  //         : player3.start === true
-  //         ? player3
-  //         : player2Reverse.start === true
-  //         ? player2Reverse
-  //         : player4.start === true
-  //         ? player4
-  //         : player,
-  //   }) &&
-  //   player2.isAttackingTwo &&
-  //   player2.framesCurrent === 1
-  // ) {
-  //   if (player.start === true) {
-  //     player.damagedTwoByKenji();
-  //     player2.isAttackingTwo = false;
-  //   } else if (player3.start === true) {
-  //     player3.damagedTwoByKenji();
-  //     player2.isAttackingTwo = false;
-  //   } else if (player2Reverse.start === true) {
-  //     player2Reverse.damagedTwoByKenji();
-  //     player2.isAttackingTwo = false;
-  //   } else if (player4.start === true) {
-  //     player4.damagedTwoByKenji();
-  //     player2.isAttackingTwo = false;
-  //   }
-  //   // document.querySelector('#playerHealth').style.width = player.health + '%';
-  //   if (player.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player.health + '%',
-  //     });
-  //   }
-  //   if (player3.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player3.health + '%',
-  //     });
-  //   }
-  //   if (player2Reverse.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player2Reverse.health + '%',
-  //     });
-  //   }
-  //   if (player4.start === true) {
-  //     gsap.to('#playerHealth', {
-  //       width: player4.health + '%',
-  //     });
-  //   }
-  //   console.log('you attack player1');
-  // }
-  // // if player2 is missing by attacking box
-  // if (player2.isAttackingTwo && player2.framesCurrent === 1) {
-  //   player2.isAttackingTwo = false;
-  // }
-  // here
   // Player 3 is attacking 1st animation
   player3.detectCollision(
     player3,
@@ -1791,6 +1850,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     20
   );
@@ -1806,6 +1866,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     25
   );
@@ -1821,6 +1882,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     2,
     10
   );
@@ -1836,6 +1898,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     2,
     20
   );
@@ -1851,6 +1914,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     2,
     30
   );
@@ -1866,6 +1930,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     2,
     15
   );
@@ -1881,6 +1946,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     3,
     25
   );
@@ -1896,6 +1962,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     3,
     35
   );
@@ -1911,6 +1978,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     15
   );
@@ -1926,6 +1994,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     5,
     25
   );
@@ -1941,6 +2010,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     5,
     15
   );
@@ -1956,6 +2026,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     3,
     25
   );
@@ -1971,6 +2042,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     5,
     35
   );
@@ -1986,6 +2058,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     5,
     25
   );
@@ -2001,8 +2074,25 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     35
+  );
+
+  // Player9 is attacking animation
+  player9.detectCollision(
+    player9,
+    playerReverse,
+    player2,
+    player3Reverse,
+    player4Reverse,
+    player5Reverse,
+    player6Reverse,
+    player7Reverse,
+    player8Reverse,
+    player9Reverse,
+    3,
+    25
   );
 
   // Player 3Reverse is attacking 1st animation
@@ -2016,6 +2106,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     20
   );
@@ -2031,6 +2122,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     25
   );
@@ -2046,6 +2138,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     20
   );
@@ -2061,6 +2154,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     25
   );
@@ -2076,6 +2170,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     30
   );
@@ -2091,6 +2186,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     1,
     10
   );
@@ -2106,6 +2202,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     1,
     20
   );
@@ -2121,6 +2218,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     1,
     30
   );
@@ -2136,6 +2234,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     6,
     15
   );
@@ -2151,6 +2250,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     4,
     25
   );
@@ -2166,6 +2266,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     35
   );
@@ -2181,6 +2282,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     4,
     15
   );
@@ -2196,6 +2298,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     3,
     25
   );
@@ -2211,6 +2314,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     3,
     15
   );
@@ -2226,6 +2330,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     5,
     25
   );
@@ -2241,6 +2346,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     4,
     35
   );
@@ -2256,6 +2362,7 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     3,
     25
   );
@@ -2271,8 +2378,25 @@ function animate(event) {
     player6,
     player7,
     player8,
+    player9,
     2,
     35
+  );
+
+  // Player9Reverse is attacking 1st animation
+  player9Reverse.detectCollisionReverse(
+    player9Reverse,
+    player,
+    player3,
+    player2Reverse,
+    player4,
+    player5,
+    player6,
+    player7,
+    player8,
+    player9,
+    3,
+    25
   );
 
   // Player 2 Reverse is attacking 1st animation
@@ -2297,6 +2421,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     3,
     10,
     player2Reverse
@@ -2311,6 +2436,7 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     3,
     20,
     player2Reverse
@@ -2325,129 +2451,11 @@ function animate(event) {
     player6Reverse,
     player7Reverse,
     player8Reverse,
+    player9Reverse,
     4,
     30,
     player2Reverse
   );
-  // if (
-  //   rectangularCollision({
-  //     rectangle1: player2Reverse,
-  //     rectangle2:
-  //       playerReverse.start === true
-  //         ? playerReverse
-  //         : player3Reverse.start === true
-  //         ? player3Reverse
-  //         : player2.start === true
-  //         ? player2
-  //         : player4Reverse.start === true
-  //         ? player4Reverse
-  //         : player,
-  //   }) &&
-  //   player2Reverse.isAttacking &&
-  //   player2Reverse.countFramesMax === 3
-  // ) {
-  //   if (playerReverse.start === true) {
-  //     playerReverse.damagedByKenji();
-  //     player2Reverse.isAttacking = false;
-  //   } else if (player3Reverse.start === true) {
-  //     player3Reverse.damagedByKenji();
-  //     player2Reverse.isAttacking = false;
-  //   } else if (player2.start === true) {
-  //     player2.damagedByKenji();
-  //     player2Reverse.isAttacking = false;
-  //   } else if (player4Reverse.start === true) {
-  //     player4Reverse.damagedByKenji();
-  //     player2Reverse.isAttacking = false;
-  //   }
-  //   // document.querySelector('#player2Health').style.width = player2.health + '%';
-  //   // if we are using gsap we get to say of id and property with what need to do
-  //   // and also give a smooth animation of decreasing healthbar
-  //   if (playerReverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: playerReverse.health + '%',
-  //     });
-  //   }
-  //   if (player3Reverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player3Reverse.health + '%',
-  //     });
-  //   }
-  //   if (player2.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player2.health + '%',
-  //     });
-  //   }
-  //   if (player4Reverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player4Reverse.health + '%',
-  //     });
-  //   }
-  //   // console.log('you attack player2');
-  // }
-
-  // // if player1 is missing by attacking box
-  // if (player2Reverse.isAttacking && player2Reverse.countFramesMax === 3) {
-  //   player2Reverse.isAttacking = false;
-  // }
-  // // Player 2 Reverse is attacking Two animation
-  // if (
-  //   rectangularCollision({
-  //     rectangle1: player2Reverse,
-  //     rectangle2:
-  //       playerReverse.start === true
-  //         ? playerReverse
-  //         : player3Reverse.start === true
-  //         ? player3Reverse
-  //         : player2.start === true
-  //         ? player2
-  //         : player4Reverse.start === true
-  //         ? player4Reverse
-  //         : player,
-  //   }) &&
-  //   player2Reverse.isAttackingTwo &&
-  //   player2Reverse.countFramesMax === 3
-  // ) {
-  //   if (playerReverse.start === true) {
-  //     playerReverse.damagedTwoByKenji();
-  //     player2Reverse.isAttackingTwo = false;
-  //   } else if (player3Reverse.start === true) {
-  //     player3Reverse.damagedTwoByKenji();
-  //     player2Reverse.isAttackingTwo = false;
-  //   } else if (player2.start === true) {
-  //     player2.damagedTwoByKenji();
-  //     player2Reverse.isAttackingTwo = false;
-  //   } else if (player4Reverse.start === true) {
-  //     player4Reverse.damagedTwoByKenji();
-  //     player2Reverse.isAttackingTwo = false;
-  //   }
-  //   // document.querySelector('#player2Health').style.width = player2.health + '%';
-  //   if (playerReverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: playerReverse.health + '%',
-  //     });
-  //   }
-  //   if (player3Reverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player3Reverse.health + '%',
-  //     });
-  //   }
-  //   if (player2.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player2.health + '%',
-  //     });
-  //   }
-  //   if (player4Reverse.start === true) {
-  //     gsap.to('#player2Health', {
-  //       width: player4Reverse.health + '%',
-  //     });
-  //   }
-  //   // console.log('you attack player2');
-  // }
-
-  // // if player3 is missing by attacking box
-  // if (player2Reverse.isAttackingTwo && player2Reverse.countFramesMax === 3) {
-  //   player2Reverse.isAttackingTwo = false;
-  // }
 
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
@@ -2479,7 +2487,9 @@ window.addEventListener('keydown', (event) => {
     (player7.start === false && menuMain.start === true) ||
     (player7Reverse.start === false && menuMain.start === true) ||
     (player8.start === false && menuMain.start === true) ||
-    (player8Reverse.start === false && menuMain.start === true)
+    (player8Reverse.start === false && menuMain.start === true) ||
+    (player9.start === false && menuMain.start === true) ||
+    (player9Reverse.start === false && menuMain.start === true)
   ) {
     return null;
   } else if (
@@ -2498,7 +2508,9 @@ window.addEventListener('keydown', (event) => {
     (player7.start === true && menuMain.start === false) ||
     (player7Reverse.start === true && menuMain.start === false) ||
     (player8.start === true && menuMain.start === false) ||
-    (player8Reverse.start === false && menuMain.start === true)
+    (player8Reverse.start === false && menuMain.start === true) ||
+    (player9.start === true && menuMain.start === false) ||
+    (player9Reverse.start === false && menuMain.start === true)
   ) {
     if (event.key === 'Escape') {
       document.querySelector('#EscapeMenu').style.display = 'flex';
@@ -2539,6 +2551,9 @@ window.addEventListener('keydown', (event) => {
     if (!player8.dead) {
       player8.switchButtons(event);
     }
+    if (!player9.dead) {
+      player9.switchButtons(event);
+    }
     if (!player3Reverse.dead) {
       player3Reverse.switchButtonsRight(event);
     }
@@ -2562,6 +2577,9 @@ window.addEventListener('keydown', (event) => {
     }
     if (!player8Reverse.dead) {
       player8Reverse.switchButtonsRight(event);
+    }
+    if (!player9Reverse.dead) {
+      player9Reverse.switchButtonsRight(event);
     }
   }
 
@@ -2593,6 +2611,9 @@ window.addEventListener('keyup', (event) => {
   // player8(Axe warrior)
   player8.switchUpButtonsLeft(event);
 
+  // player9(Vampire)
+  player9.switchUpButtonsLeft(event);
+
   // playerReverse(SamuraiMack)
   playerReverse.switchUpButtonsRight(event);
 
@@ -2616,6 +2637,9 @@ window.addEventListener('keyup', (event) => {
 
   // player8Reverse(Fantasy warrior)
   player8Reverse.switchUpButtonsRight(event);
+
+  // player9Reverse(Vampire)
+  player9Reverse.switchUpButtonsRight(event);
 
   // console.log(event.key);
 });

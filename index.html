@@ -7,6 +7,7 @@
     <title>Fighting-game-app</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * {
@@ -164,15 +165,15 @@
                 </div>
             </div>
         </div>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3; width:250px;"
-            onclick="HeroListTwo();" id='heroListTwo'>
+            class="buttonTwo" onclick="HeroListTwo();" id='heroListTwo'>
         </button>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3; width:250px;"
             onclick="TrueStart();" id='menuPlay'>
         </button>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; width:250px; "
             onclick="TrueBack();" id="back">
         </button>
@@ -247,27 +248,73 @@
                 </div>
             </div>
         </div>
-        <button
+        <button class="colorButton"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3; width:250px;"
+            class="buttonThree" onclick="HeroListThree();" id='heroListThree'>
+        </button>
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3; width:250px;"
             onclick="TrueStart();" id='menuPlayTwo'>
         </button>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3;  width:250px;"
             onclick="ListTwoBack();" id="backTwo">
         </button>
 
     </div>
+    <!-- menu with picking heroes Third list -->
+    <div id="pickMenuThree"
+        style="position:absolute; color: black;  align-items:center; justify-content: center;display:none; flex-direction:column;width:768px; height:600px; top: 0; left:100; right:0;bottom: 0; margin-top:0px;">
 
+        <div
+            style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width:100%; background-color:white; border-radius:15px; padding:5px;">
+            <!-- 1st list - Player1 -->
+            <div
+                style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-right:5px;">
+                <p style="font-size:small;" id="pickPlayerListThree1">
+                </p>
+                <!-- Hero list -->
+                <div id="hero9Player1" class="focus-div" onclick="PickVampire1Player1();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                    <p style="font-size:small;" id="pickVampire1Player1"></p>
+                    <img src="/assets/Vampire/Idle - Single.png" alt="hero5"
+                        style="width: 48px; height:48px;" />
+                </div>
+            </div>
+            <!-- Second list - Player2 -->
+            <div
+                style="display:grid;grid-template-rows: repeat(5, minmax(0, 1fr)); grid-template-columns: repeat(1, minmax(0, 1fr)); align-items:center; justify-content: center;text-align:center; margin-left:5px;">
+                <p style="font-size:small;" id="pickPlayerListThree2">
+                </p>
+                <!-- Hero list -->
+                <div id="hero9Player2" onclick="PickVampire1Player2();"
+                    style="cursor: pointer; border:1px solid black; border-radius:15px;">
+                    <p style="font-size:small;" id="pickVampire1Player2"> </p>
+                    <img src="/assets/Vampire/reverse/Idle - Single - Reverse.png" alt="hero5"
+                        style="width: 48px; height:48px;" />
+                </div>
+            </div>
+        </div>
+        <button class="colorButton"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;  grid-column: span 3 / span 3; width:250px;"
+            onclick="TrueStart();" id='menuPlayThree'>
+        </button>
+        <button class="colorButton"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3;  width:250px;"
+            onclick="ListThreeBack();" id="backThree">
+        </button>
+
+    </div>
 
     </div>
     <!-- restart button -->
     <div id="restart"
         style="position:absolute; color: white;  align-items:center; justify-content: center; display:none; width: 610px; height:300px; top: 200; left:200; right:0;bottom: 0; ">
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; width:250px;"
             onclick="TrueRestart();" id="restartButton">
         </button>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; padding: 5px; width:250px;"
             onclick="MenuRestart();" id="restartMenu">
         </button>
@@ -281,19 +328,19 @@
             </h1>
             <h2 style=" color: white; height: 50px; text-align:center;" id="menuTitle">
             </h2>
-            <button
+            <button class="colorButton"
                 style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; "
                 onclick="HeroList();" id="pickHeroes">
             </button>
-            <button onclick="Settings();"
+            <button class="colorButton" onclick="Settings();"
                 style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; "
                 id="menuSettings">
             </button>
-            <button
+            <button class="colorButton"
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                 onclick="TrueAbout();" id="menuHowToPlay">
             </button>
-            <button
+            <button class="colorButton"
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px;"
                 onclick="TrueExit();" id="menuExit">
             </button>
@@ -307,15 +354,15 @@
         <div style="display:flex; flex-direction:column; padding:15px;">
             <h1 style="color: white; align-items:center; justify-content: center;" id="EscapeMainTitle">
             </h1>
-            <button onclick="MenuRestart();"
+            <button class="colorButton" onclick="MenuRestart();"
                 style="color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; width:250px;"
                 id="EscapeMenuSettings">
             </button>
-            <button
+            <button class="colorButton"
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; width:250px;"
                 onclick="TrueRestart();" id="EscapeMenuRestart">
             </button>
-            <button
+            <button class="colorButton"
                 style=" color: black; height: 25px;  cursor:pointer; border:1px solid black; border-radius: 15px; margin:2px; width:250px;"
                 onclick="EscapeClose();" id="EscapeClose">
             </button>
@@ -331,17 +378,17 @@
 
 
         <hr style="width: 100%;" />
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px;"
             onclick="AudioButton();" id="audioButton">
         </button>
         <hr style="width: 100%;" />
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px;"
             onclick="LanguageButton();" id="languageButton">
         </button>
         <hr style="width: 100%;" />
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px;"
             onclick="TrueBack();" id="settingsBack">
         </button>
@@ -394,7 +441,7 @@
         </div>
     </div>
     <input type="checkbox" onchange="CombatMusic();">
-    <button
+    <button class="colorButton"
         style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px; "
         onclick="BackAudio();" id="audioBack">
     </button>
@@ -404,10 +451,12 @@
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; flex-direction:column; width: 612px; height:400px; top: 100; left:200; right:0;bottom: 0; ">
         <h2 id="language" style="text-align:center;">
         </h2>
-        <button onclick="ChangeLanguage();" style="cursor: pointer; width:250px;" id="changeLanguage" >
+        <button class="colorButton" onclick="ChangeLanguage();"
+            style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px;"
+            id="changeLanguage">
         </button>
         <p style="font-size:small; text-align:center;" id="combinationChange"></p>
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:10px; width:250px;"
             onclick="BackLanguage();" id="languageBack">
         </button>
@@ -415,7 +464,7 @@
     <!-- How to play page -->
     <div id="howToPlay"
         style="position:absolute; color: white;  align-items:center; justify-content: center;display:none; width:612px; height:500px; top: 0; left:200; right:0;bottom: 0; grid-template-rows: repeat(3, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top:50px;">
-        <h2 style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;  margin-bottom:200px;"
+        <h2 style="text-align:center;color: white; align-items:center; justify-content: center; grid-column: span 3 / span 3;  margin-bottom:100px;"
             id="howMain">
         </h2>
         <div
@@ -495,10 +544,15 @@
             </div>
         </div>
 
-        <button
+        <button class="colorButton"
             style="color: black; height: 25px; cursor:pointer; border:1px solid black; border-radius: 15px;display:flex; padding: 5px; align-items:center; justify-content: center; grid-column: span 3 / span 3; margin: 15px; margin-top:80px;"
             onclick="TrueBack();" id="howToPlayBack">
         </button>
+    </div>
+    <div
+    id='version'
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; flex-direction:column; width: 153px; height:400px; bottom: 0; left:0; right:0;top: 350; ">
+        <p style="font-size:small;">Version: <br /> 0.9.1</p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
         integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="

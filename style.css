@@ -5,3 +5,28 @@
   transform: scale(-1, 1);
   filter: FlipH;
 }
+.colorButton {
+  background: linear-gradient(to bottom, white, pink);
+}
+button:hover {
+  background: linear-gradient(to right, red, pink);
+}
+button:active {
+  background: linear-gradient(to left, red, pink);
+}
+
+.buttonTwo {
+  background-color: white;
+}
+
+.buttonTwo:hover {
+  background-color: red;
+}
+
+.buttonThree {
+  background-color: white;
+}
+
+.buttonThree:hover {
+  background-color: red;
+}
