@@ -32,4 +32,7 @@ const audio = {
   Damaged: new Howl({
     src: '../audio/mixkit-sword-cutting-flesh-2788.wav',
   }),
+  ClawAttack1: new Howl({
+    src: '../audio/Vampire/ClawAttack1.wav',
+  }),
 };

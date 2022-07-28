@@ -1384,9 +1384,9 @@ const player9 = new Fighter({
   },
   offset: {
     x: 80,
-    y: 70,
+    y: 50,
   },
-  scale: 0.9,
+  scale: 0.8,
   color: 'blue',
   imageSrc: './assets/Vampire/Idle.png',
   framesMax: 8,
@@ -1443,7 +1443,7 @@ const player9 = new Fighter({
   ],
   attackBox: {
     offset: {
-      x: 100,
+      x: 60,
       y: 30,
     },
     width: 150,
@@ -1463,9 +1463,9 @@ const player9Reverse = new FighterReverse({
   },
   offset: {
     x: 80,
-    y: 70,
+    y: 50,
   },
-  scale: 0.9,
+  scale: 0.8,
   color: 'blue',
   imageSrc: './assets/Vampire/reverse/Idle - Reverse.png',
   framesMax: 8,
@@ -1522,7 +1522,7 @@ const player9Reverse = new FighterReverse({
   ],
   attackBox: {
     offset: {
-      x: -100,
+      x: -200,
       y: 30,
     },
     width: 150,

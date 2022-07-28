@@ -291,7 +291,7 @@ class Fighter extends Sprite {
   }
   // updating method instantly
   update() {
-    // this.drawSecond();
+    this.drawSecond();
     this.draw();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -370,13 +370,16 @@ class Fighter extends Sprite {
         this.switchSprite('fall');
         // this is fixing bug with flickering sprites when you character reach
         // ground he flickering between fall animation of character and idle animation
-        // and this piece of code solve this problem 
+        // and this piece of code solve this problem
         // before character reach ground he automatically switch to idle from fall
         // and this value equal to 441 pixel
         // is that means he switch to idle animation before reach ground without flickering
-        if (this.position.y + this.height + this.velocity.y >= canvas.height - 155) {
-          this.switchSprite('idle')
-        };
+        if (
+          this.position.y + this.height + this.velocity.y >=
+          canvas.height - 155
+        ) {
+          this.switchSprite('idle');
+        }
         // setTimeout(() => {
         // },100);
       }
@@ -422,11 +425,11 @@ class Fighter extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1');
     if (player.start === true) {
-      this.attackBox.offset.x = 100;
+      player.attackBox.offset.x = 100;
     } else if (player3.start === true) {
-      this.attackBox.offset.x = 35;
+      player3.attackBox.offset.x = 35;
     } else if (player4.start === true) {
-      this.attackBox.offset.x = 60;
+      player4.attackBox.offset.x = 60;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -436,7 +439,7 @@ class Fighter extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1Fire');
     if (player5.start === true) {
-      this.attackBox.offset.x = 50;
+      player5.attackBox.offset.x = 50;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -446,8 +449,8 @@ class Fighter extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fire');
     if (player5.start === true) {
-      this.attackBox.offset.x = 80;
-      this.attackBox.width = 150;
+      player5.attackBox.offset.x = 80;
+      player5.attackBox.width = 150;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -468,51 +471,55 @@ class Fighter extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Dark');
     if (player6.start === true) {
-      this.attackBox.offset.x = 140;
-      this.attackBox.width = 200;
+      player6.attackBox.offset.x = 140;
+      player6.attackBox.width = 200;
     }
   }
   attackFantasy() {
     this.isAttacking = true;
     this.switchSprite('attack1Fantasy');
     if (player7.start === true) {
-      this.attackBox.offset.x = 50;
-      this.attackBox.width = 130;
+      player7.attackBox.offset.x = 50;
+      player7.attackBox.width = 130;
     }
   }
   attackFantasyTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fantasy');
     if (player7.start === true) {
-      this.attackBox.offset.x = 60;
-      this.attackBox.width = 140;
+      player7.attackBox.offset.x = 60;
+      player7.attackBox.width = 140;
     }
   }
   attackFantasyThree() {
     this.isAttackingThree = true;
     this.switchSprite('attack3Fantasy');
     if (player7.start === true) {
-      this.attackBox.offset.x = 80;
-      this.attackBox.width = 150;
+      player7.attackBox.offset.x = 80;
+      player7.attackBox.width = 150;
     }
   }
   attackAxe() {
     this.isAttacking = true;
     this.switchSprite('attack1Axe');
     if (player8.start === true) {
-      this.attackBox.offset.x = 220;
-      this.attackBox.width = 150;
+      player8.attackBox.offset.x = 220;
+      player8.attackBox.width = 150;
     }
   }
   attackAxeTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Axe');
     if (player8.start === true) {
-      this.attackBox.offset.x = 110;
-      this.attackBox.width = 150;
+      player8.attackBox.offset.x = 110;
+      player8.attackBox.width = 150;
     }
   }
 
+  attackVampire() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Vampire');
+  }
   // // attack method missing
   // attackMissing() {
   //   this.isAttacking = false;
@@ -523,11 +530,11 @@ class Fighter extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2');
     if (player.start === true) {
-      this.attackBox.offset.x = 120;
+      player.attackBox.offset.x = 120;
     } else if (player3.start === true) {
-      this.attackBox.offset.x = 45;
+      player3.attackBox.offset.x = 45;
     } else if (player4.start === true) {
-      this.attackBox.offset.x = 85;
+      player4.attackBox.offset.x = 85;
     }
 
     // setTimeout(() => {
@@ -539,11 +546,11 @@ class Fighter extends Sprite {
     this.isAttackingThree = true;
     this.switchSprite('attack3');
     if (player.start === true) {
-      this.attackBox.offset.x = 60;
+      player.attackBox.offset.x = 60;
     } else if (player3.start === true) {
-      this.attackBox.offset.x = 40;
+      player3.attackBox.offset.x = 40;
     } else if (player4.start === true) {
-      this.attackBox.offset.x = 60;
+      player4.attackBox.offset.x = 60;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -709,11 +716,11 @@ class Fighter extends Sprite {
             width: player8.health + '%',
           });
         }
-           if (player9.start === true) {
-             gsap.to('#player2Health', {
-               width: player9.health + '%',
-             });
-           }
+        if (player9.start === true) {
+          gsap.to('#player2Health', {
+            width: player9.health + '%',
+          });
+        }
       }
       // if player2Reverse (Kenji on Left side) strict equal to comparedPlayer so
 
@@ -841,11 +848,11 @@ class Fighter extends Sprite {
             width: player8.health + '%',
           });
         }
-         if (player9.start === true) {
-           gsap.to('#playerHealth', {
-             width: player9.health + '%',
-           });
-         }
+        if (player9.start === true) {
+          gsap.to('#playerHealth', {
+            width: player9.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -887,11 +894,11 @@ class Fighter extends Sprite {
             width: player8.health + '%',
           });
         }
-         if (player9.start === true) {
-           gsap.to('#player2Health', {
-             width: player9.health + '%',
-           });
-         }
+        if (player9.start === true) {
+          gsap.to('#player2Health', {
+            width: player9.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -1017,11 +1024,11 @@ class Fighter extends Sprite {
             width: player8.health + '%',
           });
         }
-         if (player9.start === true) {
-           gsap.to('#playerHealth', {
-             width: player9.health + '%',
-           });
-         }
+        if (player9.start === true) {
+          gsap.to('#playerHealth', {
+            width: player9.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#player2Health', {
@@ -1063,11 +1070,11 @@ class Fighter extends Sprite {
             width: player8.health + '%',
           });
         }
-         if (player9.start === true) {
-           gsap.to('#player2Health', {
-             width: player9.health + '%',
-           });
-         }
+        if (player9.start === true) {
+          gsap.to('#player2Health', {
+            width: player9.health + '%',
+          });
+        }
       }
       // console.log('you attack player2');
     }
@@ -1092,6 +1099,9 @@ class Fighter extends Sprite {
       if (player8Reverse.start === true) {
         audio.AxeWarriorAttack.play();
         audio.AxeWarriorAttack.volume(volumeFight);
+      } else if (player9Reverse.start === true) {
+        audio.ClawAttack1.play();
+        audio.ClawAttack1.volume(volumeFight);
       } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
@@ -1220,6 +1230,8 @@ class Fighter extends Sprite {
           this.attackFantasy();
         } else if (player8.start === true) {
           this.attackAxe();
+        } else if (player9.start === true) {
+          this.attackVampire();
         } else {
           this.attack();
         }
@@ -1608,21 +1620,57 @@ class Fighter extends Sprite {
         console.log('Finished!');
         // });
         break;
-      case 'attack2':
-        if (this.image !== this.sprites[0].attack2.image) {
+      case 'attack1Axe':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          // Clear listener after first call.
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.framesCurrent = 0;
+        }
+        // audio.Swing.once('load', () => {
+        audio.AxeWarriorSwing.play();
+        audio.AxeWarriorSwing.volume(volumeFight);
+        // });
+
+        // Fires when the sound finishes playing.
+        // audio.Swing.on('end', () => {
+        console.log('Finished!');
+        // });
+        break;
+      case 'attack1Vampire':
+        if (this.image !== this.sprites[0].attack1.image) {
           // if (this.sound !== this.sprites[0].attack2.sound) {
           //   this.sound = this.sprites[0].attack2.sound;
           //   this.sound.volume = volumeFight;
           // }
 
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
           this.framesCurrent = 0;
         }
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
         break;
-      case 'attack2Fire':
+      case 'attack1Vampire':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack2.sound) {
+          //   this.sound = this.sprites[0].attack2.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.framesCurrent = 0;
+        }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
+        break;
+      case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           // if (this.sound !== this.sprites[0].attack1.sound) {
           //   this.sound = this.sprites[0].attack1.sound;
@@ -1635,8 +1683,8 @@ class Fighter extends Sprite {
           this.framesCurrent = 0;
         }
         // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
         // });
 
         // Fires when the sound finishes playing.
@@ -1943,7 +1991,7 @@ class FighterReverse extends Sprite {
   }
   // updating method instantly
   updateReverse() {
-    // this.drawSecond();
+    this.drawSecond();
     this.drawReverse();
     // if player is not dead so animate their frames
     // if dead do not animate
@@ -1999,11 +2047,11 @@ class FighterReverse extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1');
     if (playerReverse.start === true) {
-      this.attackBox.offset.x = -210;
+      playerReverse.attackBox.offset.x = -210;
     } else if (player3Reverse.start === true) {
-      this.attackBox.offset.x = -140;
+      player3Reverse.attackBox.offset.x = -140;
     } else if (player4Reverse.start === true) {
-      this.attackBox.offset.x = -180;
+      player4Reverse.attackBox.offset.x = -180;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2013,7 +2061,7 @@ class FighterReverse extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1Fire');
     if (player5Reverse.start === true) {
-      this.attackBox.offset.x = -150;
+      player5Reverse.attackBox.offset.x = -150;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2023,7 +2071,7 @@ class FighterReverse extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fire');
     if (player5Reverse.start === true) {
-      this.attackBox.offset.x = -160;
+      player5Reverse.attackBox.offset.x = -160;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2033,7 +2081,7 @@ class FighterReverse extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack3Fire');
     if (player5Reverse.start === true) {
-      this.attackBox.offset.x = -180;
+      player5Reverse.attackBox.offset.x = -180;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2043,7 +2091,7 @@ class FighterReverse extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1Dark');
     if (player6Reverse.start === true) {
-      this.attackBox.offset.x = -260;
+      player6Reverse.attackBox.offset.x = -260;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2053,8 +2101,8 @@ class FighterReverse extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Dark');
     if (player6Reverse.start === true) {
-      this.attackBox.offset.x = -280;
-      this.attackBox.width = 200;
+      player6Reverse.attackBox.offset.x = -280;
+      player6Reverse.attackBox.width = 200;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2064,24 +2112,24 @@ class FighterReverse extends Sprite {
     this.isAttacking = true;
     this.switchSprite('attack1Fantasy');
     if (player7Reverse.start === true) {
-      this.attackBox.offset.x = -110;
-      this.attackBox.width = 130;
+      player7Reverse.attackBox.offset.x = -110;
+      player7Reverse.attackBox.width = 130;
     }
   }
   attackFantasyTwo() {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Fantasy');
     if (player7Reverse.start === true) {
-      this.attackBox.offset.x = -120;
-      this.attackBox.width = 140;
+      player7Reverse.attackBox.offset.x = -120;
+      player7Reverse.attackBox.width = 140;
     }
   }
   attackFantasyThree() {
     this.isAttackingThree = true;
     this.switchSprite('attack3Fantasy');
     if (player7Reverse.start === true) {
-      this.attackBox.offset.x = -150;
-      this.attackBox.width = 150;
+      player7Reverse.attackBox.offset.x = -150;
+      player7Reverse.attackBox.width = 150;
     }
   }
   attackAxe() {
@@ -2097,21 +2145,29 @@ class FighterReverse extends Sprite {
     this.isAttackingTwo = true;
     this.switchSprite('attack2Axe');
     if (player8Reverse.start === true) {
-      this.attackBox.offset.x = -205;
-      this.attackBox.width = 150;
+      player8Reverse.attackBox.offset.x = -205;
+      player8Reverse.attackBox.width = 150;
       player8Reverse.offset.x = 320;
     }
   }
-
+  attackVampire() {
+    this.isAttacking = true;
+    this.switchSprite('attack1Vampire');
+    if (player9Reverse.start === true) {
+      player9Reverse.attackBox.offset.x = -150;
+      player9Reverse.attackBox.width = 150;
+      player9Reverse.offset.x = 150;
+    }
+  }
   attackTwo() {
     this.switchSprite('attack2');
     this.isAttackingTwo = true;
     if (playerReverse.start === true) {
-      this.attackBox.offset.x = -225;
+      playerReverse.attackBox.offset.x = -225;
     } else if (player3Reverse.start === true) {
-      this.attackBox.offset.x = -150;
+      player3Reverse.attackBox.offset.x = -150;
     } else if (player4Reverse.start === true) {
-      this.attackBox.offset.x = -180;
+      player4Reverse.attackBox.offset.x = -180;
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2144,8 +2200,7 @@ class FighterReverse extends Sprite {
       if (this.velocity.y < 0) {
         this.switchSprite('jump');
       } else if (this.velocity.y > 0) {
-     
-        this.switchSprite('fall');   
+        this.switchSprite('fall');
         if (
           this.position.y + this.height + this.velocity.y >=
           canvas.height - 155
@@ -2276,11 +2331,11 @@ class FighterReverse extends Sprite {
             width: player8.health + '%',
           });
         }
-         if (player9.start === true) {
-           gsap.to('#player2Health', {
-             width: player9.health + '%',
-           });
-         }
+        if (player9.start === true) {
+          gsap.to('#player2Health', {
+            width: player9.health + '%',
+          });
+        }
       } else {
         if (player1.start === true) {
           gsap.to('#playerHealth', {
@@ -2322,11 +2377,11 @@ class FighterReverse extends Sprite {
             width: player8.health + '%',
           });
         }
-             if (player9.start === true) {
-               gsap.to('#playerHealth', {
-                 width: player9.health + '%',
-               });
-             }
+        if (player9.start === true) {
+          gsap.to('#playerHealth', {
+            width: player9.health + '%',
+          });
+        }
       }
 
       // console.log('you attack player2');
@@ -2455,7 +2510,7 @@ class FighterReverse extends Sprite {
           gsap.to('#player2Health', {
             width: player8.health + '%',
           });
-        }   
+        }
         if (player9.start === true) {
           gsap.to('#player2Health', {
             width: player9.health + '%',
@@ -2501,7 +2556,8 @@ class FighterReverse extends Sprite {
           gsap.to('#playerHealth', {
             width: player8.health + '%',
           });
-        } if (player9.start === true) {
+        }
+        if (player9.start === true) {
           gsap.to('#playerHealth', {
             width: player9.health + '%',
           });
@@ -2632,7 +2688,8 @@ class FighterReverse extends Sprite {
           gsap.to('#player2Health', {
             width: player8.health + '%',
           });
-        } if (player9.start === true) {
+        }
+        if (player9.start === true) {
           gsap.to('#player2Health', {
             width: player9.health + '%',
           });
@@ -2677,7 +2734,8 @@ class FighterReverse extends Sprite {
           gsap.to('#playerHealth', {
             width: player8.health + '%',
           });
-        }    if (player9.start === true) {
+        }
+        if (player9.start === true) {
           gsap.to('#playerHealth', {
             width: player9.health + '%',
           });
@@ -2710,6 +2768,10 @@ class FighterReverse extends Sprite {
         audio.AxeWarriorAttack.play();
         audio.AxeWarriorAttack.volume(volumeFight);
         player8Reverse.offset.x = 100;
+      } else if (player9.start === true) {
+        audio.ClawAttack1.play();
+        audio.ClawAttack1.volume(volumeFight);
+        player9Reverse.offset.x = 80;
       } else {
         audio.Damaged.play();
         audio.Damaged.volume(volumeFight);
@@ -2852,6 +2914,8 @@ class FighterReverse extends Sprite {
           this.attackFantasy();
         } else if (player8Reverse.start === true) {
           this.attackAxe();
+        } else if (player9Reverse.start === true) {
+          this.attackVampire();
         } else {
           this.attack();
         }
@@ -3039,6 +3103,7 @@ class FighterReverse extends Sprite {
           // to solve problems with flashing frames need to set current frames to 0 and animation starts in the beginning
           this.countFramesMax = this.framesMax - 1;
           player8Reverse.offset.x = 100;
+          player9Reverse.offset.x = 80;
         }
         break;
       case 'run':
@@ -3052,6 +3117,7 @@ class FighterReverse extends Sprite {
           this.countFramesMax = this.framesMax - 1;
         }
         player8Reverse.offset.x = 100;
+        player9Reverse.offset.x = 80;
         break;
       case 'jump':
         if (this.image !== this.sprites[0].jump.image) {
@@ -3172,6 +3238,20 @@ class FighterReverse extends Sprite {
         // audio.Swing.on('end', () => {
         console.log('Finished!');
         // });
+        break;
+      case 'attack1Vampire':
+        if (this.image !== this.sprites[0].attack1.image) {
+          // if (this.sound !== this.sprites[0].attack1.sound) {
+          //   this.sound = this.sprites[0].attack1.sound;
+          //   this.sound.volume = volumeFight;
+          // }
+          this.image = this.sprites[0].attack1.image;
+          this.framesMax = this.sprites[0].attack1.framesMax;
+          this.countFramesMax = this.framesMax - 1;
+        }
+        audio.Swing.play();
+        audio.Swing.volume(volumeFight);
+        player9Reverse.offset.x = 120;
         break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
