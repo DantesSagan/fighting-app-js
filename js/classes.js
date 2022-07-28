@@ -437,88 +437,108 @@ class Fighter extends Sprite {
   }
   attackFire() {
     this.isAttacking = true;
-    this.switchSprite('attack1Fire');
+    this.switchSprite('attack1');
     if (player5.start === true) {
       player5.attackBox.offset.x = 50;
     }
+    audio.Fire1.play();
+    audio.Fire1.volume(volumeFight);
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
   }
   attackFireTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Fire');
+    this.switchSprite('attack2');
     if (player5.start === true) {
       player5.attackBox.offset.x = 80;
       player5.attackBox.width = 150;
     }
+    audio.Fire1.play();
+    audio.Fire1.volume(volumeFight);
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
   }
   attackFireThree() {
     this.isAttackingThree = true;
-    this.switchSprite('attack3Fire');
+    this.switchSprite('attack3');
+    audio.Fire1.play();
+    audio.Fire1.volume(volumeFight);
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
   }
   attackDark() {
     this.isAttacking = true;
-    this.switchSprite('attack1Dark');
+    this.switchSprite('attack1');
+    audio.darkAttack.play();
+    audio.darkAttack.volume(volumeFight);
   }
   attackDarkTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Dark');
+    this.switchSprite('attack2');
     if (player6.start === true) {
       player6.attackBox.offset.x = 140;
       player6.attackBox.width = 200;
+      audio.darkAttack2.play();
+      audio.darkAttack2.volume(volumeFight);
     }
   }
   attackFantasy() {
     this.isAttacking = true;
-    this.switchSprite('attack1Fantasy');
+    this.switchSprite('attack1');
     if (player7.start === true) {
       player7.attackBox.offset.x = 50;
       player7.attackBox.width = 130;
+      audio.FantasyAttack.play();
+      audio.FantasyAttack.volume(volumeFight);
     }
   }
   attackFantasyTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Fantasy');
+    this.switchSprite('attack2');
     if (player7.start === true) {
       player7.attackBox.offset.x = 60;
       player7.attackBox.width = 140;
+      audio.FantasyAttack2.play();
+      audio.FantasyAttack2.volume(volumeFight);
     }
   }
   attackFantasyThree() {
     this.isAttackingThree = true;
-    this.switchSprite('attack3Fantasy');
+    this.switchSprite('attack3');
     if (player7.start === true) {
       player7.attackBox.offset.x = 80;
       player7.attackBox.width = 150;
+      audio.FantasyAttack3.play();
+      audio.FantasyAttack3.volume(volumeFight);
     }
   }
   attackAxe() {
     this.isAttacking = true;
-    this.switchSprite('attack1Axe');
+    this.switchSprite('attack1');
     if (player8.start === true) {
       player8.attackBox.offset.x = 220;
       player8.attackBox.width = 150;
+      audio.AxeWarriorSwing.play();
+      audio.AxeWarriorSwing.volume(volumeFight);
     }
   }
   attackAxeTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Axe');
+    this.switchSprite('attack2');
     if (player8.start === true) {
       player8.attackBox.offset.x = 110;
       player8.attackBox.width = 150;
+      audio.AxeWarriorSwing.play();
+      audio.AxeWarriorSwing.volume(volumeFight);
     }
   }
 
   attackVampire() {
     this.isAttacking = true;
-    this.switchSprite('attack1Vampire');
+    this.switchSprite('attack1');
   }
   // // attack method missing
   // attackMissing() {
@@ -590,7 +610,7 @@ class Fighter extends Sprite {
             : player7.start === true
             ? player7
             : player8.start === true
-            ? player9
+            ? player8
             : player9.start === true
             ? player9
             : player1,
@@ -1532,144 +1552,6 @@ class Fighter extends Sprite {
         console.log('Finished!');
         // });
         break;
-      case 'attack1Dark':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.darkAttack.play();
-        audio.darkAttack.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Fire':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Fantasy':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack.play();
-        audio.FantasyAttack.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Axe':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.AxeWarriorSwing.play();
-        audio.AxeWarriorSwing.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Axe':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.AxeWarriorSwing.play();
-        audio.AxeWarriorSwing.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Vampire':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack2.sound) {
-          //   this.sound = this.sprites[0].attack2.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        audio.Swing.play();
-        audio.Swing.volume(volumeFight);
-        break;
-      case 'attack1Vampire':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack2.sound) {
-          //   this.sound = this.sprites[0].attack2.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.framesCurrent = 0;
-        }
-        audio.Swing.play();
-        audio.Swing.volume(volumeFight);
-        break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           // if (this.sound !== this.sprites[0].attack1.sound) {
@@ -1692,72 +1574,6 @@ class Fighter extends Sprite {
         console.log('Finished!');
         // });
         break;
-      case 'attack2Dark':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.darkAttack2.play();
-        audio.darkAttack2.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack2Fantasy':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack2.play();
-        audio.FantasyAttack2.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack2Axe':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.AxeWarriorSwing.play();
-        audio.AxeWarriorSwing.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
           // if (this.sound !== this.sprites[0].attack3.sound) {
@@ -1771,50 +1587,6 @@ class Fighter extends Sprite {
         }
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
-        break;
-      case 'attack3Fire':
-        if (this.image !== this.sprites[0].attack3.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack3.image;
-          this.framesMax = this.sprites[0].attack3.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack3Fantasy':
-        if (this.image !== this.sprites[0].attack3.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack3.image;
-          this.framesMax = this.sprites[0].attack3.framesMax;
-          this.framesCurrent = 0;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack3.play();
-        audio.FantasyAttack3.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
         break;
       case 'damaged':
         if (this.image !== this.sprites[0].damaged.image) {
@@ -2059,9 +1831,11 @@ class FighterReverse extends Sprite {
   }
   attackFire() {
     this.isAttacking = true;
-    this.switchSprite('attack1Fire');
+    this.switchSprite('attack1');
     if (player5Reverse.start === true) {
       player5Reverse.attackBox.offset.x = -150;
+      audio.Fire1.play();
+      audio.Fire1.volume(volumeFight);
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2069,9 +1843,11 @@ class FighterReverse extends Sprite {
   }
   attackFireTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Fire');
+    this.switchSprite('attack2');
     if (player5Reverse.start === true) {
       player5Reverse.attackBox.offset.x = -160;
+      audio.Fire1.play();
+      audio.Fire1.volume(volumeFight);
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2079,9 +1855,11 @@ class FighterReverse extends Sprite {
   }
   attackFireThree() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack3Fire');
+    this.switchSprite('attack3');
     if (player5Reverse.start === true) {
       player5Reverse.attackBox.offset.x = -180;
+      audio.Fire1.play();
+      audio.Fire1.volume(volumeFight);
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2089,9 +1867,11 @@ class FighterReverse extends Sprite {
   }
   attackDark() {
     this.isAttacking = true;
-    this.switchSprite('attack1Dark');
+    this.switchSprite('attack1');
     if (player6Reverse.start === true) {
       player6Reverse.attackBox.offset.x = -260;
+      audio.darkAttack.play();
+      audio.darkAttack.volume(volumeFight);
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2099,10 +1879,12 @@ class FighterReverse extends Sprite {
   }
   attackDarkTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Dark');
+    this.switchSprite('attack2');
     if (player6Reverse.start === true) {
       player6Reverse.attackBox.offset.x = -280;
       player6Reverse.attackBox.width = 200;
+      audio.darkAttack2.play();
+      audio.darkAttack2.volume(volumeFight);
     }
     // setTimeout(() => {
     //   this.isAttacking = false;
@@ -2110,49 +1892,59 @@ class FighterReverse extends Sprite {
   }
   attackFantasy() {
     this.isAttacking = true;
-    this.switchSprite('attack1Fantasy');
+    this.switchSprite('attack1');
     if (player7Reverse.start === true) {
       player7Reverse.attackBox.offset.x = -110;
       player7Reverse.attackBox.width = 130;
+      audio.FantasyAttack.play();
+      audio.FantasyAttack.volume(volumeFight);
     }
   }
   attackFantasyTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Fantasy');
+    this.switchSprite('attack2');
     if (player7Reverse.start === true) {
       player7Reverse.attackBox.offset.x = -120;
       player7Reverse.attackBox.width = 140;
+      audio.FantasyAttack2.play();
+      audio.FantasyAttack2.volume(volumeFight);
     }
   }
   attackFantasyThree() {
     this.isAttackingThree = true;
-    this.switchSprite('attack3Fantasy');
+    this.switchSprite('attack3');
     if (player7Reverse.start === true) {
       player7Reverse.attackBox.offset.x = -150;
       player7Reverse.attackBox.width = 150;
+      audio.FantasyAttack3.play();
+      audio.FantasyAttack3.volume(volumeFight);
     }
   }
   attackAxe() {
     this.isAttacking = true;
-    this.switchSprite('attack1Axe');
+    this.switchSprite('attack1');
     if (player8Reverse.start === true) {
       player8Reverse.attackBox.offset.x = -280;
       player8Reverse.attackBox.width = 150;
       player8Reverse.offset.x = 320;
+      audio.AxeWarriorSwing.play();
+      audio.AxeWarriorSwing.volume(volumeFight);
     }
   }
   attackAxeTwo() {
     this.isAttackingTwo = true;
-    this.switchSprite('attack2Axe');
+    this.switchSprite('attack2');
     if (player8Reverse.start === true) {
       player8Reverse.attackBox.offset.x = -205;
       player8Reverse.attackBox.width = 150;
       player8Reverse.offset.x = 320;
+      audio.AxeWarriorSwing.play();
+      audio.AxeWarriorSwing.volume(volumeFight);
     }
   }
   attackVampire() {
     this.isAttacking = true;
-    this.switchSprite('attack1Vampire');
+    this.switchSprite('attack1');
     if (player9Reverse.start === true) {
       player9Reverse.attackBox.offset.x = -150;
       player9Reverse.attackBox.width = 150;
@@ -2176,6 +1968,8 @@ class FighterReverse extends Sprite {
   attackThree() {
     this.switchSprite('attack3');
     this.isAttackingThree = true;
+    audio.Swing.play();
+    audio.Swing.volume(volumeFight);
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
@@ -3151,108 +2945,6 @@ class FighterReverse extends Sprite {
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
         break;
-      case 'attack1Fire':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Dark':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.darkAttack.play();
-        audio.darkAttack.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Fantasy':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack.play();
-        audio.FantasyAttack.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Axe':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.AxeWarriorSwing.play();
-        audio.AxeWarriorSwing.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack1Vampire':
-        if (this.image !== this.sprites[0].attack1.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          this.image = this.sprites[0].attack1.image;
-          this.framesMax = this.sprites[0].attack1.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        audio.Swing.play();
-        audio.Swing.volume(volumeFight);
-        player9Reverse.offset.x = 120;
-        break;
       case 'attack2':
         if (this.image !== this.sprites[0].attack2.image) {
           this.image = this.sprites[0].attack2.image;
@@ -3262,94 +2954,6 @@ class FighterReverse extends Sprite {
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
         break;
-      case 'attack2Fire':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack2Dark':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.darkAttack2.play();
-        audio.darkAttack2.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack2Fantasy':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack2.play();
-        audio.FantasyAttack2.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack2Axe':
-        if (this.image !== this.sprites[0].attack2.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack2.image;
-          this.framesMax = this.sprites[0].attack2.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.AxeWarriorSwing.play();
-        audio.AxeWarriorSwing.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
       case 'attack3':
         if (this.image !== this.sprites[0].attack3.image) {
           this.image = this.sprites[0].attack3.image;
@@ -3358,50 +2962,6 @@ class FighterReverse extends Sprite {
         }
         audio.Swing.play();
         audio.Swing.volume(volumeFight);
-        break;
-      case 'attack3Fire':
-        if (this.image !== this.sprites[0].attack3.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack3.image;
-          this.framesMax = this.sprites[0].attack3.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.Fire1.play();
-        audio.Fire1.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
-        break;
-      case 'attack3Fantasy':
-        if (this.image !== this.sprites[0].attack3.image) {
-          // if (this.sound !== this.sprites[0].attack1.sound) {
-          //   this.sound = this.sprites[0].attack1.sound;
-          //   this.sound.volume = volumeFight;
-          // }
-          // Clear listener after first call.
-
-          this.image = this.sprites[0].attack3.image;
-          this.framesMax = this.sprites[0].attack3.framesMax;
-          this.countFramesMax = this.framesMax - 1;
-        }
-        // audio.Swing.once('load', () => {
-        audio.FantasyAttack3.play();
-        audio.FantasyAttack3.volume(volumeFight);
-        // });
-
-        // Fires when the sound finishes playing.
-        // audio.Swing.on('end', () => {
-        console.log('Finished!');
-        // });
         break;
       case 'damaged':
         if (this.image !== this.sprites[0].damaged.image) {
