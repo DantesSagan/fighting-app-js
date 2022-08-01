@@ -2547,6 +2547,9 @@ function TrueAbout() {
   document.querySelector('#howToPlay').style.display = 'grid';
   // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
 }
+function ClickableMenu(){
+  document.querySelector('#EscapeMenu').style.display = 'flex'
+}
 // Escape menu
 function EscapeClose() {
   document.querySelector('#EscapeMenu').style.display = 'none';
@@ -2568,12 +2571,14 @@ function ChangeLanguage() {
     // Интерфейс в игре
     document.querySelector('#playerOne').innerHTML = 'Игрок 1';
     document.querySelector('#playerTwo').innerHTML = 'Игрок 2';
+    document.querySelector('#escMenu').innerHTML = 'Меню настроек (Esc)';
     // Главное меню
     document.querySelector('#mainTitle').innerHTML = 'Бойцовский клуб';
     document.querySelector('#menuTitle').innerHTML = 'Меню';
     document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
     document.querySelector('#menuSettings').innerHTML = 'Настройки';
     document.querySelector('#menuHowToPlay').innerHTML = 'Как играть';
+    document.querySelector('#version').innerHTML = 'Версия: 0.9.3';
     document.querySelector('#menuExit').innerHTML = 'Выйти';
     // Настройки
     document.querySelector('#settingsAudioTitle').innerHTML = 'Настройки аудио';
@@ -2695,12 +2700,14 @@ function ChangeLanguage() {
     // Interface in a game
     document.querySelector('#playerOne').innerHTML = 'Player 1';
     document.querySelector('#playerTwo').innerHTML = 'Player 2';
+    document.querySelector('#escMenu').innerHTML = 'Menu control (Esc)';
     // Main menu
     document.querySelector('#mainTitle').innerHTML = 'Fighting club';
     document.querySelector('#menuTitle').innerHTML = 'Menu';
     document.querySelector('#pickHeroes').innerHTML = 'Pick heroes';
     document.querySelector('#menuSettings').innerHTML = 'Settings';
     document.querySelector('#menuHowToPlay').innerHTML = 'How to play';
+    document.querySelector('#version').innerHTML = 'Version: 0.9.3';
     document.querySelector('#menuExit').innerHTML = 'Exit';
     // Settings
     document.querySelector('#settingsTitle').innerHTML = 'Settings';
