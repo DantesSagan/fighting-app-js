@@ -584,8 +584,9 @@ class Fighter extends Sprite {
           this.attackAxe() || this.attackAxeTwo();
         } else if (player9.start === true) {
           this.attackVampire();
-        } 
-     this.attack() || this.attackTwo() || this.attackThree();
+        } else {
+          this.attack() || this.attackTwo() || this.attackThree();
+        }
 
      if (this.isAttacking === true) {
        this.detectCollision(
@@ -653,8 +654,9 @@ class Fighter extends Sprite {
           this.switchSprite('fall');
         }
       }
-    } else if (AIHero === true && this.dead) {
+    } else if (AIHero === true && this.dead === false) {
       this.velocity.x = 0;
+      this.switchSprite('death')
     }
     if (this.restart === true) {
       this.restartRound();
@@ -1492,6 +1494,7 @@ class Fighter extends Sprite {
 
   restartRound() {
     this.switchSprite('idle');
+    this.dead = false;
   }
 
   switchButtons(event) {
@@ -3231,6 +3234,7 @@ class FighterReverse extends Sprite {
 
   restartRound() {
     this.switchSprite('idle');
+    this.dead = false;
   }
   switchUpButtonsRight(event) {
     // player2
