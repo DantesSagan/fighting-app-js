@@ -49,6 +49,25 @@ function MenuRestart() {
   player8Reverse.pickedHero = false;
   player9.pickedHero = false;
   player9Reverse.pickedHero = false;
+  // AIHero boolean to false when button menu pressed
+  player.AIHero = false;
+  playerReverse.AIHero = false;
+  player2.AIHero = false;
+  player2Reverse.AIHero = false;
+  player3.AIHero = false;
+  player3Reverse.AIHero = false;
+  player4.AIHero = false;
+  player4Reverse.AIHero = false;
+  player5.AIHero = false;
+  player5Reverse.AIHero = false;
+  player6.AIHero = false;
+  player6Reverse.AIHero = false;
+  player7.AIHero = false;
+  player7Reverse.AIHero = false;
+  player8.AIHero = false;
+  player8Reverse.AIHero = false;
+  player9.AIHero = false;
+  player9Reverse.AIHero = false;
   // change music by menu music when pressed menu restart button on fight round
   if (menuMain.start === true) {
     const music = '../audio/ambient_menu.wav';
@@ -75,6 +94,7 @@ function MenuRestart() {
   document.querySelector('#hero8Player1').style.backgroundColor = 'white';
   document.querySelector('#hero9Player1').style.backgroundColor = 'white';
 
+  
   // second list of heroes
   document.querySelector('#hero1Player2').style.backgroundColor = 'white';
   document.querySelector('#hero2Player2').style.backgroundColor = 'white';
@@ -85,6 +105,27 @@ function MenuRestart() {
   document.querySelector('#hero7Player2').style.backgroundColor = 'white';
   document.querySelector('#hero8Player2').style.backgroundColor = 'white';
   document.querySelector('#hero9Player2').style.backgroundColor = 'white';
+
+  // If you pick AI Player this is will return false state to checked boolean value
+  document.querySelector('#MackChecked1').checked = false;
+  document.querySelector('#King1Checked1').checked = false;
+  document.querySelector('#KenjiChecked1').checked = false
+  document.querySelector('#King2Checked1').checked = false;
+  document.querySelector('#EvilWizard1Checked1').checked = false;
+  document.querySelector('#EvilWizard2Checked1').checked = false;
+  document.querySelector('#FantasyWarriorChecked1').checked = false;
+  document.querySelector('#WarriorAxeChecked1').checked = false;
+  document.querySelector('#VampireChecked1').checked = false;
+
+  document.querySelector('#MackChecked2').checked = false;
+  document.querySelector('#King1Checked2').checked = false;
+  document.querySelector('#KenjiChecked2').checked = false;
+  document.querySelector('#King2Checked2').checked = false;
+  document.querySelector('#EvilWizard1Checked2').checked = false;
+  document.querySelector('#EvilWizard2Checked2').checked = false;
+  document.querySelector('#FantasyWarriorChecked2').checked = false;
+  document.querySelector('#WarriorAxeChecked2').checked = false;
+  document.querySelector('#VampireChecked2').checked = false;
 
   // Left side hero
   player.health = 100;

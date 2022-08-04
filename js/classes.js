@@ -13,7 +13,6 @@ class Sprite {
     imageStyle,
     imageID,
     playableHero = true,
-    AIHero = false,
   }) {
     // Assosiation with this position and pass argr as individual sprite we are creating
     this.position = position;
@@ -38,11 +37,31 @@ class Sprite {
     this.start = start;
     this.restart = restart;
     this.playableHero = playableHero;
-    this.AIHero = AIHero;
     this.combatMusic;
   }
   // We are creating draw method
   draw() {
+    c.drawImage(
+      this.image,
+      this.framesCurrent * (this.image.width / this.framesMax),
+      0,
+      this.image.width / this.framesMax,
+      this.image.height,
+      this.position.x - this.offset.x,
+      this.position.y - this.offset.y,
+      (this.image.width / this.framesMax) * this.scale,
+      this.image.height * this.scale
+    );
+
+    // need to create transform scale for skin to flip it horizontally
+    // c.rotate(this.angle);
+    // c.translate(
+    //   -this.position.x - (this.img.width * this.scale) / 2,
+    //   -this.position.y - (this.img.height * this.scale) / 2
+    // );
+  }
+
+  drawAI() {
     c.drawImage(
       this.image,
       this.framesCurrent * (this.image.width / this.framesMax),
@@ -61,6 +80,7 @@ class Sprite {
     //   -this.position.y - (this.img.height * this.scale) / 2
     // );
   }
+
   drawReverse() {
     c.drawImage(
       this.image,
@@ -157,6 +177,9 @@ class Fighter extends Sprite {
     start,
     restart,
     pickedHero,
+    AIHero,
+    AIHeroRight,
+    AIHeroLeft,
   }) {
     super({
       position,
@@ -217,6 +240,9 @@ class Fighter extends Sprite {
     this.dead = false;
     this.soundStart = true;
     this.pickedHero = pickedHero;
+    this.AIHero = AIHero;
+    this.AIHeroRight = AIHeroRight;
+    this.AIHeroLeft = AIHeroLeft;
     // we looping through object sprites to switching between two images
     for (const sprite in this.sprites[0]) {
       // this is objects that we currenlty looping over
@@ -324,6 +350,16 @@ class Fighter extends Sprite {
         canvas.height - 115
       ) {
         this.velocity.y = 0;
+        // if (!this.dead) {
+        //   if (this.AIHero === true) {
+        //     // player9.AIHero = !player9.AIHero;
+        //     this.velocity.x = 6;
+        //     this.position.x += this.velocity.x;
+        //     if (this.velocity.x > 0) {
+        //       this.switchSprite('run');
+        //     }
+        //   }
+        // }
       } else {
         // in this case 1st of all object will falling down by this expression
         // and then how it reach bottom of the canvas it's stops
@@ -345,6 +381,286 @@ class Fighter extends Sprite {
   //   }
   // }
 
+  AIPlayerKenji(AIHero, playerAI) {
+    if (AIHero === true && !this.dead) {
+      this.AIHeroRight = !this.AIHeroRight;
+      this.AIHeroLeft = !this.AIHeroLeft;
+      let positionAI = this.position.x - this.offset.x;
+      let playableHeroRight =
+        player.start === true
+          ? player.position.x - player.offset.x - this.attackBox.width
+          : player2Reverse.start === true
+          ? player2Reverse.position.x -
+            player2Reverse.offset.x -
+            this.attackBox.width
+          : player3.start === true
+          ? player3.position.x - player3.offset.x - this.attackBox.width
+          : player4.start === true
+          ? player4.position.x - player4.offset.x - this.attackBox.width
+          : player5.start === true
+          ? player5.position.x - player5.offset.x - this.attackBox.width
+          : player6.start === true
+          ? player6.position.x - player6.offset.x - this.attackBox.width
+          : player7.start === true
+          ? player7.position.x - player7.offset.x - this.attackBox.width
+          : player8.start === true
+          ? player8.position.x - player8.offset.x - this.attackBox.width
+          : player9.start === true
+          ? player9.position.x - player9.offset.x - this.attackBox.width
+          : null;
+      if (positionAI < playableHeroRight && this.AIHeroRight === true) {
+        this.AIHeroLeft = false;
+        this.runRight();
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (
+        positionAI - 500 > playableHeroRight &&
+        this.AIHeroLeft === true
+      ) {
+        this.runLeft();
+        this.AIHeroRight = false;
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (this.position.x - this.offset.x >= playableHeroRight) {
+        this.attack() || this.attackTwo() || this.attackThree();
+
+        if (this.isAttacking === true) {
+          this.detectCollisionReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitOne,
+            dmgOne,
+            playerAI
+          );
+        } else if (this.isAttackingTwo === true) {
+          this.detectCollisionTwoReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitTwo,
+            dmgTwo,
+            playerAI
+          );
+        } else if (this.isAttackingThree === true) {
+          this.detectCollisionThreeReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitThree,
+            dmgThree,
+            playerAI
+          );
+        }
+      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+        if (
+          this.position.y + this.height + this.velocity.y >=
+          canvas.height - 115
+        ) {
+          // if you want to holding "w" and jump infinite so use
+          // keys.w.pressed = true;
+          // if you want to jump once per pressing "w" so don't this line use
+          // keys.w.pressed = true;
+          // keys.w.pressed = true;
+          this.sound.play();
+          this.velocity.y = -15;
+          this.switchSprite('jump');
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it reach bottom of the canvas it's stops
+          this.velocity.y += gravity;
+          this.switchSprite('fall');
+        }
+      }
+    } else if (AIHero === true && this.dead) {
+      this.velocity.x = 0;
+    }
+
+    if (this.restart === true) {
+      this.restartRound();
+    }
+    // console.log(this.AIHeroRight, this.AIHeroLeft);
+  }
+
+  AIPlayer(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
+    if (AIHero === true && !this.dead) {
+      this.AIHeroRight = !this.AIHeroRight;
+      this.AIHeroLeft = !this.AIHeroLeft;
+      let positionAI = this.position.x - this.offset.x;
+      let playableHeroRight =
+        playerReverse.start === true
+          ? playerReverse.position.x -
+            playerReverse.offset.x -
+            this.attackBox.width
+          : player2.start === true
+          ? player2.position.x - player2.offset.x - this.attackBox.width
+          : player3Reverse.start === true
+          ? player3Reverse.position.x -
+            player3Reverse.offset.x -
+            this.attackBox.width
+          : player4Reverse.start === true
+          ? player4Reverse.position.x -
+            player4Reverse.offset.x -
+            this.attackBox.width
+          : player5Reverse.start === true
+          ? player5Reverse.position.x -
+            player5Reverse.offset.x -
+            this.attackBox.width
+          : player6Reverse.start === true
+          ? player6Reverse.position.x -
+            player6Reverse.offset.x -
+            this.attackBox.width
+          : player7Reverse.start === true
+          ? player7Reverse.position.x -
+            player7Reverse.offset.x -
+            this.attackBox.width
+          : player8Reverse.start === true
+          ? player8Reverse.position.x -
+            player8Reverse.offset.x -
+            this.attackBox.width
+          : player9Reverse.start === true
+          ? player9Reverse.position.x -
+            player9Reverse.offset.x -
+            this.attackBox.width
+          : null;
+      if (positionAI < playableHeroRight && this.AIHeroRight === true) {
+        this.AIHeroLeft = false;
+        this.runRight();
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (
+        positionAI - 500 > playableHeroRight &&
+        this.AIHeroLeft === true
+      ) {
+        this.AIHeroRight = false;
+        this.runLeft();
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (positionAI >= playableHeroRight) {
+        if (player5.start === true) {
+          this.attackFire() || this.attackFireTwo();
+        } else if (player6.start === true) {
+          this.attackDark() || this.attackDarkTwo();
+        } else if (player7.start === true) {
+          this.attackFantasy() || this.attackFantasyTwo();
+        } else if (player8.start === true) {
+          this.attackAxe() || this.attackAxeTwo();
+        } else if (player9.start === true) {
+          this.attackVampire();
+        } 
+     this.attack() || this.attackTwo() || this.attackThree();
+
+     if (this.isAttacking === true) {
+       this.detectCollision(
+         playerAI,
+         playerReverse,
+         player2,
+         player3Reverse,
+         player4Reverse,
+         player5Reverse,
+         player6Reverse,
+         player7Reverse,
+         player8Reverse,
+         player9Reverse,
+         hitOne,
+         dmgOne,
+       );
+     } else if (this.isAttackingTwo === true) {
+       this.detectCollisionTwo(
+         playerAI,
+         playerReverse,
+         player2,
+         player3Reverse,
+         player4Reverse,
+         player5Reverse,
+         player6Reverse,
+         player7Reverse,
+         player8Reverse,
+         player9Reverse,
+         hitTwo,
+         dmgTwo,
+       );
+     } else if (this.isAttackingThree === true) {
+       this.detectCollisionThree(
+         playerAI,
+         playerReverse,
+         player2,
+         player3Reverse,
+         player4Reverse,
+         player5Reverse,
+         player6Reverse,
+         player7Reverse,
+         player8Reverse,
+         player9Reverse,
+         hitThree,
+         dmgThree,
+       );
+     }
+      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+        if (
+          this.position.y + this.height + this.velocity.y >=
+          canvas.height - 115
+        ) {
+          // if you want to holding "w" and jump infinite so use
+          // keys.w.pressed = true;
+          // if you want to jump once per pressing "w" so don't this line use
+          // keys.w.pressed = true;
+          // keys.w.pressed = true;
+          this.sound.play();
+          this.velocity.y = -15;
+          this.switchSprite('jump');
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it reach bottom of the canvas it's stops
+          this.velocity.y += gravity;
+          this.switchSprite('fall');
+        }
+      }
+    } else if (AIHero === true && this.dead) {
+      this.velocity.x = 0;
+    }
+    if (this.restart === true) {
+      this.restartRound();
+    }
+    // console.log(this.AIHeroRight, this.AIHeroLeft);
+  }
   heroMovements(keysLeft, keysRight, buttonLeft, buttonRight) {
     if (!this.dead) {
       // player movements
@@ -383,6 +699,8 @@ class Fighter extends Sprite {
         // setTimeout(() => {
         // },100);
       }
+    } else if (this.dead) {
+      this.velocity.x = 0;
     }
 
     if (this.restart === true) {
@@ -1648,6 +1966,9 @@ class FighterReverse extends Sprite {
     start,
     restart,
     pickedHero,
+    AIHero,
+    AIHeroRight,
+    AIHeroLeft,
   }) {
     super({
       position,
@@ -1690,6 +2011,9 @@ class FighterReverse extends Sprite {
     this.dead = false;
     this.soundStart = true;
     this.pickedHero = pickedHero;
+    this.AIHero = AIHero;
+    this.AIHeroRight = AIHeroRight;
+    this.AIHeroLeft = AIHeroLeft;
     // we looping through object sprites to switching between two images
     for (const sprite in this.sprites[0]) {
       // this is objects that we currenlty looping over
@@ -1973,6 +2297,300 @@ class FighterReverse extends Sprite {
     // setTimeout(() => {
     //   this.isAttacking = false;
     // }, 1000);
+  }
+  AIPlayerKenji(
+    AIHero,
+    playerAI,
+    hitOne,
+    dmgOne,
+    hitTwo,
+    dmgTwo,
+    hitThree,
+    dmgThree
+  ) {
+    if (AIHero === true && !this.dead) {
+      this.AIHeroRight = !this.AIHeroRight;
+      this.AIHeroLeft = !this.AIHeroLeft;
+      let positionAI = this.position.x - this.offset.x;
+      let playableHeroRight =
+        playerReverse.start === true
+          ? playerReverse.position.x -
+            playerReverse.offset.x -
+            this.attackBox.width
+          : player2.start === true
+          ? player2.position.x - player2.offset.x - this.attackBox.width
+          : player3Reverse.start === true
+          ? player3Reverse.position.x -
+            player3Reverse.offset.x -
+            this.attackBox.width
+          : player4Reverse.start === true
+          ? player4Reverse.position.x -
+            player4Reverse.offset.x -
+            this.attackBox.width
+          : player5Reverse.start === true
+          ? player5Reverse.position.x -
+            player5Reverse.offset.x -
+            this.attackBox.width
+          : player6Reverse.start === true
+          ? player6Reverse.position.x -
+            player6Reverse.offset.x -
+            this.attackBox.width
+          : player7Reverse.start === true
+          ? player7Reverse.position.x -
+            player7Reverse.offset.x -
+            this.attackBox.width
+          : player8Reverse.start === true
+          ? player8Reverse.position.x -
+            player8Reverse.offset.x -
+            this.attackBox.width
+          : player9Reverse.start === true
+          ? player9Reverse.position.x -
+            player9Reverse.offset.x -
+            this.attackBox.width
+          : null;
+      if (positionAI < playableHeroRight && this.AIHeroRight === true) {
+        this.AIHeroLeft = false;
+        this.runRight();
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (
+        positionAI - 500 > playableHeroRight &&
+        this.AIHeroLeft === true
+      ) {
+        this.runLeft();
+        this.AIHeroRight = false;
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (this.position.x - this.offset.x >= playableHeroRight) {
+        this.attack() || this.attackTwo() || this.attackThree();
+
+        if (this.isAttacking === true) {
+          this.detectCollisionReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitOne,
+            dmgOne,
+            playerAI
+          );
+        } else if (this.isAttackingTwo === true) {
+          this.detectCollisionTwoReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitTwo,
+            dmgTwo,
+            playerAI
+          );
+        } else if (this.isAttackingThree === true) {
+          this.detectCollisionThreeReverse(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitThree,
+            dmgThree,
+            playerAI
+          );
+        }
+      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+        if (
+          this.position.y + this.height + this.velocity.y >=
+          canvas.height - 115
+        ) {
+          // if you want to holding "w" and jump infinite so use
+          // keys.w.pressed = true;
+          // if you want to jump once per pressing "w" so don't this line use
+          // keys.w.pressed = true;
+          // keys.w.pressed = true;
+          this.sound.play();
+          this.velocity.y = -15;
+          this.switchSprite('jump');
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it reach bottom of the canvas it's stops
+          this.velocity.y += gravity;
+          this.switchSprite('fall');
+        }
+      }
+    } else if (AIHero === true && this.dead) {
+      this.velocity.x = 0;
+    }
+    if (this.restart === true) {
+      this.restartRound();
+    }
+    // console.log(this.AIHeroRight, this.AIHeroLeft);
+  }
+  AIPlayer(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
+    if (AIHero === true && !this.dead) {
+      this.AIHeroRight = !this.AIHeroRight;
+      this.AIHeroLeft = !this.AIHeroLeft;
+      let positionAI = this.position.x - this.offset.x;
+      let playableHeroRight =
+        player.start === true
+          ? player.position.x - player.offset.x - this.attackBox.width
+          : player2Reverse.start === true
+          ? player2Reverse.position.x -
+            player2Reverse.offset.x -
+            this.attackBox.width
+          : player3.start === true
+          ? player3.position.x - player3.offset.x - this.attackBox.width
+          : player4.start === true
+          ? player4.position.x - player4.offset.x - this.attackBox.width
+          : player5.start === true
+          ? player5.position.x - player5.offset.x - this.attackBox.width
+          : player6.start === true
+          ? player6.position.x - player6.offset.x - this.attackBox.width
+          : player7.start === true
+          ? player7.position.x - player7.offset.x - this.attackBox.width
+          : player8.start === true
+          ? player8.position.x - player8.offset.x - this.attackBox.width
+          : player9.start === true
+          ? player9.position.x - player9.offset.x - this.attackBox.width
+          : null;
+      if (positionAI < playableHeroRight && this.AIHeroRight === true) {
+        this.AIHeroLeft = false;
+        this.runRight();
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (
+        positionAI - 500 > playableHeroRight &&
+        this.AIHeroLeft === true
+      ) {
+        this.runLeft();
+        this.AIHeroRight = false;
+        // if (player9Reverse.health === 0) {
+        //   this.AIHeroRight = false;
+        //   this.AIHeroLeftt = false;
+        //   this.velocity.x = 0;
+        //   this.switchSprite('idle');
+        // }
+      } else if (this.position.x - this.offset.x >= playableHeroRight) {
+        if (player5Reverse.start === true) {
+          this.attackFire();
+        } else if (player6Reverse.start === true) {
+          this.attackDark();
+        } else if (player7Reverse.start === true) {
+          this.attackFantasy();
+        } else if (player8Reverse.start === true) {
+          this.attackAxe();
+        } else if (player9Reverse.start === true) {
+          this.attackVampire();
+        } 
+          this.attack() || this.attackTwo() || this.attackThree();
+        
+        if(this.isAttacking === true) {
+          // Player Reverse is attacking 1st animation
+          this.detectCollisionReverse(
+            playerAI,
+            player,
+            player3,
+            player2Reverse,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
+            hitOne,
+            dmgOne
+          );
+        } else if(this.isAttackingTwo === true) {
+          // Player Reverse is attacking Two animation
+          this.detectCollisionTwoReverse(
+            playerAI,
+            player,
+            player3,
+            player2Reverse,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
+            hitTwo,
+            dmgTwo
+          );
+        } else if(this.isAttackingThree === true) {
+           // Player Reverse is attacking Three animation
+        this.detectCollisionThreeReverse(
+          playerAI,
+          player,
+          player3,
+          player2Reverse,
+          player4,
+          player5,
+          player6,
+          player7,
+          player8,
+          player9,
+          hitThree,
+          dmgThree
+        );
+        }
+
+
+       
+      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+        if (
+          this.position.y + this.height + this.velocity.y >=
+          canvas.height - 115
+        ) {
+          // if you want to holding "w" and jump infinite so use
+          // keys.w.pressed = true;
+          // if you want to jump once per pressing "w" so don't this line use
+          // keys.w.pressed = true;
+          // keys.w.pressed = true;
+          this.sound.play();
+          this.velocity.y = -15;
+          this.switchSprite('jump');
+        } else {
+          // in this case 1st of all object will falling down by this expression
+          // and then how it reach bottom of the canvas it's stops
+          this.velocity.y += gravity;
+          this.switchSprite('fall');
+        }
+      }
+    } else if (AIHero === true && this.dead) {
+      this.velocity.x = 0;
+    }
+
+    if (this.restart === true) {
+      this.restartRound();
+    }
+    // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
   heroMovementsReverse(keysLeft, keysRight, buttonLeft, buttonRight) {
     if (!this.dead) {

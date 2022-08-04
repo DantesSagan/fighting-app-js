@@ -2093,14 +2093,6 @@ function HeroListThree() {
 }
 
 function PickMackPlayer1() {
-  // const hero1 = document.getElementById('hero1Player1');
-  // player.sprites.shift();
-  // // sprites.map((arrItem) => {
-  // //   let hero1 = arrItem;
-  // //   // console.log(hero1);
-  // // });
-  // player.sprites.push(sprites[0]);
-  // console.log(player.sprites);
   player.pickedHero = !player.pickedHero;
 
   if (player.pickedHero === true) {
@@ -2116,6 +2108,9 @@ function PickMackPlayer1() {
   // player.AIHero = false;
   // player.start = true;
 }
+function MackPlayer1AI() {
+  player.AIHero = !player.AIHero;
+}
 function PickKingPlayer1() {
   player3.pickedHero = !player3.pickedHero;
   if (player3.pickedHero === true) {
@@ -2126,6 +2121,9 @@ function PickKingPlayer1() {
     player3.pickedHero = false;
     player3.start = false;
   }
+}
+function KingPlayer1AI() {
+  player3.AIHero = !player3.AIHero;
 }
 // Playing Kenji on left side like reverse for default side (right)
 function PickKenjiPlayer1() {
@@ -2139,6 +2137,10 @@ function PickKenjiPlayer1() {
     player2Reverse.start = false;
   }
 }
+function KenjiPlayer1AI() {
+  player2Reverse.AIHero = !player2Reverse.AIHero;
+}
+
 // Player4 like King 2
 function PickKing2Player1() {
   player4.pickedHero = !player4.pickedHero;
@@ -2151,6 +2153,9 @@ function PickKing2Player1() {
     player4.start = false;
   }
 }
+function King2Player1AI() {
+  player4.AIHero = !player4.AIHero;
+}
 function PickEvilWizardPlayer1() {
   player5.pickedHero = !player5.pickedHero;
   if (player5.pickedHero === true) {
@@ -2162,6 +2167,11 @@ function PickEvilWizardPlayer1() {
     player5.start = false;
   }
 }
+
+function EvilWizardPlayer1AI() {
+  player5.AIHero = !player5.AIHero;
+}
+
 function PickEvilWizard2Player1() {
   player6.pickedHero = !player6.pickedHero;
   if (player6.pickedHero === true) {
@@ -2173,6 +2183,11 @@ function PickEvilWizard2Player1() {
     player6.start = false;
   }
 }
+
+function EvilWizard2Player1AI() {
+  player6.AIHero = !player6.AIHero;
+}
+
 function PickFantasyWarrior1Player1() {
   player7.pickedHero = !player7.pickedHero;
   if (player7.pickedHero === true) {
@@ -2183,6 +2198,10 @@ function PickFantasyWarrior1Player1() {
     player7.pickedHero = false;
     player7.start = false;
   }
+}
+
+function FantasyWarrior1Player1AI() {
+  player7.AIHero = !player7.AIHero;
 }
 
 function PickWarriorAxe1Player1() {
@@ -2197,6 +2216,10 @@ function PickWarriorAxe1Player1() {
   }
 }
 
+function WarriorAxe1Player1AI() {
+  player8.AIHero = !player8.AIHero;
+}
+
 function PickVampire1Player1() {
   player9.pickedHero = !player9.pickedHero;
   if (player9.pickedHero === true) {
@@ -2207,6 +2230,10 @@ function PickVampire1Player1() {
     player9.pickedHero = false;
     player9.start = false;
   }
+}
+
+function Vampire1Player1AI() {
+  player9.AIHero = !player9.AIHero;
 }
 
 function PickMackPlayer2() {
@@ -2221,6 +2248,10 @@ function PickMackPlayer2() {
   }
 }
 
+function MackPlayer2AI() {
+  playerReverse.AIHero = !playerReverse.AIHero;
+}
+
 function PickKingPlayer2() {
   player3Reverse.pickedHero = !player3Reverse.pickedHero;
   if (player3Reverse.pickedHero === true) {
@@ -2232,6 +2263,11 @@ function PickKingPlayer2() {
     player3Reverse.start = false;
   }
 }
+
+function KingPlayer2AI() {
+  player3Reverse.AIHero = !player3Reverse.AIHero;
+}
+
 // console.log(sprites[0]);
 function PickKenjiPlayer2() {
   player2.pickedHero = !player2.pickedHero;
@@ -2243,6 +2279,10 @@ function PickKenjiPlayer2() {
     player2.pickedHero = false;
     player2.start = false;
   }
+}
+
+function KenjiPlayer2AI() {
+  player2.AIHero = !player2.AIHero;
 }
 
 function PickKing2Player2() {
@@ -2257,6 +2297,10 @@ function PickKing2Player2() {
   }
 }
 
+function King2Player2AI() {
+  player4Reverse.AIHero = !player4Reverse.AIHero;
+}
+
 function PickEvilWizardOnePlayer2() {
   player5Reverse.pickedHero = !player5Reverse.pickedHero;
   if (player5Reverse.pickedHero === true) {
@@ -2267,6 +2311,10 @@ function PickEvilWizardOnePlayer2() {
     player5Reverse.pickedHero = false;
     player5Reverse.start = false;
   }
+}
+
+function EvilWizard1Player2AI() {
+  player5Reverse.AIHero = !player5Reverse.AIHero;
 }
 
 function PickEvilWizardTwoPlayer2() {
@@ -2281,6 +2329,10 @@ function PickEvilWizardTwoPlayer2() {
   }
 }
 
+function EvilWizard2Player2AI() {
+  player6Reverse.AIHero = !player6Reverse.AIHero;
+}
+
 function PickFantasyWarrior1Player2() {
   player7Reverse.pickedHero = !player7Reverse.pickedHero;
   if (player7Reverse.pickedHero === true) {
@@ -2291,6 +2343,10 @@ function PickFantasyWarrior1Player2() {
     player7Reverse.pickedHero = false;
     player7Reverse.start = false;
   }
+}
+
+function FantasyWarriorPlayer2AI() {
+  player7Reverse.AIHero = !player7Reverse.AIHero;
 }
 
 function PickWarriorAxe1Player2() {
@@ -2305,6 +2361,10 @@ function PickWarriorAxe1Player2() {
   }
 }
 
+function WarriorAxePlayer2AI() {
+  player8Reverse.AIHero = !player8Reverse.AIHero;
+}
+
 function PickVampire1Player2() {
   player9Reverse.pickedHero = !player9Reverse.pickedHero;
   if (player9Reverse.pickedHero === true) {
@@ -2315,6 +2375,10 @@ function PickVampire1Player2() {
     player9Reverse.pickedHero = false;
     player9Reverse.start = false;
   }
+}
+
+function Vampire1Player2AI() {
+  player9.AIHero = !player9.AIHero;
 }
 
 function TrueStart() {
@@ -2455,6 +2519,31 @@ function TrueRestart() {
     player8Reverse.restart = true;
     player9.restart = true;
     player9Reverse.restart = true;
+
+    // // AI Player boolean value
+    // if (player.AIHero === true) {
+    //   player.AIHero = false;
+    //   setTimeout(() => {
+    //     player.AIHero = true;
+    //   }, 1000);
+    // }
+    // playerReverse.AIHero = false;
+    // player2.AIHero = false;
+    // player2Reverse.AIHero = false;
+    // player3.AIHero = false;
+    // player3Reverse.AIHero = false;
+    // player4.AIHero = false;
+    // player4Reverse.AIHero = false;
+    // player5.AIHero = false;
+    // player5Reverse.AIHero = false;
+    // player6.AIHero = false;
+    // player6Reverse.AIHero = false;
+    // player7.AIHero = false;
+    // player7Reverse.AIHero = false;
+    // player8.AIHero = false;
+    // player8Reverse.AIHero = false;
+    // player9.AIHero = false;
+    // player9Reverse.AIHero = false;
     // position x like in the start of round(game)
     player.position.x = 256;
     playerReverse.position.x = 768;
@@ -2547,8 +2636,8 @@ function TrueAbout() {
   document.querySelector('#howToPlay').style.display = 'grid';
   // document.querySelector('#displayText').innerHTML = 'Игрок 1 выиграл!!!';
 }
-function ClickableMenu(){
-  document.querySelector('#EscapeMenu').style.display = 'flex'
+function ClickableMenu() {
+  document.querySelector('#EscapeMenu').style.display = 'flex';
 }
 // Escape menu
 function EscapeClose() {
@@ -2758,6 +2847,7 @@ function ChangeLanguage() {
     document.querySelector('#howMiddleAttack2').innerHTML = 'Middle attack';
     document.querySelector('#howHardAttack2').innerHTML = 'Hard attack';
     // Menu
+    //
     document.querySelector('#pickPlayer1').innerHTML = 'Player 1';
     document.querySelector('#pickPlayer2').innerHTML = 'Player 2';
     // Player 1

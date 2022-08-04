@@ -44,10 +44,12 @@
             style="position:absolute; display:none; flex-direction:row; width:100%; align-items:center; padding:50px;">
 
             <!-- Esc menu -->
-            
+
             <div onclick="ClickableMenu();" class="colorVersion"
                 style="position:absolute; align-items:center; justify-content: center;display:flex; width: 50px; height:30px; bottom: 0; left:50; right:0;top: 520; cursor:pointer; z-index:1;">
-                <button style="font-size:small; border:1px solid black; border-radius: 15px; background-color:transparent; color:white;" id='escMenu'  type="button"></button>
+                <button
+                    style="font-size:small; border:1px solid black; border-radius: 15px; background-color:transparent; color:white;"
+                    id='escMenu' type="button"></button>
             </div>
 
             <!-- player health -->
@@ -116,24 +118,37 @@
                 <p style="font-size:small;" id="pickPlayer1">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 140; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="MackChecked1" type="checkbox" onchange="MackPlayer1AI();"
+                    style="position: absolute; top: 155; left:50;" />
                 <div class="focus-div" id="hero1Player1" onclick="PickMackPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickMack1"></p>
                     <img src="/assets/Samurai/samuraiMack/singleMack.png" alt="hero1"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 240; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="King1Checked1" type="checkbox" onchange="KingPlayer1AI();"
+                    style="position: absolute; top: 255; left:50;" />
                 <div id="hero2Player1" onclick="PickKingPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKing1"></p>
                     <img src="/assets/KnightsKings/Medieval King Pack/singleKing.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 320; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="KenjiChecked1" type="checkbox" onchange="KenjiPlayer1AI();"
+                    style="position: absolute; top: 335; left:50;" />
                 <div id="hero3Player1" onclick="PickKenjiPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKenji1"></p>
                     <img src="/assets/Samurai/kenji/singleKenjiReverse.png" alt="hero3"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 420; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="King2Checked1" type="checkbox" onchange="King2Player1AI();"
+                    style="position: absolute; top: 435; left:50;" />
+
                 <div id="hero4Player1" onclick="PickKing2Player1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKingTwo1"></p>
@@ -147,23 +162,42 @@
                 <p style="font-size:small;" id="pickPlayer2">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 140; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="MackChecked2" type="checkbox" onchange="MackPlayer2AI();"
+                    style="position: absolute; top: 155; right:50;" />
+
                 <div onclick="PickMackPlayer2();" id="hero1Player2"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickMack2"> </p>
                     <img src="/assets/Samurai/samuraiMack/reverseMack/singleMackReverse.png" alt="hero1"
                         style="width: 48px; height:48px;" />
                 </div>
+
+                <div style="position: absolute; top: 240; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="King1Checked2" type="checkbox" onchange="KingPlayer2AI();"
+                    style="position: absolute; top: 255; right:50;" />
+
                 <div id="hero2Player2" onclick="PickKingPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKing2"></p>
                     <img src="/assets/KnightsKings/Medieval King Pack/singleKingReverse.png" alt="hero2"
                         style="width: 48px; height:48px;" />
                 </div>
+
+                <div style="position: absolute; top: 320; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="KenjiChecked2" type="checkbox" onchange="KenjiPlayer2AI();"
+                    style="position: absolute; top: 335; right:50;" />
+
                 <div id="hero3Player2" onclick="PickKenjiPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKenji2"> </p>
                     <img src="/assets/Samurai/kenji/singleKenji.png" alt="hero1" style="width: 48px; height:48px;" />
                 </div>
+
+                <div style="position: absolute; top: 420; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="King2Checked2" type="checkbox" onchange="King2Player2AI();"
+                    style="position: absolute; top: 435; right:50;" />
+
                 <div id="hero4Player2" onclick="PickKing2Player2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickKingTwo2"></p>
@@ -198,24 +232,38 @@
                 <p style="font-size:small;" id="pickPlayerListTwo1">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 160; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="EvilWizard1Checked1" type="checkbox" onchange="EvilWizardPlayer1AI();"
+                    style="position: absolute; top: 175; left:50;" />
                 <div id="hero5Player1" class="focus-div" onclick="PickEvilWizardPlayer1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizard1"></p>
                     <img src="/assets/Wizards/Fire Wizard/Sprites/EvilWizardSingle.png" alt="hero5"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 250; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="EvilWizard2Checked1" type="checkbox" onchange="EvilWizard2Player1AI();"
+                    style="position: absolute; top: 265; left:50;" />
                 <div id="hero6Player1" class="focus-div" onclick="PickEvilWizard2Player1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizardTwo1"></p>
                     <img src="/assets/Wizards/Dark Wizard 2/Sprites/Idle - Single.png" alt="hero6"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 320; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="FantasyWarriorChecked1" type="checkbox" onchange="FantasyWarrior1Player1AI();"
+                    style="position: absolute; top: 335; left:50;" />
                 <div id="hero7Player1" class="focus-div" onclick="PickFantasyWarrior1Player1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickFantasyWarriorTwo1"></p>
                     <img src="/assets/KnightsKings/Fantasy Warrior/Sprites/Idle - Single.png" alt="hero7"
                         style="width: 48px; height:48px;" />
                 </div>
+
+                <div style="position: absolute; top: 420; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="WarriorAxeChecked1" type="checkbox" onchange="WarriorAxe1Player1AI();"
+                    style="position: absolute; top: 435; left:50;" />
+
                 <div id="hero8Player1" class="focus-div" onclick="PickWarriorAxe1Player1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickWarriorAxeTwo1"></p>
@@ -229,24 +277,41 @@
                 <p style="font-size:small;" id="pickPlayerListTwo2">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 160; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="EvilWizard1Checked2" type="checkbox" onchange="EvilWizard1Player2AI();"
+                    style="position: absolute; top: 175; right:50;" />
+
                 <div id="hero5Player2" onclick="PickEvilWizardOnePlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizard2"> </p>
                     <img src="/assets/Wizards/Fire Wizard/SpritesReverse/EvilWizardSingleReverse.png" alt="hero5"
                         style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 250; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="EvilWizard2Checked2" type="checkbox" onchange="EvilWizard2Player2AI();"
+                    style="position: absolute; top: 265; right:50;" />
+
                 <div id="hero6Player2" onclick="PickEvilWizardTwoPlayer2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickEvilWizardTwo2"></p>
                     <img src="/assets/Wizards/Dark Wizard 2/SpriteReverse/Idle - Reverse - Single.png" alt="hero6"
                         style="width: 48px; height:48px;" />
                 </div>
+
+                <div style="position: absolute; top: 320; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="FantasyWarriorChecked2" type="checkbox" onchange="FantasyWarriorPlayer2AI();"
+                    style="position: absolute; top: 335; right:50;" />
+
                 <div id="hero7Player2" class="focus-div" onclick="PickFantasyWarrior1Player2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickFantasyWarriorTwo2"></p>
                     <img src="/assets/KnightsKings/Fantasy Warrior/SpritesReverse/Idle - Single - Reverse.png"
                         alt="hero7" style="width: 48px; height:48px;" />
                 </div>
+                <div style="position: absolute; top: 420; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="WarriorAxeChecked2" type="checkbox" onchange="WarriorAxePlayer2AI();"
+                    style="position: absolute; top: 435; right:50;" />
+
                 <div id="hero8Player2" class="focus-div" onclick="PickWarriorAxe1Player2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickWarriorAxeTwo2"></p>
@@ -281,6 +346,9 @@
                 <p style="font-size:small;" id="pickPlayerListThree1">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 160; left:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="VampireChecked1" type="checkbox" onchange="Vampire1Player1AI();"
+                    style="position: absolute; top: 175; left:50;" />
                 <div id="hero9Player1" class="focus-div" onclick="PickVampire1Player1();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickVampire1Player1"></p>
@@ -293,6 +361,10 @@
                 <p style="font-size:small;" id="pickPlayerListThree2">
                 </p>
                 <!-- Hero list -->
+                <div style="position: absolute; top: 160; right:20; font-size:small;" class="aiHero">ИИ (AI)</div>
+                <input id="VampireChecked2" type="checkbox" onchange="Vampire1Player2AI();"
+                    style="position: absolute; top: 175; right:50;" />
+
                 <div id="hero9Player2" onclick="PickVampire1Player2();"
                     style="cursor: pointer; border:1px solid black; border-radius:15px;">
                     <p style="font-size:small;" id="pickVampire1Player2"> </p>
@@ -555,8 +627,8 @@
             onclick="TrueBack();" id="howToPlayBack">
         </button>
     </div>
-    <div 
-        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; flex-direction:column; width: 153px; height:400px; bottom: 0; left:50; right:0;top: 350; ">
+    <div
+        style="position:absolute; color: white;  align-items:center; justify-content: center;display:flex; flex-direction:column; width: 153px; height:40px; bottom: 0; left:50; right:0;top: 550; ">
         <p style="font-size:small;" id="version"></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"

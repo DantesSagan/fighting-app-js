@@ -131,6 +131,7 @@ const player = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const playerReverse = new FighterReverse({
   position: {
@@ -213,6 +214,7 @@ const playerReverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 const player2 = new Fighter({
   position: {
@@ -298,6 +300,7 @@ const player2 = new Fighter({
   // },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player2Reverse = new FighterReverse({
   position: {
@@ -377,6 +380,7 @@ const player2Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player3 = new Fighter({
   position: {
@@ -454,6 +458,7 @@ const player3 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 
 const player3Reverse = new FighterReverse({
@@ -541,6 +546,7 @@ const player3Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 
 // player2Reverse playing on left side not on right side as usual because default skin of Kenji sets to right place
@@ -626,6 +632,7 @@ const player4 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 
 const player4Reverse = new FighterReverse({
@@ -714,6 +721,7 @@ const player4Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 
 const player5 = new Fighter({
@@ -792,6 +800,7 @@ const player5 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player5Reverse = new FighterReverse({
   position: {
@@ -878,6 +887,7 @@ const player5Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 const player6 = new Fighter({
   position: {
@@ -955,6 +965,7 @@ const player6 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player6Reverse = new FighterReverse({
   position: {
@@ -1041,6 +1052,7 @@ const player6Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 const player7 = new Fighter({
   position: {
@@ -1118,6 +1130,7 @@ const player7 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player7Reverse = new FighterReverse({
   position: {
@@ -1205,6 +1218,7 @@ const player7Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 const player8 = new Fighter({
   position: {
@@ -1284,6 +1298,7 @@ const player8 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player8Reverse = new FighterReverse({
   position: {
@@ -1372,6 +1387,7 @@ const player8Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 const player9 = new Fighter({
   position: {
@@ -1451,6 +1467,7 @@ const player9 = new Fighter({
   },
   start: false,
   restart: false,
+  AIHero: false,
 });
 const player9Reverse = new FighterReverse({
   position: {
@@ -1530,6 +1547,7 @@ const player9Reverse = new FighterReverse({
   },
   start: false,
   restart: false,
+  AlHero: false,
 });
 if (menuMain.start === true) {
   const music = '../audio/ambient_menu.wav';
@@ -1621,109 +1639,81 @@ function animate(event) {
   let moveLeftPL2 = keys.ArrowLeft.pressed;
   let moveRightPL2 = keys.ArrowRight.pressed;
   // Player 1
-  player.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+  if (player.AIHero === true) {
+    player.AIPlayer(player.AIHero, player, 4, 20, 4, 25, 4, 30);
+  } else {
+    player.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    player.detectCollision(
+      player,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      20
+    );
 
-  // Player 2
-  player2.heroMovements(moveLeftPL2, moveRightPL2, 'ArrowLeft', 'ArrowRight');
+    // Player 1 is attacking Two animation
+    player.detectCollisionTwo(
+      player,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      25
+    );
 
-  // Player 3
-  player3.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player 1 is attacking Three animation
+    player.detectCollisionThree(
+      player,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      30
+    );
+  }
 
-  // Player4
-  player4.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player5
-  player5.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player 6
-  player6.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player 7
-  player7.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player 8
-  player8.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player 9
-  player9.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
-
-  // Player 3 Reverse
-  // Because this is reverse version of player3 character need to set reverse buttons
-  player3Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player  Reverse
-  // Because this is reverse version of player character need to set reverse buttons
-  playerReverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player 2 Reverse
-  // Because this is reverse version of player3 character need to set reverse buttons
-  player2Reverse.heroMovementsReverse(
-    moveLeftPL1,
-    moveRightPL1,
-    'KeyA',
-    'KeyD'
-  );
-
-  // Player4 Reverse
-  // Because this is reverse version of player character need to set reverse buttons
-  player4Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player5 Reverse
-  player5Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player6 Reverse
-  player6Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player7 Reverse
-  player7Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player8 Reverse
-  player8Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // Player9 Reverse
-  player9Reverse.heroMovementsReverse(
-    moveLeftPL2,
-    moveRightPL2,
-    'ArrowLeft',
-    'ArrowRight'
-  );
-
-  // console.log(player2.restart);
+  // Player 2 Reverse (on Left Side)
+  if (player2Reverse.AIHero === true) {
+    player2Reverse.AIPlayerKenji(player2Reverse.AIHero, player2Reverse, 3, 10, 3, 20, 4, 30);
+  } else {
+    player2Reverse.heroMovementsReverse(
+      moveLeftPL1,
+      moveRightPL1,
+      'KeyA',
+      'KeyD'
+    );
+    // Player 2 && player2 is attacking animation
+    // Detect collision
+    // Player 1 is attacking 1st animation
+    // When 1st arg = playerAttack
+    // 2n arg = player1
+    // 3d arg = player2
+    // 4th arg = player3
+    // 5th arg = player4
+    // 6th arg = attack animation (collision)
+    // 7th arg = value of dealing dmg
+    // 8th arg = player for compare to detect collision between two players.
+    // Player 2 on right side (player2Health) detect collision to (playerHealth) on left side 
+     // console.log(player2.restart);
 
   // Detect collision
   // Player 1 is attacking 1st animation
@@ -1734,670 +1724,6 @@ function animate(event) {
   // 5th arg = player4
   // 6th arg = attack animation (collision)
   // 7th arg = value of dealing dmg
-  player.detectCollision(
-    player,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    20
-  );
-
-  // Player 1 is attacking Two animation
-  player.detectCollisionTwo(
-    player,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    25
-  );
-
-  // Player 1 is attacking Three animation
-  player.detectCollisionThree(
-    player,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    30
-  );
-
-  // Player 2 && player2 is attacking animation
-  // Detect collision
-  // Player 1 is attacking 1st animation
-  // When 1st arg = playerAttack
-  // 2n arg = player1
-  // 3d arg = player2
-  // 4th arg = player3
-  // 5th arg = player4
-  // 6th arg = attack animation (collision)
-  // 7th arg = value of dealing dmg
-  // 8th arg = player for compare to detect collision between two players.
-  // Player 2 on right side (player2Health) detect collision to (playerHealth) on left side
-  player2.detectCollision(
-    player2,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    1,
-    10,
-    player2
-  );
-  player2.detectCollisionTwo(
-    player2,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    1,
-    20,
-    player2
-  );
-  player2.detectCollisionThree(
-    player2,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    4,
-    30,
-    player2
-  );
-
-  // Player 3 is attacking 1st animation
-  player3.detectCollision(
-    player3,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    20
-  );
-
-  // Player 3 is attacking Two animation
-  player3.detectCollisionTwo(
-    player3,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    25
-  );
-
-  // Player4 is attacking animation
-  player4.detectCollision(
-    player4,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    2,
-    10
-  );
-
-  // Player4 is attackingTwo animation
-  player4.detectCollisionTwo(
-    player4,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    2,
-    20
-  );
-
-  // Player4 is attackingThree animation
-  player4.detectCollisionThree(
-    player4,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    2,
-    30
-  );
-
-  // Player5 is attacking animation
-  player5.detectCollision(
-    player5,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    2,
-    15
-  );
-
-  // Player5 is attacking 2nd animation
-  player5.detectCollisionTwo(
-    player5,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    25
-  );
-
-  // Player5 is attacking 3d animation
-  player5.detectCollisionThree(
-    player5,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    35
-  );
-
-  // Player6 is attacking animation
-  player6.detectCollision(
-    player6,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    15
-  );
-
-  // Player5 is attacking 2nd animation
-  player6.detectCollisionTwo(
-    player6,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    5,
-    25
-  );
-
-  // Player7 is attacking animation
-  player7.detectCollision(
-    player7,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    5,
-    15
-  );
-
-  // Player7 is attacking 2nd animation
-  player7.detectCollisionTwo(
-    player7,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    25
-  );
-
-  // Player7 is attacking 3d animation
-  player7.detectCollisionThree(
-    player7,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    5,
-    35
-  );
-
-  // Player8 is attacking animation
-  player8.detectCollision(
-    player8,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    5,
-    25
-  );
-
-  // Player8 is attacking 2nd animation
-  player8.detectCollisionTwo(
-    player8,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    35
-  );
-
-  // Player9 is attacking animation
-  player9.detectCollision(
-    player9,
-    playerReverse,
-    player2,
-    player3Reverse,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    25
-  );
-
-  // Player 3Reverse is attacking 1st animation
-  player3Reverse.detectCollisionReverse(
-    player3Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    20
-  );
-
-  // Player 3Reverse is attacking Two animation
-  player3Reverse.detectCollisionTwoReverse(
-    player3Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    25
-  );
-
-  // Player Reverse is attacking 1st animation
-  playerReverse.detectCollisionReverse(
-    playerReverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    20
-  );
-
-  // Player Reverse is attacking Two animation
-  playerReverse.detectCollisionTwoReverse(
-    playerReverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    25
-  );
-
-  // Player Reverse is attacking Three animation
-  playerReverse.detectCollisionThreeReverse(
-    playerReverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    30
-  );
-
-  // Player4Reverse is attacking 1st animation
-  player4Reverse.detectCollisionReverse(
-    player4Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    1,
-    10
-  );
-
-  // Player4Reverse is attacking Two animation
-  player4Reverse.detectCollisionTwoReverse(
-    player4Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    1,
-    20
-  );
-
-  // Player4Reverse is attacking Three animation
-  player4Reverse.detectCollisionThreeReverse(
-    player4Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    1,
-    30
-  );
-
-  // Player5Reverse is attacking 1st animation
-  player5Reverse.detectCollisionReverse(
-    player5Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    6,
-    15
-  );
-
-  // Player5Reverse is attacking 2d animation
-  player5Reverse.detectCollisionTwoReverse(
-    player5Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    4,
-    25
-  );
-
-  // Player5Reverse is attacking 3d animation
-  player5Reverse.detectCollisionThreeReverse(
-    player5Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    35
-  );
-
-  // Player6Reverse is attacking 1st animation
-  player6Reverse.detectCollisionReverse(
-    player6Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    4,
-    15
-  );
-
-  // Player6Reverse is attacking 2d animation
-  player6Reverse.detectCollisionTwoReverse(
-    player6Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    3,
-    25
-  );
-
-  // Player7Reverse is attacking 1st animation
-  player7Reverse.detectCollisionReverse(
-    player7Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    3,
-    15
-  );
-
-  // Player7Reverse is attacking 2d animation
-  player7Reverse.detectCollisionTwoReverse(
-    player7Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    5,
-    25
-  );
-
-  // Player7Reverse is attacking 3d animation
-  player7Reverse.detectCollisionThreeReverse(
-    player7Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    4,
-    35
-  );
-
-  // Player8Reverse is attacking 1st animation
-  player8Reverse.detectCollisionReverse(
-    player8Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    3,
-    25
-  );
-
-  // Player7Reverse is attacking 2d animation
-  player8Reverse.detectCollisionTwoReverse(
-    player8Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    2,
-    35
-  );
-
-  // Player9Reverse is attacking 1st animation
-  player9Reverse.detectCollisionReverse(
-    player9Reverse,
-    player,
-    player3,
-    player2Reverse,
-    player4,
-    player5,
-    player6,
-    player7,
-    player8,
-    player9,
-    3,
-    25
-  );
 
   // Player 2 Reverse is attacking 1st animation
   // Detect collision
@@ -2411,51 +1737,867 @@ function animate(event) {
   // 7th arg = value of dealing dmg
   // 8th arg = player for compare to detect collision between two players.
   // Player 2 on left side (playerHealth) detect collision to (player2Health) on right side
-  player2Reverse.detectCollisionReverse(
-    player2Reverse,
-    playerReverse,
-    player3Reverse,
-    player2,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    10,
-    player2Reverse
-  );
-  player2Reverse.detectCollisionTwoReverse(
-    player2Reverse,
-    playerReverse,
-    player3Reverse,
-    player2,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    3,
-    20,
-    player2Reverse
-  );
-  player2Reverse.detectCollisionThreeReverse(
-    player2Reverse,
-    playerReverse,
-    player3Reverse,
-    player2,
-    player4Reverse,
-    player5Reverse,
-    player6Reverse,
-    player7Reverse,
-    player8Reverse,
-    player9Reverse,
-    4,
-    30,
-    player2Reverse
-  );
+    player2Reverse.detectCollisionReverse(
+      player2Reverse,
+      playerReverse,
+      player3Reverse,
+      player2,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      10,
+      player2Reverse
+    );
+    player2Reverse.detectCollisionTwoReverse(
+      player2Reverse,
+      playerReverse,
+      player3Reverse,
+      player2,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      20,
+      player2Reverse
+    );
+    player2Reverse.detectCollisionThreeReverse(
+      player2Reverse,
+      playerReverse,
+      player3Reverse,
+      player2,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      30,
+      player2Reverse
+    );
+  }
+
+  // Player 3
+  if (player3.AIHero === true) {
+    player3.AIPlayer(player3.AIHero, player3, 4, 20, 4, 25);
+  } else {
+    player3.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player 3 is attacking 1st animation
+    player3.detectCollision(
+      player3,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      20
+    );
+
+    // Player 3 is attacking Two animation
+    player3.detectCollisionTwo(
+      player3,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      25
+    );
+  }
+
+  // Player4
+  if (player4.AIHero === true) {
+    player4.AIPlayer(player4.AIHero, player4, 2, 10, 2, 20, 2, 30);
+  } else {
+    player4.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player4 is attacking animation
+    player4.detectCollision(
+      player4,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      2,
+      10
+    );
+
+    // Player4 is attackingTwo animation
+    player4.detectCollisionTwo(
+      player4,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      2,
+      20
+    );
+
+    // Player4 is attackingThree animation
+    player4.detectCollisionThree(
+      player4,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      2,
+      30
+    );
+  }
+
+  // Player5
+  if (player5.AIHero === true) {
+    player5.AIPlayer(player5.AIHero, player5, 2, 15, 3, 25);
+  } else {
+    player5.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player5 is attacking animation
+    player5.detectCollision(
+      player5,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      2,
+      15
+    );
+
+    // Player5 is attacking 2nd animation
+    player5.detectCollisionTwo(
+      player5,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      25
+    );
+
+    // Player5 is attacking 3d animation
+    player5.detectCollisionThree(
+      player5,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      35
+    );
+  }
+
+  // Player 6
+  if (player6.AIHero === true) {
+    player6.AIPlayer(player6.AIHero, player6, 4, 15, 5, 25);
+  } else {
+    player6.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player6 is attacking animation
+    player6.detectCollision(
+      player6,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      15
+    );
+
+    // Player5 is attacking 2nd animation
+    player6.detectCollisionTwo(
+      player6,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      5,
+      25
+    );
+  }
+
+  // Player 7
+  if (player7.AIHero === true) {
+    player7.AIPlayer(player7.AIHero, player7, 5,15, 3, 25);
+  } else {
+    player7.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player7 is attacking animation
+    player7.detectCollision(
+      player7,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      5,
+      15
+    );
+
+    // Player7 is attacking 2nd animation
+    player7.detectCollisionTwo(
+      player7,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      25
+    );
+
+    // Player7 is attacking 3d animation
+    player7.detectCollisionThree(
+      player7,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      5,
+      35
+    );
+  }
+
+  // Player 8
+  if (player8.AIHero === true) {
+    player8.AIPlayer(player8.AIHero, player8, 5, 25, 4, 35);
+  } else {
+    player8.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player8 is attacking animation
+    player8.detectCollision(
+      player8,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      5,
+      25
+    );
+
+    // Player8 is attacking 2nd animation
+    player8.detectCollisionTwo(
+      player8,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      4,
+      35
+    );
+  }
+
+  // Player 9
+  if (player9.AIHero === true) {
+    player9.AIPlayer(player9.AIHero, player9, 3, 25);
+  } else {
+    player9.heroMovements(moveLeftPL1, moveRightPL1, 'KeyA', 'KeyD');
+    // Player9 is attacking animation
+    player9.detectCollision(
+      player9,
+      playerReverse,
+      player2,
+      player3Reverse,
+      player4Reverse,
+      player5Reverse,
+      player6Reverse,
+      player7Reverse,
+      player8Reverse,
+      player9Reverse,
+      3,
+      25
+    );
+  }
+
+  // // Player 2
+  // if (player2.AIHero === true) {
+  //   player2.AIPlayer(player2.AIHero, player2);
+  // } else {
+  //   player2.heroMovements(moveLeftPL2, moveRightPL2, 'ArrowLeft', 'ArrowRight');
+  //   // Player 2 && player2 is attacking animation
+  //   // Detect collision
+  //   // Player 1 is attacking 1st animation
+  //   // When 1st arg = playerAttack
+  //   // 2n arg = player1
+  //   // 3d arg = player2
+  //   // 4th arg = player3
+  //   // 5th arg = player4
+  //   // 6th arg = attack animation (collision)
+  //   // 7th arg = value of dealing dmg
+  //   // 8th arg = player for compare to detect collision between two players.
+  //   // Player 2 on right side (player2Health) detect collision to (playerHealth) on left side
+  //   player2.detectCollision(
+  //     player2,
+  //     player,
+  //     player3,
+  //     player2Reverse,
+  //     player4,
+  //     player5,
+  //     player6,
+  //     player7,
+  //     player8,
+  //     player9,
+  //     1,
+  //     10,
+  //     player2
+  //   );
+  //   player2.detectCollisionTwo(
+  //     player2,
+  //     player,
+  //     player3,
+  //     player2Reverse,
+  //     player4,
+  //     player5,
+  //     player6,
+  //     player7,
+  //     player8,
+  //     player9,
+  //     1,
+  //     20,
+  //     player2
+  //   );
+  //   player2.detectCollisionThree(
+  //     player2,
+  //     player,
+  //     player3,
+  //     player2Reverse,
+  //     player4,
+  //     player5,
+  //     player6,
+  //     player7,
+  //     player8,
+  //     player9,
+  //     4,
+  //     30,
+  //     player2
+  //   );
+  // }
+
+  // Reverse AI and Controllable players
+
+  // Player 1Reverse
+  if (playerReverse.AIHero === true) {
+    playerReverse.AIPlayer(playerReverse.AIHero, playerReverse, 2, 20, 2, 25, 2, 30);
+  } else {
+    playerReverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player Reverse is attacking 1st animation
+    playerReverse.detectCollisionReverse(
+      playerReverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      20
+    );
+
+    // Player Reverse is attacking Two animation
+    playerReverse.detectCollisionTwoReverse(
+      playerReverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      25
+    );
+
+    // Player Reverse is attacking Three animation
+    playerReverse.detectCollisionThreeReverse(
+      playerReverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      30
+    );
+  }
+
+  // Player 2 (Samurai Kenji on Right side by default)
+  if (player2.AIHero === true) {
+    player2.AIPlayerKenji(player2.AIHero, player2, 3, 10, 3, 20, 4, 30);
+  } else {
+    player2.heroMovements(moveLeftPL2, moveRightPL2, 'ArrowLeft', 'ArrowRight');
+
+    player2.detectCollision(
+      player2,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      1,
+      10,
+      player2
+    );
+    player2.detectCollisionTwo(
+      player2,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      1,
+      20,
+      player2
+    );
+    player2.detectCollisionThree(
+      player2,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      4,
+      30,
+      player2
+    );
+  }
+
+  // Player 3 Reverse
+
+  if (player3Reverse.AIHero === true) {
+    player3Reverse.AIPlayer(player3Reverse.AIHero, player3Reverse, 2, 20, 2, 25);
+  } else {
+    player3Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player 3Reverse is attacking 1st animation
+    player3Reverse.detectCollisionReverse(
+      player3Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      20
+    );
+
+    // Player 3Reverse is attacking Two animation
+    player3Reverse.detectCollisionTwoReverse(
+      player3Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      25
+    );
+  }
+
+  // Player4 Reverse
+  if (player4Reverse.AIHero === true) {
+    player4Reverse.AIPlayer(player4Reverse.AIHero, player4Reverse, 1, 10, 1, 20, 1, 30);
+  } else {
+    player4Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player4Reverse is attacking 1st animation
+    player4Reverse.detectCollisionReverse(
+      player4Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      1,
+      10
+    );
+
+    // Player4Reverse is attacking Two animation
+    player4Reverse.detectCollisionTwoReverse(
+      player4Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      1,
+      20
+    );
+
+    // Player4Reverse is attacking Three animation
+    player4Reverse.detectCollisionThreeReverse(
+      player4Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      1,
+      30
+    );
+  }
+
+  // Player5 Reverse
+
+  if (player5Reverse.AIHero === true) {
+    player5Reverse.AIPlayer(player5Reverse.AIHero, player5Reverse, 6, 15, 4, 25, 2, 35);
+  } else {
+    player5Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player5Reverse is attacking 1st animation
+    player5Reverse.detectCollisionReverse(
+      player5Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      6,
+      15
+    );
+
+    // Player5Reverse is attacking 2d animation
+    player5Reverse.detectCollisionTwoReverse(
+      player5Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      4,
+      25
+    );
+
+    // Player5Reverse is attacking 3d animation
+    player5Reverse.detectCollisionThreeReverse(
+      player5Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      35
+    );
+  }
+
+  // Player6 Reverse
+
+  if (player6Reverse.AIHero === true) {
+    player6Reverse.AIPlayer(player6Reverse.AIHero, player6Reverse, 4, 15, 3, 25);
+  } else {
+    player6Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player6Reverse is attacking 1st animation
+    player6Reverse.detectCollisionReverse(
+      player6Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      4,
+      15
+    );
+
+    // Player6Reverse is attacking 2d animation
+    player6Reverse.detectCollisionTwoReverse(
+      player6Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      3,
+      25
+    );
+  }
+
+  // Player7 Reverse
+
+  if (player7Reverse.AIHero === true) {
+    player7Reverse.AIPlayer(player7Reverse.AIHero, player7Reverse, 3, 15, 5, 25, 4, 35);
+  } else {
+    player7Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player7Reverse is attacking 1st animation
+    player7Reverse.detectCollisionReverse(
+      player7Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      3,
+      15
+    );
+
+    // Player7Reverse is attacking 2d animation
+    player7Reverse.detectCollisionTwoReverse(
+      player7Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      5,
+      25
+    );
+
+    // Player7Reverse is attacking 3d animation
+    player7Reverse.detectCollisionThreeReverse(
+      player7Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      4,
+      35
+    );
+  }
+
+  // Player8 Reverse
+
+  if (player8Reverse.AIHero === true) {
+    player8Reverse.AIPlayer(player8Reverse.AIHero, player8Reverse, 3, 25, 2, 35);
+  } else {
+    player8Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    );
+    // Player8Reverse is attacking 1st animation
+    player8Reverse.detectCollisionReverse(
+      player8Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      3,
+      25
+    );
+
+    // Player8Reverse is attacking 2d animation
+    player8Reverse.detectCollisionTwoReverse(
+      player8Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      2,
+      35
+    );
+  }
+
+  // Player9 Reverse
+
+  if (player9Reverse.AIHero === true) {
+    player9Reverse.AIPlayer(player9Reverse.AIHero, player9Reverse, 3, 25);
+  } else {
+    player9Reverse.heroMovementsReverse(
+      moveLeftPL2,
+      moveRightPL2,
+      'ArrowLeft',
+      'ArrowRight'
+    ); 
+    // Player9Reverse is attacking 1st animation
+    player9Reverse.detectCollisionReverse(
+      player9Reverse,
+      player,
+      player3,
+      player2Reverse,
+      player4,
+      player5,
+      player6,
+      player7,
+      player8,
+      player9,
+      3,
+      25
+    );
+  }
 
   // end game based on healthbar of players
   document.querySelector('#displayText').style.display = 'flex';
