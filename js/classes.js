@@ -654,7 +654,7 @@ class Fighter extends Sprite {
           this.switchSprite('fall');
         }
       }
-    } else if (AIHero === true && this.dead === false) {
+    } else if (AIHero === true && this.dead) {
       this.velocity.x = 0;
       this.switchSprite('death')
     }
