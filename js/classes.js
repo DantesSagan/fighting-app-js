@@ -381,7 +381,7 @@ class Fighter extends Sprite {
   //   }
   // }
 
-  AIPlayerKenji(AIHero, playerAI) {
+  AIPlayerKenji(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
     if (AIHero === true && !this.dead) {
       this.AIHeroRight = !this.AIHeroRight;
       this.AIHeroLeft = !this.AIHeroLeft;
@@ -430,52 +430,54 @@ class Fighter extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (this.position.x - this.offset.x >= playableHeroRight) {
-        this.attack() || this.attackTwo() || this.attackThree();
+        setTimeout(() => {
+          this.attack() || this.attackTwo() || this.attackThree();
+        }, 1000);
 
         if (this.isAttacking === true) {
-          this.detectCollisionReverse(
+          this.detectCollision(
             playerAI,
-            playerReverse,
-            player2,
-            player3Reverse,
-            player4Reverse,
-            player5Reverse,
-            player6Reverse,
-            player7Reverse,
-            player8Reverse,
-            player9Reverse,
+            player,
+            player2Reverse,
+            player3,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
             hitOne,
             dmgOne,
             playerAI
           );
         } else if (this.isAttackingTwo === true) {
-          this.detectCollisionTwoReverse(
+          this.detectCollisionTwo(
             playerAI,
-            playerReverse,
-            player2,
-            player3Reverse,
-            player4Reverse,
-            player5Reverse,
-            player6Reverse,
-            player7Reverse,
-            player8Reverse,
-            player9Reverse,
+            player,
+            player2Reverse,
+            player3,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
             hitTwo,
             dmgTwo,
             playerAI
           );
         } else if (this.isAttackingThree === true) {
-          this.detectCollisionThreeReverse(
+          this.detectCollisionThree(
             playerAI,
-            playerReverse,
-            player2,
-            player3Reverse,
-            player4Reverse,
-            player5Reverse,
-            player6Reverse,
-            player7Reverse,
-            player8Reverse,
-            player9Reverse,
+            player,
+            player2Reverse,
+            player3,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
             hitThree,
             dmgThree,
             playerAI
@@ -511,7 +513,31 @@ class Fighter extends Sprite {
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
 
-  AIPlayer(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
+  AIPlayer(
+    AIHero,
+    playerAI,
+    hitOne,
+    dmgOne,
+    hitTwo,
+    dmgTwo,
+    hitThree,
+    dmgThree
+  ) {
+    const delayAttack = () => {
+      if (player5.start === true) {
+        this.attackFire() || this.attackFireTwo();
+      } else if (player6.start === true) {
+        this.attackDark() || this.attackDarkTwo();
+      } else if (player7.start === true) {
+        this.attackFantasy() || this.attackFantasyTwo();
+      } else if (player8.start === true) {
+        this.attackAxe() || this.attackAxeTwo();
+      } else if (player9.start === true) {
+        this.attackVampire();
+      } else {
+        this.attack() || this.attackTwo() || this.attackThree();
+      }
+    };
     if (AIHero === true && !this.dead) {
       this.AIHeroRight = !this.AIHeroRight;
       this.AIHeroLeft = !this.AIHeroLeft;
@@ -552,6 +578,8 @@ class Fighter extends Sprite {
             player9Reverse.offset.x -
             this.attackBox.width
           : null;
+      let attackTime = 2;
+
       if (positionAI < playableHeroRight && this.AIHeroRight === true) {
         this.AIHeroLeft = false;
         this.runRight();
@@ -574,66 +602,53 @@ class Fighter extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (positionAI >= playableHeroRight) {
-        if (player5.start === true) {
-          this.attackFire() || this.attackFireTwo();
-        } else if (player6.start === true) {
-          this.attackDark() || this.attackDarkTwo();
-        } else if (player7.start === true) {
-          this.attackFantasy() || this.attackFantasyTwo();
-        } else if (player8.start === true) {
-          this.attackAxe() || this.attackAxeTwo();
-        } else if (player9.start === true) {
-          this.attackVampire();
-        } else {
-          this.attack() || this.attackTwo() || this.attackThree();
+        setTimeout(delayAttack(), 1000);
+        if (this.isAttacking === true) {
+          this.detectCollision(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitOne,
+            dmgOne
+          );
+        } else if (this.isAttackingTwo === true) {
+          this.detectCollisionTwo(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitTwo,
+            dmgTwo
+          );
+        } else if (this.isAttackingThree === true) {
+          this.detectCollisionThree(
+            playerAI,
+            playerReverse,
+            player2,
+            player3Reverse,
+            player4Reverse,
+            player5Reverse,
+            player6Reverse,
+            player7Reverse,
+            player8Reverse,
+            player9Reverse,
+            hitThree,
+            dmgThree
+          );
         }
-
-     if (this.isAttacking === true) {
-       this.detectCollision(
-         playerAI,
-         playerReverse,
-         player2,
-         player3Reverse,
-         player4Reverse,
-         player5Reverse,
-         player6Reverse,
-         player7Reverse,
-         player8Reverse,
-         player9Reverse,
-         hitOne,
-         dmgOne,
-       );
-     } else if (this.isAttackingTwo === true) {
-       this.detectCollisionTwo(
-         playerAI,
-         playerReverse,
-         player2,
-         player3Reverse,
-         player4Reverse,
-         player5Reverse,
-         player6Reverse,
-         player7Reverse,
-         player8Reverse,
-         player9Reverse,
-         hitTwo,
-         dmgTwo,
-       );
-     } else if (this.isAttackingThree === true) {
-       this.detectCollisionThree(
-         playerAI,
-         playerReverse,
-         player2,
-         player3Reverse,
-         player4Reverse,
-         player5Reverse,
-         player6Reverse,
-         player7Reverse,
-         player8Reverse,
-         player9Reverse,
-         hitThree,
-         dmgThree,
-       );
-     }
       } else if (this.position.x - this.offset.x <= playableHeroRight) {
         if (
           this.position.y + this.height + this.velocity.y >=
@@ -647,6 +662,20 @@ class Fighter extends Sprite {
           this.sound.play();
           this.velocity.y = -15;
           this.switchSprite('jump');
+        } else if (this.velocity.y > 0) {
+          this.switchSprite('fall');
+          // this is fixing bug with flickering sprites when you character reach
+          // ground he flickering between fall animation of character and idle animation
+          // and this piece of code solve this problem
+          // before character reach ground he automatically switch to idle from fall
+          // and this value equal to 441 pixel
+          // is that means he switch to idle animation before reach ground without flickering
+          if (
+            this.position.y + this.height + this.velocity.y >=
+            canvas.height - 155
+          ) {
+            this.switchSprite('idle');
+          }
         } else {
           // in this case 1st of all object will falling down by this expression
           // and then how it reach bottom of the canvas it's stops
@@ -656,10 +685,10 @@ class Fighter extends Sprite {
       }
     } else if (AIHero === true && this.dead) {
       this.velocity.x = 0;
-      this.switchSprite('death')
     }
     if (this.restart === true) {
       this.restartRound();
+      clearInterval(delayAttack);
     }
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
@@ -2373,7 +2402,9 @@ class FighterReverse extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (this.position.x - this.offset.x >= playableHeroRight) {
-        this.attack() || this.attackTwo() || this.attackThree();
+        setTimeout(() => {
+          this.attack() || this.attackTwo() || this.attackThree();
+        }, 1000);
 
         if (this.isAttacking === true) {
           this.detectCollisionReverse(
@@ -2452,7 +2483,31 @@ class FighterReverse extends Sprite {
     }
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
-  AIPlayer(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
+  AIPlayer(
+    AIHero,
+    playerAI,
+    hitOne,
+    dmgOne,
+    hitTwo,
+    dmgTwo,
+    hitThree,
+    dmgThree
+  ) {
+    const delayAttack = () => {
+      if (player5Reverse.start === true) {
+        this.attackFire() || this.attackFireTwo();
+      } else if (player6Reverse.start === true) {
+        this.attackDark() || this.attackDarkTwo();
+      } else if (player7Reverse.start === true) {
+        this.attackFantasy() || this.attackFantasyTwo();
+      } else if (player8Reverse.start === true) {
+        this.attackAxe() || this.attackAxeTwo();
+      } else if (player9Reverse.start === true) {
+        this.attackVampire();
+      } else {
+        this.attack() || this.attackTwo() || this.attackThree();
+      }
+    };
     if (AIHero === true && !this.dead) {
       this.AIHeroRight = !this.AIHeroRight;
       this.AIHeroLeft = !this.AIHeroLeft;
@@ -2501,20 +2556,8 @@ class FighterReverse extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (this.position.x - this.offset.x >= playableHeroRight) {
-        if (player5Reverse.start === true) {
-          this.attackFire();
-        } else if (player6Reverse.start === true) {
-          this.attackDark();
-        } else if (player7Reverse.start === true) {
-          this.attackFantasy();
-        } else if (player8Reverse.start === true) {
-          this.attackAxe();
-        } else if (player9Reverse.start === true) {
-          this.attackVampire();
-        } 
-          this.attack() || this.attackTwo() || this.attackThree();
-        
-        if(this.isAttacking === true) {
+        setTimeout(delayAttack(), 1000);
+        if (this.isAttacking === true) {
           // Player Reverse is attacking 1st animation
           this.detectCollisionReverse(
             playerAI,
@@ -2530,7 +2573,7 @@ class FighterReverse extends Sprite {
             hitOne,
             dmgOne
           );
-        } else if(this.isAttackingTwo === true) {
+        } else if (this.isAttackingTwo === true) {
           // Player Reverse is attacking Two animation
           this.detectCollisionTwoReverse(
             playerAI,
@@ -2546,26 +2589,23 @@ class FighterReverse extends Sprite {
             hitTwo,
             dmgTwo
           );
-        } else if(this.isAttackingThree === true) {
-           // Player Reverse is attacking Three animation
-        this.detectCollisionThreeReverse(
-          playerAI,
-          player,
-          player3,
-          player2Reverse,
-          player4,
-          player5,
-          player6,
-          player7,
-          player8,
-          player9,
-          hitThree,
-          dmgThree
-        );
+        } else if (this.isAttackingThree === true) {
+          // Player Reverse is attacking Three animation
+          this.detectCollisionThreeReverse(
+            playerAI,
+            player,
+            player3,
+            player2Reverse,
+            player4,
+            player5,
+            player6,
+            player7,
+            player8,
+            player9,
+            hitThree,
+            dmgThree
+          );
         }
-
-
-       
       } else if (this.position.x - this.offset.x <= playableHeroRight) {
         if (
           this.position.y + this.height + this.velocity.y >=
@@ -2592,6 +2632,7 @@ class FighterReverse extends Sprite {
 
     if (this.restart === true) {
       this.restartRound();
+      clearTimeout(delayAttack(), 1000)
     }
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
