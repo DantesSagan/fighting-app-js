@@ -2378,7 +2378,7 @@ function PickVampire1Player2() {
 }
 
 function Vampire1Player2AI() {
-  player9.AIHero = !player9.AIHero;
+  player9Reverse.AIHero = !player9Reverse.AIHero;
 }
 
 function TrueStart() {
@@ -2667,7 +2667,7 @@ function ChangeLanguage() {
     document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
     document.querySelector('#menuSettings').innerHTML = 'Настройки';
     document.querySelector('#menuHowToPlay').innerHTML = 'Как играть';
-    document.querySelector('#version').innerHTML = 'Версия: 0.10.1';
+    document.querySelector('#version').innerHTML = 'Версия: 0.10.2';
     document.querySelector('#menuExit').innerHTML = 'Выйти';
     // Настройки
     document.querySelector('#settingsAudioTitle').innerHTML = 'Настройки аудио';
@@ -2796,7 +2796,7 @@ function ChangeLanguage() {
     document.querySelector('#pickHeroes').innerHTML = 'Pick heroes';
     document.querySelector('#menuSettings').innerHTML = 'Settings';
     document.querySelector('#menuHowToPlay').innerHTML = 'How to play';
-    document.querySelector('#version').innerHTML = 'Version: 0.10.1';
+    document.querySelector('#version').innerHTML = 'Version: 0.10.2';
     document.querySelector('#menuExit').innerHTML = 'Exit';
     // Settings
     document.querySelector('#settingsTitle').innerHTML = 'Settings';

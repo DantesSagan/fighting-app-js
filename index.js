@@ -133,6 +133,7 @@ const player = new Fighter({
   restart: false,
   AIHero: false,
 });
+
 const playerReverse = new FighterReverse({
   position: {
     x: 768,
@@ -216,6 +217,7 @@ const playerReverse = new FighterReverse({
   restart: false,
   AlHero: false,
 });
+
 const player2 = new Fighter({
   position: {
     x: 768,
@@ -1740,8 +1742,8 @@ function animate(event) {
     player2Reverse.detectCollisionReverse(
       player2Reverse,
       playerReverse,
-      player3Reverse,
       player2,
+      player3Reverse,
       player4Reverse,
       player5Reverse,
       player6Reverse,
@@ -1755,8 +1757,8 @@ function animate(event) {
     player2Reverse.detectCollisionTwoReverse(
       player2Reverse,
       playerReverse,
-      player3Reverse,
       player2,
+      player3Reverse,
       player4Reverse,
       player5Reverse,
       player6Reverse,
@@ -1770,8 +1772,8 @@ function animate(event) {
     player2Reverse.detectCollisionThreeReverse(
       player2Reverse,
       playerReverse,
-      player3Reverse,
       player2,
+      player3Reverse,
       player4Reverse,
       player5Reverse,
       player6Reverse,
@@ -2162,8 +2164,8 @@ function animate(event) {
     playerReverse.detectCollisionReverse(
       playerReverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2178,8 +2180,8 @@ function animate(event) {
     playerReverse.detectCollisionTwoReverse(
       playerReverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2194,8 +2196,8 @@ function animate(event) {
     playerReverse.detectCollisionThreeReverse(
       playerReverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2216,8 +2218,8 @@ function animate(event) {
     player2.detectCollision(
       player2,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2231,8 +2233,8 @@ function animate(event) {
     player2.detectCollisionTwo(
       player2,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2246,8 +2248,8 @@ function animate(event) {
     player2.detectCollisionThree(
       player2,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2275,8 +2277,8 @@ function animate(event) {
     player3Reverse.detectCollisionReverse(
       player3Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2291,8 +2293,8 @@ function animate(event) {
     player3Reverse.detectCollisionTwoReverse(
       player3Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2318,8 +2320,8 @@ function animate(event) {
     player4Reverse.detectCollisionReverse(
       player4Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2334,8 +2336,8 @@ function animate(event) {
     player4Reverse.detectCollisionTwoReverse(
       player4Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2350,8 +2352,8 @@ function animate(event) {
     player4Reverse.detectCollisionThreeReverse(
       player4Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2378,8 +2380,8 @@ function animate(event) {
     player5Reverse.detectCollisionReverse(
       player5Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2394,8 +2396,8 @@ function animate(event) {
     player5Reverse.detectCollisionTwoReverse(
       player5Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2410,8 +2412,8 @@ function animate(event) {
     player5Reverse.detectCollisionThreeReverse(
       player5Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2438,8 +2440,8 @@ function animate(event) {
     player6Reverse.detectCollisionReverse(
       player6Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2454,8 +2456,8 @@ function animate(event) {
     player6Reverse.detectCollisionTwoReverse(
       player6Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2482,8 +2484,8 @@ function animate(event) {
     player7Reverse.detectCollisionReverse(
       player7Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2498,8 +2500,8 @@ function animate(event) {
     player7Reverse.detectCollisionTwoReverse(
       player7Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2514,8 +2516,8 @@ function animate(event) {
     player7Reverse.detectCollisionThreeReverse(
       player7Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2542,8 +2544,8 @@ function animate(event) {
     player8Reverse.detectCollisionReverse(
       player8Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2558,8 +2560,8 @@ function animate(event) {
     player8Reverse.detectCollisionTwoReverse(
       player8Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,
@@ -2586,8 +2588,8 @@ function animate(event) {
     player9Reverse.detectCollisionReverse(
       player9Reverse,
       player,
-      player3,
       player2Reverse,
+      player3,
       player4,
       player5,
       player6,

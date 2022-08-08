@@ -381,7 +381,16 @@ class Fighter extends Sprite {
   //   }
   // }
 
-  AIPlayerKenji(AIHero, playerAI, hitOne, dmgOne, hitTwo, dmgTwo, hitThree, dmgThree) {
+  AIPlayerKenji(
+    AIHero,
+    playerAI,
+    hitOne,
+    dmgOne,
+    hitTwo,
+    dmgTwo,
+    hitThree,
+    dmgThree
+  ) {
     if (AIHero === true && !this.dead) {
       this.AIHeroRight = !this.AIHeroRight;
       this.AIHeroLeft = !this.AIHeroLeft;
@@ -429,7 +438,7 @@ class Fighter extends Sprite {
         //   this.velocity.x = 0;
         //   this.switchSprite('idle');
         // }
-      } else if (this.position.x - this.offset.x >= playableHeroRight) {
+      } else if (positionAI >= playableHeroRight) {
         setTimeout(() => {
           this.attack() || this.attackTwo() || this.attackThree();
         }, 1000);
@@ -523,6 +532,7 @@ class Fighter extends Sprite {
     hitThree,
     dmgThree
   ) {
+    let timeoutValue;
     const delayAttack = () => {
       if (player5.start === true) {
         this.attackFire() || this.attackFireTwo();
@@ -578,7 +588,6 @@ class Fighter extends Sprite {
             player9Reverse.offset.x -
             this.attackBox.width
           : null;
-      let attackTime = 2;
 
       if (positionAI < playableHeroRight && this.AIHeroRight === true) {
         this.AIHeroLeft = false;
@@ -602,7 +611,7 @@ class Fighter extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (positionAI >= playableHeroRight) {
-        setTimeout(delayAttack(), 1000);
+        timeoutValue = setTimeout(delayAttack, 1000);
         if (this.isAttacking === true) {
           this.detectCollision(
             playerAI,
@@ -649,7 +658,7 @@ class Fighter extends Sprite {
             dmgThree
           );
         }
-      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+      } else if (positionAI <= playableHeroRight) {
         if (
           this.position.y + this.height + this.velocity.y >=
           canvas.height - 115
@@ -688,7 +697,7 @@ class Fighter extends Sprite {
     }
     if (this.restart === true) {
       this.restartRound();
-      clearInterval(delayAttack);
+      clearTimeout(timeoutValue);
     }
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
@@ -968,31 +977,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damaged(dmg);
+        player1.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player2.start === true) {
-        player2.damaged(dmg);
+        player2.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player3.start === true) {
-        player3.damaged(dmg);
+        player3.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
-        player4.damaged(dmg);
+        player4.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player5.start === true) {
-        player5.damaged(dmg);
+        player5.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player6.start === true) {
-        player6.damaged(dmg);
+        player6.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player7.start === true) {
-        player7.damaged(dmg);
+        player7.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player8.start === true) {
-        player8.damaged(dmg);
+        player8.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       } else if (player9.start === true) {
-        player9.damaged(dmg);
+        player9.damagedReverse(dmg);
         playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1146,31 +1155,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedTwo(dmg);
+        player1.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player2.start === true) {
-        player2.damagedTwo(dmg);
+        player2.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player3.start === true) {
-        player3.damagedTwo(dmg);
+        player3.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
-        player4.damagedTwo(dmg);
+        player4.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player5.start === true) {
-        player5.damagedTwo(dmg);
+        player5.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player6.start === true) {
-        player6.damagedTwo(dmg);
+        player6.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player7.start === true) {
-        player7.damagedTwo(dmg);
+        player7.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player8.start === true) {
-        player8.damagedTwo(dmg);
+        player8.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player9.start === true) {
-        player9.damagedTwo(dmg);
+        player9.damagedTwoReverse(dmg);
         playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1322,31 +1331,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedThree(dmg);
+        player1.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player2.start === true) {
-        player2.damagedThree(dmg);
+        player2.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player3.start === true) {
-        player3.damagedThree(dmg);
+        player3.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
-        player4.damagedThree(dmg);
+        player4.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player5.start === true) {
-        player5.damagedThree(dmg);
+        player5.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player6.start === true) {
-        player6.damagedThree(dmg);
+        player6.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player7.start === true) {
-        player7.damagedThree(dmg);
+        player7.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player8.start === true) {
-        player8.damagedThree(dmg);
+        player8.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player9.start === true) {
-        player9.damagedThree(dmg);
+        player9.damagedThreeReverse(dmg);
         playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -2493,7 +2502,8 @@ class FighterReverse extends Sprite {
     hitThree,
     dmgThree
   ) {
-    const delayAttack = () => {
+    let timeoutValue;
+    let delayAttack = () => {
       if (player5Reverse.start === true) {
         this.attackFire() || this.attackFireTwo();
       } else if (player6Reverse.start === true) {
@@ -2512,7 +2522,7 @@ class FighterReverse extends Sprite {
       this.AIHeroRight = !this.AIHeroRight;
       this.AIHeroLeft = !this.AIHeroLeft;
       let positionAI = this.position.x - this.offset.x;
-      let playableHeroRight =
+      let playableHeroLeft =
         player.start === true
           ? player.position.x - player.offset.x - this.attackBox.width
           : player2Reverse.start === true
@@ -2534,9 +2544,10 @@ class FighterReverse extends Sprite {
           : player9.start === true
           ? player9.position.x - player9.offset.x - this.attackBox.width
           : null;
-      if (positionAI < playableHeroRight && this.AIHeroRight === true) {
+      if (positionAI < playableHeroLeft && this.AIHeroRight === true) {
         this.AIHeroLeft = false;
         this.runRight();
+              // clearInterval(timeoutValue);
         // if (player9Reverse.health === 0) {
         //   this.AIHeroRight = false;
         //   this.AIHeroLeftt = false;
@@ -2544,7 +2555,7 @@ class FighterReverse extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (
-        positionAI - 500 > playableHeroRight &&
+        positionAI - 500 > playableHeroLeft &&
         this.AIHeroLeft === true
       ) {
         this.runLeft();
@@ -2555,15 +2566,15 @@ class FighterReverse extends Sprite {
         //   this.velocity.x = 0;
         //   this.switchSprite('idle');
         // }
-      } else if (this.position.x - this.offset.x >= playableHeroRight) {
-        setTimeout(delayAttack(), 1000);
+      } else if (positionAI >= playableHeroLeft) {
+       delayAttack()
         if (this.isAttacking === true) {
           // Player Reverse is attacking 1st animation
           this.detectCollisionReverse(
             playerAI,
             player,
-            player3,
             player2Reverse,
+            player3,
             player4,
             player5,
             player6,
@@ -2578,8 +2589,8 @@ class FighterReverse extends Sprite {
           this.detectCollisionTwoReverse(
             playerAI,
             player,
-            player3,
             player2Reverse,
+            player3,
             player4,
             player5,
             player6,
@@ -2594,8 +2605,8 @@ class FighterReverse extends Sprite {
           this.detectCollisionThreeReverse(
             playerAI,
             player,
-            player3,
             player2Reverse,
+            player3,
             player4,
             player5,
             player6,
@@ -2606,7 +2617,7 @@ class FighterReverse extends Sprite {
             dmgThree
           );
         }
-      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+      } else if (positionAI <= playableHeroLeft) {
         if (
           this.position.y + this.height + this.velocity.y >=
           canvas.height - 115
@@ -2625,14 +2636,14 @@ class FighterReverse extends Sprite {
           this.velocity.y += gravity;
           this.switchSprite('fall');
         }
-      }
+      } 
     } else if (AIHero === true && this.dead) {
       this.velocity.x = 0;
     }
 
     if (this.restart === true) {
       this.restartRound();
-      clearTimeout(delayAttack(), 1000)
+      // clearInterval(timeoutValue);
     }
     // console.log(this.AIHeroRight, this.AIHeroLeft);
   }
@@ -3208,7 +3219,7 @@ class FighterReverse extends Sprite {
     }
   }
 
-  damaged(dealingDmg) {
+  damagedReverse(dealingDmg) {
     this.health -= dealingDmg;
     if (this.health <= 0) {
       this.switchSprite('death');
@@ -3237,7 +3248,7 @@ class FighterReverse extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedTwo(dealingDmgTwo) {
+  damagedTwoReverse(dealingDmgTwo) {
     this.health -= dealingDmgTwo;
     if (this.health <= 0) {
       this.switchSprite('death');
@@ -3258,7 +3269,7 @@ class FighterReverse extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedThree(dealingDmgThree) {
+  damagedThreeReverse(dealingDmgThree) {
     this.health -= dealingDmgThree;
     if (this.health <= 0) {
       this.switchSprite('death');
