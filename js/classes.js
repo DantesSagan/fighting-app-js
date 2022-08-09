@@ -512,7 +512,7 @@ class Fighter extends Sprite {
           this.switchSprite('fall');
         }
       }
-    } else if (AIHero === true && this.dead) {
+    } else if (AIHero === true && this.dead === true) {
       this.velocity.x = 0;
     }
 
@@ -692,7 +692,7 @@ class Fighter extends Sprite {
           this.switchSprite('fall');
         }
       }
-    } else if (AIHero === true && this.dead) {
+    } else if (AIHero === true && this.dead === true) {
       this.velocity.x = 0;
     }
     if (this.restart === true) {
@@ -2339,6 +2339,7 @@ class FighterReverse extends Sprite {
     //   this.isAttacking = false;
     // }, 1000);
   }
+  
   AIPlayerKenji(
     AIHero,
     playerAI,
@@ -2410,7 +2411,7 @@ class FighterReverse extends Sprite {
         //   this.velocity.x = 0;
         //   this.switchSprite('idle');
         // }
-      } else if (this.position.x - this.offset.x >= playableHeroRight) {
+      } else if (positionAI >= playableHeroRight) {
         setTimeout(() => {
           this.attack() || this.attackTwo() || this.attackThree();
         }, 1000);
@@ -2464,7 +2465,7 @@ class FighterReverse extends Sprite {
             playerAI
           );
         }
-      } else if (this.position.x - this.offset.x <= playableHeroRight) {
+      } else if (positionAI <= playableHeroRight) {
         if (
           this.position.y + this.height + this.velocity.y >=
           canvas.height - 115
@@ -2484,7 +2485,7 @@ class FighterReverse extends Sprite {
           this.switchSprite('fall');
         }
       }
-    } else if (AIHero === true && this.dead) {
+    } else if (AIHero === true && this.dead === true) {
       this.velocity.x = 0;
     }
     if (this.restart === true) {
@@ -2503,7 +2504,7 @@ class FighterReverse extends Sprite {
     dmgThree
   ) {
     let timeoutValue;
-    let delayAttack = () => {
+    const delayAttack = () => {
       if (player5Reverse.start === true) {
         this.attackFire() || this.attackFireTwo();
       } else if (player6Reverse.start === true) {
@@ -2567,7 +2568,9 @@ class FighterReverse extends Sprite {
         //   this.switchSprite('idle');
         // }
       } else if (positionAI >= playableHeroLeft) {
-       delayAttack()
+                setTimeout(() => {
+                  delayAttack()
+                }, 1000)
         if (this.isAttacking === true) {
           // Player Reverse is attacking 1st animation
           this.detectCollisionReverse(
@@ -2617,7 +2620,7 @@ class FighterReverse extends Sprite {
             dmgThree
           );
         }
-      } else if (positionAI <= playableHeroLeft) {
+      } else if (positionAI >= playableHeroLeft + 300) {
         if (
           this.position.y + this.height + this.velocity.y >=
           canvas.height - 115
@@ -2637,7 +2640,7 @@ class FighterReverse extends Sprite {
           this.switchSprite('fall');
         }
       } 
-    } else if (AIHero === true && this.dead) {
+    } else if (AIHero === true && this.dead === true) {
       this.velocity.x = 0;
     }
 
