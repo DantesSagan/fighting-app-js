@@ -1589,7 +1589,7 @@ const keys = {
 };
 // Declaration variable let with last used key
 let lastKey;
-window.addEventListener('load', ()=>{
+// window.addEventListener('load', ()=>{
 function animate(event) {
   window.requestAnimationFrame(animate);
   // let countPosition = (player.position.x += player.velocity.x);
@@ -2608,7 +2608,7 @@ function animate(event) {
   DetermineWinnerByLessThenZeroHP();
 }
 animate();
-})
+// })
 
 
 window.addEventListener('keydown', (event) => {
