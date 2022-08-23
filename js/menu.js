@@ -94,7 +94,6 @@ function MenuRestart() {
   document.querySelector('#hero8Player1').style.backgroundColor = 'white';
   document.querySelector('#hero9Player1').style.backgroundColor = 'white';
 
-  
   // second list of heroes
   document.querySelector('#hero1Player2').style.backgroundColor = 'white';
   document.querySelector('#hero2Player2').style.backgroundColor = 'white';
@@ -109,7 +108,7 @@ function MenuRestart() {
   // If you pick AI Player this is will return false state to checked boolean value
   document.querySelector('#MackChecked1').checked = false;
   document.querySelector('#King1Checked1').checked = false;
-  document.querySelector('#KenjiChecked1').checked = false
+  document.querySelector('#KenjiChecked1').checked = false;
   document.querySelector('#King2Checked1').checked = false;
   document.querySelector('#EvilWizard1Checked1').checked = false;
   document.querySelector('#EvilWizard2Checked1').checked = false;
@@ -281,9 +280,12 @@ function MenuRestart() {
       player9Reverse.restart = false;
     }, 1000);
   }
+  clearTimeout(timerId);
+  clearTimeout(timerStartId);
   document.querySelector('#mainMenu').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#infoPlayers').style.display = 'none';
+  document.querySelector('#timerStart').style.display = 'none';
   document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
   document.querySelector('#version').style.display = 'flex';
@@ -291,6 +293,8 @@ function MenuRestart() {
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
     timer < 30 ? (timer += diff) : null;
+  document.querySelector('#timerStart').innerHTML =
+    timerStart === 0 ? (timerStart += 5) : null;
 }
 
 function MenuFalsePlayersTrueCheck({

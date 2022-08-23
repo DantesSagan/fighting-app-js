@@ -2381,8 +2381,31 @@ function Vampire1Player2AI() {
   player9Reverse.AIHero = !player9Reverse.AIHero;
 }
 
+let timerStart = 5;
+let timerStartId;
+function TimerToStart() {
+  timerStartId = setTimeout(TimerToStart, 1000);
+  if (timerStart > 0) {
+    timerStart--;
+    document.querySelector('#timerStart').innerHTML = timerStart;
+  } else if (timerStart <= 0) {
+    menuMain.start = false;
+  }
+}
+
 function TrueStart() {
-  menuMain.start = false;
+  TimerToStart();
+  // console.log(timerStart)
+
+  setTimeout(() => {
+    menuMain.start = false;
+    document.querySelector('#timerStart').style.display = 'none';
+    document.querySelector('#startSign').style.display = 'flex';
+    decreaseTimer();
+  }, 5000);
+  setTimeout(() => {
+    document.querySelector('#startSign').style.display = 'none';
+  }, 6500);
   if (menuMain.start === true) {
     const music = '../audio/ambient_menu.wav';
 
@@ -2397,11 +2420,11 @@ function TrueStart() {
     }
   }
   document.querySelector('#infoPlayers').style.display = 'flex';
+  document.querySelector('#timerStart').style.display = 'flex';
   document.querySelector('#pickMenu').style.display = 'none';
   document.querySelector('#pickMenuTwo').style.display = 'none';
   document.querySelector('#pickMenuThree').style.display = 'none';
   document.querySelector('#version').style.display = 'none';
-  decreaseTimer();
 }
 
 // function restart when round ends
@@ -2585,18 +2608,29 @@ function TrueRestart() {
     }, 1000);
   }
 
-  console.log(player2.dead);
+  // console.log(player2.dead);
   document.querySelector('#infoPlayers').style.display = 'flex';
+  document.querySelector('#timerStart').style.display = 'flex';
+  document.querySelector('#timerStart').style.display = 'flex';
   document.querySelector('#displayText').innerHTML = '';
   document.querySelector('#mainMenu').style.display = 'none';
   document.querySelector('#EscapeMenu').style.display = 'none';
   document.querySelector('#restart').style.display = 'none';
   clearTimeout(timerId);
+  clearTimeout(timerStartId);
   let diff = 30 - timer;
   // console.log(diff);
   document.querySelector('#timer').innerHTML =
     timer < 30 ? (timer += diff) : null;
-  decreaseTimer();
+  document.querySelector('#timerStart').innerHTML =
+    timerStart === 0 ? (timerStart += 5) : null;
+  menuMain.start = true;
+  setTimeout(() => {
+    menuMain.start = false;
+    document.querySelector('#timerStart').style.display = 'none';
+    decreaseTimer();
+  }, 5000);
+  TimerToStart();
   console.log('Click restart', player.start, player2.start);
 }
 // function back which just hides some menu features
@@ -2667,7 +2701,7 @@ function ChangeLanguage() {
     document.querySelector('#pickHeroes').innerHTML = 'Выбрать персонажа';
     document.querySelector('#menuSettings').innerHTML = 'Настройки';
     document.querySelector('#menuHowToPlay').innerHTML = 'Как играть';
-    document.querySelector('#version').innerHTML = 'Версия: 0.10.2';
+    document.querySelector('#version').innerHTML = 'Версия: 0.10.3';
     document.querySelector('#menuExit').innerHTML = 'Выйти';
     // Настройки
     document.querySelector('#settingsAudioTitle').innerHTML = 'Настройки аудио';
@@ -2773,6 +2807,8 @@ function ChangeLanguage() {
     document.querySelector('#heroListThree').innerHTML = 'Список 3';
     document.querySelector('#backThree').innerHTML = 'Назад';
 
+    // Раунд
+    document.querySelector('#startSign').innerHTML = 'ЗАДАЙТЕ ЖАРУ!!!';
     // Перезапустить и вернуться в меню
     document.querySelector('#restartButton').innerHTML = 'Перезапустить';
     document.querySelector('#restartMenu').innerHTML = 'Меню';
@@ -2796,7 +2832,7 @@ function ChangeLanguage() {
     document.querySelector('#pickHeroes').innerHTML = 'Pick heroes';
     document.querySelector('#menuSettings').innerHTML = 'Settings';
     document.querySelector('#menuHowToPlay').innerHTML = 'How to play';
-    document.querySelector('#version').innerHTML = 'Version: 0.10.2';
+    document.querySelector('#version').innerHTML = 'Version: 0.10.3';
     document.querySelector('#menuExit').innerHTML = 'Exit';
     // Settings
     document.querySelector('#settingsTitle').innerHTML = 'Settings';
@@ -2898,6 +2934,8 @@ function ChangeLanguage() {
     document.querySelector('#pickPlayerListThree2').innerHTML = 'Player 2';
     document.querySelector('#pickVampire1Player2').innerHTML = 'Vampire';
 
+    // Round
+    document.querySelector('#startSign').innerHTML = 'LETS ROCK IT!!!';
     // List three and button back
     document.querySelector('#menuPlayThree').innerHTML = 'Play';
     document.querySelector('#heroListThree').innerHTML = 'List 3';
