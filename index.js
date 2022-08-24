@@ -1552,11 +1552,11 @@ const player9Reverse = new FighterReverse({
   AlHero: false,
 });
 if (menuMain.start === true) {
-  const music = '../audio/ambient_menu.wav';
+  const music = './audio/ambient_menu.wav';
   menu({ music });
 } else {
   if (menuMain.combatMusic === true) {
-    const music = '../audio/Hard void (Finish - Rock 5).wav';
+    const music = './audio/Hard void (Finish - Rock 5).wav';
     menu({ music });
   } else {
     const music = '';
