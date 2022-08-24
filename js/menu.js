@@ -6,7 +6,7 @@ function menu({ music }) {
   setInterval(() => {
     menuMain.sound.play();
     menuMain.sound.volume = volume;
-  }, 1000);
+  }, 2000);
 }
 // menu restart
 function MenuRestart() {
