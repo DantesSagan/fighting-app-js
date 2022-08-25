@@ -977,31 +977,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedReverse(dmg);
+        player1.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player2.start === true) {
-        player2.damagedReverse(dmg);
+        player2.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player3.start === true) {
-        player3.damagedReverse(dmg);
+        player3.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player4.start === true) {
-        player4.damagedReverse(dmg);
+        player4.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player5.start === true) {
-        player5.damagedReverse(dmg);
+        player5.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player6.start === true) {
-        player6.damagedReverse(dmg);
+        player6.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player7.start === true) {
-        player7.damagedReverse(dmg);
+        player7.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player8.start === true) {
-        player8.damagedReverse(dmg);
+        player8.damaged(dmg);
         playerAttack.isAttacking = false;
       } else if (player9.start === true) {
-        player9.damagedReverse(dmg);
+        player9.damaged(dmg);
         playerAttack.isAttacking = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1155,31 +1155,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedTwoReverse(dmg);
+        player1.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player2.start === true) {
-        player2.damagedTwoReverse(dmg);
+        player2.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player3.start === true) {
-        player3.damagedTwoReverse(dmg);
+        player3.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player4.start === true) {
-        player4.damagedTwoReverse(dmg);
+        player4.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player5.start === true) {
-        player5.damagedTwoReverse(dmg);
+        player5.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player6.start === true) {
-        player6.damagedTwoReverse(dmg);
+        player6.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player7.start === true) {
-        player7.damagedTwoReverse(dmg);
+        player7.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player8.start === true) {
-        player8.damagedTwoReverse(dmg);
+        player8.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       } else if (player9.start === true) {
-        player9.damagedTwoReverse(dmg);
+        player9.damagedTwo(dmg);
         playerAttack.isAttackingTwo = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -1331,31 +1331,31 @@ class Fighter extends Sprite {
       playerAttack.framesCurrent === missingFrame
     ) {
       if (player1.start === true) {
-        player1.damagedThreeReverse(dmg);
+        player1.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player2.start === true) {
-        player2.damagedThreeReverse(dmg);
+        player2.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player3.start === true) {
-        player3.damagedThreeReverse(dmg);
+        player3.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player4.start === true) {
-        player4.damagedThreeReverse(dmg);
+        player4.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player5.start === true) {
-        player5.damagedThreeReverse(dmg);
+        player5.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player6.start === true) {
-        player6.damagedThreeReverse(dmg);
+        player6.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player7.start === true) {
-        player7.damagedThreeReverse(dmg);
+        player7.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player8.start === true) {
-        player8.damagedThreeReverse(dmg);
+        player8.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       } else if (player9.start === true) {
-        player9.damagedThreeReverse(dmg);
+        player9.damagedThree(dmg);
         playerAttack.isAttackingThree = false;
       }
       // document.querySelector('#player2Health').style.width = player2.health + '%';
@@ -3222,7 +3222,7 @@ class FighterReverse extends Sprite {
     }
   }
 
-  damagedReverse(dealingDmg) {
+  damaged(dealingDmg) {
     this.health -= dealingDmg;
     if (this.health <= 0) {
       this.switchSprite('death');
@@ -3251,7 +3251,7 @@ class FighterReverse extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedTwoReverse(dealingDmgTwo) {
+  damagedTwo(dealingDmgTwo) {
     this.health -= dealingDmgTwo;
     if (this.health <= 0) {
       this.switchSprite('death');
@@ -3272,7 +3272,7 @@ class FighterReverse extends Sprite {
       this.switchSprite('damaged');
     }
   }
-  damagedThreeReverse(dealingDmgThree) {
+  damagedThree(dealingDmgThree) {
     this.health -= dealingDmgThree;
     if (this.health <= 0) {
       this.switchSprite('death');
