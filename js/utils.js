@@ -2625,11 +2625,17 @@ function TrueRestart() {
   document.querySelector('#timerStart').innerHTML =
     timerStart === 0 ? (timerStart += 5) : null;
   menuMain.start = true;
+
   setTimeout(() => {
     menuMain.start = false;
     document.querySelector('#timerStart').style.display = 'none';
+    document.querySelector('#startSign').style.display = 'flex';
+    document.querySelector('#timerStart').style.display = 'none';
     decreaseTimer();
   }, 5000);
+  setTimeout(() => {
+    document.querySelector('#startSign').style.display = 'none';
+  }, 6500);
   TimerToStart();
   console.log('Click restart', player.start, player2.start);
 }
